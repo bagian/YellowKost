@@ -1550,8 +1550,7 @@
                             class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Flowbite</span>
                     </a>
                 </div>
-                <div class="flex items-center gap-2 sm:gap-3">
-
+                <div class="flex items-center gap-2 sm:gap-3 ">
                     <div class="flex items-center ms-3">
                         <div>
                             <button type="button"
@@ -1563,7 +1562,7 @@
                                     alt="user photo">
                             </button>
                         </div>
-                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-sm shadow-sm dark:bg-gray-700 dark:divide-gray-600"
+                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow-sm dark:bg-gray-700 dark:divide-gray-600 border border-gray-200 dark:border-gray-600"
                             id="dropdown-user">
                             <div class="px-4 py-3" role="none">
                                 <p class="text-sm text-gray-900 dark:text-white" role="none">
@@ -1709,7 +1708,7 @@
         <div class="p-4 rounded-lg dark:border-gray-700 mt-14">
             <!-- Welcome Section -->
             <div class="mb-6 sm:mb-8 text-center">
-                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-800 mb-2">Selamat Datang di
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-900 mb-2">Selamat Datang di
                     YellowKost</h1>
                 <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">Platform manajemen kost yang modern
                     dan mudah digunakan</p>
@@ -1718,26 +1717,26 @@
             <!-- Stats Cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
                 <div
-                    class="p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                    class="p-4 sm:p-6 bg-blue-50 dark:bg-blue-100 rounded-lg shadow-sm border border-gray-200 dark:border-blue-300">
                     <div class="flex items-center">
-                        <div class="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                        <div class="p-2 bg-blue-200 dark:bg-blue-900 rounded-lg">
                             <svg class="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zM12 14a8 8 0 0 0-8 8h16a8 8 0 0 0-8-8z" />
                             </svg>
                         </div>
                         <div class="ml-3 sm:ml-4">
-                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">Total Penyewa
+                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-900">Total Penyewa
                             </p>
-                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">1,234</p>
+                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:tex-gray-900">1,234</p>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    class="p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                    class="p-4 sm:p-6 bg-green-50 dark:bg-green-100 rounded-lg shadow-sm border border-gray-200 dark:border-green-300">
                     <div class="flex items-center">
-                        <div class="p-2 bg-green-100 dark:bg-green-900 rounded-lg">
+                        <div class="p-2 bg-green-200 dark:bg-green-900 rounded-lg">
                             <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-400" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1746,17 +1745,17 @@
                             </svg>
                         </div>
                         <div class="ml-3 sm:ml-4">
-                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">Kamar Tersedia
+                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-900">Kamar Tersedia
                             </p>
-                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">45</p>
+                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-900">45</p>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    class="p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                    class="p-4 sm:p-6 bg-yellow-50 dark:bg-yellow-100 rounded-lg shadow-sm border border-gray-200 dark:border-yellow-300">
                     <div class="flex items-center">
-                        <div class="p-2 bg-yellow-100 dark:bg-yellow-900 rounded-lg">
+                        <div class="p-2 bg-yellow-200 dark:bg-yellow-900 rounded-lg">
                             <svg class="w-5 h-5 sm:w-6 sm:h-6 text-yellow-600 dark:text-yellow-400" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1765,17 +1764,17 @@
                             </svg>
                         </div>
                         <div class="ml-3 sm:ml-4">
-                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">Pendapatan Bulan
+                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-900">Pendapatan Bulan
                                 Ini</p>
-                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">Rp 45.2M</p>
+                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-900">Rp 45.2M</p>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    class="p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                    class="p-4 sm:p-6 bg-red-50 dark:bg-red-50 rounded-lg shadow-sm border border-gray-200 dark:border-red-300">
                     <div class="flex items-center">
-                        <div class="p-2 bg-red-100 dark:bg-red-900 rounded-lg">
+                        <div class="p-2 bg-red-200 dark:bg-red-900 rounded-lg">
                             <svg class="w-5 h-5 sm:w-6 sm:h-6 text-red-600 dark:text-red-400" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1783,9 +1782,9 @@
                             </svg>
                         </div>
                         <div class="ml-3 sm:ml-4">
-                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">Tingkat Hunian
+                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-900">Tingkat Hunian
                             </p>
-                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">92%</p>
+                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-900">92%</p>
                         </div>
                     </div>
                 </div>
