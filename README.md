@@ -11,13 +11,13 @@
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   [Simple, fast routing engine](https://laravel.com/docs/routing).
+-   [Powerful dependency injection container](https://laravel.com/docs/container).
+-   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+-   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+-   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+-   [Robust background job processing](https://laravel.com/docs/queues).
+-   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -33,16 +33,62 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
+## Repository Install
+
+Before you run this project onto your local, plase clone this repo first!! after that Install via npm and composer for add node-packages modules Tailwind Css and Flowbite Css.
+
+```bash
+npm install
+composer install
+> cd YellowKost
+```
+
+## Migration
+
+before you migrate the database, type this for change env
+
+```bash
+mv .env.example .env
+```
+
+now you can migrate database with this command
+
+```bash
+php artisan migrate
+```
+
+## Generate Key For Laravel
+
+type this command into your terminal for generate Key into your Php projects.
+
+```bash
+php artisan key:generate
+```
+
+## Final Step
+
+For running this project you can run with this command for live compiled from laravel, because the compiled structer with vite.
+
+```bash
+composer run dev
+```
+
+or (not auto refresh)
+
+```bash
+php artisan serve
+```
+
 ### Premium Partners
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+-   **[Vehikl](https://vehikl.com)**
+-   **[Tighten Co.](https://tighten.co)**
+-   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+-   **[64 Robots](https://64robots.com)**
+-   **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+-   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+-   **[Redberry](https://redberry.international/laravel-development)**
+-   **[Active Logic](https://activelogic.com)**
 
 ## Contributing
 
