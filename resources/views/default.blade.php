@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Yellow Kost') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -1544,57 +1544,208 @@
                             </path>
                         </svg>
                     </button>
-                    <a href="https://flowbite.com" class="flex ms-2 md:me-24">
-                        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                        <span
-                            class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Flowbite</span>
-                    </a>
+                    <div class="hidden md:block">
+                        <a href="https://flowbite.com" class="flex ms-2 md:me-24">
+                            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
+                            <span
+                                class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Yellow
+                                Kost</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="flex items-center gap-2 sm:gap-3 ">
-                    <div class="flex items-center ms-3">
-                        <div>
-                            <button type="button"
-                                class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                                aria-expanded="false" data-dropdown-toggle="dropdown-user">
-                                <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full"
-                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                                    alt="user photo">
-                            </button>
-                        </div>
-                        <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow-sm dark:bg-gray-700 dark:divide-gray-600 border border-gray-200 dark:border-gray-600"
-                            id="dropdown-user">
-                            <div class="px-4 py-3" role="none">
-                                <p class="text-sm text-gray-900 dark:text-white" role="none">
-                                    Neil Sims
-                                </p>
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                                    neil.sims@flowbite.com
-                                </p>
+                    <div class="flex items-center gap-5 ms-3">
+                        <!-- Bells Notification -->
+                        <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification"
+                            class="relative inline-flex items-center text-sm font-medium text-center text-gray-500 hover:text-gray-900 focus:outline-none dark:hover:text-white dark:text-gray-400"
+                            type="button">
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 14 20">
+                                <path
+                                    d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
+                            </svg>
+
+                            <div
+                                class="absolute block w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 start-2.5 dark:border-gray-900">
                             </div>
-                            <ul class="py-1" role="none">
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownNotification"
+                            class="z-20 hidden w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow-md dark:bg-gray-900 dark:divide-gray-700"
+                            aria-labelledby="dropdownNotificationButton">
+                            <div
+                                class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 dark:bg-gray-700 dark:text-white">
+                                Notifikasi
+                            </div>
+                            <div class="divide-y divide-gray-100 dark:divide-gray-700">
+                                <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <div class="shrink-0">
+                                        <img class="rounded-full w-11 h-11"
+                                            src="https://randomuser.me/api/portraits/men/36.jpg" alt="Users">
+                                        <div
+                                            class="absolute flex items-center justify-center w-5 h-5 -mt-5 bg-blue-600 border border-white rounded-full ms-6 dark:border-gray-800">
+                                            <svg class="w-2 h-2 text-white" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 18 18">
+                                                <path
+                                                    d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
+                                                <path
+                                                    d="M4.439 9a2.99 2.99 0 0 1 2.742 1.8 1.977 1.977 0 0 0 3.638 0A2.99 2.99 0 0 1 13.561 9H17.8L15.977.783A1 1 0 0 0 15 0H3a1 1 0 0 0-.977.783L.2 9h4.239Z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="w-full ps-3">
+                                        <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">New message from
+                                            <span class="font-semibold text-gray-900 dark:text-white">Jese Leos</span>:
+                                            "Hey, what's up? All set for the presentation?"
+                                        </div>
+                                        <div class="text-xs text-blue-600 dark:text-blue-500">a few moments ago</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <div class="shrink-0">
+                                        <img class="rounded-full w-11 h-11"
+                                            src="https://randomuser.me/api/portraits/men/31.jpg" alt="Users">
+                                        <div
+                                            class="absolute flex items-center justify-center w-5 h-5 -mt-5 bg-gray-900 border border-white rounded-full ms-6 dark:border-gray-800">
+                                            <svg class="w-2 h-2 text-white" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 20 18">
+                                                <path
+                                                    d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Zm11-3h-2V5a1 1 0 0 0-2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 0 0 2 0V9h2a1 1 0 1 0 0-2Z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="w-full ps-3">
+                                        <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400"><span
+                                                class="font-semibold text-gray-900 dark:text-white">Joseph Mcfall</span>
+                                            and <span class="font-medium text-gray-900 dark:text-white">5 others</span>
+                                            started following you.</div>
+                                        <div class="text-xs text-blue-600 dark:text-blue-500">10 minutes ago</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <div class="shrink-0">
+                                        <img class="rounded-full w-11 h-11"
+                                            src="https://randomuser.me/api/portraits/men/50.jpg" alt="Users">
+                                        <div
+                                            class="absolute flex items-center justify-center w-5 h-5 -mt-5 bg-red-600 border border-white rounded-full ms-6 dark:border-gray-800">
+                                            <svg class="w-2 h-2 text-white" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 20 18">
+                                                <path
+                                                    d="M17.947 2.053a5.209 5.209 0 0 0-3.793-1.53A6.414 6.414 0 0 0 10 2.311 6.482 6.482 0 0 0 5.824.5a5.2 5.2 0 0 0-3.8 1.521c-1.915 1.916-2.315 5.392.625 8.333l7 7a.5.5 0 0 0 .708 0l7-7a6.6 6.6 0 0 0 2.123-4.508 5.179 5.179 0 0 0-1.533-3.793Z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="w-full ps-3">
+                                        <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400"><span
+                                                class="font-semibold text-gray-900 dark:text-white">Bonnie Green</span>
+                                            and <span class="font-medium text-gray-900 dark:text-white">141
+                                                others</span> love your story. See it and view more stories.</div>
+                                        <div class="text-xs text-blue-600 dark:text-blue-500">44 minutes ago</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <div class="shrink-0">
+                                        <img class="rounded-full w-11 h-11"
+                                            src="https://randomuser.me/api/portraits/women/65.jpg" alt="Users">
+                                        <div
+                                            class="absolute flex items-center justify-center w-5 h-5 -mt-5 bg-green-400 border border-white rounded-full ms-6 dark:border-gray-800">
+                                            <svg class="w-2 h-2 text-white" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 20 18">
+                                                <path
+                                                    d="M18 0H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2v4a1 1 0 0 0 1.707.707L10.414 13H18a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5 4h2a1 1 0 1 1 0 2h-2a1 1 0 1 1 0-2ZM5 4h5a1 1 0 1 1 0 2H5a1 1 0 0 1 0-2Zm2 5H5a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Zm9 0h-6a1 1 0 0 1 0-2h6a1 1 0 1 1 0 2Z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="w-full ps-3">
+                                        <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400"><span
+                                                class="font-semibold text-gray-900 dark:text-white">Leslie
+                                                Livingston</span> mentioned you in a comment: <span
+                                                class="font-medium text-blue-500" href="#">@bonnie.green</span>
+                                            what do you say?</div>
+                                        <div class="text-xs text-blue-600 dark:text-blue-500">1 hour ago</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <div class="shrink-0">
+                                        <img class="rounded-full w-11 h-11"
+                                            src="https://randomuser.me/api/portraits/men/17.jpg" alt="Users">
+                                        <div
+                                            class="absolute flex items-center justify-center w-5 h-5 -mt-5 bg-purple-500 border border-white rounded-full ms-6 dark:border-gray-800">
+                                            <svg class="w-2 h-2 text-white" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 20 14">
+                                                <path
+                                                    d="M11 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm8.585 1.189a.994.994 0 0 0-.9-.138l-2.965.983a1 1 0 0 0-.685.949v8a1 1 0 0 0 .675.946l2.965 1.02a1.013 1.013 0 0 0 1.032-.242A1 1 0 0 0 20 12V2a1 1 0 0 0-.415-.811Z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="w-full ps-3">
+                                        <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400"><span
+                                                class="font-semibold text-gray-900 dark:text-white">Robert Brown</span>
+                                            posted a new video: Glassmorphism - learn how to implement the new design
+                                            trend.</div>
+                                        <div class="text-xs text-blue-600 dark:text-blue-500">3 hours ago</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <a href="#"
+                                class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white">
+                                <div class="inline-flex items-center ">
+                                    <svg class="w-4 h-4 text-gray-500 me-2 dark:text-gray-400" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
+                                        <path
+                                            d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
+                                    </svg>
+                                    View all
+                                </div>
+                            </a>
+                        </div>
+                        <!-- End Bells Notification -->
+                        <!-- Profile Control -->
+                        <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName"
+                            class="flex items-center text-sm font-medium text-gray-900 rounded-full pe-1 hover:text-blue-600 dark:hover:text-blue-500 md:me-0 dark:text-white"
+                            type="button">
+                            <img class="w-8 h-8 rounded-full me-2"
+                                src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto Profil Pengguna">
+                            <p class="hidden md:block">
+                                Bonnie Green
+                            </p>
+                            <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <!-- End Profile Control -->
+                        <!-- Dropdown menu -->
+                        <div id="dropdownAvatarName"
+                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-md w-44 dark:bg-gray-900 dark:divide-gray-600">
+                            <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                                <div class="font-semibold">Admin</div>
+                                <div class="truncate">name@flowbite.com</div>
+                            </div>
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        role="menuitem">Dashboard</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                                 </li>
                                 <li>
                                     <a href="#"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        role="menuitem">Settings</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        role="menuitem">Earnings</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        role="menuitem">Sign out</a>
+                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Setting</a>
                                 </li>
                             </ul>
+                            <div class="py-2">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                                    out</a>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -1606,7 +1757,7 @@
         aria-label="Sidebar">
         <div class="h-full px-3 pb-4 overflow-y-auto bg-gray-100 dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
-                <li>
+                <li class="pb-2 border-b border-gray-200 dark:border-gray-700">
                     <a href="#"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -1620,86 +1771,75 @@
                         <span class="ms-3">Dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 18 18">
-                            <path
-                                d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Kanban</span>
-                        <span
-                            class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 20 20">
-                            <path
-                                d="m17.418 3.623-.018-.008a6.713 6.713 0 0 0-2.4-.569V2h1a1 1 0 1 0 0-2h-2a1 1 0 0 0-1 1v2H9.89A6.977 6.977 0 0 1 12 8v5h-2V8A5 5 0 1 0 0 8v6a1 1 0 0 0 1 1h8v4a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-4h6a1 1 0 0 0 1-1V8a5 5 0 0 0-2.582-4.377ZM6 12H4a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2Z" />
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Inbox</span>
-                        <span
-                            class="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 20 18">
-                            <path
-                                d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 18 20">
-                            <path
-                                d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Products</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 18 16">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Sign In</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 20 20">
-                            <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" />
-                            <path
-                                d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z" />
-                            <path
-                                d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" />
-                        </svg>
-                        <span class="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
-                    </a>
-                </li>
+                <span class="block pt-4 text-xs text-gray-400 uppercase dark:text-gray-400">Management</span>
+                <div class="leading-8">
+                    <li>
+                        <a href="#"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <svg class="w-5 h-5 text-gray-500 transition duration-75 shrink-0 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 18 18">
+                                <path
+                                    d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
+                            </svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Kanban</span>
+                            <span
+                                class="inline-flex items-center justify-center px-2 text-sm font-medium text-gray-800 bg-gray-100 rounded-full ms-3 dark:bg-gray-700 dark:text-gray-300">Pro</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <svg class="w-5 h-5 text-gray-500 transition duration-75 shrink-0 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 18">
+                                <path
+                                    d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
+                            </svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <svg class="w-5 h-5 text-gray-500 transition duration-75 shrink-0 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 18 20">
+                                <path
+                                    d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
+                            </svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <svg class="w-5 h-5 text-gray-500 transition duration-75 shrink-0 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 18 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3" />
+                            </svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Sign In</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <svg class="w-5 h-5 text-gray-500 transition duration-75 shrink-0 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" />
+                                <path
+                                    d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z" />
+                                <path
+                                    d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" />
+                            </svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
+                        </a>
+                    </li>
+                </div>
             </ul>
         </div>
     </aside>
@@ -1707,37 +1847,37 @@
     <div class="p-4 sm:ml-64">
         <div class="p-4 rounded-lg dark:border-gray-700 mt-14">
             <!-- Welcome Section -->
-            <div class="mb-6 sm:mb-8 text-center">
-                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-900 mb-2">Selamat Datang di
+            <div class="mb-6 text-center sm:mb-8">
+                <h1 class="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-gray-900">Selamat Datang di
                     YellowKost</h1>
-                <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">Platform manajemen kost yang modern
+                <p class="text-sm text-gray-600 sm:text-base dark:text-gray-400">Platform manajemen kost yang modern
                     dan mudah digunakan</p>
             </div>
 
             <!-- Stats Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <div class="grid grid-cols-1 gap-3 mb-6 sm:grid-cols-2 lg:grid-cols-4 sm:gap-4 sm:mb-8">
                 <div
-                    class="p-4 sm:p-6 bg-blue-50 dark:bg-blue-100 rounded-lg shadow-sm border border-gray-200 dark:border-blue-300">
+                    class="p-4 border border-gray-200 rounded-lg shadow-sm sm:p-6 bg-blue-50 dark:bg-blue-100 dark:border-blue-300">
                     <div class="flex items-center">
-                        <div class="p-2 bg-blue-200 dark:bg-blue-900 rounded-lg">
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" fill="currentColor"
+                        <div class="p-2 bg-blue-200 rounded-lg dark:bg-blue-900">
+                            <svg class="w-5 h-5 text-blue-600 sm:w-6 sm:h-6 dark:text-blue-400" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zM12 14a8 8 0 0 0-8 8h16a8 8 0 0 0-8-8z" />
                             </svg>
                         </div>
                         <div class="ml-3 sm:ml-4">
-                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-900">Total Penyewa
+                            <p class="text-xs font-medium text-gray-600 sm:text-sm dark:text-gray-900">Total Penyewa
                             </p>
-                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:tex-gray-900">1,234</p>
+                            <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:tex-gray-900">1,234</p>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    class="p-4 sm:p-6 bg-green-50 dark:bg-green-100 rounded-lg shadow-sm border border-gray-200 dark:border-green-300">
+                    class="p-4 border border-gray-200 rounded-lg shadow-sm sm:p-6 bg-green-50 dark:bg-green-100 dark:border-green-300">
                     <div class="flex items-center">
-                        <div class="p-2 bg-green-200 dark:bg-green-900 rounded-lg">
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-400" fill="none"
+                        <div class="p-2 bg-green-200 rounded-lg dark:bg-green-900">
+                            <svg class="w-5 h-5 text-green-600 sm:w-6 sm:h-6 dark:text-green-400" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
@@ -1745,66 +1885,65 @@
                             </svg>
                         </div>
                         <div class="ml-3 sm:ml-4">
-                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-900">Kamar Tersedia
+                            <p class="text-xs font-medium text-gray-600 sm:text-sm dark:text-gray-900">Kamar Tersedia
                             </p>
-                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-900">45</p>
+                            <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-gray-900">45</p>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    class="p-4 sm:p-6 bg-yellow-50 dark:bg-yellow-100 rounded-lg shadow-sm border border-gray-200 dark:border-yellow-300">
+                    class="p-4 border border-gray-200 rounded-lg shadow-sm sm:p-6 bg-yellow-50 dark:bg-yellow-100 dark:border-yellow-300">
                     <div class="flex items-center">
-                        <div class="p-2 bg-yellow-200 dark:bg-yellow-900 rounded-lg">
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-yellow-600 dark:text-yellow-400" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
-                                </path>
+                        <div class="p-2 bg-yellow-200 rounded-lg dark:bg-yellow-900">
+                            <svg class="w-5 h-5 text-yellow-600 sm:w-6 sm:h-6 dark:text-yellow-400"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <text x="3" y="17" font-size="14" font-family="Arial, sans-serif" font-weight="bold"
+                                    fill="currentColor">Rp</text>
                             </svg>
                         </div>
                         <div class="ml-3 sm:ml-4">
-                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-900">Pendapatan Bulan
+                            <p class="text-xs font-medium text-gray-600 sm:text-sm dark:text-gray-900">Pendapatan Bulan
                                 Ini</p>
-                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-900">Rp 45.2M</p>
+                            <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-gray-900">Rp 45.2M</p>
                         </div>
                     </div>
                 </div>
 
                 <div
-                    class="p-4 sm:p-6 bg-red-50 dark:bg-red-50 rounded-lg shadow-sm border border-gray-200 dark:border-red-300">
+                    class="p-4 border border-gray-200 rounded-lg shadow-sm sm:p-6 bg-red-50 dark:bg-red-50 dark:border-red-300">
                     <div class="flex items-center">
-                        <div class="p-2 bg-red-200 dark:bg-red-900 rounded-lg">
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-red-600 dark:text-red-400" fill="none"
+                        <div class="p-2 bg-red-200 rounded-lg dark:bg-red-900">
+                            <svg class="w-5 h-5 text-red-600 sm:w-6 sm:h-6 dark:text-red-400" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
                         <div class="ml-3 sm:ml-4">
-                            <p class="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-900">Tingkat Hunian
+                            <p class="text-xs font-medium text-gray-600 sm:text-sm dark:text-gray-900">Tingkat Hunian
                             </p>
-                            <p class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-900">92%</p>
+                            <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-gray-900">92%</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Quick Actions -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <div class="grid grid-cols-1 gap-3 mb-6 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4 sm:mb-8">
                 <div
-                    class="p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                    class="p-4 transition-shadow bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:bg-blue-900 dark:border-blue-700 hover:shadow-md">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-1 sm:mb-2">
+                            <h3 class="mb-1 text-base font-semibold text-gray-900 sm:text-lg dark:text-white sm:mb-2">
                                 Tambah Penyewa Baru</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">Daftarkan penyewa baru ke
+                            <p class="text-xs text-gray-600 dark:text-gray-400 sm:text-sm">Daftarkan penyewa baru ke
                                 sistem</p>
                         </div>
                         <a href="{{ url('pages/form-penyewa') }}"
-                            class="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors inline-flex items-center justify-center"
+                            class="inline-flex items-center justify-center p-2 transition-colors bg-blue-100 rounded-lg dark:bg-blue-300 hover:bg-blue-200 dark:hover:bg-blue-400"
                             title="Tambah Penyewa Baru">
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" fill="none"
+                            <svg class="w-5 h-5 text-blue-600 sm:w-6 sm:h-6 dark:text-blue-700" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
@@ -1814,17 +1953,17 @@
                 </div>
 
                 <div
-                    class="p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                    class="p-4 transition-shadow bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:bg-green-900 dark:border-green-700 hover:shadow-md">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-1 sm:mb-2">
+                            <h3 class="mb-1 text-base font-semibold text-gray-900 sm:text-lg dark:text-white sm:mb-2">
                                 Kelola Pembayaran</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">Lihat dan kelola pembayaran
+                            <p class="text-xs text-gray-600 dark:text-gray-400 sm:text-sm">Lihat dan kelola pembayaran
                                 sewa</p>
                         </div>
                         <button
-                            class="p-2 bg-green-100 dark:bg-green-900 rounded-lg hover:bg-green-200 dark:hover:bg-green-800 transition-colors">
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-400" fill="none"
+                            class="p-2 transition-colors bg-green-100 rounded-lg dark:bg-green-300 hover:bg-green-200 dark:hover:bg-green-400">
+                            <svg class="w-5 h-5 text-green-600 sm:w-6 sm:h-6 dark:text-green-700" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
@@ -1835,17 +1974,17 @@
                 </div>
 
                 <div
-                    class="p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                    class="p-4 transition-shadow bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:bg-purple-800 dark:border-purple-700 hover:shadow-md">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-1 sm:mb-2">
+                            <h3 class="mb-1 text-base font-semibold text-gray-900 sm:text-lg dark:text-white sm:mb-2">
                                 Laporan Bulanan</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">Generate laporan keuangan
+                            <p class="text-xs text-gray-600 dark:text-gray-400 sm:text-sm">Generate laporan keuangan
                                 bulanan</p>
                         </div>
                         <button
-                            class="p-2 bg-purple-100 dark:bg-purple-900 rounded-lg hover:bg-purple-200 dark:hover:bg-purple-800 transition-colors">
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-purple-600 dark:text-purple-400" fill="none"
+                            class="p-2 transition-colors bg-purple-100 rounded-lg dark:bg-purple-300 hover:bg-purple-200 dark:hover:bg-purple-400">
+                            <svg class="w-5 h-5 text-purple-600 sm:w-6 sm:h-6 dark:text-purple-700" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
@@ -1858,40 +1997,40 @@
 
             <!-- Recent Activity -->
             <div
-                class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 sm:p-6">
-                <h3 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3 sm:mb-4">Aktivitas
+                class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 sm:p-6">
+                <h3 class="mb-3 text-base font-semibold text-gray-900 sm:text-lg dark:text-white sm:mb-4">Aktivitas
                     Terbaru</h3>
                 <div class="space-y-3 sm:space-y-4">
-                    <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                        <div class="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                    <div class="flex items-center p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
+                        <div class="w-2 h-2 mr-3 bg-green-500 rounded-full"></div>
                         <div class="flex-1 min-w-0">
-                            <p class="text-xs sm:text-sm font-medium text-gray-900 dark:text-white truncate">Pembayaran
+                            <p class="text-xs font-medium text-gray-900 truncate sm:text-sm dark:text-white">Pembayaran
                                 diterima dari Kamar 101</p>
                             <p class="text-xs text-gray-500 dark:text-gray-400">2 menit yang lalu</p>
                         </div>
-                        <span class="text-xs sm:text-sm font-medium text-green-600 dark:text-green-400 ml-2">Rp
+                        <span class="ml-2 text-xs font-medium text-green-600 sm:text-sm dark:text-green-400">Rp
                             2.500.000</span>
                     </div>
 
-                    <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                        <div class="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    <div class="flex items-center p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
+                        <div class="w-2 h-2 mr-3 bg-blue-500 rounded-full"></div>
                         <div class="flex-1 min-w-0">
-                            <p class="text-xs sm:text-sm font-medium text-gray-900 dark:text-white truncate">Penyewa
+                            <p class="text-xs font-medium text-gray-900 truncate sm:text-sm dark:text-white">Penyewa
                                 baru mendaftar</p>
                             <p class="text-xs text-gray-500 dark:text-gray-400">15 menit yang lalu</p>
                         </div>
-                        <span class="text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400 ml-2">Kamar
+                        <span class="ml-2 text-xs font-medium text-blue-600 sm:text-sm dark:text-blue-400">Kamar
                             205</span>
                     </div>
 
-                    <div class="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                        <div class="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
+                    <div class="flex items-center p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
+                        <div class="w-2 h-2 mr-3 bg-yellow-500 rounded-full"></div>
                         <div class="flex-1 min-w-0">
-                            <p class="text-xs sm:text-sm font-medium text-gray-900 dark:text-white truncate">
+                            <p class="text-xs font-medium text-gray-900 truncate sm:text-sm dark:text-white">
                                 Maintenance selesai</p>
                             <p class="text-xs text-gray-500 dark:text-gray-400">1 jam yang lalu</p>
                         </div>
-                        <span class="text-xs sm:text-sm font-medium text-yellow-600 dark:text-yellow-400 ml-2">AC Kamar
+                        <span class="ml-2 text-xs font-medium text-yellow-600 sm:text-sm dark:text-yellow-400">AC Kamar
                             103</span>
                     </div>
                 </div>
