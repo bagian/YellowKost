@@ -17,6 +17,8 @@
     <!-- Dark Mode Script -->
     <script src="{{ asset('js/components/darkMode.js') }}"></script>
 
+    {{-- jQuery --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Styles / Scripts -->
     {{-- @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot'))) --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -25,6 +27,7 @@
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
     <!-- Main application script -->
@@ -47,6 +50,14 @@
     </div>
     <!-- End Main Content -->
 
+    <form action="{{ route('logout') }}" method="post" id="formLogout">
+        @csrf
+    </form>
+    <script>
+        $('#logout').on('click', function() {
+            $('#formLogout').submit();
+        });
+    </script>
     @stack('scripts')
 </body>
 

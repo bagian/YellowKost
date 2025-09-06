@@ -3,3 +3,35 @@
 @tailwind utilities;
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+@layer utilities {
+    /* Chrome, Safari, Edge, Opera */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+    }
+
+    /* Firefox */
+    input[type="date"] {
+        -moz-appearance: textfield;
+    }
+
+    /* Chrome, Safari, Edge */
+    select::-ms-expand {
+        display: none;
+    }
+    select::-webkit-inner-spin-button,
+    select::-webkit-outer-spin-button,
+    select::-webkit-search-cancel-button,
+    select::-webkit-search-decoration {
+        display: none;
+    }
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: none;
+        background-image: none;
+    }
+}
