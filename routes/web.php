@@ -5,7 +5,7 @@ use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('default');
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
