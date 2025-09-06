@@ -17,8 +17,8 @@
     <div
         class="p-4 border border-gray-200 rounded-lg shadow-sm sm:p-6 bg-blue-50 dark:bg-blue-100 dark:border-blue-300">
         <div class="flex items-center">
-            <div class="p-2 bg-blue-200 rounded-lg dark:bg-blue-900">
-                <svg class="w-5 h-5 text-blue-600 sm:w-6 sm:h-6 dark:text-blue-400" fill="currentColor"
+            <div class="p-2 bg-blue-500 rounded-lg dark:bg-blue-900">
+                <svg class="w-5 h-5 text-blue-200 sm:w-6 sm:h-6 dark:text-blue-400" fill="currentColor"
                     viewBox="0 0 24 24">
                     <path d="M12 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zM12 14a8 8 0 0 0-8 8h16a8 8 0 0 0-8-8z" />
                 </svg>
