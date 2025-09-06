@@ -75,3 +75,4 @@ Setiap modal memiliki:
 -   Tailwind CSS untuk styling
 -   Flowbite untuk komponen UI
 -   Browser support untuk localStorage dan matchMedia
+
