@@ -1,8 +1,8 @@
 @extends('default')
 
 @section('content')
+<!-- ====== Form Elements Section Start -->
 <div class="mx-auto">
-    <!-- ====== Form Elements Section Start -->
     <form action="">
         <div class="space-y-6">
             <div class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
@@ -212,7 +212,5 @@
         </div>
     </form>
 </div>
-
-
 <!-- ====== Form Elements Section End -->
 @endsection

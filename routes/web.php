@@ -27,4 +27,8 @@ Route::get('/penyewa', function() {
     return view('pages.form-penyewa.forminputs');
 })->name('form.penyewa');
 
+Route::get('/infokamar', function() {
+    return view('pages.kamar.kamars');
+})->name('info.kamar');
+
 require __DIR__.'/auth.php';
