@@ -91,7 +91,7 @@
                                     <!-- Slides -->
                                     <div class="relative overflow-hidden swiper-slide">
                                         <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
-                                            alt="Kamar 1" class="object-cover" />
+                                            alt="Kamar 1" class="object-cover" loading="lazy" />
                                         <button
                                             class="absolute bottom-0 z-20 flex items-center justify-center w-full p-2.5 text-center text-gray-700 hover:text-red-700 transition-all duration-150 ease-in-out bg-white/30 backdrop-blur-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80"
-                                            alt="Kamar 2" class="object-cover" />
+                                            alt="Kamar 2" class="object-cover" loading="lazy" />
                                         <button
                                             class="absolute bottom-0 z-20 flex items-center justify-center w-full p-2.5 text-center text-gray-700 hover:text-red-700 transition-all duration-150 ease-in-out bg-white/30 backdrop-blur-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
@@ -115,7 +115,7 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80"
-                                            alt="Kamar 3" class="object-cover" />
+                                            alt="Kamar 3" class="object-cover" loading="lazy" />
                                         <button
                                             class="absolute bottom-0 z-20 flex items-center justify-center w-full p-2.5 text-center text-gray-700 hover:text-red-700 transition-all duration-150 ease-in-out bg-white/30 backdrop-blur-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
@@ -127,7 +127,7 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80"
-                                            alt="Kamar 4" class="object-cover" />
+                                            alt="Kamar 4" class="object-cover" loading="lazy" />
                                         <button
                                             class="absolute bottom-0 z-20 flex items-center justify-center w-full p-2.5 text-center text-gray-700 hover:text-red-700 transition-all duration-150 ease-in-out bg-white/30 backdrop-blur-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
@@ -139,7 +139,7 @@
                                     </div>
                                     <div class="swiper-slide">
                                         <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80"
-                                            alt="Kamar 5" class="object-cover" />
+                                            alt="Kamar 5" class="object-cover" loading="lazy" />
                                         <button
                                             class="absolute bottom-0 z-20 flex items-center justify-center w-full p-2.5 text-center text-gray-700 hover:text-red-700 transition-all duration-150 ease-in-out bg-white/30 backdrop-blur-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
@@ -201,16 +201,9 @@
                     slidesPerView: 4
                 }
             },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
-            },
-            scrollbar: {
-                el: '.swiper-scrollbar',
             },
         });
     });
