@@ -32,7 +32,8 @@
                     <h1 class="text-2xl font-bold">Welcome Back.</h1>
                     <p class="text-xs text-gray-400">Sistem pemantauan kost berbasis website (YellowKost).</p>
                 </span>
-                <form>
+                <form action="{{ route('login') }}" method="post">
+                    @csrf
                     <div class="my-10 mb-6">
                         <div class="relative z-0">
                             <input type="text" id="email" name="email" required
@@ -76,7 +77,7 @@
                                 done!</span> Some success message.</p>
                     </div>
                     <div class="py-6">
-                        <button type="button"
+                        <button type="submit"
                             class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full">Login</button>
                     </div>
                     <div class="">
