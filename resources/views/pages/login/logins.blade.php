@@ -94,7 +94,7 @@
                             <div class="p-3 space-y-2">
                                 <h3 class="font-semibold text-gray-900 dark:text-white">Info Lupa Password
                                 </h3>
-                                <p>Untuk bisa melakukan *lupa password untuk segera <a href="https://wa.me/085174295981"
+                                <p>Untuk bisa melakukan *lupa password segera <a href="https://wa.me/085174295981"
                                         target="_blank" class="text-blue-600 hover:underline dark:text-blue-500">Hubungi
                                         Super
                                         Admin!
@@ -103,7 +103,6 @@
                             </div>
                             <div data-popper-arrow></div>
                         </div>
-
                     </div>
                 </form>
             </div>
