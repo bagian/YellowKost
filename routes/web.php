@@ -5,8 +5,16 @@ use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.login.logins');
 });
+
+// Route::get('/', function () {
+//     return view('pages.login.logins');
+// });
+
+// Route::get('/logins', function () {
+//     return view('pages.login.logins');
+// })->name('logins');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
