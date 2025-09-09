@@ -60,6 +60,83 @@
             $('#formLogout').submit();
         });
     </script>
+    <script>
+        function initImagePreview({
+            input,
+            hidden,
+            target,
+            template
+        }) {
+            const $input = $(input);
+            const $hidden = $(hidden);
+            const $target = $(target);
+            const $template = $(template);
+
+            let virtualFiles = [];
+
+            $input.on('change', function() {
+                const files = Array.from(this.files);
+                imageHandler(files);
+                this.value = "";
+            });
+
+            function preview(data) {
+                const html = $template.html();
+                const $clone = $(html);
+
+                $clone.find('img').attr({
+                    src: data.byte,
+                    alt: data.name
+                });
+
+                $clone.find('button.delete-image').attr('data-id', data.id);
+
+                if ($target.children().length === 0) {
+                    $clone.addClass('relative overflow-hidden');
+                }
+
+                $target.append($clone);
+            }
+
+            function imageHandler(files) {
+                files.forEach(file => {
+                    if (!file.type.startsWith('image/')) return;
+
+                    if (virtualFiles.some(v => v.file.name === file.name && v.file.size === file.size)) return;
+
+                    const id = Date.now() + Math.random();
+                    virtualFiles.push({
+                        id,
+                        file
+                    });
+
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview({
+                            id,
+                            byte: e.target.result,
+                            name: file.name
+                        });
+                        updateInputFiles();
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            $target.on('click', '.delete-image', function() {
+                const id = $(this).data('id');
+                virtualFiles = virtualFiles.filter(f => f.id !== id);
+                $(this).closest('.swiper-slide').remove();
+                updateInputFiles();
+            });
+
+            function updateInputFiles() {
+                const dt = new DataTransfer();
+                virtualFiles.forEach(f => dt.items.add(f.file));
+                $hidden[0].files = dt.files;
+            }
+        }
+    </script>
 
     @stack('scripts')
 </body>

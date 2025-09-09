@@ -22,7 +22,7 @@ class RoomController extends Controller
     {
         $room = $this->roomRepository->allWithPictures();
 
-        return RoomResource::collection($room);
+        return view('pages.kamar.views', ['kamar' => RoomResource::collection($room)]);
     }
 
     /**
@@ -30,7 +30,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.kamar.create');
     }
 
     /**
@@ -38,6 +38,7 @@ class RoomController extends Controller
      */
     public function store(RoomRequest $request)
     {
+        dd($request);
         $data = $request->safe()->except('pictures');
 
         $pictures = $request->file('pictures', []);
@@ -52,7 +53,8 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        return new RoomResource($room->load('pictures'));
+        $room = new RoomResource($room->load('pictures'));
+        return view('pages.kamar.show', ['room' => $room]);
     }
 
     /**

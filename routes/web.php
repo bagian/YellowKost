@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('role:admin')->group(function() {
-    Route::resource('/room', RoomController::class);
+    Route::resource('/kamar', RoomController::class);
     // Route::resource('penyewa', )
 });
 
