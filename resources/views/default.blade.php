@@ -60,17 +60,26 @@
             $('#formLogout').submit();
         });
     </script>
+
+    {{-- image handler --}}
+    <script id="deletedImage" type="text/template">
+        <input type="hidden" name="deleted[]" value="">
+    </script>
     <script>
         function initImagePreview({
             input,
             hidden,
             target,
-            template
+            template,
+            templateDelete = "#deletedImage",
+            targetDelete = "form"
         }) {
             const $input = $(input);
             const $hidden = $(hidden);
             const $target = $(target);
             const $template = $(template);
+            const $templateDelete = $(templateDelete);
+            const $targetDelete = $(targetDelete);
 
             let virtualFiles = [];
 
@@ -89,7 +98,7 @@
                     alt: data.name
                 });
 
-                $clone.find('button.delete-image').attr('data-id', data.id);
+                $clone.find('button.delete-image').attr('data-tempid', data.tempid);
 
                 if ($target.children().length === 0) {
                     $clone.addClass('relative overflow-hidden');
@@ -104,16 +113,16 @@
 
                     if (virtualFiles.some(v => v.file.name === file.name && v.file.size === file.size)) return;
 
-                    const id = Date.now() + Math.random();
+                    const tempid = Date.now() + Math.random();
                     virtualFiles.push({
-                        id,
+                        tempid,
                         file
                     });
 
                     const reader = new FileReader();
                     reader.onload = function(e) {
                         preview({
-                            id,
+                            tempid,
                             byte: e.target.result,
                             name: file.name
                         });
@@ -124,10 +133,20 @@
             }
 
             $target.on('click', '.delete-image', function() {
-                const id = $(this).data('id');
-                virtualFiles = virtualFiles.filter(f => f.id !== id);
+                const tempid = $(this).data('tempid');
+                if (tempid != "") {
+                    virtualFiles = virtualFiles.filter(f => f.tempid !== tempid);
+                    updateInputFiles();
+                } else {
+                    const id = $(this).data('id');
+                    const deleteHtml = $templateDelete.html();
+                    const $delete = $(deleteHtml);
+                    $delete.val(id);
+                    console.log($delete);
+                    $targetDelete.append($delete);
+                    console.log($('form').serialize());
+                } 
                 $(this).closest('.swiper-slide').remove();
-                updateInputFiles();
             });
 
             function updateInputFiles() {
@@ -137,6 +156,7 @@
             }
         }
     </script>
+    {{-- end image handler --}}
 
     @stack('scripts')
 </body>

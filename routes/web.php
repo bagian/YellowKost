@@ -19,7 +19,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('role:admin')->group(function() {
-    Route::resource('/kamar', RoomController::class);
+    Route::resource('/kamar', RoomController::class)->parameters([
+        "kamar" => "room"
+    ]);
     // Route::resource('penyewa', )
 });
 

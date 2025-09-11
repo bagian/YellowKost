@@ -83,8 +83,15 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
 
     public function update(Model $model, array $data, array $pictures): Model {
         return $this->transaction(function() use ($data, $model, $pictures): Model {
-            $model = $this->fillModel($model, $data);
-            $model->save();
+            if (!empty($data['deleted'])) {
+                $validatedIDs = RoomPicture::whereIn('id', $data['deleted'])->where('id_room', $model->id)->pluck('id')->toArray();
+
+                foreach ($validatedIDs as $value) {
+                    $this->deletePicture($value);
+                }
+
+                unset($data['deleted']);
+            }
 
             if (!empty($pictures)) {
                 foreach ($pictures as $row) {
@@ -92,13 +99,8 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
                 }
             }
 
-            if (!empty($data['deleted'])) {
-                $validatedIDs = RoomPicture::whereIn('id', $data['deleted'])->where('id_room', $model->id)->pluck('id')->toArray();
-
-                foreach ($validatedIDs as $value) {
-                    $this->deletePicture($value);
-                }
-            }
+            $model = $this->fillModel($model, $data);
+            $model->save();
 
             return $model;
         });
@@ -121,11 +123,11 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
     public function deletePicture($id): Model {
         $model = RoomPicture::findOrFail($id);
 
+        $model->delete();
+
         if ($model->url && Storage::disk('public')->exists($model->url)) {
             Storage::disk('public')->delete($model->url);
         }
-
-        $model->delete();
 
         return $model;
     }

@@ -38,7 +38,7 @@ class RoomController extends Controller
      */
     public function store(RoomRequest $request)
     {
-        dd($request);
+        // dd($request);
         $data = $request->safe()->except('pictures');
 
         $pictures = $request->file('pictures', []);
@@ -53,8 +53,15 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        $room = new RoomResource($room->load('pictures'));
-        return view('pages.kamar.show', ['room' => $room]);
+        // dd($room->load('pictures'));
+        return view('pages.kamar.show', ['room' => $room->load('pictures')]);
+
+        /**
+         * NOTES
+         * - return resource lebih tepat buat API karena sudah otomatis di handle laravel menjadi JSON tipe data nya
+         * - kalau resource nya gak di return tapi di taruh di variable dan di render ke blade maka tipenya masih tetap object resource bukan json
+         */
+        // return new RoomResource($room->load('pictures'));
     }
 
     /**
@@ -70,6 +77,7 @@ class RoomController extends Controller
      */
     public function update(RoomRequest $request, Room $room)
     {
+        // dd($data);
         $data = $request->safe()->except('pictures');
 
         $pictures = $request->file('pictures', []);
