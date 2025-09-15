@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
+
+
     <!-- Theme initialization script to prevent FOUC -->
     {{-- <script src="{{ asset('js/components/themeInit.js') }}"></script> --}}
 
@@ -24,23 +26,28 @@
 </head>
 
 <body>
-    <div class="grid min-h-screen grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+    <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+        <div class="absolute flex items-center justify-center h-screen overflow-hidden bg-gray-50 dark:bg-gray-400">
+            <video class="relative inset-0 bottom-0 object-cover w-screen h-screen lg:hidden"
+                src="{{ asset('video/yellowKost-promotion-video-2.mp4') }}" autoplay muted loop></video>
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
         <div
-            class="relative flex flex-col items-center justify-center w-full h-screen p-8 overflow-hidden bg-gray-900 md:flex-col">
-            <div class="w-full p-6 m-3 bg-gray-800 rounded-lg lg:w-5/6">
-                <span class="block py-6 my-4 text-white border-b border-gray-700">
+            class="relative flex flex-col items-center justify-center w-full h-screen p-8 bg-gray-900/0 lg:bg-gray-900 md:flex-col">
+            <div class="w-full p-6 m-3 rounded-lg bg-white/10 backdrop-blur-lg lg:w-5/6 box-shadow-lg">
+                <span class="block py-6 my-4 text-white border-b border-gray-400/50">
                     <h1 class="text-2xl font-bold">Welcome Back.</h1>
-                    <p class="text-xs text-gray-400">Sistem pemantauan kost berbasis website (YellowKost).</p>
+                    <p class="text-xs text-gray-200">Sistem pemantauan kost berbasis website (YellowKost).</p>
                 </span>
                 <form action="{{ route('login') }}" method="post">
                     @csrf
                     <div class="my-10 mb-6">
                         <div class="relative z-0">
-                            <input type="text" id="email" name="email" required
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer focus:bg-transparent important"
+                            <input type="email" id="email" name="email" required
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-100 appearance-none dark:text-white/75 dark:border-gray-100/20 focus:outline-none focus:ring-0 focus:border-yellow-400 dark:focus:border-yellow-400 dark:focus:via-yellow-600 dark:focus:to-yellow-50 peer"
                                 placeholder="" />
-                            <label for="email"
-                                class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email</label>
+                            <label for="email" class="duration-300 absolute text-sm transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:via-yellow-400 peer-focus:dark:via-yellow-200 peer-focus:dark:to-yellow-50 peer-focus:text-yellow-300 peer-focus:dark:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto dark:text-white
+                                 *:">Email</label>
                         </div>
                         <p id="emailError" class="hidden mt-2 text-sm text-red-600 dark:text-red-500">
                             <span class="font-medium">Oops!</span> Email wajib diisi.
@@ -49,10 +56,10 @@
                     <div>
                         <div class="relative z-0">
                             <input type="password" id="password" name="password" required
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " />
-                            <label for="password"
-                                class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Password</label>
+                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-100 appearance-none dark:text-white/75 dark:border-gray-100/20 focus:outline-none focus:ring-0 focus:border-yellow-400 dark:focus:border-yellow-400 dark:focus:via-yellow-600 dark:focus:to-yellow-50 peer"
+                                placeholder="" />
+                            <label for="password" class="duration-300 absolute text-sm transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:via-yellow-400 peer-focus:dark:via-yellow-200 peer-focus:dark:to-yellow-50 peer-focus:text-yellow-300 peer-focus:dark:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto dark:text-white
+                                 *:">Password</label>
                             <!-- Eye Icon Button -->
                             <button type="button" id="togglePassword"
                                 class="absolute text-gray-400 -translate-y-1/2 right-2 top-1/2 hover:text-gray-700 dark:hover:text-white">
@@ -80,10 +87,11 @@
                     </div>
                     <div class="py-6">
                         <button type="submit"
-                            class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full">Login</button>
+                            class="text-gray-900 bg-gradient-to-r from-yellow-100 via-yellow-200 to-yellow-300 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 shadow-lg shadow-yellow-500/50 dark:shadow-lg dark:shadow-yellow-200/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full transition-all duration-300 ease-in-out">Login</button>
                     </div>
-                    <div class="flex flex-col realtive md:flex-row md:justify-between md:items-center">
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Lupa Password ?</p>
+                    <!-- Additional Options -->
+                    <div class="flex flex-col gap-3.5 realtive md:flex-col md:justify-between xl:flex-row">
+                        <p class="text-sm text-gray-500 dark:text-yellow-100">Lupa Password ?</p>
                         {{-- <p class="flex items-center text-sm text-gray-500 dark:text-gray-400">Lupa Password?
                             <button data-popover-target="popover-description" data-popover-placement="bottom-end"
                                 type="button"><svg class="w-4 h-4 text-gray-400 ms-2 hover:text-gray-500"
@@ -109,11 +117,11 @@
                             </div>
                             <div data-popper-arrow></div>
                         </div> --}}
-                        <div class="relative">
-                            <span class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <div class="relative flex flex-col items-center md:flex-row">
+                            <span class="items-center text-sm text-gray-500 dark:text-white">
                                 Belum punya akun?
                                 <a href="#"
-                                    class="font-semibold text-transparent bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 bg-clip-text hover:underline ms-2">
+                                    class="font-semibold text-transparent transition-all duration-300 ease-in-out bg-gradient-to-r from-yellow-100 via-yellow-200 to-yellow-300 bg-clip-text hover:text-white/50 ms-2">
                                     Daftar sekarang.
                                 </a>
                             </span>
@@ -121,8 +129,8 @@
                     </div>
                 </form>
             </div>
-            <div class="absolute bottom-0 p-6 text-xs text-center text-gray-400">
-                <div class="flex items-center justify-center gap-4 mt-4">
+            <div class="absolute p-6 text-xs text-center text-gray-400 bottom-10">
+                <div class="flex items-center justify-center gap-4">
                     <!-- TikTok -->
                     <a href="https://www.tiktok.com/@yellow_434_kostan" target="_blank"
                         class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white transition bg-black rounded-lg hover:bg-gray-800">
@@ -132,7 +140,7 @@
                         </svg>
                         TikTok
                     </a>
-                    <div class="h-5 border border-l border-gray-600 "></div>
+                    <div class="h-5 border border-l border-gray-600 dark:border-white/60"></div>
                     <!-- Instagram -->
                     <a href="https://www.instagram.com/yellow_434_kostpartners/" target="_blank"
                         class="flex items-center gap-2 px-4 py-1.5 text-sm font-semibold text-white transition rounded-lg bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600">
@@ -145,7 +153,7 @@
                 </div>
             </div>
         </div>
-        <!-- Sisi Kanan: Form Login -->
+        <!-- Video Element -->
         <div class="hidden md:hidden lg:block">
             <div class="relative flex items-center justify-center h-screen overflow-hidden bg-gray-50 dark:bg-gray-400">
                 <video class="absolute inset-0 object-cover w-full h-full"

@@ -3,14 +3,20 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsletterController;
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('templates.frontend.index');
 // });
-
 Route::get('/', function () {
-    return view('pages.login.logins');
+    return view('landingpage.index');
 });
+
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
+// Route::get('/', function () {
+//     return view('pages.login.logins');
+// });
 
 // Route::get('/logins', function () {
 //     return view('pages.login.logins');
