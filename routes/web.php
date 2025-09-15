@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\TenantController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,12 +23,10 @@ Route::middleware('role:admin')->group(function() {
     Route::resource('/kamar', RoomController::class)->parameters([
         "kamar" => "room"
     ]);
-    // Route::resource('penyewa', )
+    Route::resource('/penyewa', TenantController::class)->parameters([
+        "penyewa" => "tenant"
+    ]);
 });
-
-Route::get('/penyewa', function() {
-    return view('pages.form-penyewa.forminputs');
-})->name('form.penyewa');
 
 Route::get('/infokamar', function() {
     return view('pages.kamar.kamars');
