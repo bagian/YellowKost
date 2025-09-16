@@ -188,25 +188,73 @@
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        new Swiper('.swiper', {
-            loop: true,
-            slidesPerView: 1, // default untuk mobile
-            spaceBetween: 10,
-            breakpoints: {
-                640: { // >= 640px (tablet)
-                    slidesPerView: 3
-                },
-                1024: { // >= 1024px (desktop)
-                    slidesPerView: 4
-                }
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+                const mySwiper = new Swiper('.swiper', {
+                    loop: false,
+                    slidesPerView: 1, // default untuk mobile
+                    spaceBetween: 10,
+                    breakpoints: {
+                        640: { // >= 640px (tablet)
+                            slidesPerView: 3
+                        },
+                        1024: { // >= 1024px (desktop)
+                            slidesPerView: 4
+                        }
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    scrollbar: {
+                        el: '.swiper-scrollbar',
+                    },
+                });
+
+                initImagePreview({
+                    input: '#pictures',
+                    hidden: '[name="pictures[]"]',
+                    target: '.swiper-wrapper',
+                    template: '#previewImage',
+                    swiper: mySwiper,
+                    callback: function() {
+                        const $wrapper = $('.swiper-wrapper');
+                        const $parent = $('.swiper').parent("div");
+
+                        $parent.find("p").remove();
+
+                        if ($wrapper.children().length === 0) {
+                            if ($wrapper.children().length === 0) {
+                                const imgPlaceholder = $('#imagePlaceHolder').html();
+                                const $imgPlaceholder = $(imgPlaceholder);
+                                $parent.append($imgPlaceholder);
+                            }
+                        }
+                    }
+                });
+
+                const priceInput = document.getElementById('price');
+                const form = priceInput.closest('form');
+
+                priceInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value) {
+                        e.target.value = new Intl.NumberFormat('id-ID').format(value);
+                    } else {
+                        e.target.value = '';
+                    }
+                });
+
+                // Remove formatting before submitting the form
+                form.addEventListener('submit', function() {
+                    let value = priceInput.value.replace(/\D/g, '');
+                    priceInput.value = value;
+                });
+
+            });
 </script>
 @endpush
 @endsection

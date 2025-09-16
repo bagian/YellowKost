@@ -61,6 +61,104 @@
         });
     </script>
 
+    {{-- image handler --}}
+    <script id="deletedImage" type="text/template">
+        <input type="hidden" name="deleted[]" value="">
+    </script>
+    <script>
+        function initImagePreview({
+            input,
+            hidden,
+            target,
+            template,
+            swiper,
+            templateDelete = "#deletedImage",
+            targetDelete = "form",
+            callback = "",
+        }) {
+            const $input = $(input);
+            const $hidden = $(hidden);
+            const $target = $(target);
+            const $template = $(template);
+            const $templateDelete = $(templateDelete);
+            const $targetDelete = $(targetDelete);
+
+            let virtualFiles = [];
+
+            $input.on('change', function() {
+                const files = Array.from(this.files);
+                imageHandler(files);
+                this.value = "";
+            });
+
+            function preview(data) {
+                const html = $template.html();
+                const $clone = $(html);
+
+                $clone.find('img').attr({
+                    src: data.byte,
+                    alt: data.name
+                });
+
+                $clone.find('button.delete-image').attr('data-tempid', data.tempid);
+
+                swiper.appendSlide($clone[0]);
+                callback();
+            }
+
+            function imageHandler(files) {
+                files.forEach(file => {
+                    if (!file.type.startsWith('image/')) return;
+
+                    if (virtualFiles.some(v => v.file.name === file.name && v.file.size === file.size)) return;
+
+                    const tempid = Date.now() + Math.random();
+                    virtualFiles.push({
+                        tempid,
+                        file
+                    });
+
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview({
+                            tempid,
+                            byte: e.target.result,
+                            name: file.name
+                        });
+                        updateInputFiles();
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            $target.on('click', '.delete-image', function() {
+                const tempid = $(this).data('tempid');
+                const slideIndex = $(this).closest('.swiper-slide').index();
+                if (tempid != "") {
+                    virtualFiles = virtualFiles.filter(f => f.tempid !== tempid);
+                    updateInputFiles();
+                } else {
+                    const id = $(this).data('id');
+                    const deleteHtml = $templateDelete.html();
+                    const $delete = $(deleteHtml);
+                    $delete.val(id);
+                    console.log($delete);
+                    $targetDelete.append($delete);
+                    // console.log($('form').serialize());
+                }
+                swiper.removeSlide(slideIndex);
+                callback();
+            });
+
+            function updateInputFiles() {
+                const dt = new DataTransfer();
+                virtualFiles.forEach(f => dt.items.add(f.file));
+                $hidden[0].files = dt.files;
+            }
+        }
+    </script>
+    {{-- end image handler --}}
+
     @stack('scripts')
 </body>
 
