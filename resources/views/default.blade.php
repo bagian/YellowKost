@@ -71,8 +71,10 @@
             hidden,
             target,
             template,
+            swiper,
             templateDelete = "#deletedImage",
-            targetDelete = "form"
+            targetDelete = "form",
+            callback = "",
         }) {
             const $input = $(input);
             const $hidden = $(hidden);
@@ -100,11 +102,7 @@
 
                 $clone.find('button.delete-image').attr('data-tempid', data.tempid);
 
-                if ($target.children().length === 0) {
-                    $clone.addClass('relative overflow-hidden');
-                }
-
-                $target.append($clone);
+                swiper.appendSlide($clone[0]);
             }
 
             function imageHandler(files) {
@@ -134,6 +132,7 @@
 
             $target.on('click', '.delete-image', function() {
                 const tempid = $(this).data('tempid');
+                const slideIndex = $(this).closest('.swiper-slide').index();
                 if (tempid != "") {
                     virtualFiles = virtualFiles.filter(f => f.tempid !== tempid);
                     updateInputFiles();
@@ -144,15 +143,16 @@
                     $delete.val(id);
                     console.log($delete);
                     $targetDelete.append($delete);
-                    console.log($('form').serialize());
-                } 
-                $(this).closest('.swiper-slide').remove();
+                    // console.log($('form').serialize());
+                }
+                swiper.removeSlide(slideIndex);
             });
 
             function updateInputFiles() {
                 const dt = new DataTransfer();
                 virtualFiles.forEach(f => dt.items.add(f.file));
                 $hidden[0].files = dt.files;
+                callback();
             }
         }
     </script>
