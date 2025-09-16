@@ -4,10 +4,24 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TenantController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsletterController;
 
+// Route::get('/', function () {
+//     return view('templates.frontend.index');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage.index');
 });
+
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
+// Route::get('/', function () {
+//     return view('pages.login.logins');
+// });
+
+// Route::get('/logins', function () {
+//     return view('pages.login.logins');
+// })->name('logins');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
