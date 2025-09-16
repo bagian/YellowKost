@@ -9,7 +9,9 @@ use App\Http\Controllers\NewsletterController;
 //     return view('templates.frontend.index');
 // });
 Route::get('/', function () {
-    return view('landingpage.index');
+    // Panggil file view yang berisi kontennya.
+    // Blade akan otomatis memuat layout dari @extends di dalam file ini.
+    return view('landingpage._maincontent');
 });
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
