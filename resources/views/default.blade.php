@@ -103,6 +103,7 @@
                 $clone.find('button.delete-image').attr('data-tempid', data.tempid);
 
                 swiper.appendSlide($clone[0]);
+                callback();
             }
 
             function imageHandler(files) {
@@ -146,13 +147,13 @@
                     // console.log($('form').serialize());
                 }
                 swiper.removeSlide(slideIndex);
+                callback();
             });
 
             function updateInputFiles() {
                 const dt = new DataTransfer();
                 virtualFiles.forEach(f => dt.items.add(f.file));
                 $hidden[0].files = dt.files;
-                callback();
             }
         }
     </script>

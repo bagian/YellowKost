@@ -29,7 +29,7 @@ class TenantController extends Controller
      */
     public function store(TenantRequest $request)
     {
-        //
+        
     }
 
     /**

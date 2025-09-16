@@ -218,9 +218,10 @@
 
                         if ($wrapper.children().length === 0) {
                             if ($wrapper.children().length === 0) {
-                            const imgPlaceholder = $('#imagePlaceHolder').html();
-                            const $imgPlaceholder = $(imgPlaceholder);
-                        $parent.append($imgPlaceholder);
+                                const imgPlaceholder = $('#imagePlaceHolder').html();
+                                const $imgPlaceholder = $(imgPlaceholder);
+                                $parent.append($imgPlaceholder);
+                            }
                         }
                     }
                 });
