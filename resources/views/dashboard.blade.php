@@ -97,7 +97,7 @@
                 <p class="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">Daftarkan penyewa baru ke
                     sistem</p>
             </div>
-            <a href="{{ route('form.penyewa') }}"
+            {{-- <a href="{{ route('form.penyewa') }}"
                 class="inline-flex items-center justify-center p-2 transition-colors bg-blue-100 rounded-lg dark:bg-blue-300 hover:bg-blue-200 dark:hover:bg-blue-400"
                 title="Tambah Penyewa Baru">
                 <svg class="w-5 h-5 text-blue-600 sm:w-6 sm:h-6 dark:text-blue-700" fill="none" stroke="currentColor"
@@ -105,7 +105,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg>
-            </a>
+            </a> --}}
         </div>
     </div>
 
