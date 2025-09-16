@@ -358,7 +358,7 @@
                     </span>
                     <div class="flex flex-col pl-4">
                         <span class="font-semibold ">Telepone</span>
-                        <a href="tel:+6281234567890" class="pl-2 text-stone-500">+62
+                        <a href="tel:+6281234567890" class="text-stone-500">+62
                             812-3456-7890</a>
                     </div>
                 </div>
@@ -369,8 +369,36 @@
                     </span>
                     <div class="flex flex-col pl-4">
                         <span class="font-semibold">WhatsApp</span>
-                        <a href="tel:+6281234567890" class="pl-2 text-stone-500">+62
-                            812-3456-7890</a>
+                        <a href="https://wa.me/628123498743" class="text-stone-500">+62
+                            812-349-8743</a>
+                    </div>
+                </div>
+                <div class="p-6 rounded-lg flex flex-row mt-10">
+                    <span>
+                        <i
+                            class="fa-solid fa-location-dot text-orange-400 text-lg bg-yellow-200 rounded-md p-3 block px-5"></i>
+                    </span>
+                    <div class="flex flex-col pl-4">
+                        <span class="font-semibold">Alamat</span>
+                        <span class="text-stone-500 py-2.5">
+                            Perum Griya Mangli Indah No.AG 22, Wonosari, Mangli, Kec. Kaliwates, Kabupaten Jember, Jawa
+                            Timur
+                            </>
+                    </div>
+                </div>
+                <div class="p-6 rounded-lg flex flex-row">
+                    <span>
+                        <i
+                            class="fa-solid fa-clock-rotate-left text-orange-400 text-lg bg-yellow-200 rounded-md p-3 block px-5"></i>
+                    </span>
+                    <div class="flex flex-col pl-4">
+                        <span class="font-semibold">Jam Operasioal</span>
+                        <span class="text-stone-500 mt-2.5">
+                            Senin - Jumat : 08:00 - 17:00 WIB
+                        </span>
+                        <span class="text-stone-500">
+                            Sabtu - Minggu : 08:00 - 23:00 WIB
+                        </span>
                     </div>
                 </div>
             </div>
