@@ -14,6 +14,10 @@ Route::get('/', function () {
     return view('landingpage._maincontent');
 });
 
+Route::get('/formulir-pemesanan-kamar', function () {
+    return view('landingpage.pages._bookingsRoom');
+})->name('booking');
+
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
 // Route::get('/', function () {

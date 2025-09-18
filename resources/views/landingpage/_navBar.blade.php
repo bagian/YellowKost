@@ -6,9 +6,10 @@
         </a>
         <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
             <div class="flex gap-2">
-                <button type="button"
-                    class="hidden px-4 py-2 text-sm font-medium text-center text-white bg-[#E7B008]  hover:bg-[#ffc003] rounded-full focus:ring-4 focus:outline-none lg:block transition-all duration-300 ease-in-out">Pesan
-                    Sekarang</button>
+                <a href="{{ route('booking') }}"
+                    class="hidden px-4 py-2 text-sm font-medium text-center text-white bg-[#E7B008]  hover:bg-[#ffc003] rounded-full focus:ring-4 focus:outline-none lg:block transition-all duration-300 ease-in-out">
+                    Pesan Sekarang
+                </a>
                 <a href="{{ route('login') }}"
                     class="flex px-5 py-1.5 dark:text-[#121212] text-[#1b1b18] border border-yellow-700 hover:bg-[#ffcc00] dark:hover:border-[#ffcc00] transition-all ease-in-out duration-300 text-sm leading-normal rounded-full items-center justify-center">
                     Log in
@@ -40,22 +41,20 @@
                 </li>
                 <li>
                     <a href="#fasilitas"
-                        class="block px-3 py-2 font-medium text-black transition-all duration-300 ease-in-out rounded-sm md:bg-transparent hover:text-[#E7B008]"
-                        aria-current="page">Fasilitas</a>
+                        class="block px-3 py-2 font-medium text-black transition-all duration-300 ease-in-out rounded-sm md:bg-transparent hover:text-[#E7B008]">Fasilitas</a>
                 </li>
                 <li>
                     <a href="#gallery"
-                        class="block px-3 py-2 font-medium text-black transition-all duration-300 ease-in-out rounded-sm md:bg-transparent hover:text-[#E7B008]"
-                        aria-current="page">Gallery</a>
+                        class="block px-3 py-2 font-medium text-black transition-all duration-300 ease-in-out rounded-sm md:bg-transparent hover:text-[#E7B008]">Gallery</a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="block px-3 py-2 font-medium text-black transition-all duration-300 ease-in-out rounded-sm md:bg-transparent hover:text-[#E7B008]"
-                        aria-current="page">Kontak</a>
+                    <a href="#kontak"
+                        class="block px-3 py-2 font-medium text-black transition-all duration-300 ease-in-out rounded-sm md:bg-transparent hover:text-[#E7B008]">Kontak</a>
                 </li>
-                <button type="button"
-                    class="block px-4 py-2 text-sm font-medium text-center text-white bg-[#E7B008]  hover:bg-[#c69606] rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600  dark:focus:ring-blue-800 md:hidden">Pesan
-                    Sekarang</button>
+                <a href="{{ route('booking') }}"
+                    class="block md:hidden lg:hidden xl:hidden  px-4 py-2 text-sm font-medium text-center text-white bg-[#E7B008]  hover:bg-[#ffc003] rounded-full focus:ring-4 focus:outline-none transition-all duration-300 ease-in-out mt-10">Pesan
+                    Sekarang
+                </a>
             </ul>
         </div>
     </div>

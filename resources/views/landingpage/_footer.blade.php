@@ -52,7 +52,7 @@
                 </p>
                 <form id="newsletter-form" class="mt-4" action="{{ route('newsletter.subscribe') }}" method="POST">
                     @csrf
-                    <div class="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-center">
+                    <div class="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-center w-full">
                         <input id="newsletter-email" name="email" type="email"
                             class="w-full px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 rounded-md focus:border-yellow-400 focus:ring-yellow-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                             placeholder="Alamat Email" required>

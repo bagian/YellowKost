@@ -55,9 +55,9 @@
 <body>
     @include('landingpage._navBar')
     <!-- Main Header -->
-    <div class="pt-16">
+    <div class="pt-10">
         <div
-            class="relative flex items-center justify-center bg-gradient-to-b from-[hsl(48_96%_89%)] to-[hsl(48_100%_96%)] md:h-screen xl:h-screen">
+            class="relative flex items-center justify-center bg-gradient-to-b from-[hsl(48_96%_89%)] to-[hsl(48_100%_96%)] pt-24 pb-28">
             @yield('content')
         </div>
     </div>
@@ -135,7 +135,7 @@
             prevEl: ".swiper-button-prev",
         },
         breakpoints: {
-            768: {
+            648: {
                 slidesPerView: 2,
             },
             1024: {

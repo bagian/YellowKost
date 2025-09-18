@@ -1,7 +1,7 @@
 @extends('landingpage.index')
 
 @section('content')
-<div class="grid max-w-6xl grid-cols-1 gap-6 p-10 xl:p-0 xl:gap-20 md:grid-cols-1 lg:grid-cols-2">
+<div class="grid max-w-6xl grid-cols-1 gap-6 p-10 xl:p-0 xl:gap-20 md:grid-cols-1 lg:grid-cols-2" id="beranda">
     <div class="relative">
         <div class="flex flex-col md:gap-6 md:flex-row">
             <span class="flex items-center mb-4">
@@ -148,7 +148,8 @@
 </div>
 </div>
 <!-- End Video Section -->
-<div class="py-10 pb-28 bg-gradient-to-b to-[hsl(48_96%_89%)] from-[hsl(48_100%_96%)]  scroll-behavior" id="fasilitas">
+<div class="py-10 pb-28 bg-gradient-to-b to-[hsl(48_96%_89%)] from-[hsl(48_100%_96%)] scroll-behavior-smooth"
+    id="fasilitas">
     <span class="flex flex-col items-center justify-center py-8 m-4 text-gray-800">
         <h1 class="text-4xl font-bold md:text-5xl">Fasilitas
             <span class="text-yellow-400">
@@ -321,99 +322,113 @@
         </div>
     </div>
 </div>
-<div class="py-10 bg-gradient-to-l to-[hsl(48,86%,89%)] from-[hsl(48_100%_96%)] pb-20 h-screen" id="gallery">
-    <div class="p-6 mx-auto md:p-0">
-        <span class="flex flex-col items-center justify-center py-8 m-4 text-gray-800">
-            <h1 class="text-4xl font-bold md:text-5xl">Galeri
-                <span class="text-yellow-400">
-                    Foto
-                </span>
-            </h1>
-            <p class="max-w-xl my-4 text-sm text-center text-yellow-600">Lihat langsung fasilitas dan
-                ruangan yang tersedia di kost kami. Semua foto diambil secara real dan terbaru.
-            </p>
-        </span>
-        <!-- Swiper -->
-        @include('landingpage._galleryData')
-    </div>
-</div>
-<div class="bg-gradient-to-r from-[hsl(48,86%,89%)] to-[hsl(48_100%_96%)] pb-20">
-    <div class="p-6 mx-auto md:p-6">
-        <div class="flex flex-col items-center justify-center py-8  text-gray-800" id="contact">
-            <h1 class="text-4xl font-bold md:text-5xl">Hubungi
-                <span class="text-yellow-400">
-                    Kami
-                </span>
-            </h1>
-            <Siap class="max-w-xl my-4 text-sm text-center text-yellow-600">Siap untuk bergabung dengan kami? Hubungi
-                sekarang untuk reservasi atau konsultasi tentang kebutuhan hunian Anda. </p>
+<div class="bg-gradient-to-l to-[hsl(48,86%,89%)] from-[hsl(48_100%_96%)] scroll-behavior-smooth">
+    <div class="p-6 mx-auto md:p-0" id="gallery">
+        <div class="mx-auto md:p-0">
+            <span class="flex flex-col items-center justify-center py-8 text-gray-800">
+                <h1 class="text-4xl font-bold md:text-5xl">Galeri
+                    <span class="text-yellow-400">
+                        Foto
+                    </span>
+                </h1>
+                <p class="max-w-xl my-4 text-sm text-center text-yellow-600">Lihat langsung fasilitas dan
+                    ruangan yang tersedia di kost kami. Semua foto diambil secara real dan terbaru.
+                </p>
+            </span>
+            <!-- Swiper -->
+            @include('landingpage._galleryData')
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 pb-10 max-w-7xl mx-auto pt-10">
-            <div class="flex flex-col gap-4">
-                <h1 class="text-2xl font-bold text-stone-700">Informasi Kontak</h1>
-                <div class="bg-white border border-gray-300 p-6 rounded-lg drop-shadow-2xl flex flex-row">
-                    <span
-                        class="bg-gradient-to-r from-[hsl(44,88%,20%)] to-[hsl(52,40%,34%)] rounded-md p-3 block px-4">
-                        <i class="fa-solid fa-phone text-white text-lg"></i>
+    </div>
+    <div class="bg-gradient-to-r from-[hsl(48,86%,89%)] to-[hsl(48_100%_96%)] pb-20">
+        <div class="p-6 mx-auto md:p-6">
+            <div class="flex flex-col items-center justify-center py-8  text-gray-800" id="kontak">
+                <h1 class="text-4xl font-bold md:text-5xl">Hubungi
+                    <span class="text-yellow-400">
+                        Kami
                     </span>
-                    <div class="flex flex-col pl-4">
-                        <span class="font-semibold ">Telepone</span>
-                        <a href="tel:+6281234567890" class="text-stone-500">+62
-                            812-3456-7890</a>
-                    </div>
-                </div>
-                <div class="bg-white border border-gray-300 p-6 rounded-lg drop-shadow-2xl flex flex-row">
-                    <span
-                        class="bg-gradient-to-r from-[hsl(115,95%,35%)] to-[hsl(114,88%,42%)] rounded-md p-3 block px-4">
-                        <i class="fa-solid fa-message text-white text-lg"></i>
-                    </span>
-                    <div class="flex flex-col pl-4">
-                        <span class="font-semibold">WhatsApp</span>
-                        <a href="https://wa.me/628123498743" class="text-stone-500">+62
-                            812-349-8743</a>
-                    </div>
-                </div>
-                <div class="p-6 rounded-lg flex flex-row mt-10">
-                    <span>
-                        <i
-                            class="fa-solid fa-location-dot text-orange-400 text-lg bg-yellow-200 rounded-md p-3 block px-5"></i>
-                    </span>
-                    <div class="flex flex-col pl-4">
-                        <span class="font-semibold">Alamat</span>
-                        <span class="text-stone-500 py-2.5">
-                            Perum Griya Mangli Indah No.AG 22, Wonosari, Mangli, Kec. Kaliwates, Kabupaten Jember, Jawa
-                            Timur
-                            </>
-                    </div>
-                </div>
-                <div class="p-6 rounded-lg flex flex-row">
-                    <span>
-                        <i
-                            class="fa-solid fa-clock-rotate-left text-orange-400 text-lg bg-yellow-200 rounded-md p-3 block px-5"></i>
-                    </span>
-                    <div class="flex flex-col pl-4">
-                        <span class="font-semibold">Jam Operasioal</span>
-                        <span class="text-stone-500 mt-2.5">
-                            Senin - Jumat : 08:00 - 17:00 WIB
-                        </span>
-                        <span class="text-stone-500">
-                            Sabtu - Minggu : 08:00 - 23:00 WIB
-                        </span>
-                    </div>
-                </div>
+                </h1>
+                <Siap class="max-w-xl my-4 text-sm text-center text-yellow-600">Siap untuk bergabung dengan kami?
+                    Hubungi
+                    sekarang untuk reservasi atau konsultasi tentang kebutuhan hunian Anda. </p>
             </div>
-            <div class="overflow-hidden bg-white border border-gray-300 rounded-lg drop-shadow-2xl">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.23112287711!2d113.6400199748866!3d-8.17989599185013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6910059ab683f%3A0xb67df6d404026d30!2sPerum%20Griya%20Mangli%20Indah%20No.AG%2022!5e0!3m2!1sid!2sid!4v1717057312345!5m2!1sid!2sid"
-                    class="w-full h-full min-h-[600px] border-0" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 pb-10 max-w-7xl mx-auto pt-10">
+                <div class="flex flex-col gap-4">
+                    <h1 class="text-2xl font-bold text-stone-700">Informasi Kontak</h1>
+                    <div class="bg-white border border-gray-300 p-6 rounded-lg drop-shadow-2xl flex flex-row">
+                        <span
+                            class="bg-gradient-to-r from-[hsl(44,88%,20%)] to-[hsl(52,40%,34%)] rounded-md p-3 block px-4">
+                            <i class="fa-solid fa-phone text-white text-lg"></i>
+                        </span>
+                        <div class="flex flex-col pl-4 justify-center">
+                            <span class="font-semibold ">Telepone</span>
+                            <a href="tel:+6281234567890" class="text-stone-500">+62
+                                812-3456-7890</a>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-gray-300 p-6 rounded-lg drop-shadow-2xl flex flex-row">
+                        <span
+                            class="bg-gradient-to-r from-[hsl(115,95%,35%)] to-[hsl(114,88%,42%)] rounded-md p-3 block px-4">
+                            <i class="fa-solid fa-message text-white text-lg"></i>
+                        </span>
+                        <div class="flex flex-row justify-between w-full">
+                            <div class="flex flex-col pl-4 justify-center">
+                                <span class="font-semibold">WhatsApp</span>
+                                <a href="https://wa.me/628123498743" class="text-stone-500">+62
+                                    812-349-8743</a>
+                            </div>
+                            <div class="flex flex-col justify-center text-xs text-stone-400">
+                                <span>WhatsApp Only.</span>
+                                <span class="text-end">No Call.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <div class="flex flex-row md:flex-row gap-4">
+                            <span class="block">
+                                <i
+                                    class="fa-solid fa-location-dot text-orange-400 text-2xl bg-yellow-200 rounded-md p-4 px-6"></i>
+                            </span>
+                            <div class="flex flex-col">
+                                <span class="font-semibold">Alamat</span>
+                                <span class="text-stone-500 mt-2.5 md:text-base text-[0.875rem]">
+                                    Perum Griya Mangli Indah No.AG 22, Wonosari, Mangli, Kec. Kaliwates, Kabupaten
+                                    Jember,
+                                    Jawa
+                                    Timur</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-4 md:flex-row mt-6">
+                            <span class="block">
+                                <i
+                                    class="fa-solid fa-clock-rotate-left text-orange-400 text-xl bg-yellow-200 rounded-md p-4 px-6"></i>
+                            </span>
+                            <div class="flex flex-col">
+                                <span class="font-semibold">Jam Operasioal</span>
+                                <div class="text-[0.875rem] mt-2.5 flex flex-col">
+                                    <span class="text-stone-500 text-md md:text-base">
+                                        Senin - Jumat : 08:00 - 17:00 WIB
+                                    </span>
+                                    <span class="text-stone-500 text-md md:text-base">
+                                        Sabtu - Minggu : 08:00 - 23:00 WIB
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-hidden bg-white border border-gray-300 rounded-lg drop-shadow-2xl">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.23112287711!2d113.6400199748866!3d-8.17989599185013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6910059ab683f%3A0xb67df6d404026d30!2sPerum%20Griya%20Mangli%20Indah%20No.AG%2022!5e0!3m2!1sid!2sid!4v1717057312345!5m2!1sid!2sid"
+                        class="w-full h-full min-h-[600px] border-0" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <!-- FAQ Section -->
-<div class="bg-gradient-to-b to-[hsl(48_96%_89%)] from-[hsl(48_100%_96%)] py-10 pb-20">
-    <div class="max-w-4xl m-8 p-6  mx-auto md:p-0">
+<div class="bg-gradient-to-b to-[hsl(48_96%_89%)] from-[hsl(48_100%_96%)] pb-20 pt-20">
+    <div class="max-w-4xl p-6 mx-auto md:p-0">
         <div class="flex flex-col items-center justify-center py-8 text-gray-800">
             <h1 class="text-4xl font-bold md:text-5xl">Pertanyaan Sering Diajukan
                 <span class="text-yellow-400">(FAQ)</span>
@@ -451,11 +466,11 @@
             @foreach ($faqs as $index => $faq)
             <h2 id="accordion-faq-heading-{{ $index + 1 }}">
                 <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-600 border {{ $index == 0 ? 'border-b-0 rounded-t-xl' : 'border-b-0' }} border-gray-200 focus:ring-4 focus:ring-yellow-200 hover:bg-yellow-50"
+                    class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-800 border {{ $index == 0 ? 'border-b-0 rounded-t-xl' : 'border-b-0' }} border-gray-200 focus:ring-4 focus:ring-yellow-100 hover:bg-yellow-400 transition-all duration-300 ease-in-out"
                     data-accordion-target="#accordion-faq-body-{{ $index + 1 }}"
-                    aria-expanded="{{ $index == 0 ? 'true' : 'false' }}"
+                    aria-expanded="{{ $index == 0 ? 'true' : 'false' }} dark:bg-yellow-400"
                     aria-controls="accordion-faq-body-{{ $index + 1 }}">
-                    <span>{{ $faq['question'] }}</span>
+                    <span class="text-gray-800">{{ $faq['question'] }}</span>
                     <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -472,7 +487,6 @@
             @endforeach
         </div>
     </div>
-</div>
 </div>
 
 @endsection
