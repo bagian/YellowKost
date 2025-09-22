@@ -1,7 +1,7 @@
 @extends('landingpage.index')
 
 @section('content')
-<div class="grid max-w-6xl grid-cols-1 gap-6 p-10 xl:p-0 xl:gap-20 md:grid-cols-1 lg:grid-cols-2">
+<div class="grid max-w-6xl grid-cols-1 gap-6 p-10 xl:p-0 xl:gap-20 md:grid-cols-1 lg:grid-cols-2" id="beranda">
     <div class="relative">
         <div class="flex flex-col md:gap-6 md:flex-row">
             <span class="flex items-center mb-4">
@@ -47,12 +47,12 @@
         <div class="relative py-8">
             {{-- title --}}
             <div>
-                <h1 class="text-5xl font-bold text-gray-800 md:text-6xl xl:text-[3.8rem]">Kost
+                <h1 class="text-5xl font-extrabold text-gray-800 md:text-6xl xl:text-[4.3rem]">Kost
                     <span class="text-yellow-400">
                         Modern
                     </span>
-                    &
-                    <span class="text-yellow-400">
+                    <span class="inline-block my-2 text-yellow-400">
+                        &
                         Nyaman
                     </span>
                     di Pusat Kota
@@ -89,22 +89,24 @@
                         <p class="pl-2 text-xs font-light text-gray-900 xl:text-base">24 Jam Akses</p>
                     </span>
                 </div>
-                <div class="flex flex-col gap-2 mt-8 xl:gap-2 lg:flex-row">
-                    <span class="block mt-2">
-                        <button type="button" id="btnPesanSekarang"
-                            class="px-6 py-2 text-sm font-medium text-center text-black bg-[#E7B008] hover:bg-[#ffc003] rounded-md focus:ring-4 focus:outline-none md:text-base transition-all duration-300 ease-in-out whitespace-nowrap w-full flex gap-2 items-center justify-center">
-                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <div class="flex flex-col items-center w-full gap-2 mt-8 xl:gap-2 lg:flex-row">
+                    <span class="block w-full mt-2">
+                        <a href="{{ route('booking') }}"
+                            class="px-6 py-2 text-sm font-medium text-center text-stone-800 bg-[#E7B008] hover:bg-[#ffc003] rounded-md focus:ring-4 focus:outline-none md:text-base transition-all duration-300 ease-in-out whitespace-nowrap w-full flex gap-2 items-center justify-center">
+                            <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 640 640">
                                 <path
                                     d="M300.9 149.2L184.3 278.8C179.7 283.9 179.9 291.8 184.8 296.7C215.3 327.2 264.8 327.2 295.3 296.7L327.1 264.9C331.3 260.7 336.6 258.4 342 258C348.8 257.4 355.8 259.7 361 264.9L537.6 440L608 384L608 96L496 160L472.2 144.1C456.4 133.6 437.9 128 418.9 128L348.5 128C347.4 128 346.2 128 345.1 128.1C328.2 129 312.3 136.6 300.9 149.2zM148.6 246.7L255.4 128L215.8 128C190.3 128 165.9 138.1 147.9 156.1L144 160L32 96L32 384L188.4 514.3C211.4 533.5 240.4 544 270.3 544L286 544L279 537C269.6 527.6 269.6 512.4 279 503.1C288.4 493.8 303.6 493.7 312.9 503.1L353.9 544.1L362.9 544.1C382 544.1 400.7 539.8 417.7 531.8L391 505C381.6 495.6 381.6 480.4 391 471.1C400.4 461.8 415.6 461.7 424.9 471.1L456.9 503.1L474.4 485.6C483.3 476.7 485.9 463.8 482 452.5L344.1 315.7L329.2 330.6C279.9 379.9 200.1 379.9 150.8 330.6C127.8 307.6 126.9 270.7 148.6 246.6z" />
                             </svg>
                             Pesan
-                            Sekarang</button>
+                            Sekarang</a>
                     </span>
-                    <span class="block mt-2">
-                        <a href="#"
+                    <span class="hidden text-yellow-500 lg:block">atau</span>
+                    <span class="block w-full mt-2">
+                        <a href="https://wa.me/628123498743"
                             class="flex items-center justify-center w-full gap-2 px-6 py-2 text-sm font-medium text-center text-white transition-all duration-300 ease-in-out bg-green-900 rounded-md hover:bg-green-700 focus:outline-none md:text-base whitespace-nowrap">
                             <i class="fa-brands fa-whatsapp"></i>
-                            Konsultasi Sekarang</a>
+                            Jadwalkan Kunjungan</a>
                     </span>
                 </div>
                 {{-- <div class="mt-4">
@@ -148,7 +150,8 @@
 </div>
 </div>
 <!-- End Video Section -->
-<div class="py-10 pb-28 bg-gradient-to-b to-[hsl(48_96%_89%)] from-[hsl(48_100%_96%)]  scroll-behavior" id="fasilitas">
+<div class="py-10 pb-28 bg-gradient-to-b to-[hsl(48_96%_89%)] from-[hsl(48_100%_96%)] scroll-behavior-smooth"
+    id="fasilitas">
     <span class="flex flex-col items-center justify-center py-8 m-4 text-gray-800">
         <h1 class="text-4xl font-bold md:text-5xl">Fasilitas
             <span class="text-yellow-400">
@@ -321,112 +324,220 @@
         </div>
     </div>
 </div>
-<div class="py-10 bg-gradient-to-l to-[hsl(48,86%,89%)] from-[hsl(48_100%_96%)] pb-20 h-screen" id="gallery">
-    <div class="p-6 mx-auto md:p-0">
-        <span class="flex flex-col items-center justify-center py-8 m-4 text-gray-800">
-            <h1 class="text-4xl font-bold md:text-5xl">Galeri
-                <span class="text-yellow-400">
-                    Foto
-                </span>
-            </h1>
-            <p class="max-w-xl my-4 text-sm text-center text-yellow-600">Lihat langsung fasilitas dan
-                ruangan yang tersedia di kost kami. Semua foto diambil secara real dan terbaru.
-            </p>
-        </span>
-        <!-- Swiper -->
-        @include('landingpage._galleryData')
-    </div>
-</div>
-<div class="bg-gradient-to-r from-[hsl(48,86%,89%)] to-[hsl(48_100%_96%)] pb-20">
-    <div class="p-6 mx-auto md:p-6">
-        <div class="flex flex-col items-center justify-center py-8  text-gray-800" id="contact">
-            <h1 class="text-4xl font-bold md:text-5xl">Hubungi
-                <span class="text-yellow-400">
-                    Kami
-                </span>
-            </h1>
-            <Siap class="max-w-xl my-4 text-sm text-center text-yellow-600">Siap untuk bergabung dengan kami? Hubungi
-                sekarang untuk reservasi atau konsultasi tentang kebutuhan hunian Anda. </p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 pb-10 max-w-7xl mx-auto pt-10">
-            <div class="flex flex-col gap-4">
-                <h1 class="text-2xl font-bold text-stone-700">Informasi Kontak</h1>
-                <div class="bg-white border border-gray-300 p-6 rounded-lg drop-shadow-2xl flex flex-row">
-                    <span
-                        class="bg-gradient-to-r from-[hsl(44,88%,20%)] to-[hsl(52,40%,34%)] rounded-md p-3 block px-4">
-                        <i class="fa-solid fa-phone text-white text-lg"></i>
+<div class="bg-gradient-to-l to-[hsl(48,86%,89%)] from-[hsl(48_100%_96%)] scroll-behavior-smooth">
+    <div class="p-6 mx-auto md:p-0" id="gallery">
+        <div class="mx-auto md:p-0">
+            <span class="flex flex-col items-center justify-center py-8 text-gray-800">
+                <h1 class="text-4xl font-bold md:text-5xl">Galeri
+                    <span class="text-yellow-400">
+                        Foto
                     </span>
-                    <div class="flex flex-col pl-4">
-                        <span class="font-semibold ">Telepone</span>
-                        <a href="tel:+6281234567890" class="pl-2 text-stone-500">+62
-                            812-3456-7890</a>
+                </h1>
+                <p class="max-w-xl my-4 text-sm text-center text-yellow-600">Lihat langsung fasilitas dan
+                    ruangan yang tersedia di kost kami. Semua foto diambil secara real dan terbaru.
+                </p>
+            </span>
+            <!-- Swiper -->
+            @include('landingpage._galleryData')
+        </div>
+    </div>
+    <div class="bg-gradient-to-r from-[hsl(48,86%,89%)] to-[hsl(48_100%_96%)] pb-20">
+        <div class="p-6 mx-auto md:p-6">
+            <div class="flex flex-col items-center justify-center py-8 text-gray-800" id="kontak">
+                <h1 class="text-4xl font-bold md:text-5xl">Hubungi
+                    <span class="text-yellow-400">
+                        Kami
+                    </span>
+                </h1>
+                <Siap class="max-w-xl my-4 text-sm text-center text-yellow-600">Siap untuk bergabung dengan kami?
+                    Hubungi
+                    sekarang untuk reservasi atau konsultasi tentang kebutuhan hunian Anda. </p>
+            </div>
+            <div class="grid grid-cols-1 gap-16 pt-10 pb-10 mx-auto lg:grid-cols-2 max-w-7xl">
+                <div class="flex flex-col gap-4">
+                    <h1 class="text-2xl font-bold text-stone-700">Informasi Kontak</h1>
+                    <div class="flex flex-row p-6 bg-white border border-gray-300 rounded-lg drop-shadow-2xl">
+                        <span
+                            class="bg-gradient-to-r from-[hsl(44,88%,20%)] to-[hsl(52,40%,34%)] rounded-md p-3 block px-4">
+                            <i class="text-lg text-white fa-solid fa-phone"></i>
+                        </span>
+                        <div class="flex flex-col justify-center pl-4">
+                            <span class="font-semibold ">Telepone</span>
+                            <a href="tel:+6281234567890" class="text-stone-500">+62
+                                812-3456-7890</a>
+                        </div>
+                    </div>
+                    <div class="flex flex-row p-6 bg-white border border-gray-300 rounded-lg drop-shadow-2xl">
+                        <span
+                            class="bg-gradient-to-r from-[hsl(115,95%,35%)] to-[hsl(114,88%,42%)] rounded-md p-3 block px-4">
+                            <i class="text-lg text-white fa-solid fa-message"></i>
+                        </span>
+                        <div class="flex flex-row justify-between w-full">
+                            <div class="flex flex-col justify-center pl-4">
+                                <span class="font-semibold">WhatsApp</span>
+                                <a href="https://wa.me/628123498743" class="text-stone-500">+62
+                                    812-349-8743</a>
+                            </div>
+                            <div class="flex-col justify-center hidden text-xs md:flex text-stone-400">
+                                <span>WhatsApp Only.</span>
+                                <span class="text-end">No Call.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10">
+                        <div class="flex flex-row gap-4 md:flex-row">
+                            <span class="block">
+                                <i
+                                    class="p-4 px-6 text-2xl text-orange-400 bg-yellow-200 rounded-md fa-solid fa-location-dot"></i>
+                            </span>
+                            <div class="flex flex-col">
+                                <span class="font-semibold">Alamat</span>
+                                <span class="text-stone-500 mt-2.5 md:text-base text-[0.875rem]">
+                                    Perum Griya Mangli Indah No.AG 22, Wonosari, Mangli, Kec. Kaliwates, Kabupaten
+                                    Jember,
+                                    Jawa
+                                    Timur</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-4 mt-6 md:flex-row">
+                            <span class="block">
+                                <i
+                                    class="p-4 px-6 text-xl text-orange-400 bg-yellow-200 rounded-md fa-solid fa-clock-rotate-left"></i>
+                            </span>
+                            <div class="flex flex-col">
+                                <span class="font-semibold">Jam Operasioal</span>
+                                <div class="text-[0.875rem] mt-2.5 flex flex-col">
+                                    <span class="text-stone-500 text-md md:text-base">
+                                        Senin - Jumat : 08:00 - 17:00 WIB
+                                    </span>
+                                    <span class="text-stone-500 text-md md:text-base">
+                                        Sabtu - Minggu : 08:00 - 23:00 WIB
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-white border border-gray-300 p-6 rounded-lg drop-shadow-2xl flex flex-row">
-                    <span
-                        class="bg-gradient-to-r from-[hsl(115,95%,35%)] to-[hsl(114,88%,42%)] rounded-md p-3 block px-4">
-                        <i class="fa-solid fa-message text-white text-lg"></i>
-                    </span>
-                    <div class="flex flex-col pl-4">
-                        <span class="font-semibold">WhatsApp</span>
-                        <a href="tel:+6281234567890" class="pl-2 text-stone-500">+62
-                            812-3456-7890</a>
-                    </div>
+                <div class="overflow-hidden bg-white border border-gray-300 rounded-lg drop-shadow-2xl">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.23112287711!2d113.6400199748866!3d-8.17989599185013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6910059ab683f%3A0xb67df6d404026d30!2sPerum%20Griya%20Mangli%20Indah%20No.AG%2022!5e0!3m2!1sid!2sid!4v1717057312345!5m2!1sid!2sid"
+                        class="w-full h-full min-h-[365px] md:min-h-[600px] border-0" style="border:0;"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-            <div class="overflow-hidden bg-white border border-gray-300 rounded-lg drop-shadow-2xl">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.23112287711!2d113.6400199748866!3d-8.17989599185013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6910059ab683f%3A0xb67df6d404026d30!2sPerum%20Griya%20Mangli%20Indah%20No.AG%2022!5e0!3m2!1sid!2sid!4v1717057312345!5m2!1sid!2sid"
-                    class="w-full h-full min-h-[600px] border-0" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Testimonial Section -->
+<div class="bg-gradient-to-t pb-20 pt-20 to-[hsl(48,86%,89%)] from-[hsl(48_100%_96%)]">
+    <div class="p-6 mx-auto lg:px-6 xl:px-6">
+        <div class="flex flex-col items-center justify-center py-8 text-gray-800">
+            <h1 class="text-4xl font-bold md:text-5xl">Testimoni
+                <span class="text-yellow-400">Penghuni</span>
+            </h1>
+            <p class="max-w-xl my-4 text-sm text-center text-yellow-600">
+                Dengarkan apa kata mereka yang telah merasakan kenyamanan tinggal di YellowKost.
+            </p>
+        </div>
+        <!-- Swiper -->
+        <div class="mt-10 mb-10 swiper testimonial-swiper">
+            <div class="swiper-wrapper">
+                @php
+                $testimonials = [
+                ['name' => 'Aulia Rahman', 'role' => 'Mahasiswa', 'image' => 'https://i.pravatar.cc/150?u=aulia',
+                'comment' => 'Kostnya bersih banget dan fasilitasnya lengkap. WiFi kenceng, jadi nugas lancar.
+                Lokasinya juga deket banget sama kampus, hemat waktu dan ongkos.'],
+                ['name' => 'Bima Saputra', 'role' => 'Karyawan Swasta', 'image' => 'https://i.pravatar.cc/150?u=bima',
+                'comment' => 'Akses 24 jam bener-bener ngebantu buat yang pulangnya malem. Lingkungannya aman dan
+                tenang, cocok buat istirahat setelah seharian kerja. Recommended!'],
+                ['name' => 'Citra Lestari', 'role' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=citra',
+                'comment' => 'Suka banget sama dapurnya, bersih dan peralatannya lengkap. Ibu kostnya juga ramah dan
+                fast response kalau ada masalah. Betah banget di sini!'],
+                ['name' => 'Doni Setiawan', 'role' => 'Freelancer', 'image' => 'https://i.pravatar.cc/150?u=doni',
+                'comment' => 'Tempatnya nyaman buat kerja dari kost. Suasananya tenang dan inspiratif. Parkirannya
+                juga luas, jadi nggak khawatir soal kendaraan.'],
+                ['name' => 'Eka Putri', 'role' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=eka',
+                'comment' => 'Kamar mandinya bersih dan airnya lancar. Harganya juga worth it banget dengan semua
+                fasilitas yang didapat. Nggak nyesel pilih YellowKost.'],
+                ];
+                @endphp
+
+                @foreach ($testimonials as $testimonial)
+                <div class="flex swiper-slide">
+                    <div class="flex flex-col h-full p-6 bg-white border border-gray-200 rounded-2xl">
+                        <div class="flex-grow">
+                            <span class="relative block text-gray-600">
+                                <svg class="w-10 h-10 text-gray-300" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                    <path
+                                        d="M96 280C96 213.7 149.7 160 216 160L224 160C241.7 160 256 174.3 256 192C256 209.7 241.7 224 224 224L216 224C185.1 224 160 249.1 160 280L160 288L224 288C259.3 288 288 316.7 288 352L288 416C288 451.3 259.3 480 224 480L160 480C124.7 480 96 451.3 96 416L96 280zM352 280C352 213.7 405.7 160 472 160L480 160C497.7 160 512 174.3 512 192C512 209.7 497.7 224 480 224L472 224C441.1 224 416 249.1 416 280L416 288L480 288C515.3 288 544 316.7 544 352L544 416C544 451.3 515.3 480 480 480L416 480C380.7 480 352 451.3 352 416L352 280z" />
+                                </svg>
+                                {{ $testimonial['comment'] }}
+                            </span>
+                        </div>
+                        <div class="flex flex-col items-center mt-6">
+                            {{-- <img class="object-cover rounded-full" src="{{ $testimonial['image'] }}"
+                                alt="{{ $testimonial['name'] }}"> --}}
+                            <div class="flex flex-col items-center">
+                                <span class="font-semibold text-gray-800">{{ $testimonial['name'] }}</span>
+                                <span class="text-sm text-gray-500">{{ $testimonial['role'] }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
     </div>
 </div>
 <!-- FAQ Section -->
-<div class="bg-gradient-to-b to-[hsl(48_96%_89%)] from-[hsl(48_100%_96%)] py-10 pb-20">
-    <div class="max-w-4xl m-8 p-6  mx-auto md:p-0">
+<div class="bg-gradient-to-b to-[hsl(48_96%_89%)] from-[hsl(48_100%_96%)] pb-20 p-6">
+    <div class="max-w-4xl mx-auto md:p-0">
         <div class="flex flex-col items-center justify-center py-8 text-gray-800">
-            <h1 class="text-4xl font-bold md:text-5xl">Pertanyaan Sering Diajukan
+            <h1 class="text-4xl font-bold text-center md:text-5xl">Pertanyaan Sering Diajukan
                 <span class="text-yellow-400">(FAQ)</span>
             </h1>
             <p class="max-w-xl my-4 text-sm text-center text-yellow-600">
                 Temukan jawaban cepat untuk pertanyaan umum tentang YellowKost.
             </p>
         </div>
-        <div id="accordion-faq" data-accordion="collapse">
-            @php
-            $faqs = [
-            ['question' => 'Apa saja fasilitas yang didapat di setiap kamar?', 'answer' => 'Setiap kamar di
-            YellowKost
-            sudah dilengkapi dengan fasilitas lengkap seperti kasur yang nyaman, lemari pakaian, meja belajar,
-            kursi,
-            dan kamar mandi dalam dengan shower. Kami juga menyediakan AC dan akses WiFi gratis berkecepatan tinggi
-            di
-            setiap kamar.'],
-            ['question' => 'Bagaimana sistem pembayaran sewa kost?', 'answer' => 'Pembayaran sewa dapat dilakukan
-            setiap
-            bulan melalui transfer bank atau pembayaran tunai langsung ke manajemen. Kami akan memberikan notifikasi
-            pengingat beberapa hari sebelum tanggal jatuh tempo.'],
-            ['question' => 'Apakah ada jam malam atau batasan akses?', 'answer' => 'YellowKost memberikan akses 24
-            jam
-            bagi para penghuninya. Setiap penghuni akan diberikan kunci gerbang sendiri sehingga bebas keluar masuk
-            kapan saja, namun tetap wajib menjaga ketertiban dan keamanan lingkungan.'],
-            ['question' => 'Apakah hewan peliharaan diizinkan?', 'answer' => 'Untuk menjaga kenyamanan bersama dan
-            kebersihan fasilitas, saat ini kami belum mengizinkan penghuni untuk membawa hewan peliharaan.'],
-            ['question' => 'Bagaimana cara mengajukan keluhan atau permintaan perbaikan?', 'answer' => 'Anda dapat
-            langsung menghubungi manajer kost atau melalui grup WhatsApp penghuni yang telah kami sediakan. Tim kami
-            akan segera menindaklanjuti setiap keluhan atau permintaan perbaikan secepat mungkin.'],
-            ];
-            @endphp
+        @php
+        $faqs = [
+        ['id' => 'Jam-Malam', 'question' => 'Apakah ada jam malam di YellowKost?', 'answer' => 'Kami memberikan akses 24
+        jam
+        kepada penghuni, namun kami tetap mengimbau untuk menjaga ketenangan dan tidak mengganggu penghuni lain di atas
+        jam 10 malam.'],
+        ['id' => 'Pembayaran', 'question' => 'Bagaimana sistem pembayaran sewa kost?', 'answer' => 'Pembayaran sewa
+        dilakukan
+        setiap bulan pada tanggal masuk. Kami menyediakan berbagai metode pembayaran, termasuk transfer bank dan
+        pembayaran tunai.'],
+        ['id' => 'Fasilitas', 'question' => 'Apakah fasilitas listrik dan air sudah termasuk dalam harga sewa?',
+        'answer' =>
+        'Harga sewa sudah termasuk biaya air bersih. Untuk listrik, kami menggunakan sistem token prabayar 900 watt
+        untuk setiap kamar, sehingga Anda dapat mengontrol pemakaian sendiri.'],
+        ['id' => 'Hewan-Peliharaan', 'question' => 'Apakah boleh membawa hewan peliharaan?', 'answer' => 'Untuk menjaga
+        kenyamanan
+        bersama dan kebersihan lingkungan kost, saat ini kami belum mengizinkan penghuni untuk membawa hewan
+        peliharaan.'],
+        ['id' => 'Informasi-TambahanTamu', 'question' => 'Apakah tersedia fasilitas untuk tamu yang menginap?', 'answer'
+        =>
+        'Tamu
+        diizinkan berkunjung dengan batas waktu hingga jam 10 malam. Untuk tamu yang ingin menginap, harap konfirmasi
+        terlebih dahulu kepada pengelola kost dan akan dikenakan biaya tambahan.'],
+        ];
+        @endphp
 
+        <div id="faq" data-accordion="collapse"
+            data-active-classes="bg-yellow-500 hover:bg-yellow-400 transition-all duration-300 ease-in-out text-gray-900"
+            data-inactive-classes="text-gray-900 hover:bg-yellow-100 transition-all duration-300 ease-in-out">
             @foreach ($faqs as $index => $faq)
-            <h2 id="accordion-faq-heading-{{ $index + 1 }}">
-                <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-600 border {{ $index == 0 ? 'border-b-0 rounded-t-xl' : 'border-b-0' }} border-gray-200 focus:ring-4 focus:ring-yellow-200 hover:bg-yellow-50"
-                    data-accordion-target="#accordion-faq-body-{{ $index + 1 }}"
-                    aria-expanded="{{ $index == 0 ? 'true' : 'false' }}"
-                    aria-controls="accordion-faq-body-{{ $index + 1 }}">
+            <h2 id="faq-heading-{{ $faq['id'] }}">
+                <button type="button" class="flex items-center justify-between w-full gap-3 p-5 font-medium text-left text-gray-900 border rtl:text-right border-gray-900 cursor-pointer
+                        @if($index == 0) rounded-t-xl @endif
+                        @if($index < count($faqs) - 1) border-b-0 @endif"
+                    data-accordion-target="#faq-body-{{ $faq['id'] }}"
+                    aria-expanded="{{ $index == 0 ? 'true' : 'false' }}" aria-controls="faq-body-{{ $faq['id'] }}">
                     <span>{{ $faq['question'] }}</span>
                     <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -435,19 +546,17 @@
                     </svg>
                 </button>
             </h2>
-            <div id="accordion-faq-body-{{ $index + 1 }}" class="{{ $index == 0 ? '' : 'hidden' }}"
-                aria-labelledby="accordion-faq-heading-{{ $index + 1 }}">
-                <div class="p-5 border border-b-0 border-gray-200">
+            <div id="faq-body-{{ $faq['id'] }}" class="{{ $index == 0 ? '' : 'hidden' }}"
+                aria-labelledby="faq-heading-{{ $faq['id'] }}">
+                <div class="p-5 border border-gray-900 @if($index < count($faqs) - 1) border-b-0 @endif">
                     <p class="mb-2 text-gray-500">{{ $faq['answer'] }}</p>
                 </div>
             </div>
             @endforeach
         </div>
+
     </div>
 </div>
-</div>
-
 @endsection
-
 @push('script')
 @endpush

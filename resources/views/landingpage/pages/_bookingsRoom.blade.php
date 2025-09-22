@@ -1,0 +1,161 @@
+@extends('landingpage.index')
+
+@section('content')
+<div class="relative w-full p-4">
+    <div class="max-w-4xl p-8 mx-auto bg-white border border-yellow-300 rounded-xl drop-shadow-2xl">
+        <span class="block pb-8 text-xl font-bold text-center border-b border-gray-200 text-stone-600">
+            Formulir Data Diri Pemesanan Kamar Kos
+        </span>
+
+        {{-- SEMUA LOGIKA DIPUSATKAN DI SINI --}}
+        <form x-data="{
+            namaLengkap: '',
+            nik: '',
+            alamat: '',
+            noTelp: '',
+            noTelpOrtu: '',
+            setuju: false,
+
+            fotoKtp: null,
+            photoPreview: null,
+            photoError: null,
+
+            isFormValid() {
+                return this.namaLengkap && this.nik && this.alamat && this.noTelp && this.noTelpOrtu && this.fotoKtp && this.setuju;
+            },
+
+            handlePhotoChange(event) {
+                const file = event.target.files[0];
+                if (!file) {
+                    this.fotoKtp = null;
+                    return;
+                };
+
+                const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+                const maxSize = 3 * 1024 * 1024; // 3MB
+
+                this.photoError = null;
+
+                if (!allowedTypes.includes(file.type)) {
+                    this.photoError = 'Format file harus PNG, JPG, atau JPEG.';
+                    this.$refs.photo.value = null;
+                    this.fotoKtp = null;
+                } else if (file.size > maxSize) {
+                    this.photoError = 'Ukuran file tidak boleh lebih dari 3MB.';
+                    this.$refs.photo.value = null;
+                    this.fotoKtp = null;
+                } else {
+                    // Logika yang disederhanakan, 'this' sekarang merujuk ke x-data utama
+                    this.fotoKtp = file;
+                    const reader = new FileReader();
+                    reader.onload = (e) => { this.photoPreview = e.target.result; };
+                    reader.readAsDataURL(file);
+                }
+            },
+
+            clearPhoto() {
+                this.fotoKtp = null;
+                this.photoPreview = null;
+                this.$refs.photo.value = null;
+            }
+        }" @submit.prevent="console.log('Form submitted!')">
+
+            <div class="grid gap-6 mt-8 mb-6 md:grid-cols-1">
+                {{-- Input fields (nama, NIK, dll) tidak berubah --}}
+                <div>
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Nama
+                        Lengkap</label>
+                    <input type="text" id="first_name"
+                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
+                        placeholder="Suhadi Akbar" required x-model="namaLengkap" />
+                </div>
+                <div>
+                    <label for="nik" class="block mb-2 text-sm font-medium text-gray-900">NIK</label>
+                    <input type="text" id="nik" name="nik"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
+                        placeholder="Contoh: 3509xxxxxxxxxxxx" required maxlength="16" inputmode="numeric"
+                        pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 16)"
+                        x-model="nik" />
+                </div>
+                <div>
+                    <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 ">Alamat</label>
+                    <input type="text" id="alamat" name="alamat"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
+                        placeholder="Contoh: Jl. Cendana Blok AAA NO.89" required x-model="alamat" />
+                </div>
+                <div>
+                    <label for="noTelp" class="block mb-2 text-sm font-medium text-gray-900 ">No
+                        Telp</label>
+                    <input type="text" id="telp" name="telp"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
+                        placeholder="Contoh: 0812xxxxxxxx" required maxlength="13" inputmode="numeric" pattern="[0-9]*"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 13)" x-model="noTelp" />
+                </div>
+                <div>
+                    <label for="noTelpOrtu" class="block mb-2 text-sm font-medium text-gray-900 ">No Telp
+                        Ortu</label>
+                    <input type="text" id="telpOrtu" name="telpOrtu"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
+                        placeholder="Contoh: 0812xxxxxxxx" required maxlength="13" inputmode="numeric" pattern="[0-9]*"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 13)" x-model="noTelpOrtu" />
+                </div>
+                {{-- Bagian file input, sekarang tanpa x-data sendiri --}}
+                <div>
+                    <div>
+                        <label for="foto_ktp" class="block mb-2 text-sm font-medium text-gray-900 ">Foto
+                            KTP</label>
+                        <input class="hidden" type="file" id="foto_ktp" name="foto_ktp" x-ref="photo"
+                            @change="handlePhotoChange($event)" accept="image/png, image/jpeg, image/jpg" />
+
+                        <div class="mt-2" x-show="photoPreview">
+                            <div
+                                class="relative w-full h-48 overflow-hidden border border-gray-300 rounded-lg bg-gray-50">
+                                <img :src="photoPreview" class="object-contain w-full h-full">
+                                <button type="button" @click="clearPhoto()"
+                                    class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1.5 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="button" x-show="!photoPreview" @click="$refs.photo.click()"
+                            class="flex items-center justify-center  p-2.5 mt-2 text-sm text-gray-900 bg-gray-50 border border-gray-300  rounded-lg focus:ring-yellow-300 focus:border-yellow-300w-full p-2.50 w-full">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4 4-4-4h3V3h2v8z" />
+                            </svg>
+                            Upload Foto KTP
+                        </button>
+                        <span class="text-gray-500 text-[0.72rem] pt-3 block">
+                            Format yang didukung adalah JPEG, JPG, PNG. Ukuran maksimal 3MB.
+                        </span>
+                        <div x-show="photoError" x-text="photoError"
+                            class="mt-2 text-sm text-red-500 dark:text-red-400"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-start pt-8 mb-6 border-t border-gray-200">
+                <div class="flex items-center h-5">
+                    <input id="remember" type="checkbox" value=""
+                        class="w-4 h-4 transition duration-200 border border-yellow-300 rounded bg-yellow-50 focus:ring-2 focus:ring-yellow-300 focus:outline-none checked:bg-yellow-500 checked:text-yellow-500"
+                        required x-model="setuju" />
+                </div>
+                <label for="remember" class="text-sm font-medium text-gray-900 ms-2">Dengan ini
+                    menyatakan bahwa saya telah menyampaikan data sudah sesuai dengan yang sebenarnya, dan saya telah
+                    membaca dan menyetujui <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">Tata
+                        Tertib</a> yang berlaku di kost.
+                </label>
+            </div>
+
+            <button type="submit" :disabled="!isFormValid()"
+                class="text-black bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800 shadow-lg font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:opacity-50 disabled:cursor-not-allowed">
+                Kirim Data Diri
+            </button>
+        </form>
+    </div>
+</div>
+@endsection
