@@ -27,7 +27,7 @@ Route::get('/form-testimonial', function () {
 
 
 Route::get('/profile-setting', function(){
-    return view('pages.settings._settingControl');
+    return view('pages.settingAccount._settingAccount');
 })->name('profile');
 
 Route::get('auth/{provider}', [SocialLoginController::class, 'redirect'])->name('auth.social');
