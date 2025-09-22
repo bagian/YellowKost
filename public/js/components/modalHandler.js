@@ -19,12 +19,12 @@ class ModalHandler {
         );
 
         // Initialize tenant modal
-        this.initModal(
-            "tenant",
-            "openTenantModalBtn",
-            "tenant-modal",
-            "tenant-modal-backdrop"
-        );
+        // this.initModal(
+        // "tenant",
+        // "openTenantModalBtn",
+        // "tenant-modal",
+        // "tenant-modal-backdrop"
+        // );
     }
 
     initModal(modalName, openBtnId, modalId, backdropId) {

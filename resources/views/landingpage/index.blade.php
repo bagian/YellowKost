@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <!-- SEO Meta Tags -->
     <title>YellowKost - Kost Modern & Nyaman di Pusat Kota Jember</title>
@@ -34,7 +35,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <script src="https://kit.fontawesome.com/b87f3ad2d2.js" crossorigin="anonymous"></script>
@@ -55,9 +56,9 @@
 <body>
     @include('landingpage._navBar')
     <!-- Main Header -->
-    <div class="pt-16">
+    <div class="pt-10">
         <div
-            class="relative flex items-center justify-center bg-gradient-to-b from-[hsl(48_96%_89%)] to-[hsl(48_100%_96%)] md:h-screen xl:h-screen">
+            class="relative flex items-center justify-center bg-gradient-to-b from-[hsl(48_96%_89%)] to-[hsl(48_100%_96%)] pt-10 lg:pt-24 pb-28">
             @yield('content')
         </div>
     </div>
@@ -135,11 +136,37 @@
             prevEl: ".swiper-button-prev",
         },
         breakpoints: {
-            768: {
+            648: {
                 slidesPerView: 2,
             },
             1024: {
                 slidesPerView: 4,
+            },
+        },
+    });
+
+    // Swiper Testimonial
+    var testimonialSwiper = new Swiper(".testimonial-swiper", {
+        loop: true,
+        grabCursor: true,
+        spaceBetween: 10,
+        pagination: {
+            el: ".testimonial-pagination",
+            clickable: true,
+        },
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            1024: {
+                slidesPerView: 3,
             },
         },
     });

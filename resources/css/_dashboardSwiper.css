@@ -1,0 +1,9 @@
+:root {
+    --swiper-navigation-color: #ff7d00;
+    --swiper-pagination-color: #fff;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: #ffdd6a;
+}
