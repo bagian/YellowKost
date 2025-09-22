@@ -23,6 +23,9 @@ class ImageService implements ImageServiceInterface {
     }
 
     public function delete(string $url): bool {
-        return Storage::disk('public')->delete($url);
+        if ($url && Storage::disk('public')->exists($url)) {
+            return Storage::disk('public')->delete($url);
+        }
+        return true;
     }
 }
