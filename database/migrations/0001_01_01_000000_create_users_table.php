@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('social_id')->nullable();
             $table->enum('auth_method', ['email', 'social'])->default('email');
             $table->string('provider')->nullable();
+            $table->enum('avatar_type', ['storage', 'url'])->nullable();
             $table->string('profile_picture')->nullable();
             $table->rememberToken();
             $table->timestamps();

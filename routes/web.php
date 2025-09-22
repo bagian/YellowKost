@@ -10,12 +10,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('auth/{provider}', [SocialLoginController::class, 'redirect']);
+Route::get('auth/{provider}', [SocialLoginController::class, 'redirect'])->name('auth.social');
 Route::get('auth/{provider}/callback', [SocialLoginController::class, 'handleProviderCallback']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified', 'role:admin'])->name('dashboard');
+})->middleware(['auth', 'verified', 'role:admin,user'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

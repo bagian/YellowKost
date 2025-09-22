@@ -8,9 +8,6 @@ use App\Repositories\Interface\RoomRepositoryInterface;
 use App\Services\Interface\ImageServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class RoomRepository extends BaseRepository implements RoomRepositoryInterface
 {
@@ -127,9 +124,7 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
 
         $model->delete();
 
-        if ($model->url && Storage::disk('public')->exists($model->url)) {
-            $this->imageService->delete($model->url);
-        }
+        $this->imageService->delete($model->url);
 
         return $model;
     }
