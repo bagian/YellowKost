@@ -44,7 +44,7 @@
                             aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
                             <img class="w-8 h-8 rounded-full"
-                                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+                                src="@if(Auth::user()->avatar_type == 'url') {{ Auth::user()->profile_picture }} @elseif(Auth::user()->avatar_type == 'storage') {{ Storage::url(Auth::user()->profile_picture) }} @else https://flowbite.com/docs/images/people/profile-picture-5.jpg @endif" alt="user photo">
                         </button>
                     </div>
                     <div class="z-50 hidden w-48 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow-lg dark:bg-gray-700 dark:divide-gray-600"
