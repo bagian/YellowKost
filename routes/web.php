@@ -25,6 +25,11 @@ Route::get('/form-testimonial', function () {
     return view('pages.testimonials._createTestimonial');
 })->name('testimonial');
 
+
+Route::get('/profile-setting', function(){
+    return view('pages.settings._settingControl');
+})->name('profile');
+
 Route::get('auth/{provider}', [SocialLoginController::class, 'redirect'])->name('auth.social');
 Route::get('auth/{provider}/callback', [SocialLoginController::class, 'handleProviderCallback']);
 
