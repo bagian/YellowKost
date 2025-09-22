@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TenantController;
@@ -8,6 +9,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('auth/{provider}', [SocialLoginController::class, 'redirect']);
+Route::get('auth/{provider}/callback', [SocialLoginController::class, 'handleProviderCallback']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
