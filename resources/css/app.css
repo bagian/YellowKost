@@ -36,6 +36,10 @@
     }
 }
 
+body {
+    font-family: "Instrument Sans", sans-serif;
+}
+
 .swiper {
     width: 100%;
     height: 100%;
@@ -47,15 +51,27 @@
     object-fit: cover;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:active {
+/* Perbaikan untuk style autofill pada input dengan class .mails */
+/* @media screen (max-width: 640px) {
+    .mails:-webkit-autofill,
+    .mails:-webkit-autofill:hover,
+    .mails:-webkit-autofill:focus,
+    .mails:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+        box-shadow: 0 0 0 1000px transparent inset !important;
+        -webkit-text-fill-color: #fff !important;
+        caret-color: #fff !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+} */
+
+.mails:-webkit-autofill,
+.mails:-webkit-autofill:hover,
+.mails:-webkit-autofill:focus,
+.mails:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
     box-shadow: 0 0 0 1000px transparent inset !important;
-    background: transparent !important;
-    color: #fff !important;
-    -webkit-text-fill-color: #fff !important;
-    caret-color: #fff !important; /* tambahkan baris ini */
+    -webkit-text-fill-color: #141414 !important;
+    caret-color: #141414 !important;
     transition: background-color 5000s ease-in-out 0s;
 }

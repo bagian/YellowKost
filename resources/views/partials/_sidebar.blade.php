@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <aside id="logo-sidebar"
-    class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full border-r border-gray-200 bg-gray-50 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+    class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full border-r border-gray-200 bg-gray-50 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
     aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
@@ -66,6 +66,18 @@
                             d="M21 10.5V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v3.5A2.5 2.5 0 0 0 0 13v6a1 1 0 0 0 2 0v-1h20v1a1 1 0 0 0 2 0v-6a2.5 2.5 0 0 0-3-2.5ZM5 7h14v3H5V7Zm-3 6a.5.5 0 0 1 .5-.5H21.5a.5.5 0 0 1 .5.5V15H2v-2Z" />
                     </svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Kamar</span>
+                </a>
+            </li>
+            <span class="block pt-4 text-xs text-gray-500">Feedback</span>
+            <li>
+                <a href="{{ route('testimonial') }}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="w-5 h-5 text-gray-500 transition duration-75 shrink-0 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                        <path
+                            d="M576 304C576 436.5 461.4 544 320 544C282.9 544 247.7 536.6 215.9 523.3L97.5 574.1C88.1 578.1 77.3 575.8 70.4 568.3C63.5 560.8 62 549.8 66.8 540.8L115.6 448.6C83.2 408.3 64 358.3 64 304C64 171.5 178.6 64 320 64C461.4 64 576 171.5 576 304z" />
+                    </svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Testimonial</span>
                 </a>
             </li>
         </ul>

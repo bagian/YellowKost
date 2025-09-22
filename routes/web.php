@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsletterController;
@@ -9,16 +10,22 @@ use App\Http\Controllers\NewsletterController;
 //     return view('templates.frontend.index');
 // });
 Route::get('/', function () {
-    // Panggil file view yang berisi kontennya.
-    // Blade akan otomatis memuat layout dari @extends di dalam file ini.
     return view('landingpage._maincontent');
-});
+})->name('home');
 
 Route::get('/formulir-pemesanan-kamar', function () {
     return view('landingpage.pages._bookingsRoom');
 })->name('booking');
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
+// Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+// Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+
+Route::get('/form-testimonial', function () {
+    return view('pages.testimonials._createTestimonial');
+})->name('testimonial');
 
 // Route::get('/', function () {
 //     return view('pages.login.logins');

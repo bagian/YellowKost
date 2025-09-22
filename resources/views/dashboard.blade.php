@@ -172,7 +172,7 @@
             </div>
             <!-- Backdrop -->
             <div id="payment-modal-backdrop"
-                class="fixed inset-0 z-[999] hidden bg-gray-900 bg-opacity-50 dark:bg-opacity-80 top-[3.5rem]">
+                class="fixed inset-0 z-[60] hidden bg-gray-900 bg-opacity-50 dark:bg-opacity-80">
             </div>
             <!-- Main modal -->
             <div id="payment-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"

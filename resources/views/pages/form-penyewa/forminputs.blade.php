@@ -5,7 +5,39 @@
 <div class="mx-auto">
     <form action="">
         <div class="space-y-6">
-            <div class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
+            <div x-data="{
+                    fotoKtp: null,
+                    photoPreview: null,
+                    photoError: null,
+
+                    handlePhotoChange(event) {
+                        const file = event.target.files[0];
+                        if (!file) {
+                            this.fotoKtp = null;
+                            return;
+                        };
+
+                        const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+                        const maxSize = 3 * 1024 * 1024; // 3MB
+
+                        this.photoError = null;
+
+                        if (!allowedTypes.includes(file.type)) {
+                            this.photoError = 'Format file harus PNG, JPG, atau JPEG.';
+                            this.$refs.photo.value = null;
+                            this.fotoKtp = null;
+                        } else if (file.size > maxSize) {
+                            this.photoError = 'Ukuran file tidak boleh lebih dari 3MB.';
+                            this.$refs.photo.value = null;
+                            this.fotoKtp = null;
+                        } else {
+                            this.fotoKtp = file;
+                            const reader = new FileReader();
+                            reader.onload = (e) => { this.photoPreview = e.target.result; };
+                            reader.readAsDataURL(file);
+                        }
+                    }
+                }" class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
                 <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
                         Informasi Data Penyewa Kost
@@ -130,30 +162,44 @@
                             </div>
                         </div>
                         <!-- Elements -->
-                        <div class="flex flex-col">
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                for="nik_user">Upload Foto KTP</label>
-                            <input
-                                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 cursor-pointer"
-                                type="file">
-                            <div class="mt-1 text-sm text-gray-500 dark:text-gray-300">A profile
-                                picture is useful to confirm your are logged into your account</div>
-                        </div>
-                        <div class="relative w-full h-40 overflow-hidden bg-gray-400 rounded-lg">
-                            <p class="pt-16 text-center text-white">Preview Foto KTP</p>
-                            <button
-                                class="absolute bottom-0 p-2.5 text-red-800 dark:text-gray-700 bg-gray-100 dark:bg-gray-200 w-full text-center rounded-b-lg hover:bg-gray-200 dark:hover:bg-gray-300 justify-center flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M6 7h12M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2m2 0v12a2 2 0 01-2 2H8a2 2 0 01-2-2V7h12z" />
-                                </svg></button>
+                        <div class="col-span-1 md:col-span-2">
+                            <label for="foto_ktp"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload
+                                Foto KTP</label>
+
+                            <input class="hidden" type="file" id="foto_ktp" name="foto_ktp" x-ref="photo"
+                                @change="handlePhotoChange($event)" accept="image/png, image/jpeg, image/jpg" />
+
+                            <div class="mt-2" x-show="photoPreview">
+                                <div class="relative w-full h-48 overflow-hidden bg-gray-700 rounded-lg">
+                                    <img :src="photoPreview" class="object-contain w-full h-full">
+                                    <button type="button"
+                                        @click="fotoKtp = null; photoPreview = null; $refs.photo.value = null;"
+                                        class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1.5 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button type="button" x-show="!photoPreview" @click="$refs.photo.click()"
+                                class="flex items-center justify-center w-full p-2.5 mt-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4 4-4-4h3V3h2v8z" />
+                                </svg>
+                                Upload Foto KTP
+                            </button>
+                            <span class="text-gray-500/60 dark:text-white/60 text-[0.72rem] pt-3 block">
+                                Format yang didukung adalah JPEG, JPG, PNG. Ukuran maksimal 3MB.
+                            </span>
+                            <div x-show="photoError" x-text="photoError"
+                                class="mt-2 text-sm text-red-500 dark:text-red-400"></div>
                         </div>
                     </div>
                     <!-- Elements -->
-
-
-
                     <!-- Elements -->
                     <div class="mb-4">
                         <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">

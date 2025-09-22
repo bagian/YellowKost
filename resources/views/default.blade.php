@@ -5,7 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Yellow Kost</title>
+    <title>Dashboard YellowKost - Kelola Kost Anda dengan Mudah</title>
+    <meta name="description"
+        content="Pantau dan kelola semua aspek bisnis kost Anda: penyewa, kamar, keuangan, dan lainnya. Semuanya terpusat di Dashboard YellowKost.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Dashboard YellowKost - Kelola Kost Anda dengan Mudah">
+    <meta property="og:description"
+        content="Pantau dan kelola semua aspek bisnis kost Anda: penyewa, kamar, keuangan, dan lainnya. Semuanya terpusat di Dashboard YellowKost.">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -21,7 +29,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Styles / Scripts -->
     {{-- @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot'))) --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/_dashboardSwiper.css'])
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @stack('style')
@@ -45,8 +53,8 @@
     @include('partials._sidebar')
 
     <!-- Main Content -->
-    <div class="p-4 sm:ml-64">
-        <div class="p-4 rounded-lg dark:border-gray-700 mt-14">
+    <div class="p-2.5 py-8 lg:ml-64">
+        <div class="rounded-lg dark:border-gray-700 mt-14">
             @yield('content')
         </div>
     </div>
