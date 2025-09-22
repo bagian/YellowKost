@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TenantController;
@@ -17,13 +18,11 @@ Route::get('/', function () {
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
-// Route::get('/', function () {
-//     return view('pages.login.logins');
-// });
-
 // Route::get('/logins', function () {
 //     return view('pages.login.logins');
 // })->name('logins');
+Route::get('auth/{provider}', [SocialLoginController::class, 'redirect']);
+Route::get('auth/{provider}/callback', [SocialLoginController::class, 'handleProviderCallback']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
