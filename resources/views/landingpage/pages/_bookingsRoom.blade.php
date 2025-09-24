@@ -2,6 +2,34 @@
 
 @section('content')
 <div class="relative w-full p-4">
+    <div>
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        <div id="alert-2"
+            class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            role="alert">
+            <svg class="shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                viewBox="0 0 20 20">
+                <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+            </svg>
+            <span class="sr-only">Info</span>
+            <div class="ms-3 text-sm font-medium">
+                {{ $error }}
+            </div>
+            <button type="button"
+                class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"
+                data-dismiss-target="#alert-2" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+        @endforeach
+        @endif
+    </div>
     <div class="max-w-4xl p-8 mx-auto bg-white border border-yellow-300 rounded-xl drop-shadow-2xl">
         <span class="block pb-8 text-xl font-bold text-center border-b border-gray-200 text-stone-600">
             Formulir Data Diri Pemesanan Kamar Kos
@@ -10,11 +38,13 @@
         {{-- SEMUA LOGIKA DIPUSATKAN DI SINI --}}
         <form x-data="{
             namaLengkap: '',
+            email: '{{ Auth::user()->email ?? ""}}',
             nik: '',
             alamat: '',
             noTelp: '',
             noTelpOrtu: '',
             setuju: false,
+            idUser: '{{ Auth::user()->id ?? ""}}',
 
             fotoKtp: null,
             photoPreview: null,
@@ -58,16 +88,24 @@
                 this.photoPreview = null;
                 this.$refs.photo.value = null;
             }
-        }" @submit.prevent="console.log('Form submitted!')">
+        }" enctype="multipart/form-data" action="{{ route("rent.submit") }}" method="post">
 
             <div class="grid gap-6 mt-8 mb-6 md:grid-cols-1">
                 {{-- Input fields (nama, NIK, dll) tidak berubah --}}
+                @csrf
+                <input type="hidden" name="id_user" :value="idUser" x-model="idUser">
                 <div>
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Nama
                         Lengkap</label>
-                    <input type="text" id="first_name"
+                    <input type="text" id="full_name" name="full_name"
                         class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
                         placeholder="Suhadi Akbar" required x-model="namaLengkap" />
+                </div>
+                <div>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+                    <input type="text" id="email" name="email"
+                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
+                        placeholder="xxxxxxxxxxx@gmail.com" required x-model="email" :value="email" @if(isset(Auth::user()->email)) readonly @endif/>
                 </div>
                 <div>
                     <label for="nik" class="block mb-2 text-sm font-medium text-gray-900">NIK</label>
@@ -79,14 +117,14 @@
                 </div>
                 <div>
                     <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 ">Alamat</label>
-                    <input type="text" id="alamat" name="alamat"
+                    <input type="text" id="alamat" name="address"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
                         placeholder="Contoh: Jl. Cendana Blok AAA NO.89" required x-model="alamat" />
                 </div>
                 <div>
                     <label for="noTelp" class="block mb-2 text-sm font-medium text-gray-900 ">No
                         Telp</label>
-                    <input type="text" id="telp" name="telp"
+                    <input type="text" id="telp" name="phone"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
                         placeholder="Contoh: 0812xxxxxxxx" required maxlength="13" inputmode="numeric" pattern="[0-9]*"
                         oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 13)" x-model="noTelp" />
@@ -94,7 +132,7 @@
                 <div>
                     <label for="noTelpOrtu" class="block mb-2 text-sm font-medium text-gray-900 ">No Telp
                         Ortu</label>
-                    <input type="text" id="telpOrtu" name="telpOrtu"
+                    <input type="text" id="telpOrtu" name="parent_phone"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
                         placeholder="Contoh: 0812xxxxxxxx" required maxlength="13" inputmode="numeric" pattern="[0-9]*"
                         oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 13)" x-model="noTelpOrtu" />
@@ -102,7 +140,7 @@
                 <div class="mb-4">
                     <label for="noTelpOrtu" class="block mb-2 text-sm font-medium text-gray-900 ">Tanggal Masuk</label>
                     <div class="relative">
-                        <input type="date" placeholder="Tanggal Masuk Penyewa"
+                        <input type="date" name="check_in" placeholder="Tanggal Masuk Penyewa"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
                             onclick="this.showPicker()">
                         <span
@@ -121,7 +159,7 @@
                     <div>
                         <label for="foto_ktp" class="block mb-2 text-sm font-medium text-gray-900 ">Foto
                             KTP</label>
-                        <input class="hidden" type="file" id="foto_ktp" name="foto_ktp" x-ref="photo"
+                        <input class="hidden" type="file" id="foto_ktp" name="ktp" x-ref="photo"
                             @change="handlePhotoChange($event)" accept="image/png, image/jpeg, image/jpg" />
 
                         <div class="mt-2" x-show="photoPreview">

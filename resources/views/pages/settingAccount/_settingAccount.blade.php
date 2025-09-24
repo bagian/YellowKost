@@ -53,7 +53,7 @@
                     <div class="flex flex-col items-center justify-center mt-2">
                         <!-- Current Profile Photo -->
                         <div class="relative inline-block" x-show="!photoPreview">
-                            <img src="{{ Auth::user()->photo_url ?? 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&color=7F9CF5&background=EBF4FF' }}"
+                            <img src="@if(Auth::user()->avatar_type == 'url') {{ Auth::user()->profile_picture }} @elseif(Auth::user()->avatar_type == 'storage') {{ Storage::url(Auth::user()->profile_picture) }} @else {{ 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&color=7F9CF5&background=EBF4FF' }} @endif"
                                 alt="Current Profile Photo" class="object-cover w-32 h-32 rounded-full">
                             <div x-on:click.prevent="$refs.photo.click()"
                                 class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black rounded-full opacity-0 cursor-pointer bg-opacity-40 hover:opacity-100">
@@ -93,7 +93,7 @@
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Nama
                 </label>
-                <input type="text" id="name" name="name"
+                <input type="text" id="name" name="name" value="{{ Auth::user()->name ? Auth::user()->name : ''}}"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 {{--
                 <x-input-error class="mt-2" :messages="$errors->get('name')" /> --}}
