@@ -50,7 +50,7 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'id_role');
     }
 
-    public function Rooms() {
-        return $this->hasMany(Room::class, 'id_user');
+    public function Booking() {
+        return $this->hasMany(Booking::class, 'id_user');
     }
 }

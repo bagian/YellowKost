@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use Exception;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 abstract class BaseRepository
@@ -15,7 +16,7 @@ abstract class BaseRepository
         $this->model = $this->getModelClass();
     }
 
-    protected function fillModel($model, array $data) {
+    protected function fillModel(Model $model, array $data) {
         foreach ($data as $key => $value) {
             $model->$key = $value;
         }

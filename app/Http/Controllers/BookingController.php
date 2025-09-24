@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TenantRequest;
-use App\Models\User;
+use App\Http\Requests\BookingRequest;
+use App\Repositories\Interface\BookingRepositoryInterface;
 use Illuminate\Http\Request;
 
-class TenantController extends Controller
+class BookingController extends Controller
 {
+    protected $bookingRepository;
+
+    public function __construct(BookingRepositoryInterface $bookingRepository) {
+        $this->bookingRepository = $bookingRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -27,15 +33,21 @@ class TenantController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(TenantRequest $request)
+    public function store(Request $request)
     {
-        
+        dd($request);
+    }
+
+    public function submit(BookingRequest $request) {
+        // dd($request);
+        dd($request->safe());
+        $booking = $this->bookingRepository->create($request->safe());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(User $tenant)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +55,7 @@ class TenantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $tenant)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +63,7 @@ class TenantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(TenantRequest $request, User $tenant)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +71,7 @@ class TenantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $tenant)
+    public function destroy(string $id)
     {
         //
     }

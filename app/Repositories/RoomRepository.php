@@ -27,6 +27,12 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
         return $this->model::all();
     }
 
+    public function available(): Collection {
+        $room = Room::where('is_available', true)->get();
+
+        return $room;
+    }
+
     public function allWithPictures(): Collection {
         return $this->model::with('pictures')->get();
     }

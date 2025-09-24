@@ -10,6 +10,8 @@ interface RoomRepositoryInterface
 {
     public function all(): Collection;
 
+    public function available(): Collection;
+
     public function allWithPictures(): Collection;
 
     public function find($id): ?Model;

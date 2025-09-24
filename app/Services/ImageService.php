@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ImageService implements ImageServiceInterface {
-    public function save(UploadedFile $file, string $folder): array {
-        $name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+    public function save(UploadedFile $file, string $folder, ?string $name = null): array {
+        $name = $name ?? pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $ext = $file->getClientOriginalExtension();
         $filename = Str::slug($name, '_') . ".$ext";
         $path = $file->storeAs("images/{$folder}", $filename, 'public');
