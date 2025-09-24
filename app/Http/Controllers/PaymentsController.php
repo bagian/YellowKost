@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TenantRequest;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class TenantController extends Controller
+class PaymentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,13 +19,13 @@ class TenantController extends Controller
      */
     public function create()
     {
-        return view('pages.form-penyewa.forminputs');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(TenantRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -35,7 +33,7 @@ class TenantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $tenant)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +41,7 @@ class TenantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $tenant)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +49,7 @@ class TenantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(TenantRequest $request, User $tenant)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +57,7 @@ class TenantController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $tenant)
+    public function destroy(string $id)
     {
         //
     }

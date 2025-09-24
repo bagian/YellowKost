@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('room_name');
             $table->integer('price');
             $table->string('period')->only(['day', 'month', 'year']);
+            $table->boolean('is_available')->default(true);
             $table->timestamps();
         });
     }

@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('room_rents', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_room')->constrained('rooms')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('id_room')->nullable()->constrained('rooms')->onDelete('restrict')->onUpdate('cascade');
             $table->foreignId('id_user')->constrained('users')->onDelete('restrict')->onUpdate('cascade');
             $table->date('check_in');
             $table->date('check_out')->nullable();
-            $table->string('status');
+            $table->enum('status', ['pending', 'confirmed', 'cancelled', 'completed']);
             $table->timestamps();
         });
     }
