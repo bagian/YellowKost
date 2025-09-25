@@ -66,7 +66,7 @@
                     <h1 class="text-2xl font-semibold lg:text-3xl">Buat Akun.</h1>
                     <p class="mt-3 text-xs text-gray-400 lg:text-lg">Nikmati kenyamanan YellowKost.</p>
                 </span>
-                <form action="{{ route('login') }}" method="post">
+                <form action="{{ route('register') }}" method="post">
                     @csrf
                     <div class="mt-4 xl:mt-6">
                         <div class="relative z-0 flex items-center">
@@ -115,7 +115,7 @@
                     </div>
                     <div class="mt-4 xl:mt-6">
                         <div class="relative z-0 flex items-center">
-                            <input type="password" id="password" name="password" required
+                            <input type="password" id="password" name="password_confirmation" required
                                 class="block py-3 xl:py-4 w-full text-sm !text-black bg-transparent border-2 border-gray-300 group-focus:outline-none group-focus:ring-0 group-focus:appearance-none focus:ring-0 rounded-full pr-10 pl-4 mails"
                                 placeholder="Konfirmasi kata sandi anda" />
                             <!-- Eye Icon Button -->
@@ -152,10 +152,42 @@
                         <div class="ml-3 text-sm">
                             <label for="terms"
                                 class="text-xs font-light text-gray-500 sm:text-xs md:text-[0.75rem]">Saya
-                                menyetujui <a class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                                menyetujui <a
+                                    class="font-medium text-primary-600 hover:underline dark:text-primary-500"
                                     href="#">Terms and Conditions</a> yang berlaku.</label>
                         </div>
                     </div>
+                    <div>
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div id="alert-2"
+                                    class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                                    role="alert">
+                                    <svg class="shrink-0 w-4 h-4" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                                    </svg>
+                                    <span class="sr-only">Info</span>
+                                    <div class="ms-3 text-sm font-medium">
+                                        {{ $error }}
+                                    </div>
+                                    <button type="button"
+                                        class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"
+                                        data-dismiss-target="#alert-2" aria-label="Close">
+                                        <span class="sr-only">Close</span>
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2"
+                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+
                     <div class="py-4 xl:py-6 mt-2.5 lg:mt-10">
                         <button type="submit"
                             class="w-full px-5 py-3 mb-2 text-xs font-medium text-center text-gray-900 transition-all duration-300 ease-in-out bg-yellow-300 rounded-full shadow-lg xl:py-4 hover:bg-yellow-400 me-2 xl:text-base">Buat
@@ -242,54 +274,54 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        const passwordInput = document.getElementById('password');
-        const togglePassword = document.getElementById('togglePassword');
-        const eyeOpen = document.getElementById('eyeOpen');
-        const eyeClosed = document.getElementById('eyeClosed');
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('password');
+            const togglePassword = document.getElementById('togglePassword');
+            const eyeOpen = document.getElementById('eyeOpen');
+            const eyeClosed = document.getElementById('eyeClosed');
 
-        togglePassword.addEventListener('click', function () {
-            const type = passwordInput.type === 'password' ? 'text' : 'password';
-            passwordInput.type = type;
-            eyeOpen.classList.toggle('hidden');
-            eyeClosed.classList.toggle('hidden');
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.type === 'password' ? 'text' : 'password';
+                passwordInput.type = type;
+                eyeOpen.classList.toggle('hidden');
+                eyeClosed.classList.toggle('hidden');
+            });
+
+            const form = document.querySelector('form');
+            const emailInput = document.getElementById('email');
+            const passwordError = document.getElementById('passwordError');
+            const emailError = document.getElementById('emailError');
+
+            form.addEventListener('submit', function(e) {
+                let valid = true;
+
+                if (!emailInput.value.trim()) {
+                    emailError.classList.remove('hidden');
+                    valid = false;
+                } else {
+                    emailError.classList.add('hidden');
+                }
+
+                if (!passwordInput.value.trim()) {
+                    passwordError.classList.remove('hidden');
+                    valid = false;
+                } else {
+                    passwordError.classList.add('hidden');
+                }
+
+                if (!valid) {
+                    e.preventDefault();
+                }
+            });
+
+            // Sembunyikan error saat user mulai mengetik
+            emailInput.addEventListener('input', function() {
+                if (emailInput.value.trim()) emailError.classList.add('hidden');
+            });
+            passwordInput.addEventListener('input', function() {
+                if (passwordInput.value.trim()) passwordError.classList.add('hidden');
+            });
         });
-
-        const form = document.querySelector('form');
-        const emailInput = document.getElementById('email');
-        const passwordError = document.getElementById('passwordError');
-        const emailError = document.getElementById('emailError');
-
-        form.addEventListener('submit', function (e) {
-            let valid = true;
-
-            if (!emailInput.value.trim()) {
-                emailError.classList.remove('hidden');
-                valid = false;
-            } else {
-                emailError.classList.add('hidden');
-            }
-
-            if (!passwordInput.value.trim()) {
-                passwordError.classList.remove('hidden');
-                valid = false;
-            } else {
-                passwordError.classList.add('hidden');
-            }
-
-            if (!valid) {
-                e.preventDefault();
-            }
-        });
-
-        // Sembunyikan error saat user mulai mengetik
-        emailInput.addEventListener('input', function () {
-            if (emailInput.value.trim()) emailError.classList.add('hidden');
-        });
-        passwordInput.addEventListener('input', function () {
-            if (passwordInput.value.trim()) passwordError.classList.add('hidden');
-        });
-    });
     </script>
 </body>
 

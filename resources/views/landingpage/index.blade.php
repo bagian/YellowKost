@@ -63,6 +63,15 @@
         </div>
     </div>
     @include('landingpage._footer')
+
+    <form action="{{ route('logout') }}" method="post" id="formLogout">
+        @csrf
+    </form>
+    <script>
+        $('#logout').on('click', function() {
+            $('#formLogout').submit();
+        });
+    </script>
 </body>
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

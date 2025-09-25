@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TenantController;
@@ -77,6 +78,10 @@ Route::middleware('role:admin')->group(function() {
 Route::get('/penyewa', function() {
     return view('pages.form-penyewa.forminputs');
 })->name('form.penyewa');
+
+Route::resource('/penyewa', BookingController::class)->parameters([
+    "penyewa" => "booking"
+]);
 
 Route::get('/infokamar', function() {
     return view('pages.kamar.kamars');
