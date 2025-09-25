@@ -50,7 +50,7 @@
                             <label for="base-input"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
                                 Kamar</label>
-                            <input type="text" placeholder="Masukkan Nama Kamar"
+                            <input type="text" placeholder="Masukkan Nama Kamar" name="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <!-- Elements -->
@@ -68,7 +68,7 @@
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 Nama Penyewa
                             </label>
-                            <input type="text" placeholder="Masukkan Nama Penyewa"
+                            <input type="text" placeholder="Masukkan Nama Penyewa" name="tenant"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <!-- Elements -->
@@ -76,7 +76,7 @@
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 KTP
                             </label>
-                            <input type="text" placeholder="Masukkan Nomor KTP" maxlength="16"
+                            <input type="text" placeholder="Masukkan Nomor KTP" maxlength="16" name="nik"
                                 placeholder="Masukkan nomor KTP" inputmode="numeric" pattern="[0-9]*"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
                                 onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
@@ -87,7 +87,7 @@
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 Nomor Telepon Penyewa
                             </label>
-                            <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12"
+                            <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12" name="phone"
                                 placeholder="Masukkan nomor KTP" inputmode="numeric" pattern="[0-9]*"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
                                 onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
@@ -98,7 +98,7 @@
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 Nomor Telepon Orang Tua
                             </label>
-                            <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12"
+                            <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12" name="parent_phone"
                                 placeholder="Masukkan nomor KTP" inputmode="numeric" pattern="[0-9]*"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
                                 onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
@@ -110,7 +110,7 @@
                                 Status Kamar
                             </label>
                             <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent">
-                                <select
+                                <select name="status"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 appearance-none"
                                     :class="isOptionSelected && 'text-gray-800 dark:text-white/90'"
                                     @change="isOptionSelected = true">
@@ -147,7 +147,7 @@
                             </label>
 
                             <div class="relative">
-                                <input type="date" placeholder="Tanggal Masuk Penyewa"
+                                <input type="date" placeholder="Tanggal Masuk Penyewa" name="check_in"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     onclick="this.showPicker()">
                                 <span
