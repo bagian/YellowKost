@@ -37,12 +37,12 @@
 
         {{-- SEMUA LOGIKA DIPUSATKAN DI SINI --}}
         <form x-data="{
-            namaLengkap: '',
+            namaLengkap: '{{ Auth::user()->full_name ?? ""}}',
             email: '{{ Auth::user()->email ?? ""}}',
-            nik: '',
-            alamat: '',
-            noTelp: '',
-            noTelpOrtu: '',
+            nik: '{{ Auth::user()->nik ?? ""}}',
+            alamat: '{{ Auth::user()->address ?? ""}}',
+            noTelp: '{{ Auth::user()->phone ?? ""}}',
+            noTelpOrtu: '{{ Auth::user()->parent_phone ?? ""}}',
             setuju: false,
             idUser: '{{ Auth::user()->id ?? ""}}',
 
@@ -99,7 +99,7 @@
                         Lengkap</label>
                     <input type="text" id="full_name" name="full_name"
                         class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
-                        placeholder="Suhadi Akbar" required x-model="namaLengkap" />
+                        placeholder="Suhadi Akbar" required x-model="namaLengkap" :value="namaLengkap" />
                 </div>
                 <div>
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
@@ -113,13 +113,13 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
                         placeholder="Contoh: 3509xxxxxxxxxxxx" required maxlength="16" inputmode="numeric"
                         pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 16)"
-                        x-model="nik" />
+                        x-model="nik" :value="nik" />
                 </div>
                 <div>
                     <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 ">Alamat</label>
                     <input type="text" id="alamat" name="address"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
-                        placeholder="Contoh: Jl. Cendana Blok AAA NO.89" required x-model="alamat" />
+                        placeholder="Contoh: Jl. Cendana Blok AAA NO.89" required x-model="alamat" :value="address" />
                 </div>
                 <div>
                     <label for="noTelp" class="block mb-2 text-sm font-medium text-gray-900 ">No
@@ -127,7 +127,7 @@
                     <input type="text" id="telp" name="phone"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
                         placeholder="Contoh: 0812xxxxxxxx" required maxlength="13" inputmode="numeric" pattern="[0-9]*"
-                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 13)" x-model="noTelp" />
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 13)" x-model="noTelp" :value="noTelp" />
                 </div>
                 <div>
                     <label for="noTelpOrtu" class="block mb-2 text-sm font-medium text-gray-900 ">No Telp
@@ -135,7 +135,7 @@
                     <input type="text" id="telpOrtu" name="parent_phone"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
                         placeholder="Contoh: 0812xxxxxxxx" required maxlength="13" inputmode="numeric" pattern="[0-9]*"
-                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 13)" x-model="noTelpOrtu" />
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 13)" x-model="noTelpOrtu" :value="noTelpOrtu" />
                 </div>
                 <div class="mb-4">
                     <label for="noTelpOrtu" class="block mb-2 text-sm font-medium text-gray-900 ">Tanggal Masuk</label>
