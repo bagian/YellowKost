@@ -18,6 +18,7 @@
 
     {{-- jQuery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -64,7 +65,6 @@
                 </div>
                 <span class="block mt-10 text-black">
                     <h1 class="text-2xl font-semibold lg:text-3xl">Buat Akun.</h1>
-                    <p class="mt-3 text-xs text-gray-400 lg:text-lg">Nikmati kenyamanan YellowKost.</p>
                 </span>
                 <form action="{{ route('register') }}" method="post">
                     @csrf
@@ -115,14 +115,14 @@
                     </div>
                     <div class="mt-4 xl:mt-6">
                         <div class="relative z-0 flex items-center">
-                            <input type="password" id="password" name="password_confirmation" required
+                            <input type="password" id="password_confirmation" name="password_confirmation" required
                                 class="block py-3 xl:py-4 w-full text-sm !text-black bg-transparent border-2 border-gray-300 group-focus:outline-none group-focus:ring-0 group-focus:appearance-none focus:ring-0 rounded-full pr-10 pl-4 mails"
                                 placeholder="Konfirmasi kata sandi anda" />
                             <!-- Eye Icon Button -->
-                            <button type="button" id="togglePassword"
+                            <button type="button" id="toggleConfirmPassword"
                                 class="absolute text-gray-400 -translate-y-1/2 right-3 top-1/2 hover:text-gray-500">
                                 <!-- Eye SVG (show) -->
-                                <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                <svg id="eyeOpenConfirm" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -130,7 +130,7 @@
                                         d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                 </svg>
                                 <!-- Eye Off SVG (hide), hidden by default -->
-                                <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" class="hidden w-6 h-6"
+                                <svg id="eyeClosedConfirm" xmlns="http://www.w3.org/2000/svg" class="hidden w-6 h-6"
                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.956 9.956 0 012.293-3.95m3.362-2.568A9.956 9.956 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.973 9.973 0 01-4.043 5.306M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -139,8 +139,8 @@
                                 </svg>
                             </button>
                         </div>
-                        <p id="passwordError" class="hidden mt-2 text-sm text-red-600 dark:text-red-500">
-                            <span class="font-medium">Oops!</span> Password wajib diisi.
+                        <p id="confirmPasswordError" class="hidden mt-2 text-sm text-red-600 dark:text-red-500">
+                            <span class="font-medium">Oops!</span> Konfirmasi password wajib diisi.
                         </p>
                     </div>
                     <div class="flex items-start mt-6">
@@ -152,49 +152,44 @@
                         <div class="ml-3 text-sm">
                             <label for="terms"
                                 class="text-xs font-light text-gray-500 sm:text-xs md:text-[0.75rem]">Saya
-                                menyetujui <a
-                                    class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                                menyetujui <a class="font-medium text-primary-600 hover:underline dark:text-primary-500"
                                     href="#">Terms and Conditions</a> yang berlaku.</label>
                         </div>
                     </div>
-                    <div>
-                        @if ($errors->any())
-                            @foreach ($errors->all() as $error)
-                                <div id="alert-2"
-                                    class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-                                    role="alert">
-                                    <svg class="shrink-0 w-4 h-4" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                                    </svg>
-                                    <span class="sr-only">Info</span>
-                                    <div class="ms-3 text-sm font-medium">
-                                        {{ $error }}
-                                    </div>
-                                    <button type="button"
-                                        class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"
-                                        data-dismiss-target="#alert-2" aria-label="Close">
-                                        <span class="sr-only">Close</span>
-                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 14 14">
-                                            <path stroke="currentColor" stroke-linecap="round"
-                                                stroke-linejoin="round" stroke-width="2"
-                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            @endforeach
-                        @endif
+                    @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                    <div id="alert-{{ $loop->index }}"
+                        class="flex items-center p-4 mt-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                        role="alert">
+                        <svg class="w-4 h-4 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                        </svg>
+                        <span class="sr-only">Info</span>
+                        <div class="text-sm font-medium ms-3">
+                            {{ $error }}
+                        </div>
+                        <button type="button"
+                            class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700"
+                            data-dismiss-target="#alert-{{ $loop->index }}" aria-label="Close">
+                            <span class="sr-only">Close</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            </svg>
+                        </button>
                     </div>
-
-                    <div class="py-4 xl:py-6 mt-2.5 lg:mt-10">
+                    @endforeach
+                    @endif
+                    <div class="py-4 xl:py-6 mt-2.5">
                         <button type="submit"
                             class="w-full px-5 py-3 mb-2 text-xs font-medium text-center text-gray-900 transition-all duration-300 ease-in-out bg-yellow-300 rounded-full shadow-lg xl:py-4 hover:bg-yellow-400 me-2 xl:text-base">Buat
                             Akun</button>
                         <div class="relative flex items-center py-1">
                             <div class="flex-grow border-t border-gray-300"></div>
-                            <span class="flex-shrink mx-4 my-6 text-xs text-gray-400">atau</span>
+                            <span class="flex-shrink mx-4 my-2 text-xs text-gray-400">atau</span>
                             <div class="flex-grow border-t border-gray-300"></div>
                         </div>
                         <div class="w-full mt-3">
@@ -274,54 +269,76 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const passwordInput = document.getElementById('password');
-            const togglePassword = document.getElementById('togglePassword');
-            const eyeOpen = document.getElementById('eyeOpen');
-            const eyeClosed = document.getElementById('eyeClosed');
+        document.addEventListener('DOMContentLoaded', function () {
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('password_confirmation');
+        const togglePassword = document.getElementById('togglePassword');
+        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+        const eyeOpen = document.getElementById('eyeOpen');
+        const eyeClosed = document.getElementById('eyeClosed');
+        const eyeOpenConfirm = document.getElementById('eyeOpenConfirm');
+        const eyeClosedConfirm = document.getElementById('eyeClosedConfirm');
 
-            togglePassword.addEventListener('click', function() {
-                const type = passwordInput.type === 'password' ? 'text' : 'password';
-                passwordInput.type = type;
-                eyeOpen.classList.toggle('hidden');
-                eyeClosed.classList.toggle('hidden');
-            });
-
-            const form = document.querySelector('form');
-            const emailInput = document.getElementById('email');
-            const passwordError = document.getElementById('passwordError');
-            const emailError = document.getElementById('emailError');
-
-            form.addEventListener('submit', function(e) {
-                let valid = true;
-
-                if (!emailInput.value.trim()) {
-                    emailError.classList.remove('hidden');
-                    valid = false;
-                } else {
-                    emailError.classList.add('hidden');
-                }
-
-                if (!passwordInput.value.trim()) {
-                    passwordError.classList.remove('hidden');
-                    valid = false;
-                } else {
-                    passwordError.classList.add('hidden');
-                }
-
-                if (!valid) {
-                    e.preventDefault();
-                }
-            });
-
-            // Sembunyikan error saat user mulai mengetik
-            emailInput.addEventListener('input', function() {
-                if (emailInput.value.trim()) emailError.classList.add('hidden');
-            });
-            passwordInput.addEventListener('input', function() {
-                if (passwordInput.value.trim()) passwordError.classList.add('hidden');
-            });
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            eyeOpen.classList.toggle('hidden');
+            eyeClosed.classList.toggle('hidden');
         });
+
+        toggleConfirmPassword.addEventListener('click', function () {
+            const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
+            confirmPasswordInput.type = type;
+            eyeOpenConfirm.classList.toggle('hidden');
+            eyeClosedConfirm.classList.toggle('hidden');
+        });
+
+        const form = document.querySelector('form');
+        const emailInput = document.getElementById('email');
+        const passwordError = document.getElementById('passwordError');
+        const confirmPasswordError = document.getElementById('confirmPasswordError');
+        const emailError = document.getElementById('emailError');
+
+        form.addEventListener('submit', function (e) {
+            let valid = true;
+
+            if (!emailInput.value.trim()) {
+                emailError.classList.remove('hidden');
+                valid = false;
+            } else {
+                emailError.classList.add('hidden');
+            }
+
+            if (!passwordInput.value.trim()) {
+                passwordError.classList.remove('hidden');
+                valid = false;
+            } else {
+                passwordError.classList.add('hidden');
+            }
+
+            if (!confirmPasswordInput.value.trim()) {
+                confirmPasswordError.classList.remove('hidden');
+                valid = false;
+            } else {
+                confirmPasswordError.classList.add('hidden');
+            }
+
+            if (!valid) {
+                e.preventDefault();
+            }
+        });
+
+        // Sembunyikan error saat user mulai mengetik
+        emailInput.addEventListener('input', function () {
+            if (emailInput.value.trim()) emailError.classList.add('hidden');
+        });
+        passwordInput.addEventListener('input', function () {
+            if (passwordInput.value.trim()) passwordError.classList.add('hidden');
+        });
+        confirmPasswordInput.addEventListener('input', function () {
+            if (confirmPasswordInput.value.trim()) confirmPasswordError.classList.add('hidden');
+        });
+    });
     </script>
 </body>
 

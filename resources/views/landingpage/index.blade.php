@@ -44,12 +44,14 @@
 
     <!-- Dark Mode Script -->
     <script src="{{ asset('js/components/darkMode.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
     {{-- jQuery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <!-- Styles / Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/_index.css'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 

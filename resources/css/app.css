@@ -4,6 +4,8 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@import "./_index.css";
+@import "./_dashboardSwiper.css";
 @layer utilities {
     /* Chrome, Safari, Edge, Opera */
     input[type="date"]::-webkit-calendar-picker-indicator {

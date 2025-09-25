@@ -29,7 +29,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Styles / Scripts -->
     {{-- @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot'))) --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/_dashboardSwiper.css'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @stack('style')

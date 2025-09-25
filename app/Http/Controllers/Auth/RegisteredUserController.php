@@ -33,7 +33,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+            ],['email.unique' => 'Email sudah terdaftar!','password.confirmed' => 'Password tidak cocok!','password.min' => 'Setidaknya memiliki :min karakter.']);
 
         $user = User::create([
             'name' => $request->name,
@@ -47,4 +47,5 @@ class RegisteredUserController extends Controller
 
         return redirect(route('dashboard', absolute: false));
     }
+
 }
