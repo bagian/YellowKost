@@ -8,9 +8,6 @@ use App\Repositories\Interface\BookingRepositoryInterface;
 use App\Repositories\Interface\TenantRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class BookingRepository extends BaseRepository implements BookingRepositoryInterface
 {
