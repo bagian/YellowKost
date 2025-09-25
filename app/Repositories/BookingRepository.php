@@ -8,9 +8,6 @@ use App\Repositories\Interface\BookingRepositoryInterface;
 use App\Repositories\Interface\TenantRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class BookingRepository extends BaseRepository implements BookingRepositoryInterface
 {
@@ -44,6 +41,7 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
                 $data['id_user'] = $user->id_user;
             } else {
                 $user = User::findOrFail($data['id_user']);
+                unset($dataUser['id_user']);
                 $user = $this->tenantRepository->update($user, $dataUser);
             }
 

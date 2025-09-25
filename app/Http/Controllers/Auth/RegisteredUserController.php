@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
+use App\Repositories\Interface\TenantRepositoryInterface;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,6 +16,12 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+    protected $tenantRepository;
+
+    public function __construct(TenantRepositoryInterface $tenantRepository) {
+        $this->tenantRepository = $tenantRepository;
+    }
+
     /**
      * Display the registration view.
      */
@@ -34,11 +42,20 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+<<<<<<< Updated upstream
         $user = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'auth_method' => 'email',
         ]);
+=======
+        $userData['email'] = $request->email;
+        $userData['password'] = Hash::make($request->password);
+        $userData['auth_method'] = 'email';
+        $userData['id_role'] = Role::where('slug', 'user')->value('id');
+
+        $user = $this->tenantRepository->create($userData);
+>>>>>>> Stashed changes
 
         event(new Registered($user));
 
