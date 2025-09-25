@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< Updated upstream
-=======
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\BookingController;
->>>>>>> Stashed changes
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TenantController;
@@ -35,13 +32,8 @@ Route::get('/profile-setting', function(){
     return view('pages.settingAccount._settingAccount');
 })->name('profile');
 
-<<<<<<< Updated upstream
-// Route::get('auth/{provider}', [SocialLoginController::class, 'redirect'])->name('auth.social');
-// Route::get('auth/{provider}/callback', [SocialLoginController::class, 'handleProviderCallback']);
-=======
 Route::get('auth/{provider}', action: [SocialLoginController::class, 'redirect'])->name('auth.social');
 Route::get('auth/{provider}/callback', [SocialLoginController::class, 'handleProviderCallback']);
->>>>>>> Stashed changes
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -54,17 +46,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('role:admin')->group(function() {
-<<<<<<< Updated upstream
-    Route::resource('/room', RoomController::class);
-    // Route::resource('penyewa', )
-=======
     Route::resource('/kamar', RoomController::class)->parameters([
         "kamar" => "room"
     ]);
     Route::resource('/penyewa', BookingController::class)->parameters([
         "penyewa" => "booking"
     ]);
->>>>>>> Stashed changes
 });
 
 Route::get('/penyewa', function() {
