@@ -35,13 +35,20 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< Updated upstream
+        //
+=======
         dd($request);
     }
 
     public function submit(BookingRequest $request) {
         // dd($request);
-        dd($request->safe());
-        $booking = $this->bookingRepository->create($request->safe());
+        // dd($request->safe());
+        // dd($request->safe()->toArray());
+        $booking = $this->bookingRepository->create($request->safe()->toArray());
+        
+        return $booking;
+>>>>>>> Stashed changes
     }
 
     /**

@@ -43,7 +43,8 @@ class TenantRepository extends BaseRepository implements TenantRepositoryInterfa
 
             if (isset($data['profile_picture']) && $data['avatar_type'] == 'storage') {
                 $name = "avatar_{$data['full_name']}";
-                $data['profile_picture'] = $this->imageService->save($data['profile_picture'], 'avatar', $name);
+                $savedPicture = $this->imageService->save($data['profile_picture'], 'avatar', $name);
+                $data['profile_picture'] = $savedPicture['url'];
             }
 
             $user = $this->fillModel($user, $data);

@@ -44,6 +44,7 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
                 $data['id_user'] = $user->id_user;
             } else {
                 $user = User::findOrFail($data['id_user']);
+                unset($dataUser['id_user']);
                 $user = $this->tenantRepository->update($user, $dataUser);
             }
 
