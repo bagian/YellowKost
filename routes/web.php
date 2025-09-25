@@ -3,7 +3,6 @@
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TenantController;
