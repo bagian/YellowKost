@@ -6,6 +6,7 @@
 @section('content')
 <!-- ====== Form Elements Section Start -->
 @include('components._accordionLink')
+
 <div class="mx-auto">
     @if ($errors->any())
     @foreach ($errors->all() as $error)
@@ -38,12 +39,7 @@
         <div class="space-y-6">
             <div x-data="imageUploader()"
                 class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
-                <div class="px-5 py-4 sm:px-6 sm:py-5">
-                    <h3 class="text-base font-semibold text-center text-gray-800 uppercase dark:text-white/90">
-                        Informasi Kamar
-                    </h3>
-                </div>
-                <div class="p-5 space-y-6 border-t border-gray-100 dark:border-gray-500">
+                <div class="p-5 space-y-6">
                     <div class="grid grid-cols-1 gap-4 mb-3 md:grid-cols-2">
                         <!-- Elements -->
                         <div class="flex-1 mb-3">
