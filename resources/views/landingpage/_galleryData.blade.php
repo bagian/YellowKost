@@ -1,31 +1,31 @@
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <img src="{{ asset('templates/image/gallery/01.jpg') }}" />
+            <img src="{{ asset('templates/image/gallery/01.jpg') }}" class="object-cover w-full h-full" />
         </div>
         <div class="swiper-slide">
-            <img src="{{ asset('templates/image/gallery/02.jpg') }}" />
+            <img src="{{ asset('templates/image/gallery/02.jpg') }}" class="object-cover w-full h-full" />
         </div>
         <div class="swiper-slide">
-            <img src="{{ asset('templates/image/gallery/03.jpg') }}" />
+            <img src="{{ asset('templates/image/gallery/03.jpg') }}" class="object-cover w-full h-full" />
         </div>
         <div class="swiper-slide">
-            <img src="{{ asset('templates/image/gallery/04.jpg') }}" />
+            <img src="{{ asset('templates/image/gallery/04.jpg') }}" class="object-cover w-full h-full" />
         </div>
         <div class="swiper-slide">
-            <img src="{{ asset('templates/image/gallery/05.jpg') }}" />
+            <img src="{{ asset('templates/image/gallery/05.jpg') }}" class="object-cover w-full h-full" />
         </div>
         <div class="swiper-slide">
-            <img src="{{ asset('templates/image/gallery/06.jpg') }}" />
+            <img src="{{ asset('templates/image/gallery/06.jpg') }}" class="object-cover w-full h-full" />
         </div>
         <div class="swiper-slide">
-            <img src="{{ asset('templates/image/gallery/01-1.jpg') }}" />
+            <img src="{{ asset('templates/image/gallery/01-1.jpg') }}" class="object-cover w-full h-full" />
         </div>
         <div class="swiper-slide">
-            <img src="{{ asset('templates/image/gallery/02-1.jpg') }}" />
+            <img src="{{ asset('templates/image/gallery/02-1.jpg') }}" class="object-cover w-full h-full" />
         </div>
         <div class="swiper-slide">
-            <img src="{{ asset('templates/image/gallery/03-1.jpg') }}" />
+            <img src="{{ asset('templates/image/gallery/03-1.jpg') }}" class="object-cover w-full h-full" />
         </div>
     </div>
     <div class="relative mx-auto max-w-[14rem]">

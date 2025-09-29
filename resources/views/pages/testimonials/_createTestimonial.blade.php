@@ -1,6 +1,7 @@
 @extends('default')
 
 @section('content')
+@include('components._accordionLink')
 <div class="max-w-2xl mx-auto">
     <form action="" method="POST">
         @csrf

@@ -52,7 +52,7 @@
                             YellowKost
                         </span>
                     </div>
-                    <a href="{{ route('home') }}">
+                    <a href="#">
                         <span class="flex items-center gap-2">
                             <svg class="p-2 text-black transition-all duration-300 ease-in-out bg-yellow-400 rounded-full w-7 h-7 hover:bg-yellow-300"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">

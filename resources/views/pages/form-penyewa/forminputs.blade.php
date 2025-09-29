@@ -3,6 +3,8 @@
 @section('content')
 <!-- ====== Form Elements Section Start -->
 <div class="mx-auto">
+    @include('components._accordionLink')
+    @include('pages.form-penyewa._tablesPenyewa')
     <form action="">
         <div class="space-y-6">
             <div x-data="{
@@ -18,7 +20,7 @@
                         };
 
                         const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-                        const maxSize = 3 * 1024 * 1024; // 3MB
+                        const maxSize = 10 * 1024 * 1024; // 3MB
 
                         this.photoError = null;
 
@@ -145,7 +147,6 @@
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 Tanggal Masuk
                             </label>
-
                             <div class="relative">
                                 <input type="date" placeholder="Tanggal Masuk Penyewa" name="check_in"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -243,14 +244,13 @@
                             </span>
                         </div>
                     </div>
-
                     <button
-                        class="flex items-center justify-center w-full gap-2 px-4 py-2 font-semibold text-white align-middle transition-colors duration-200 bg-green-600 rounded-lg hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800">
+                        class="flex items-center justify-center w-full gap-2 px-4 py-2 text-xs font-semibold text-white align-middle transition-colors duration-200 bg-green-600 rounded-lg hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 md:text-base">
                         <span class="block">Simpan</span>
-                        <!-- Icon Plus -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="w-5 h-5 text-white"
+                            fill="currentColor">
+                            <path
+                                d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 237.3C544 220.3 537.3 204 525.3 192L448 114.7C436 102.7 419.7 96 402.7 96L160 96zM192 192C192 174.3 206.3 160 224 160L384 160C401.7 160 416 174.3 416 192L416 256C416 273.7 401.7 288 384 288L224 288C206.3 288 192 273.7 192 256L192 192zM320 352C355.3 352 384 380.7 384 416C384 451.3 355.3 480 320 480C284.7 480 256 451.3 256 416C256 380.7 284.7 352 320 352z" />
                         </svg>
                     </button>
                 </div>

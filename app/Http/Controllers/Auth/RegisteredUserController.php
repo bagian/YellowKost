@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+            ],['email.unique' => 'Email sudah terdaftar!','password.confirmed' => 'Password tidak cocok!','password.min' => 'Setidaknya memiliki :min karakter.']);
 
 <<<<<<< Updated upstream
         $user = User::create([
@@ -63,4 +63,5 @@ class RegisteredUserController extends Controller
 
         return redirect(route('dashboard', absolute: false));
     }
+
 }

@@ -93,11 +93,10 @@
         <div class="flex items-center justify-between">
             <div>
                 <h3 class="mb-1 text-base font-semibold text-gray-900 sm:text-lg dark:text-white sm:mb-2">
-                    Tambah Penyewa Baru</h3>
-                <p class="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">Daftarkan penyewa baru ke
-                    sistem</p>
+                    Lihat Pemesanan Masuk</h3>
+                <p class="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">Lihat semua data penyewa kos</p>
             </div>
-            {{-- <a href="{{ route('form.penyewa') }}"
+            <a href="{{ route('form.penyewa') }}"
                 class="inline-flex items-center justify-center p-2 transition-colors bg-blue-100 rounded-lg dark:bg-blue-300 hover:bg-blue-200 dark:hover:bg-blue-400"
                 title="Tambah Penyewa Baru">
                 <svg class="w-5 h-5 text-blue-600 sm:w-6 sm:h-6 dark:text-blue-700" fill="none" stroke="currentColor"
@@ -105,10 +104,9 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg>
-            </a> --}}
+            </a>
         </div>
     </div>
-
     <div
         class="p-4 transition-shadow bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:bg-green-900 dark:border-green-700 hover:shadow-md">
         <div class="flex items-center justify-between">
@@ -118,7 +116,7 @@
                 <p class="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">Lihat dan kelola pembayaran
                     sewa</p>
             </div>
-            <button
+            <a href="#"
                 class="p-2 transition-colors bg-green-100 rounded-lg dark:bg-green-300 hover:bg-green-200 dark:hover:bg-green-400">
                 <svg class="w-5 h-5 text-green-600 sm:w-6 sm:h-6 dark:text-green-700" fill="none" stroke="currentColor"
                     viewBox="0 0 24 24">
@@ -126,7 +124,7 @@
                         d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
                     </path>
                 </svg>
-            </button>
+            </a>
         </div>
     </div>
 

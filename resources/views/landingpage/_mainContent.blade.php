@@ -445,27 +445,28 @@
             <div class="swiper-wrapper">
                 @php
                 $testimonials = [
-                ['name' => 'Aulia Rahman', 'role' => 'Mahasiswa', 'image' => 'https://i.pravatar.cc/150?u=aulia',
-                'comment' => 'Kostnya bersih banget dan fasilitasnya lengkap. WiFi kenceng, jadi nugas lancar.
-                Lokasinya juga deket banget sama kampus, hemat waktu dan ongkos.'],
-                ['name' => 'Bima Saputra', 'role' => 'Karyawan Swasta', 'image' => 'https://i.pravatar.cc/150?u=bima',
+                ['name' => 'Aulia Rahman', 'jobs' => 'Mahasiswa', 'image' => 'https://i.pravatar.cc/150?u=aulia',
+                'comment' => 'Kostnya bersih banget dan fasilitasnya lengkap. WiFi kenceng, jadi nugas lancar. Lokasinya
+                juga deket banget sama kampus, hemat waktu dan ongkos.', 'rating' => 5],
+                ['name' => 'Bima Saputra', 'jobs' => 'Karyawan Swasta', 'image' => 'https://i.pravatar.cc/150?u=bima',
                 'comment' => 'Akses 24 jam bener-bener ngebantu buat yang pulangnya malem. Lingkungannya aman dan
-                tenang, cocok buat istirahat setelah seharian kerja. Recommended!'],
-                ['name' => 'Citra Lestari', 'role' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=citra',
+                tenang, cocok buat istirahat setelah seharian kerja. Recommended!', 'rating' => 5],
+                ['name' => 'Citra Lestari', 'jobs' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=citra',
                 'comment' => 'Suka banget sama dapurnya, bersih dan peralatannya lengkap. Ibu kostnya juga ramah dan
-                fast response kalau ada masalah. Betah banget di sini!'],
-                ['name' => 'Doni Setiawan', 'role' => 'Freelancer', 'image' => 'https://i.pravatar.cc/150?u=doni',
-                'comment' => 'Tempatnya nyaman buat kerja dari kost. Suasananya tenang dan inspiratif. Parkirannya
-                juga luas, jadi nggak khawatir soal kendaraan.'],
-                ['name' => 'Eka Putri', 'role' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=eka',
-                'comment' => 'Kamar mandinya bersih dan airnya lancar. Harganya juga worth it banget dengan semua
-                fasilitas yang didapat. Nggak nyesel pilih YellowKost.'],
+                fast response kalau ada masalah. Betah banget di sini!', 'rating' => 5],
+                ['name' => 'Doni Setiawan', 'jobs' => 'Freelancer', 'image' => 'https://i.pravatar.cc/150?u=doni',
+                'comment' => 'Tempatnya nyaman buat kerja dari kost. Suasananya tenang dan inspiratif. Parkirannya juga
+                luas, jadi nggak khawatir soal kendaraan.', 'rating' => 4],
+                ['name' => 'Eka Putri', 'jobs' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=eka', 'comment'
+                => 'Kamar mandinya bersih dan airnya lancar. Harganya juga worth it banget dengan semua fasilitas yang
+                didapat. Nggak nyesel pilih YellowKost.', 'rating' => 5],
                 ];
                 @endphp
 
                 @foreach ($testimonials as $testimonial)
                 <div class="flex swiper-slide">
                     <div class="flex flex-col h-full p-6 bg-white border border-gray-200 rounded-2xl">
+
                         <div class="flex-grow">
                             <span class="relative block text-gray-600">
                                 <svg class="w-10 h-10 text-gray-300" fill="currentColor"
@@ -480,8 +481,17 @@
                             {{-- <img class="object-cover rounded-full" src="{{ $testimonial['image'] }}"
                                 alt="{{ $testimonial['name'] }}"> --}}
                             <div class="flex flex-col items-center">
+                                <div class="flex items-center mb-4">
+                                    @for ($i = 0; $i < 5; $i++) <svg
+                                        class="w-5 h-5 {{ $i < $testimonial['rating'] ? 'text-yellow-400' : 'text-gray-300' }}"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.27l-6.18 3.6 1.18-6.88L2 9.27l6.91-1.01L12 2z" />
+                                        </svg>
+                                        @endfor
+                                </div>
                                 <span class="font-semibold text-gray-800">{{ $testimonial['name'] }}</span>
-                                <span class="text-sm text-gray-500">{{ $testimonial['role'] }}</span>
+                                <span class="text-sm text-gray-500">{{ $testimonial['jobs'] }}</span>
                             </div>
                         </div>
                     </div>
