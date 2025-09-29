@@ -181,6 +181,30 @@
             },
         },
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Fungsi untuk handle toggle password
+        function setupPasswordToggle(toggleButtonId, passwordInputId, openIconId, closedIconId) {
+            const toggleButton = document.getElementById(toggleButtonId);
+            const passwordInput = document.getElementById(passwordInputId);
+            const openIcon = document.getElementById(openIconId);
+            const closedIcon = document.getElementById(closedIconId);
+
+            if (toggleButton && passwordInput && openIcon && closedIcon) {
+                toggleButton.addEventListener('click', function () {
+                    // Ganti tipe input
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+
+                    // Ganti ikon mata
+                    openIcon.classList.toggle('hidden');
+                    closedIcon.classList.toggle('hidden');
+                });
+            }
+        }
+        // Setup untuk input password
+        setupPasswordToggle('togglePassword', 'password', 'eyeOpen', 'eyeClosed');
+    });
 </script>
 
 </html>
