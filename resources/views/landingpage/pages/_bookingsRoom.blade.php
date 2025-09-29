@@ -43,6 +43,7 @@
             alamat: '{{ Auth::user()->address ?? old('address', $bookingData['address'] ?? '')}}',
             noTelp: '{{ Auth::user()->phone ?? old('phone', $bookingData['phone'] ?? '')}}',
             noTelpOrtu: '{{ Auth::user()->parent_phone ?? old('parent_phone', $bookingData['parent_phone'] ?? '')}}',
+            checkIn: '{{ old('check_in', $bookingData['check_in']) }}'
             setuju: false,
 
             fotoKtp: null,
@@ -143,7 +144,7 @@
                     <div class="relative">
                         <input type="date" name="check_in" placeholder="Tanggal Masuk Penyewa"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
-                            onclick="this.showPicker()" min="{{ now()->format('Y-m-d') }}">
+                            onclick="this.showPicker()" min="{{ now()->format('Y-m-d') }}" :value="checkIn">
                         <span
                             class="absolute text-gray-500 -translate-y-1/2 pointer-events-none top-1/2 right-3 dark:text-gray-400">
                             <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
