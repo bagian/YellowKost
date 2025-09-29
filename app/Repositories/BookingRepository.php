@@ -43,7 +43,7 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
 
             if (empty($idUser)) {
                 $user = $this->tenantRepository->create($dataUser);
-                $idUser = $user->id_user;
+                $idUser = $user->id;
             } else {
                 $user = User::findOrFail($idUser);
                 $user = $this->tenantRepository->update($user, $dataUser);
