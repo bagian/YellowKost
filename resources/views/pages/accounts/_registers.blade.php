@@ -70,7 +70,7 @@
                     @csrf
                     <div class="mt-4 xl:mt-6">
                         <div class="relative z-0 flex items-center">
-                            <input type="text" id="email" name="email" required
+                            <input type="text" id="email" name="email" required value="{{ old('email', session('pending_booking.email')) }}"
                                 class="block py-3 xl:py-4 w-full text-sm !text-black bg-transparent border-2 border-gray-300 group-focus:outline-none group-focus:ring-0 group-focus:appearance-none focus:ring-0 rounded-full pr-10 pl-4 mails"
                                 placeholder="Masukkan email anda" />
                             <svg class="absolute w-6 h-6 text-gray-400 right-3 group-focus:outline-none group-hover:hover-text-gray-200"

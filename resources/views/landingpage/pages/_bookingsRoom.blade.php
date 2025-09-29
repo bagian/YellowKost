@@ -37,16 +37,13 @@
 
         {{-- SEMUA LOGIKA DIPUSATKAN DI SINI --}}
         <form x-data="{
-            namaLengkap: '{{ Auth::user()->full_name ?? ""}}',
-            email: '{{ Auth::user()->email ?? ""}}',
-            password: '',
-            passwordError: null,
-            nik: '{{ Auth::user()->nik ?? ""}}',
-            alamat: '{{ Auth::user()->address ?? ""}}',
-            noTelp: '{{ Auth::user()->phone ?? ""}}',
-            noTelpOrtu: '{{ Auth::user()->parent_phone ?? ""}}',
+            namaLengkap: '{{ Auth::user()->full_name ?? old('full_name', $bookingData['full_name'] ?? '') }}',
+            email: '{{ Auth::user()->email ?? old('email', $bookingData['email'] ?? '')}}',
+            nik: '{{ Auth::user()->nik ?? old('nik', $bookingData['nik'] ?? '')}}',
+            alamat: '{{ Auth::user()->address ?? old('address', $bookingData['address'] ?? '')}}',
+            noTelp: '{{ Auth::user()->phone ?? old('phone', $bookingData['phone'] ?? '')}}',
+            noTelpOrtu: '{{ Auth::user()->parent_phone ?? old('parent_phone', $bookingData['parent_phone'] ?? '')}}',
             setuju: false,
-            idUser: '{{ Auth::user()->id ?? ""}}',
 
             fotoKtp: null,
             photoPreview: null,
@@ -90,12 +87,11 @@
                 this.photoPreview = null;
                 this.$refs.photo.value = null;
             }
-        }" enctype="multipart/form-data" method="post">
+        }" enctype="multipart/form-data" action="{{ route('booking.submit') }}" method="post">
 
             <div class="grid gap-6 mt-8 mb-6 md:grid-cols-1">
                 {{-- Input fields (nama, NIK, dll) tidak berubah --}}
                 @csrf
-                <input type="hidden" name="id_user" :value="idUser" x-model="idUser">
                 <div>
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Nama
                         Lengkap</label>
@@ -110,38 +106,6 @@
                         placeholder="xxxxxxxxxxx@gmail.com" required x-model="email" :value="email"
                         @if(isset(Auth::user()->email)) readonly @endif/>
                 </div>
-                @if(!isset(Auth::user()->email))
-                <div>
-                    <div class="relative z-0 flex flex-col">
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
-                        <input type="password" id="password" name="password" required
-                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
-                            placeholder="Masukkan kata sandi anda" />
-                        <!-- Eye Icon Button -->
-                        <button type="button" id="togglePassword"
-                            class="absolute text-gray-400 -translate-y-1/2 right-3 -bottom-1 hover:text-gray-500">
-                            <!-- Eye SVG (show) -->
-                            <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                            </svg>
-                            <!-- Eye Off SVG (hide), hidden by default -->
-                            <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" class="hidden w-6 h-6" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.956 9.956 0 012.293-3.95m3.362-2.568A9.956 9.956 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.973 9.973 0 01-4.043 5.306M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18" />
-                            </svg>
-                        </button>
-                    </div>
-                    <p id="passwordError" class="hidden mt-2 text-sm text-red-600 dark:text-red-500">
-                        <span class="font-medium">Oops!</span> Password wajib diisi.
-                    </p>
-                </div>
-                @endif
                 <div>
                     <label for="nik" class="block mb-2 text-sm font-medium text-gray-900">NIK</label>
                     <input type="text" id="nik" name="nik"

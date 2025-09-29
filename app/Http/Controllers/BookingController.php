@@ -30,6 +30,15 @@ class BookingController extends Controller
         return view('pages.form-penyewa.forminputs');
     }
 
+    public function form()
+    {
+        $bookingData = session('pending_booking', []);
+
+        session()->forget('pending_booking');
+
+        return view('landingpage.pages._bookingsRoom', compact($bookingData));
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -42,6 +51,14 @@ class BookingController extends Controller
         // dd($request);
         // dd($request->safe());
         // dd($request->safe()->toArray());
+        if (!auth()->check()) {
+            session([
+                'pending_booking' => $request->only(["full_name", "email", "phone", "parent_phone", "nik", "check_in"])
+            ]);
+
+            return redirect()->route('register');
+        }
+
         $booking = $this->bookingRepository->create($request->safe()->toArray());
         
         return $booking;

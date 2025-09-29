@@ -90,7 +90,7 @@
                 </div>
                 <div class="flex flex-col items-center w-full gap-2 mt-8 xl:gap-2 lg:flex-row">
                     <span class="block w-full mt-2">
-                        <a href="{{ route('booking') }}"
+                        <a href="{{ route('booking.form') }}"
                             class="px-6 py-2 text-sm font-medium text-center text-stone-800 bg-[#E7B008] hover:bg-[#ffc003] rounded-md focus:ring-4 focus:outline-none md:text-base transition-all duration-300 ease-in-out whitespace-nowrap w-full flex gap-2 items-center justify-center">
                             <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 640 640">
