@@ -24,7 +24,7 @@
         </a>
         <div class="flex gap-2 space-x-2 lg:order-2 md:space-x-0 rtl:space-x-reverse">
             <div class="flex flex-row gap-2">
-                <a href="#"
+                <a href="{{ route('booking') }}"
                     class="hidden text-black bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-full text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:opacity-50 md:block transition-all duration-300 ease-in-out border border-yellow-300">
                     Pesan Sekarang
                 </a>
@@ -77,7 +77,7 @@
                     <a href="#kontak"
                         class="block px-3 py-2 font-medium text-black transition-all duration-300 ease-in-out rounded-sm lg:bg-transparent hover:text-[#E7B008]">Kontak</a>
                 </li>
-                <a href="#"
+                <a href="{{ route('booking') }}"
                     class="block lg:hidden px-4 py-2 text-sm font-medium text-center text-white bg-[#E7B008]  hover:bg-[#ffc003] rounded-full focus:ring-4 focus:outline-none transition-all duration-300 ease-in-out mt-10">Pesan
                     Sekarang
                 </a>

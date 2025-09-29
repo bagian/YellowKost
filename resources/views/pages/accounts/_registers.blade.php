@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcom To YellowKost</title>
+    <title>Welcome To YellowKost</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
@@ -53,7 +53,7 @@
                             YellowKost
                         </span>
                     </div>
-                    <a href="#">
+                    <a href="{{ route('home') }}">
                         <span class="flex items-center gap-2">
                             <svg class="p-2 text-black transition-all duration-300 ease-in-out bg-yellow-400 rounded-full w-7 h-7 hover:bg-yellow-300"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
@@ -109,7 +109,7 @@
                                 </svg>
                             </button>
                         </div>
-                        <p id="passwordError" class="hidden mt-2 text-sm text-red-600 dark:text-red-500">
+                        <p id="password-error" class="hidden mt-2 text-sm text-red-600 dark:text-red-500">
                             <span class="font-medium">Oops!</span> Password wajib diisi.
                         </p>
                     </div>
@@ -139,7 +139,7 @@
                                 </svg>
                             </button>
                         </div>
-                        <p id="confirmPasswordError" class="hidden mt-2 text-sm text-red-600 dark:text-red-500">
+                        <p id="confirm-password-error" class="hidden mt-2 text-sm text-red-600 dark:text-red-500">
                             <span class="font-medium">Oops!</span> Konfirmasi password wajib diisi.
                         </p>
                     </div>
@@ -270,75 +270,32 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-        const passwordInput = document.getElementById('password');
-        const confirmPasswordInput = document.getElementById('password_confirmation');
-        const togglePassword = document.getElementById('togglePassword');
-        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
-        const eyeOpen = document.getElementById('eyeOpen');
-        const eyeClosed = document.getElementById('eyeClosed');
-        const eyeOpenConfirm = document.getElementById('eyeOpenConfirm');
-        const eyeClosedConfirm = document.getElementById('eyeClosedConfirm');
+            // Fungsi untuk handle toggle password
+            function setupPasswordToggle(toggleButtonId, passwordInputId, openIconId, closedIconId) {
+                const toggleButton = document.getElementById(toggleButtonId);
+                const passwordInput = document.getElementById(passwordInputId);
+                const openIcon = document.getElementById(openIconId);
+                const closedIcon = document.getElementById(closedIconId);
 
-        togglePassword.addEventListener('click', function () {
-            const type = passwordInput.type === 'password' ? 'text' : 'password';
-            passwordInput.type = type;
-            eyeOpen.classList.toggle('hidden');
-            eyeClosed.classList.toggle('hidden');
-        });
+                if (toggleButton && passwordInput && openIcon && closedIcon) {
+                    toggleButton.addEventListener('click', function () {
+                        // Ganti tipe input
+                        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                        passwordInput.setAttribute('type', type);
 
-        toggleConfirmPassword.addEventListener('click', function () {
-            const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
-            confirmPasswordInput.type = type;
-            eyeOpenConfirm.classList.toggle('hidden');
-            eyeClosedConfirm.classList.toggle('hidden');
-        });
-
-        const form = document.querySelector('form');
-        const emailInput = document.getElementById('email');
-        const passwordError = document.getElementById('passwordError');
-        const confirmPasswordError = document.getElementById('confirmPasswordError');
-        const emailError = document.getElementById('emailError');
-
-        form.addEventListener('submit', function (e) {
-            let valid = true;
-
-            if (!emailInput.value.trim()) {
-                emailError.classList.remove('hidden');
-                valid = false;
-            } else {
-                emailError.classList.add('hidden');
+                        // Ganti ikon mata
+                        openIcon.classList.toggle('hidden');
+                        closedIcon.classList.toggle('hidden');
+                    });
+                }
             }
 
-            if (!passwordInput.value.trim()) {
-                passwordError.classList.remove('hidden');
-                valid = false;
-            } else {
-                passwordError.classList.add('hidden');
-            }
+            // Setup untuk input password utama
+            setupPasswordToggle('togglePassword', 'password', 'eyeOpen', 'eyeClosed');
 
-            if (!confirmPasswordInput.value.trim()) {
-                confirmPasswordError.classList.remove('hidden');
-                valid = false;
-            } else {
-                confirmPasswordError.classList.add('hidden');
-            }
-
-            if (!valid) {
-                e.preventDefault();
-            }
+            // Setup untuk input konfirmasi password
+            setupPasswordToggle('toggleConfirmPassword', 'password_confirmation', 'eyeOpenConfirm', 'eyeClosedConfirm');
         });
-
-        // Sembunyikan error saat user mulai mengetik
-        emailInput.addEventListener('input', function () {
-            if (emailInput.value.trim()) emailError.classList.add('hidden');
-        });
-        passwordInput.addEventListener('input', function () {
-            if (passwordInput.value.trim()) passwordError.classList.add('hidden');
-        });
-        confirmPasswordInput.addEventListener('input', function () {
-            if (confirmPasswordInput.value.trim()) confirmPasswordError.classList.add('hidden');
-        });
-    });
     </script>
 </body>
 
