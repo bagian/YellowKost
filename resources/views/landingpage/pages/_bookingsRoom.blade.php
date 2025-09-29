@@ -110,9 +110,10 @@
                         placeholder="xxxxxxxxxxx@gmail.com" required x-model="email" :value="email"
                         @if(isset(Auth::user()->email)) readonly @endif/>
                 </div>
+                @if(!isset(Auth::user()->email))
                 <div>
                     <div class="relative z-0 flex flex-col">
-                        <label for="passowrd" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
                         <input type="password" id="password" name="password" required
                             class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
                             placeholder="Masukkan kata sandi anda" />
@@ -140,6 +141,7 @@
                         <span class="font-medium">Oops!</span> Password wajib diisi.
                     </p>
                 </div>
+                @endif
                 <div>
                     <label for="nik" class="block mb-2 text-sm font-medium text-gray-900">NIK</label>
                     <input type="text" id="nik" name="nik"
