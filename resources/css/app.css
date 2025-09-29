@@ -1,11 +1,12 @@
+@import "./_index.css";
+@import "./_dashboardSwiper.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@import "./_index.css";
-@import "./_dashboardSwiper.css";
 @layer utilities {
     /* Chrome, Safari, Edge, Opera */
     input[type="date"]::-webkit-calendar-picker-indicator {
@@ -42,7 +43,7 @@ body {
     font-family: "Instrument Sans", sans-serif;
 }
 
-.swiper {
+/*.swiper {
     width: 100%;
     height: 100%;
 }
@@ -52,6 +53,7 @@ body {
     height: 100%;
     object-fit: cover;
 }
+*/
 
 /* Perbaikan untuk style autofill pada input dengan class .mails */
 /* @media screen (max-width: 640px) {
