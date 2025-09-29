@@ -77,7 +77,7 @@
                     <a href="#kontak"
                         class="block px-3 py-2 font-medium text-black transition-all duration-300 ease-in-out rounded-sm lg:bg-transparent hover:text-[#E7B008]">Kontak</a>
                 </li>
-                <a href="#"
+                <a href="{{ route('booking') }}"
                     class="block lg:hidden px-4 py-2 text-sm font-medium text-center text-white bg-[#E7B008]  hover:bg-[#ffc003] rounded-full focus:ring-4 focus:outline-none transition-all duration-300 ease-in-out mt-10">Pesan
                     Sekarang
                 </a>
