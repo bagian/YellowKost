@@ -37,6 +37,7 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
             $checkIn = $data['check_in'];
             unset($dataUser['check_in']);
             if (empty($data['id_user'])) {
+                unset($dataUser['id_user']);
                 $user = $this->tenantRepository->create($dataUser);
                 $data['id_user'] = $user->id_user;
             } else {
