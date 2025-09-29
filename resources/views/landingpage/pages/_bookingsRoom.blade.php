@@ -37,12 +37,12 @@
 
         {{-- SEMUA LOGIKA DIPUSATKAN DI SINI --}}
         <form x-data="{
-            namaLengkap: '{{ Auth::user()->full_name ?? old('full_name', $bookingData['full_name'] ?? '') }}',
-            email: '{{ Auth::user()->email ?? old('email', $bookingData['email'] ?? '')}}',
-            nik: '{{ Auth::user()->nik ?? old('nik', $bookingData['nik'] ?? '')}}',
-            alamat: '{{ Auth::user()->address ?? old('address', $bookingData['address'] ?? '')}}',
-            noTelp: '{{ Auth::user()->phone ?? old('phone', $bookingData['phone'] ?? '')}}',
-            noTelpOrtu: '{{ Auth::user()->parent_phone ?? old('parent_phone', $bookingData['parent_phone'] ?? '')}}',
+            namaLengkap: '{{ Auth::user()->full_name ?? old('full_name', $full_name ?? '') }}',
+            email: '{{ Auth::user()->email ?? old('email', $email ?? '')}}',
+            nik: '{{ Auth::user()->nik ?? old('nik', $nik ?? '')}}',
+            alamat: '{{ Auth::user()->address ?? old('address', $address ?? '')}}',
+            noTelp: '{{ Auth::user()->phone ?? old('phone', $phone ?? '')}}',
+            noTelpOrtu: '{{ Auth::user()->parent_phone ?? old('parent_phone', $parent_phone ?? '')}}',
             setuju: false,
 
             fotoKtp: null,

@@ -33,6 +33,7 @@ class BookingController extends Controller
     public function form()
     {
         $bookingData = session('pending_booking', []);
+        // dd($bookingData);
 
         session()->forget('pending_booking');
 
