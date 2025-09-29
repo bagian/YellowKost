@@ -37,7 +37,7 @@ class BookingController extends Controller
 
         session()->forget('pending_booking');
 
-        return view('landingpage.pages._bookingsRoom', compact($bookingData));
+        return view('landingpage.pages._bookingsRoom', compact('bookingData'));
     }
 
     /**
