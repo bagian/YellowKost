@@ -59,8 +59,7 @@
     @include('landingpage._navBar')
     <!-- Main Header -->
     <div class="pt-10">
-        <div
-            class="relative flex items-center justify-center bg-gradient-to-b from-[hsl(48_96%_89%)] to-[hsl(48_100%_96%)] pt-10 lg:pt-24 pb-28">
+        <div class="relative flex items-center justify-center  pt-10 lg:pt-24 pb-28">
             @yield('content')
         </div>
     </div>

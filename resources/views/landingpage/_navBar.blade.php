@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="fixed top-0 z-20 w-full bg-[#f9edbd] start-0 border-b border-[#e7dcb1] drop-shadow-sm">
+<nav class="fixed top-0 z-20 w-full bg-white/50 backdrop-blur-md start-0 border-b border-[#dbdbdb] drop-shadow-sm">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <div

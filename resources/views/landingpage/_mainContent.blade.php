@@ -1,7 +1,7 @@
 @extends('landingpage.index')
 
 @section('content')
-<div class="grid max-w-6xl grid-cols-1 gap-6 p-10 xl:p-0 xl:gap-20 md:grid-cols-1 lg:grid-cols-2" id="beranda">
+<div class="grid max-w-7xl grid-cols-1 gap-6 p-10 xl:p-0 xl:gap-20 md:grid-cols-1 lg:grid-cols-2" id="beranda">
     <div class="relative">
         <div class="flex flex-col md:gap-6 md:flex-row">
             <span class="flex items-center mb-4">
@@ -49,10 +49,9 @@
             <div>
                 <h1 class="text-5xl font-extrabold text-gray-800 md:text-6xl xl:text-[4.3rem]">Kost
                     <span class="text-yellow-400">
-                        Modern
+                        Putra, Bersih &
                     </span>
                     <span class="inline-block my-2 text-yellow-400">
-                        &
                         Nyaman
                     </span>
                     di Pusat Kota
@@ -324,7 +323,7 @@
         </div>
     </div>
 </div>
-<div class="bg-gradient-to-l to-[hsl(48,86%,89%)] from-[hsl(48_100%_96%)] scroll-behavior-smooth">
+<div class="scroll-behavior-smooth">
     <div class="p-6 mx-auto md:p-0" id="gallery">
         <div class="mx-auto md:p-0">
             <span class="flex flex-col items-center justify-center py-8 text-gray-800">
@@ -341,7 +340,7 @@
             @include('landingpage._galleryData')
         </div>
     </div>
-    <div class="bg-gradient-to-r from-[hsl(48,86%,89%)] to-[hsl(48_100%_96%)] pb-20">
+    <div class="pb-20">
         <div class="p-6 mx-auto md:p-6">
             <div class="flex flex-col items-center justify-center py-8 text-gray-800" id="kontak">
                 <h1 class="text-4xl font-bold md:text-5xl">Hubungi
@@ -430,7 +429,7 @@
 </div>
 </div>
 <!-- Testimonial Section -->
-<div class="bg-gradient-to-t pb-20 pt-20 to-[hsl(48,86%,89%)] from-[hsl(48_100%_96%)]">
+<div class="pb-20 pt-20">
     <div class="p-6 mx-auto lg:px-6 xl:px-6">
         <div class="flex flex-col items-center justify-center py-8 text-gray-800">
             <h1 class="text-4xl font-bold md:text-5xl">Testimoni
@@ -502,7 +501,7 @@
     </div>
 </div>
 <!-- FAQ Section -->
-<div class="bg-gradient-to-b to-[hsl(48_96%_89%)] from-[hsl(48_100%_96%)] pb-20 p-6">
+<div class="pb-20 p-6">
     <div class="max-w-4xl mx-auto md:p-0">
         <div class="flex flex-col items-center justify-center py-8 text-gray-800">
             <h1 class="text-4xl font-bold text-center md:text-5xl">Pertanyaan Sering Diajukan
