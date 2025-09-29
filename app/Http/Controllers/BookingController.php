@@ -54,7 +54,7 @@ class BookingController extends Controller
         // dd($request->safe()->toArray());
         if (!auth()->check()) {
             session([
-                'pending_booking' => $request->only(["full_name", "email", "phone", "parent_phone", "nik", "check_in"])
+                'pending_booking' => $request->only(["full_name", "email", "phone", "parent_phone", 'address', "nik", "check_in"])
             ]);
 
             return redirect()->route('register');
