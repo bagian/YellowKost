@@ -43,7 +43,7 @@
             alamat: '{{ Auth::user()->address ?? old('address', $bookingData['address'] ?? '')}}',
             noTelp: '{{ Auth::user()->phone ?? old('phone', $bookingData['phone'] ?? '')}}',
             noTelpOrtu: '{{ Auth::user()->parent_phone ?? old('parent_phone', $bookingData['parent_phone'] ?? '')}}',
-            checkIn: '{{ old('check_in', $bookingData['check_in']) }}'
+            checkIn: '{{ old('check_in', $bookingData['check_in'] ?? '') }}'
             setuju: false,
 
             fotoKtp: null,
