@@ -8,6 +8,7 @@ use App\Repositories\Interface\BookingRepositoryInterface;
 use App\Repositories\Interface\TenantRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class BookingRepository extends BaseRepository implements BookingRepositoryInterface
 {
@@ -38,19 +39,11 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
             $checkIn = $data['check_in'];
             unset($dataUser['check_in']);
 
-            $idUser = $data['id_user'];
-            unset($dataUser['id_user']);
-
-            if (empty($idUser)) {
-                $user = $this->tenantRepository->create($dataUser);
-                $idUser = $user->id;
-            } else {
-                $user = User::findOrFail($idUser);
-                $user = $this->tenantRepository->update($user, $dataUser);
-            }
+            $user = Auth::user();
+            $user = $this->tenantRepository->update($user, $dataUser);
 
             $model = new $this->model;
-            $model->id_user = $idUser;
+            $model->id_user = $user->id;
             $model->check_in = $checkIn;
             $model->status = 'pending';
             $model->save();

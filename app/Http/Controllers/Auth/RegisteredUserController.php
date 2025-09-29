@@ -53,6 +53,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
+        if (session()->has('pending_booking')) {
+            return redirect()->route('booking.form');
+        }
+
         return redirect(route('dashboard', absolute: false));
     }
 

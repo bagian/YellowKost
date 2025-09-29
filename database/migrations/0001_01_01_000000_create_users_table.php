@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('parent_phone')->nullable();
             $table->integer('nik')->nullable();
             $table->string('ktp')->nullable();
+            $table->string('address')->nullable();
             $table->string('password')->nullable();
             $table->string('social_id')->nullable();
             $table->enum('auth_method', ['email', 'social'])->default('email');

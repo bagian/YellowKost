@@ -16,10 +16,6 @@ Route::get('/', function () {
     return view('landingpage._maincontent');
 })->name('home');
 
-Route::get('/formulir-pemesanan-kamar', function () {
-    return view('landingpage.pages._bookingsRoom');
-})->name('booking');
-
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
 Route::get('/form-testimonial', function () {
@@ -30,10 +26,6 @@ Route::get('/form-testimonial', function () {
 Route::get('/profile-setting', function(){
     return view('pages.settingAccount._settingAccount');
 })->name('profile');
-
-Route::get('/formulir-pemesanan-kamar', function () {
-    return view('landingpage.pages._bookingsRoom');
-})->name('booking');
 
 Route::post('/sewa/submit', [BookingController::class, 'submit'])->name('rent.submit');
 
@@ -65,6 +57,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/penyewa/form', [BookingController::class, 'form'])->name('booking.form');
+Route::post('/penyewa/submit', [BookingController::class, 'submit'])->name('booking.submit');
+
 Route::middleware('role:admin')->group(function() {
     Route::resource('/kamar', RoomController::class)->parameters([
         "kamar" => "room"
@@ -74,13 +69,6 @@ Route::middleware('role:admin')->group(function() {
     ]);
 });
 
-Route::get('/penyewa', function() {
-    return view('pages.form-penyewa.forminputs');
-})->name('form.penyewa');
-
-Route::resource('/penyewa', BookingController::class)->parameters([
-    "penyewa" => "booking"
-]);
 
 Route::get('/infokamar', function() {
     return view('pages.kamar.create');

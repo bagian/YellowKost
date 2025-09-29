@@ -77,7 +77,7 @@ class TenantRepository extends BaseRepository implements TenantRepositoryInterfa
                 $data['profile_picture'] = $this->imageService->save($data['profile_picture'], 'avatar', $name);
             }
 
-            $model = $this->fillModel($model, $data) ;
+            $model = $this->fillModel($model, $data);
 
             $model->save();
 

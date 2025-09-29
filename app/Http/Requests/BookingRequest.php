@@ -31,9 +31,6 @@ class BookingRequest extends FormRequest
             "ktp" => ["required", "image", "max:3000"],
             "check_in" => ["required", "date"],
             "id_user" => ['nullable', 'exists:users,id'],
-            'password' => auth()->check()
-                ? []
-                : ['required', Rules\Password::defaults()],
         ];
     }
 }
