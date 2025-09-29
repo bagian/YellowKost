@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="fixed top-0 z-20 w-full bg-[#f9edbd] start-0 border-b border-[#e7dcb1] drop-shadow-sm">
+<nav class="fixed top-0 z-20 w-full bg-white/60 backdrop-blur-md start-0 border-b border-[#cdcdcd] drop-shadow-sm">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <div
@@ -25,7 +25,7 @@
         <div class="flex gap-2 space-x-2 lg:order-2 md:space-x-0 rtl:space-x-reverse">
             <div class="flex flex-row gap-2">
                 <a href="{{ route('booking') }}"
-                    class="hidden text-black bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-full text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:opacity-50 md:block transition-all duration-300 ease-in-out border border-yellow-300">
+                    class="hidden text-black bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-400 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-yellow-300 font-medium rounded-full text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:opacity-50 md:block transition-all duration-300 ease-in-out border border-yellow-300">
                     Pesan Sekarang
                 </a>
                 @guest

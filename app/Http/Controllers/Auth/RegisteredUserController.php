@@ -42,20 +42,12 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             ],['email.unique' => 'Email sudah terdaftar!','password.confirmed' => 'Password tidak cocok!','password.min' => 'Setidaknya memiliki :min karakter.']);
 
-<<<<<<< Updated upstream
-        $user = User::create([
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'auth_method' => 'email',
-        ]);
-=======
         $userData['email'] = $request->email;
         $userData['password'] = Hash::make($request->password);
         $userData['auth_method'] = 'email';
         $userData['id_role'] = Role::where('slug', 'user')->value('id');
 
         $user = $this->tenantRepository->create($userData);
->>>>>>> Stashed changes
 
         event(new Registered($user));
 
