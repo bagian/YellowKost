@@ -9,6 +9,7 @@ use App\Services\Interface\ImageServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Socialite\Contracts\User as SocialUserContract;
+use Illuminate\Support\Facades\Hash;
 
 class TenantRepository extends BaseRepository implements TenantRepositoryInterface
 {
@@ -50,6 +51,10 @@ class TenantRepository extends BaseRepository implements TenantRepositoryInterfa
 
             if (!isset($data['id_role'])) {
                 $data['id_role'] = Role::where('slug', 'user')->value('id');
+            }
+
+            if (isset($data['password'])) {
+                $data['password'] = Hash::make($data['password']);
             }
 
             $user = $this->fillModel($user, $data);
