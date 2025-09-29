@@ -34,20 +34,23 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
     public function create(array $data): Model {
         return $this->transaction(function() use ($data): Model {
             $dataUser = $data;
+
             $checkIn = $data['check_in'];
             unset($dataUser['check_in']);
-            if (empty($data['id_user'])) {
-                unset($dataUser['id_user']);
+
+            $idUser = $data['id_user'];
+            unset($data['id_user']);
+
+            if (empty($idUser)) {
                 $user = $this->tenantRepository->create($dataUser);
-                $data['id_user'] = $user->id_user;
+                $idUser = $user->id_user;
             } else {
-                $user = User::findOrFail($data['id_user']);
-                unset($dataUser['id_user']);
+                $user = User::findOrFail($idUser);
                 $user = $this->tenantRepository->update($user, $dataUser);
             }
 
             $model = new $this->model;
-            $model->id_user = $data['id_user'];
+            $model->id_user = $idUser;
             $model->check_in = $checkIn;
             $model->status = 'pending';
             $model->save();
