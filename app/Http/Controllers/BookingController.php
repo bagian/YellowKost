@@ -35,9 +35,6 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< Updated upstream
-        //
-=======
         dd($request);
     }
 
@@ -48,7 +45,6 @@ class BookingController extends Controller
         $booking = $this->bookingRepository->create($request->safe()->toArray());
         
         return $booking;
->>>>>>> Stashed changes
     }
 
     /**

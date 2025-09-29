@@ -38,13 +38,18 @@ class TenantRepository extends BaseRepository implements TenantRepositoryInterfa
 
             if (isset($data['ktp'])) {
                 $name = "ktp_{$data['full_name']}";
-                $data['ktp'] = $this->imageService->save($data['ktp'], 'ktp', $name);
+                $savedPicture = $this->imageService->save($data['ktp'], 'ktp', $name);
+                $data['ktp'] = $savedPicture['url'];
             }
 
             if (isset($data['profile_picture']) && $data['avatar_type'] == 'storage') {
                 $name = "avatar_{$data['full_name']}";
                 $savedPicture = $this->imageService->save($data['profile_picture'], 'avatar', $name);
                 $data['profile_picture'] = $savedPicture['url'];
+            }
+
+            if (!isset($data['id_role'])) {
+                $data['id_role'] = Role::where('slug', 'user')->value('id');
             }
 
             $user = $this->fillModel($user, $data);
