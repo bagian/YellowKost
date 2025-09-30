@@ -27,6 +27,7 @@ class BookingRequest extends FormRequest
             "email" => ["required", "email"],
             "phone" => ["required", "numeric", "digits_between:10,13"],
             "parent_phone" => ["required", "numeric", "digits_between:10,13"],
+            "address" => ['required', 'string'],
             "nik" => ["required", "numeric", "digits:16"],
             "ktp" => ["required", "image", "max:3000"],
             "check_in" => ["required", "date"],

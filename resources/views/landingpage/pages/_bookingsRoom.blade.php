@@ -119,7 +119,7 @@
                     <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 ">Alamat</label>
                     <input type="text" id="alamat" name="address"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
-                        placeholder="Contoh: Jl. Cendana Blok AAA NO.89" required x-model="alamat" :value="address" />
+                        placeholder="Contoh: Jl. Cendana Blok AAA NO.89" required x-model="alamat" :value="alamat" />
                 </div>
                 <div>
                     <label for="noTelp" class="block mb-2 text-sm font-medium text-gray-900 ">No
