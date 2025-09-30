@@ -1,16 +1,16 @@
 <div>
-    <button type="button"
-        class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 transition-all duration-300 ease-in-out dark:text-white">
+    <a href="{{ route('kamar.create') }}"
+    class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 transition-all duration-300 ease-in-out dark:text-white">
         <span class="flex flex-row items-center">
             <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                 <path
-                    d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
+                d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
             </svg>
             <span class="ms-2">
                 Tambahkan Data
             </span>
         </span>
-    </button>
+    </a>
 </div>
 <div class="relative mt-8 mb-8 overflow-x-auto bg-gray-100 shadow-lg rounded-2xl dark:bg-gray-800">
     <div class="flex flex-row items-center justify-between w-full p-4 pb-4">
@@ -95,16 +95,6 @@
                 </th>
                 <th scope="col" class="px-6 py-3">
                     <div class="flex items-center whitespace-nowrap">
-                        Status Kamar
-                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                            </svg></a>
-                    </div>
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    <div class="flex items-center whitespace-nowrap">
                         Foto Kamar
                         <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="currentColor" viewBox="0 0 24 24">
@@ -121,25 +111,23 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($room as $row)
             <tr
                 class="text-white transition-all duration-300 ease-in-out bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-300">
                 <td class="px-6 py-4">
-                    1.
+                    {{ $loop->iteration }}.
                 </td>
                 <td class="px-6 py-4">
-                    -
+                    {{ $row->room_name }}
                 </td>
                 <td class="px-6 py-4">
-                    -
+                    {{ $row->price }}
                 </td>
                 <td class="px-6 py-4 ">
-                    -
+                    {{ $row->period }}
                 </td>
                 <td class="px-6 py-4">
-                    -
-                </td>
-                <td class="px-6 py-4">
-                    -
+                    @if($row->is_available) Kosong @else Ditempati @endif
                 </td>
                 <td class="px-6 py-4">
                     <!-- Modal toggle -->
@@ -176,6 +164,9 @@
                                 <!-- Modal body -->
                                 <div class="p-4 space-y-4 md:p-5">
                                     FOTO Kamar Muncul DISINI
+                                    @foreach($row->pictures as $picture)
+                                        <img src="{{ Storage::url($picture->url) }}" alt="{{ $picture->name }}">
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -184,16 +175,15 @@
                 <td class="px-6 py-4">
                     <div class="flex items-center gap-2">
                         <!-- Modal toggle -->
-                        <button data-modal-target="editPenyewa" type="button" data-modal-toggle="editPenyewa"
-                            class="p-2 text-sm font-medium text-center text-white transition-all duration-300 ease-in-out bg-yellow-500 rounded-full hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-600"
-                            type="button">
+                        <a href="{{ route('kamar.show', $row->id) }}"
+                            class="p-2 text-sm font-medium text-center text-white transition-all duration-300 ease-in-out bg-yellow-500 rounded-full hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-600">
                             <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 640 640">
                                 <path
                                     d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z" />
                             </svg>
-                        </button>
-                        <button
+                        </a>
+                        <button type="button" name="delete" data-id="{{ $row->id }}"
                             class="flex flex-row items-center gap-2 p-2 text-white duration-300 ease-in-out bg-red-600 rounded-full hover:bg-red-700 transiton-all">
                             <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 640 640">
@@ -202,10 +192,11 @@
                             </svg>
                         </button>
                         <!-- Main modal -->
-                        @include('pages.kamar.show')
+                        {{-- @include('pages.kamar.show') --}}
                     </div>
                 </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

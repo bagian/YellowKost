@@ -61,11 +61,12 @@
                                 <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                     Harga Sewa Kamar
                                 </label>
-                                <input type="text" name="price" placeholder="Harga Sewa" maxlength="16"
+                                <input type="text" id="harga_sewa" placeholder="Harga Sewa" maxlength="16"
                                     value="{{ $room->price }}" placeholder="Harga Sewa" inputmode="numeric"
                                     pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
                                     onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <input type="number" name="price" hidden>
                             </div>
                             <!-- Elements -->
                             <div class="col-span-1 mb-4 md:col-span-2">
@@ -224,6 +225,14 @@
                     target: '[class="swiper-wrapper"]',
                     template: '#previewImage'
                 });
+            });
+
+            $('#harga_sewa').on('change', function() {
+                let $price = $('[name="price"]');
+                let val = $(this).val();
+                let clean = val.replace(/\./g, '');
+                let num = parseInt(clean, 10);
+                $price.val(num);
             });
         </script>
     @endpush

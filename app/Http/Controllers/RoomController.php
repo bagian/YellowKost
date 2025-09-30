@@ -22,7 +22,7 @@ class RoomController extends Controller
     {
         $room = $this->roomRepository->allWithPictures();
 
-        return view('pages.kamar.views', ['kamar' => RoomResource::collection($room)]);
+        return view('pages.kamar.views', ['room' => $room]);
     }
 
     /**
@@ -45,7 +45,7 @@ class RoomController extends Controller
 
         $room = $this->roomRepository->createWithPictures($data, $pictures);
 
-        return new RoomResource($room->load('pictures'));
+        return redirect()->route('kamar.index');
     }
 
     /**
