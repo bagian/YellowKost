@@ -26,7 +26,7 @@ class RoomRequest extends FormRequest
             'price' => ['required', 'integer'],
             'period' => ['required', 'in:day,month,year'],
             'pictures' => ['nullable'],
-            'pictures.*' => ['image', 'max:2048'],
+            'pictures.*' => ['image', 'max:10000'],
         ];
 
         if($this->isMethod('PUT') || $this->isMethod('PATCH')) {

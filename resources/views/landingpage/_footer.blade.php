@@ -1,7 +1,7 @@
 <!-- Footer -->
 <footer class="bg-gray-900">
     <div class="container px-6 py-12 mx-auto lg:py-16 max-w-7xl">
-        <div class="grid grid-cols-1 lg:grid-cols-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-4">
             <div>
                 <span
                     class="flex items-center self-center gap-2 text-2xl font-semibold whitespace-nowrap dark:text-yellow-500">
@@ -69,14 +69,16 @@
                 <form id="newsletter-form" class="w-full mt-4" action="{{ route('newsletter.subscribe') }}"
                     method="POST">
                     @csrf
-                    <div class="flex flex-col w-full space-y-6 sm:space-y-0 sm:flex-row sm:items-center">
+                    <div class="flex flex-col w-full space-y-6 sm:space-y-0 sm:flex-col">
                         <input id="newsletter-email" name="email" type="email"
                             class="w-full px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 rounded-md focus:border-yellow-400 focus:ring-yellow-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                             placeholder="Alamat Email" required>
-                        <button type="submit"
-                            class="w-full px-4 py-2 text-sm font-medium tracking-wide text-black transition-colors duration-300 transform bg-yellow-400 rounded-md sm:w-auto sm:mx-4 hover:bg-yellow-500 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-opacity-80">
-                            Langganan
-                        </button>
+                        <div class="pt-8">
+                            <button type="submit"
+                                class="w-full px-4 py-2 text-sm font-medium tracking-wide text-black transition-colors duration-300 transform bg-yellow-400 rounded-md sm:w-auto hover:bg-yellow-500 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-opacity-80">
+                                Langganan
+                            </button>
+                        </div>
                     </div>
                 </form>
                 <div id="newsletter-message" class="mt-2 text-sm"></div>

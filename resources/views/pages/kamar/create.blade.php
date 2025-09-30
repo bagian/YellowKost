@@ -56,8 +56,8 @@
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 Harga Sewa Kamar
                             </label>
-                            <input type="text" id="harga_sewa" placeholder="Harga Sewa"
-                                x-model="hargaSewa" @input="formatHarga"
+                            <input type="text" id="harga_sewa" placeholder="Harga Sewa" x-model="hargaSewa"
+                                @input="formatHarga"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 inputmode="numeric">
                             <input type="number" name="price" hidden>
@@ -152,43 +152,44 @@
                             <div x-show="error" x-text="error" class="mt-2 text-sm text-red-500 dark:text-red-400">
                             </div>
                         </div>
-                        <div x-show="previews.length > 0"
-                            class="relative flex items-center justify-center w-full h-64 col-span-1 overflow-hidden align-middle rounded-lg md:col-span-2">
-                            <!-- Slider main container -->
-                            <div class="swiper">
-                                <div class="swiper-wrapper">
-                                    <template x-for="(preview, index) in previews" :key="index">
-                                        <div class="relative swiper-slide !h-64">
-                                            <img :src="preview" class="object-cover w-full h-full rounded-lg" />
-                                            <button @click.prevent="removePicture(index)"
-                                                class="absolute top-2 right-2 z-10 p-1.5 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </template>
-                                </div>
-                                <div class="flex items-center justify-center swiper-button-prev">
-                                    <svg class="w-16 h-16 text-yellow-600 transition-all duration-300 ease-in-out drop-shadow-lg hover:text-yellow-400"
-                                        fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                            d="M15 19l-7-7 7-7" />
-                                    </svg>
-                                </div>
-                                <div class="flex items-center justify-center swiper-button-next">
-                                    <svg class="w-16 h-16 text-yellow-600 transition-all duration-300 ease-in-out drop-shadow-lg hover:text-yellow-400"
-                                        fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                            d="M9 5l7 7-7 7" />
-                                    </svg>
-                                </div>
+                        <div x-show="error" x-text="error" class="mt-2 text-sm text-red-500 dark:text-red-400">
+                        </div>
+                    </div>
+                    <div x-show="previews.length > 0"
+                        class="relative w-full h-80 col-span-1 overflow-hidden align-middle rounded-lg md:col-span-2">
+                        <!-- Slider main container -->
+                        <div class="w-full h-full swiper">
+                            <div class="swiper-wrapper">
+                                <template x-for="(preview, index) in previews" :key="index">
+                                    <div class="relative w-full h-full swiper-slide">
+                                        <img :src="preview" class="object-cover w-full h-full rounded-lg" />
+                                        <button @click.prevent="removePicture(index)"
+                                            class="absolute top-2 right-2 z-10 p-1.5 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </template>
+                            </div>
+                            <!-- Tombol Navigasi Swiper -->
+                            <div class="swiper-button-prev" :class="{ 'hidden': previews.length <= 1 }">
+                                <svg class="w-16 h-16 text-yellow-600 transition-all duration-300 ease-in-out drop-shadow-lg hover:text-yellow-400"
+                                    fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </div>
+                            <div class="swiper-button-next" :class="{ 'hidden': previews.length <= 1 }">
+                                <svg class="w-16 h-16 text-yellow-600 transition-all duration-300 ease-in-out drop-shadow-lg hover:text-yellow-400"
+                                    fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
                             </div>
                         </div>
                     </div>
-                    <!-- Elements -->
                     <button
                         class="flex items-center justify-center w-full gap-2 px-4 py-2 text-xs font-semibold text-white align-middle transition-colors duration-200 bg-green-600 rounded-lg hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 md:text-base">
                         <span class="block">Simpan</span>
@@ -199,9 +200,48 @@
                         </svg>
                     </button>
                 </div>
+                <!-- Elements -->
+                {{-- <div x-show="previews.length > 0"
+                    class="relative flex items-center justify-center w-full h-64 col-span-1 overflow-hidden align-middle rounded-lg md:col-span-2">
+                    <!-- Slider main container -->
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <template x-for="(preview, index) in previews" :key="index">
+                                <div class="relative swiper-slide !h-64">
+                                    <img :src="preview" class="object-cover w-full h-full rounded-lg" />
+                                    <button @click.prevent="removePicture(index)"
+                                        class="absolute top-2 right-2 z-10 p-1.5 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+                        <div class="flex items-center justify-center swiper-button-prev">
+                            <svg class="w-16 h-16 text-yellow-600 transition-all duration-300 ease-in-out drop-shadow-lg hover:text-yellow-400"
+                                fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </div>
+                        <div class="flex items-center justify-center swiper-button-next">
+                            <svg class="w-16 h-16 text-yellow-600 transition-all duration-300 ease-in-out drop-shadow-lg hover:text-yellow-400"
+                                fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- Elements --> --}}
+
         </div>
-    </form>
+</div>
+</div>
+</form>
 </div>
 @push('scripts')
 <script id="previewImage" type="text/template">
@@ -229,7 +269,7 @@
             init() {
                 this.swiper = new Swiper('.swiper', {
                     loop: false, // Loop dinonaktifkan untuk preview dinamis
-                    slidesPerView: 1,
+                    slidesPerView: 'auto',
                     spaceBetween: 10,
                     breakpoints: {
                         640: {
