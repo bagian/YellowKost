@@ -134,7 +134,8 @@
                 </td>
                 <td class="px-6 py-4">
                     <!-- Modal toggle -->
-                    <button data-modal-target="default-modal-{{ $row->id }}" data-modal-toggle="default-modal-{{ $row->id }}"
+                    <button data-modal-target="default-modal-{{ $row->id }}"
+                        data-modal-toggle="default-modal-{{ $row->id }}"
                         class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-xs xl:text-normal px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-900 flex gap-2 items-center transition-all duration-300 ease-in-out dark:hover:focus:ring-gray-200 border border-1 border-gray-300 whitespace-nowrap"
                         type="button">
                         <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
@@ -165,10 +166,28 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <div class="p-4 space-y-4 md:p-5">
-                                    @foreach($row->pictures as $picture)
-                                    <img src="{{ Storage::url($picture->url) }}" alt="{{ $picture->name }}">
-                                    @endforeach
+                                <div class="p-4 space-y-4 md:p-5 swiper-container-{{ $row->id }}">
+                                    <div class="swiper">
+                                        <div class="swiper-wrapper">
+                                            @foreach($row->pictures as $picture)
+                                            <div class="swiper-slide">
+                                                <img src="{{ Storage::url($picture->url) }}" alt="{{ $picture->name }}"
+                                                    class="object-contain w-full h-96">
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                        <!-- Tombol Navigasi Swiper -->
+                                        <div class="swiper-button-prev swiper-button-prev-{{ $row->id }}">
+                                            <svg class="w-10 h-10 text-yellow-600 transition-all duration-300 ease-in-out drop-shadow-lg hover:text-yellow-400"
+                                                fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                            </svg>
+                                        </div>
+                                        <div class="swiper-button-next swiper-button-next-{{ $row->id }}">
+                                            <svg class="w-10 h-10 text-yellow-600 transition-all duration-300 ease-in-out drop-shadow-lg hover:text-yellow-400"
+                                                fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
