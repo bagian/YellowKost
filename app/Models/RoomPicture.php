@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class RoomPicture extends Model
 {
     //
-    public function Rooms() {
+    public function room() {
         return $this->belongsTo(Room::class, 'id_room');
     }
 }

@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    public function Room() {
+    public function room() {
         return $this->belongsTo(Room::class, 'id_room');
     }
 
-    public function User() {
+    public function user() {
         return $this->belongsTo(User::class, 'id_user');
     }
 
-    public function Payment() {
+    public function payments() {
         return $this->hasMany(Payment::class, 'id_booking');
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    public function Booking() {
+    public function booking() {
         return $this->belongsTo(Booking::class, 'id_booking');
     }
 }

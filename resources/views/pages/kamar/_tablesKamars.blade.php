@@ -134,7 +134,7 @@
                 </td>
                 <td class="px-6 py-4">
                     <!-- Modal toggle -->
-                    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                    <button data-modal-target="default-modal-{{ $row->id }}" data-modal-toggle="default-modal-{{ $row->id }}"
                         class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-xs xl:text-normal px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-900 flex gap-2 items-center transition-all duration-300 ease-in-out dark:hover:focus:ring-gray-200 border border-1 border-gray-300 whitespace-nowrap"
                         type="button">
                         <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@
                         Lihat Foto Kamar
                     </button>
                     <!-- Main modal -->
-                    <div id="default-modal" tabindex="-1" aria-hidden="true"
+                    <div id="default-modal-{{ $row->id }}" tabindex="-1" aria-hidden="true"
                         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-2xl max-h-full p-4">
                             <!-- Modal content -->

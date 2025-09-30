@@ -10,11 +10,11 @@ class Room extends Model
     /** @use HasFactory<\Database\Factories\RoomFactory> */
     use HasFactory;
 
-    public function Pictures() {
+    public function pictures() {
         return $this->hasMany(RoomPicture::class, 'id_room');
     }
 
-    public function Booking() {
+    public function bookings() {
         return $this->hasMany(Booking::class, 'id_room');
     }
 }
