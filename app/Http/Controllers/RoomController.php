@@ -84,7 +84,7 @@ class RoomController extends Controller
 
         $room = $this->roomRepository->update($room, $data, $pictures);
 
-        return new RoomResource($room->load('pictures')); 
+        return redirect()->route('kamar.index')->with(['success' => "Data berhasil di perbarui!"]);
     }
 
     /**
