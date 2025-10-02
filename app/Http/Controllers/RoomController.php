@@ -6,6 +6,7 @@ use App\Http\Resources\RoomResource;
 use App\Models\Room;
 use App\Http\Requests\RoomRequest;
 use App\Repositories\Interface\RoomRepositoryInterface;
+use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
@@ -38,7 +39,6 @@ class RoomController extends Controller
      */
     public function store(RoomRequest $request)
     {
-        // dd($request);
         $data = $request->safe()->except('pictures');
 
         $pictures = $request->file('pictures', []);
