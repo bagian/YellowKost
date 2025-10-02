@@ -32,6 +32,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    {{-- sweetalert 2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @stack('style')
 
 </head>
@@ -60,12 +63,44 @@
     </div>
     <!-- End Main Content -->
 
+    {{-- SweetAlert --}}
+    @include('components.sweet_alert')
+
+    {{-- logout --}}
     <form action="{{ route('logout') }}" method="post" id="formLogout">
         @csrf
     </form>
     <script>
         $('#logout').on('click', function() {
             $('#formLogout').submit();
+        });
+    </script>
+
+    {{-- delete --}}
+    <form action="" method="post" id="deleteForm">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+    </form>
+    <script>
+        $('[name="delete"]').on('click', function() {
+            var href = $(this).data('href');
+            var nama = $(this).data('name');
+            Swal.fire({
+                    title: "Anda yakin untuk menghapus data : \"" + nama + "\"?",
+                    text: "Setelah dihapus, data tidak bisa dikembalikan!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Batal',
+                    confirmButtonText: 'Ya, hapus'
+                })
+                .then((willDelete) => {
+                    if (willDelete.value) {
+                        $('#deleteForm').attr('action', href);
+                        $('#deleteForm').submit();
+                    }
+                });
         });
     </script>
 
