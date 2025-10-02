@@ -170,9 +170,9 @@
                                     <div class="swiper">
                                         <div class="swiper-wrapper">
                                             @foreach($row->pictures as $picture)
-                                            <div class="swiper-slide">
+                                            <div class="swiper-slide h-64 w-full">
                                                 <img src="{{ Storage::url($picture->url) }}" alt="{{ $picture->name }}"
-                                                    class="object-contain w-full h-96">
+                                                    class="object-cover w-full h-96">
                                             </div>
                                             @endforeach
                                         </div>
