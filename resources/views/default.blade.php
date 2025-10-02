@@ -146,7 +146,9 @@
                 $clone.find('button.delete-image').attr('data-tempid', data.tempid);
 
                 swiper.appendSlide($clone[0]);
-                callback();
+                if (callback != "") {
+                    callback();
+                }
             }
 
             function imageHandler(files) {
@@ -190,7 +192,9 @@
                     // console.log($('form').serialize());
                 }
                 swiper.removeSlide(slideIndex);
-                callback();
+                if (callback != "") {
+                    callback();
+                }
             });
 
             function updateInputFiles() {
