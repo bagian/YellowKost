@@ -130,14 +130,15 @@
                             class="relative flex items-center justify-center w-full h-64 col-span-1 overflow-hidden align-middle rounded-lg  md:col-span-2">
                             <p class="absolute z-10 font-light text-center text-white">Foto kamar akan tampil disini</p>
                             <!-- Slider main container -->
-                            <div class="swiper">
+                            <div class="swiper edit-swiper">
                                 <!-- Additional required wrapper -->
                                 <div class="swiper-wrapper">
                                     <!-- Slides -->
                                     @foreach ($room->pictures as $row)
-                                    <div class="@if ($loop->first) relative overflow-hidden @endif swiper-slide">
+                                    <div
+                                        class="@if ($loop->first) relative overflow-hidden @endif swiper-slide !h-64 !w-64">
                                         <img src="{{ Storage::url($row->url) }}" alt="{{ $row->name }}"
-                                            class="object-cover w-full h-64" />
+                                            class="object-cover w-64 h-64" />
                                         <button data-id="{{ $row->id }}" data-tempid="" type="button"
                                             class="delete-image absolute bottom-0 z-20 flex items-center justify-center w-full p-2.5 text-center text-gray-700 hover:text-red-700 transition-all duration-150 ease-in-out bg-white/30 backdrop-blur-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
@@ -149,14 +150,14 @@
                                     </div>
                                     @endforeach
                                 </div>
-                                <div class="flex items-center justify-center swiper-button-prev">
+                                <div class="swiper-button-prev edit-swiper-button-prev">
                                     <svg class="w-16 h-16 text-yellow-600 transition-all duration-300 ease-in-out hover:text-yellow-300 drop-shadow-lg"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                             d="M15 19l-7-7 7-7" />
                                     </svg>
                                 </div>
-                                <div class="flex items-center justify-center swiper-button-next">
+                                <div class="swiper-button-next edit-swiper-button-next">
                                     <svg class="w-16 h-16 text-yellow-600 transition-all duration-300 ease-in-out hover:text-yellow-300 drop-shadow-lg"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
@@ -164,17 +165,16 @@
                                     </svg>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <!-- Elements -->
                     <button
                         class="flex items-center justify-center w-full gap-2 px-4 py-2 font-semibold text-white align-middle transition-colors duration-200 bg-green-600 rounded-lg hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800">
-                        <span class="block">Simpan</span>
-                        <!-- Icon Plus -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        <span class="block">Simpan Perubahan</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="w-5 h-5 text-white"
+                            fill="currentColor">
+                            <path
+                                d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 237.3C544 220.3 537.3 204 525.3 192L448 114.7C436 102.7 419.7 96 402.7 96L160 96zM192 192C192 174.3 206.3 160 224 160L384 160C401.7 160 416 174.3 416 192L416 256C416 273.7 401.7 288 384 288L224 288C206.3 288 192 273.7 192 256L192 192zM320 352C355.3 352 384 380.7 384 416C384 451.3 355.3 480 320 480C284.7 480 256 451.3 256 416C256 380.7 284.7 352 320 352z" />
                         </svg>
                     </button>
                 </div>
@@ -201,15 +201,15 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-                new Swiper('.swiper', {
+                new Swiper('.edit-swiper', {
                     loop: false,
-                    slidesPerView: 1, // default untuk mobile
+                    slidesPerView: 'auto',
                     spaceBetween: 10,
                     breakpoints: {
-                        640: { // >= 640px (tablet)
+                        640: {
                             slidesPerView: 3
                         },
-                        1024: { // >= 1024px (desktop)
+                        1024: {
                             slidesPerView: 4
                         }
                     },
@@ -218,8 +218,8 @@
                         clickable: true,
                     },
                     navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
+                        nextEl: '.edit-swiper-button-next',
+                        prevEl: '.edit-swiper-button-prev',
                     },
                     scrollbar: {
                         el: '.swiper-scrollbar',
