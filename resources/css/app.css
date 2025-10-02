@@ -79,3 +79,7 @@ body {
     caret-color: #141414 !important;
     transition: background-color 5000s ease-in-out 0s;
 }
+
+.swal-title {
+    font-size: 1.8rem !important;
+}

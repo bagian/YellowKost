@@ -93,7 +93,10 @@
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
                     cancelButtonText: 'Batal',
-                    confirmButtonText: 'Ya, hapus'
+                    confirmButtonText: 'Ya, hapus',
+                    customClass:{
+                        title: 'swal-title'
+                    }
                 })
                 .then((willDelete) => {
                     if (willDelete.value) {
