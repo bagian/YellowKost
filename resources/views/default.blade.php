@@ -160,7 +160,7 @@
 
             function updateInputFiles() {
                 const dt = new DataTransfer();
-                virtualFiles.forEach(f => dt.items.add(f.file));
+                virtualFiles.forEach(f => dt.items.add(f));
                 $hidden[0].files = dt.files;
             }
         }

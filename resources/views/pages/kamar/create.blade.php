@@ -136,8 +136,9 @@
                             <label for="pictures"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload Foto
                                 Kamar</label>
-                            <input id="pictures" name="pictures[]" type="file" @change="handleFileChange" multiple
+                            <input id="pictures" type="file" @change="handleFileChange" multiple
                                 accept="image/png, image/jpeg, image/jpg" class="hidden" x-ref="picturesInput">
+                            <input type="file" name="pictures[]" hidden>
                             <button type="button" @click="$refs.picturesInput.click()"
                                 class="flex items-center justify-center w-full p-2.5 text-xs text-gray-900 bg-gray-50 border border-gray-300 rounded-lg cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -307,17 +308,26 @@
                     this.pictures.push(file);
                     this.previews.push(URL.createObjectURL(file));
                 });
+                this.updateInputFiles();
             },
             removePicture(index) {
                 this.pictures.splice(index, 1);
                 this.previews.splice(index, 1);
+                this.updateInputFiles();
             },
             formatHarga() {
                 let value = this.hargaSewa.replace(/[^0-9]/g, '');
                 if (value) {
                     this.hargaSewa = parseInt(value, 10).toLocaleString('id-ID');
                 }
-            }
+            },
+
+            updateInputFiles() {
+                const fileArray = Array.from(this.pictures);
+                const dt = new DataTransfer();
+                this.pictures.forEach(f => dt.items.add(f));
+                $('[name="pictures[]"]')[0].files = dt.files;
+            },
         }
     }
 
