@@ -201,7 +201,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-                new Swiper('.edit-swiper', {
+                let swiper = new Swiper('.swiper', {
                     loop: false,
                     slidesPerView: 'auto',
                     spaceBetween: 10,
@@ -230,7 +230,8 @@
                     input: '#pictures',
                     hidden: '[name="pictures[]"]',
                     target: '[class="swiper-wrapper"]',
-                    template: '#previewImage'
+                    template: '#previewImage',
+                    swiper: swiper
                 });
             });
 
