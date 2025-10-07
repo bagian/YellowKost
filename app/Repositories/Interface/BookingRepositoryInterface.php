@@ -9,6 +9,8 @@ interface BookingRepositoryInterface
 {
     public function all(): Collection;
 
+    public function get(): Collection;
+
     public function find($id): ?Model;
 
     public function create(array $data): Model;

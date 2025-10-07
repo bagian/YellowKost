@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BookingRequest;
+use App\Models\Booking;
 use App\Repositories\Interface\BookingRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,10 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $booking = $this->bookingRepository->get();
+        // dd($booking);
+
+        return view('pages.form-penyewa.forminputs', compact('booking'));
     }
 
     /**
@@ -27,7 +31,7 @@ class BookingController extends Controller
      */
     public function create()
     {
-        return view('pages.form-penyewa.forminputs');
+        // return view('pages.form-penyewa.forminputs');
     }
 
     public function form()
