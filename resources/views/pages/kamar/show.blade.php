@@ -128,7 +128,6 @@
                         </div>
                         <div
                             class="relative flex items-center justify-center w-full h-64 col-span-1 overflow-hidden align-middle rounded-lg  md:col-span-2">
-                            <p class="absolute z-10 font-light text-center text-white">Foto kamar akan tampil disini</p>
                             <!-- Slider main container -->
                             <div class="swiper edit-swiper">
                                 <!-- Additional required wrapper -->
