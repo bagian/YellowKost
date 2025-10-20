@@ -1,17 +1,19 @@
-<button type="button"
-    class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 transition-all duration-300 ease-in-out dark:text-white">
-    <span class="flex flex-row items-center">
-        <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-            <path
-                d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
-        </svg>
-        <span class="ms-2">
-            Tambahkan Data
+<a href="{{ route('booking.form') }}">
+    <button type="button"
+        class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 transition-all duration-300 ease-in-out dark:text-white">
+        <span class="flex flex-row items-center">
+            <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <path
+                    d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
+            </svg>
+            <span class="ms-2">
+                Tambahkan Data
+            </span>
         </span>
-    </span>
-</button>
-<div class="relative mt-8 mb-8 overflow-x-auto bg-gray-100 shadow-lg rounded-2xl dark:bg-gray-800">
-    <div class="flex flex-row items-center justify-between w-full p-4 pb-4">
+    </button>
+</a>
+<div class="mt-8 mb-8 overflow-x-auto bg-gray-100 shadow-lg rounded-2xl dark:bg-gray-800">
+    <div class="relative flex flex-row items-center justify-between w-full p-4 pb-4">
         <div class="max-w-xs xl:w-48 w-36">
             <div class="relative">
                 <input type="date" placeholder="Tanggal Masuk Penyewa"
@@ -28,7 +30,7 @@
                 </span>
             </div>
         </div>
-        <div class="absolute xl:-right-[21.7rem] md:-right-[54.2rem] -right-[82.6rem] ">
+        <div class="absolute top-4 right-4">
             <label for="table-search" class="sr-only">Search</label>
             <div class="relative">
                 <div
@@ -167,7 +169,8 @@
                 </td>
                 <td class="px-6 py-4">
                     <!-- Modal toggle -->
-                    <button data-modal-target="default-modal-{{ $row->id }}" data-modal-toggle="default-modal-{{ $row->id }}"
+                    <button data-modal-target="default-modal-{{ $row->id }}"
+                        data-modal-toggle="default-modal-{{ $row->id }}"
                         class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-xs xl:text-normal px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-900 flex gap-2 items-center transition-all duration-300 ease-in-out dark:hover:focus:ring-gray-200 border border-1 border-gray-300 whitespace-nowrap"
                         type="button">
                         <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"

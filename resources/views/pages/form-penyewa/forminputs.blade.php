@@ -1,45 +1,13 @@
 @extends('default')
 
 @section('content')
-<!-- ====== Form Elements Section Start -->
-<div class="mx-auto">
+
+<div>
     @include('components._accordionLink')
     @include('pages.form-penyewa._tablesPenyewa')
-    <form action="">
+    <form action="" id="penyewa-form">
         <div class="space-y-6">
-            <div x-data="{
-                    fotoKtp: null,
-                    photoPreview: null,
-                    photoError: null,
-
-                    handlePhotoChange(event) {
-                        const file = event.target.files[0];
-                        if (!file) {
-                            this.fotoKtp = null;
-                            return;
-                        };
-
-                        const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-                        const maxSize = 10 * 1024 * 1024; // 3MB
-
-                        this.photoError = null;
-
-                        if (!allowedTypes.includes(file.type)) {
-                            this.photoError = 'Format file harus PNG, JPG, atau JPEG.';
-                            this.$refs.photo.value = null;
-                            this.fotoKtp = null;
-                        } else if (file.size > maxSize) {
-                            this.photoError = 'Ukuran file tidak boleh lebih dari 3MB.';
-                            this.$refs.photo.value = null;
-                            this.fotoKtp = null;
-                        } else {
-                            this.fotoKtp = file;
-                            const reader = new FileReader();
-                            reader.onload = (e) => { this.photoPreview = e.target.result; };
-                            reader.readAsDataURL(file);
-                        }
-                    }
-                }" class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
+            <div class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
                 <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
                         Informasi Data Penyewa Kost
@@ -48,15 +16,110 @@
                 <div class="p-5 space-y-6 border-t border-gray-100 sm:p-6 dark:border-gray-500">
                     <div class="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
                         <!-- Elements -->
-                        <div class="flex-1 mb-0">
-                            <label for="base-input"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
-                                Kamar</label>
-                            <input type="text" placeholder="Masukkan Nama Kamar" name="name"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <div class="mb-4">
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
+                                Foto KTP Penyewa
+                            </label>
+                            <div data-modal-target="ktp-photo-modal" data-modal-toggle="ktp-photo-modal"
+                                class="relative group w-full !h-[14.2rem] overflow-hidden bg-gray-700 rounded-lg cursor-pointer">
+                                <img src="{{ asset('img_handler/error_img_handler/main_error_foto_ktp_el.jpg') }}"
+                                    class="absolute top-0 left-0 object-cover w-full h-full blur-sm"
+                                    alt="Foto KTP Background" />
+                                <img id="ktp-preview-image"
+                                    src="{{ asset('img_handler/error_img_handler/main_error_foto_ktp_el.jpg') }}"
+                                    class="relative object-contain w-full h-full pointer-events-none" alt="Foto KTP" />
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
+                                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- KTP Photo Modal -->
+                        <div id="ktp-photo-modal" tabindex="-1" aria-hidden="true"
+                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative w-full max-w-2xl max-h-full p-4">
+                                <!-- Modal content -->
+                                <div class="relative rounded-lg">
+                                    <!-- Modal header -->
+                                    <div class="relative">
+                                        <button type="button"
+                                            class="absolute inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white top-2 right-2"
+                                            data-modal-hide="ktp-photo-modal">
+                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="h-[45rem] w-full rounded-lg p-4 md:p-0">
+                                        <img src="{{ asset('img_handler/error_img_handler/main_error_foto_ktp_el.jpg') }}"
+                                            class="object-contain w-full h-full" alt="Foto KTP" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- Elements -->
-                        <div class="flex-1 mb-0">
+                        <div class="mb-4">
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
+                                Bukti Pembyararan Penyewa
+                            </label>
+                            <div data-modal-target="payment-proof-modal" data-modal-toggle="payment-proof-modal"
+                                class="relative group w-full !h-[14.2rem] overflow-hidden bg-gray-700 rounded-lg cursor-pointer">
+                                <img src="{{ asset('img_handler/error_img_handler/main_proved_paid.webp') }}"
+                                    class="absolute top-0 left-0 object-cover w-full h-full blur-sm"
+                                    alt="Bukti Pembayaran Background" />
+                                <img id="payment-preview-image"
+                                    src="{{ asset('img_handler/error_img_handler/main_proved_paid.webp') }}"
+                                    class="relative object-contain w-full h-full pointer-events-none"
+                                    alt="Bukti Pembayaran" />
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
+                                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Payment Proof Modal -->
+                        <div id="payment-proof-modal" tabindex="-1" aria-hidden="true"
+                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div class="relative max-h-full">
+                                <!-- Modal content -->
+                                <div class="relative rounded-lg">
+                                    <!-- Modal header -->
+                                    <div class="relative">
+                                        <button type="button"
+                                            class="absolute inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white top-2 right-2"
+                                            data-modal-hide="payment-proof-modal">
+                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 14 14">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="h-[45rem] w-full rounded-lg p-4 md:p-0">
+                                        <img src="{{ asset('img_handler/error_img_handler/main_proved_paid.jpg') }}"
+                                            class="object-contain w-full h-full" alt="Bukti Pembayaran" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Elements -->
+                        <div class="mb-4">
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 Nomor Kamar
                             </label>
@@ -111,24 +174,22 @@
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 Status Kamar
                             </label>
-                            <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent">
+                            <div class="relative z-20 bg-transparent">
                                 <select name="status"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 appearance-none"
-                                    :class="isOptionSelected && 'text-gray-800 dark:text-white/90'"
-                                    @change="isOptionSelected = true">
-                                    <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 appearance-none">
+                                    <option value="">
                                         Pilih Status Kamar
                                     </option>
-                                    <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                    <option value="tersewa">
                                         Tersewa
                                     </option>
-                                    <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                    <option value="belum_tersewa">
                                         Belum Tersewa
                                     </option>
-                                    <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                    <option value="dp">
                                         Bersatus DP
                                     </option>
-                                    <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                    <option value="dibatalkan">
                                         Dibatalkan
                                     </option>
                                 </select>
@@ -136,7 +197,38 @@
                                     class="absolute right-0 z-30 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
                                     <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke=""
+                                        <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="currentColor"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Elements -->
+                        <div class="mb-4">
+                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
+                                Status Pembayaran
+                            </label>
+                            <div class="relative z-20 bg-transparent">
+                                <select name="status"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 appearance-none">
+                                    <option value="">
+                                        Pilih Status Pembayaran
+                                    </option>
+                                    <option value="paid">
+                                        Lunas
+                                    </option>
+                                    <option value="dp">
+                                        DP
+                                    </option>
+                                    <option value="not_paid">
+                                        Belum Lunas
+                                    </option>
+                                </select>
+                                <span
+                                    class="absolute right-0 z-30 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
+                                    <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="currentColor"
                                             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </span>
@@ -162,88 +254,8 @@
                                 </span>
                             </div>
                         </div>
-                        <!-- Elements -->
-                        <div class="col-span-1 md:col-span-2">
-                            <label for="foto_ktp"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload
-                                Foto KTP</label>
-
-                            <input class="hidden" type="file" id="foto_ktp" name="foto_ktp" x-ref="photo"
-                                @change="handlePhotoChange($event)" accept="image/png, image/jpeg, image/jpg" />
-
-                            <div class="mt-2" x-show="photoPreview">
-                                <div class="relative w-full h-48 overflow-hidden bg-gray-700 rounded-lg">
-                                    <img :src="photoPreview" class="object-contain w-full h-full">
-                                    <button type="button"
-                                        @click="fotoKtp = null; photoPreview = null; $refs.photo.value = null;"
-                                        class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1.5 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M6 18L18 6M6 6l12 12"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <button type="button" x-show="!photoPreview" @click="$refs.photo.click()"
-                                class="flex items-center justify-center w-full p-2.5 mt-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600">
-                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4 4-4-4h3V3h2v8z" />
-                                </svg>
-                                Upload Foto KTP
-                            </button>
-                            <span class="text-gray-500/60 dark:text-white/60 text-[0.72rem] pt-3 block">
-                                Format yang didukung adalah JPEG, JPG, PNG. Ukuran maksimal 3MB.
-                            </span>
-                            <div x-show="photoError" x-text="photoError"
-                                class="mt-2 text-sm text-red-500 dark:text-red-400"></div>
-                        </div>
                     </div>
-                    <!-- Elements -->
-                    <!-- Elements -->
-                    <div class="mb-4">
-                        <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                            Harga Sewa Bulanan
-                        </label>
 
-                        <div class="relative">
-                            <input type="text" placeholder="Masukkan Harga Sewa Bulanan"
-                                class="w-full text-sm text-gray-800 bg-transparent border border-gray-300 rounded-lg dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 bg-none placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
-                                style="padding-left: 40px;" />
-                            <span
-                                class="absolute left-0 flex items-center justify-center w-8 -translate-y-1/2 border-r border-gray-200 top-1/2 h-11 dark:border-gray-800">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20" height="20">
-                                    <defs>
-                                        <style>
-                                            .cls-6 {
-                                                fill: #edebf2
-                                            }
-                                        </style>
-                                    </defs>
-                                    <g id="Credit_Card_allow" data-name="Credit Card allow">
-                                        <path
-                                            d="M43 8c0 26.28.06 24.24-.13 24.87A3 3 0 0 1 40 35H4a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h36a3 3 0 0 1 3 3z"
-                                            style="fill:#6fabe6" />
-                                        <path
-                                            d="M43 8c0 25.11.06 23.24-.13 23.87C42.23 32.06 45 32 7 32a3 3 0 0 1-3-3c0-25.11-.06-23.24.13-23.87C4.77 4.94 2 5 40 5a3 3 0 0 1 3 3z"
-                                            style="fill:#82bcf4" />
-                                        <path style="fill:#374f68" d="M1 11h42v5H1z" />
-                                        <path d="M43 11v3H7a3 3 0 0 1-3-3z" style="fill:#425b72" />
-                                        <path style="fill:#dad7e5" d="M5 21h20v4H5z" />
-                                        <path class="cls-6"
-                                            d="M25 21v2H10a2 2 0 0 1-2-2zM9 32H5a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zM17 32h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2zM25 32h-4a1 1 0 0 1 0-2h4a1 1 0 0 1 0 2z" />
-                                        <path d="M47 35a7.86 7.86 0 0 1-1.44 4.56A8 8 0 1 1 47 35z"
-                                            style="fill:#9dcc6b" />
-                                        <path d="M45.94 39c-7 4-14.89-3.89-10.9-10.9C42 24 50 32 45.94 39z"
-                                            style="fill:#b5e08c" />
-                                        <path class="cls-6"
-                                            d="M35.29 35.71a1 1 0 0 1 1.42-1.42l1.29 1.3 3.29-3.3a1 1 0 0 1 1.42 1.42c-5.45 5.44-4.17 5.29-7.42 2z" />
-                                    </g>
-                                </svg>
-                            </span>
-                        </div>
-                    </div>
                     <button
                         class="flex items-center justify-center w-full gap-2 px-4 py-2 text-xs font-semibold text-white align-middle transition-colors duration-200 bg-green-600 rounded-lg hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 md:text-base">
                         <span class="block">Simpan</span>
@@ -258,5 +270,67 @@
         </div>
     </form>
 </div>
-<!-- ====== Form Elements Section End -->
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        // Cache jQuery objects
+        const $uploadBtn = $('#upload-photo-btn');
+        const $fileInput = $('#foto_ktp');
+        const $previewContainer = $('#photo-preview-container');
+        const $previewImage = $('#photo-preview-image');
+        const $removeBtn = $('#remove-photo-btn');
+        const $errorContainer = $('#photo-error-container');
+
+        // Trigger file input click
+        $uploadBtn.on('click', function() {
+            $fileInput.click();
+        });
+
+        // Handle file selection
+        $fileInput.on('change', function(event) {
+            const file = event.target.files[0];
+            $errorContainer.hide().text('');
+
+            if (!file) {
+                return;
+            }
+
+            // Validation
+            const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+            const maxSize = 10 * 1024 * 1024; // 10MB
+
+            if (!allowedTypes.includes(file.type)) {
+                $errorContainer.text('Format file harus PNG, JPG, atau JPEG.').show();
+                $fileInput.val(''); // Clear the input
+                return;
+            }
+
+            if (file.size > maxSize) {
+                $errorContainer.text('Ukuran file tidak boleh lebih dari 10MB.').show();
+                $fileInput.val(''); // Clear the input
+                return;
+            }
+
+            // Show preview
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                $previewImage.attr('src', e.target.result);
+                $previewContainer.show();
+                $uploadBtn.hide();
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Handle remove photo
+        $removeBtn.on('click', function() {
+            $fileInput.val(''); // Clear the file input
+            $previewContainer.hide();
+            $previewImage.attr('src', '');
+            $uploadBtn.show();
+            $errorContainer.hide().text('');
+        });
+    });
+</script>
+@endpush
 @endsection

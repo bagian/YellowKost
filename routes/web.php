@@ -27,6 +27,10 @@ Route::get('/profile-setting', function(){
     return view('pages.settingAccount._settingAccount');
 })->name('profile');
 
+Route::get('/jurnal-harian', function(){
+    return view('pages.pos._journalHarian');
+})->name('pos');
+
 Route::post('/sewa/submit', [BookingController::class, 'submit'])->name('rent.submit');
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
@@ -59,6 +63,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/penyewa/form', [BookingController::class, 'form'])->name('booking.form');
 Route::post('/penyewa/submit', [BookingController::class, 'submit'])->name('booking.submit');
+
 
 Route::middleware('role:admin')->group(function() {
     Route::resource('/kamar', RoomController::class)->parameters([
