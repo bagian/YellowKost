@@ -138,35 +138,36 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($booking as $row)
             <tr
                 class="text-white transition-all duration-300 ease-in-out bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-300">
                 <td class="px-6 py-4">
-                    1.
+                    {{ $loop->iteration }}
                 </td>
                 <td class="px-6 py-4">
-                    Ivan Ega Kusuma
+                    {{ $row->user->full_name }}
                 </td>
                 <td class="px-6 py-4">
-                    3372041807000011
+                    {{ $row->user->nik }}
                 </td>
                 <td class="px-6 py-4 ">
-                    JL. LOMPO BATANG DALAM 2 NO 6, MOJOSONGO, JEBRES, SURAKARTA.
+                    {{ $row->user->address }}
                 </td>
                 <td class="px-6 py-4">
-                    082133062072
+                    {{ $row->user->phone }}
                 </td>
                 <td class="px-6 py-4">
-                    082133062072
+                    {{ $row->user->parent_phone }}
                 </td>
                 <td class="px-6 py-4">
-                    Lunas
+                    {{ $row->status }}
                 </td>
                 <td class="px-6 py-4">
-                    12/08/2025
+                    {{ $row->check_in->format('d/m/Y') }}
                 </td>
                 <td class="px-6 py-4">
                     <!-- Modal toggle -->
-                    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                    <button data-modal-target="default-modal-{{ $row->id }}" data-modal-toggle="default-modal-{{ $row->id }}"
                         class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-xs xl:text-normal px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-900 flex gap-2 items-center transition-all duration-300 ease-in-out dark:hover:focus:ring-gray-200 border border-1 border-gray-300 whitespace-nowrap"
                         type="button">
                         <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +178,7 @@
                         Lihat Foto KTP
                     </button>
                     <!-- Main modal -->
-                    <div id="default-modal" tabindex="-1" aria-hidden="true"
+                    <div id="default-modal-{{ $row->id }}" tabindex="-1" aria-hidden="true"
                         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative w-full max-w-2xl max-h-full p-4">
                             <!-- Modal content -->
@@ -187,7 +188,7 @@
                                     class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t md:p-5 dark:border-gray-600">
                                     <button type="button"
                                         class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white"
-                                        data-modal-hide="default-modal">
+                                        data-modal-hide="default-modal-{{ $row->id }}">
                                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             fill="none" viewBox="0 0 14 14">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -199,6 +200,7 @@
                                 <!-- Modal body -->
                                 <div class="p-4 space-y-4 md:p-5">
                                     FOTO KTP Muncul DISINI
+                                    <img src="{{ Storage::url($row->user->ktp) }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -230,6 +232,7 @@
                     </div>
                 </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

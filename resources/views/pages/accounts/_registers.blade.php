@@ -193,7 +193,7 @@
                             <div class="flex-grow border-t border-gray-300"></div>
                         </div>
                         <div class="w-full mt-3">
-                            <button type="submit"
+                            <a href="{{ route('auth.social', 'google') }}"
                                 class="w-full px-5 py-2 transition-all duration-300 ease-in-out border border-gray-400 rounded-full border-1 xl:py-4 hover:bg-red-600 group hover:border-red-600">
                                 <span class="flex items-center justify-center gap-2">
                                     <?xml version="1.0" encoding="utf-8"?>
@@ -217,7 +217,7 @@
                                         dengan
                                         Google</span>
                                 </span>
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <!-- Additional Options -->

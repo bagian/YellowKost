@@ -65,7 +65,7 @@
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
                                 onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <input type="number" name="price" hidden>
+                            <input type="number" name="price" hidden value="{{ $room->price ?? ''}}">
                         </div>
                         <!-- Elements -->
                         <div class="col-span-1 mb-4 md:col-span-2">
@@ -105,24 +105,14 @@
                         </div>
                         <!-- Elements -->
                         <div class="flex flex-col gap-2 col-span-0 md:col-span-2">
-                            <label for="pictures"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload Foto
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload Foto
                                 Kamar</label>
-                            <input id="pictures" name="pictures[]" type="file" @change="handleFileChange" multiple
-                                accept="image/png, image/jpeg, image/jpg" class="hidden" x-ref="picturesInput">
-                            <button type="button" @click="$refs.picturesInput.click()"
-                                class="flex items-center justify-center w-full p-2.5 text-xs text-gray-900 bg-gray-50 border border-gray-300 rounded-lg cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 hover:bg-gray-100 dark:hover:bg-gray-600">
-                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4 4-4-4h3V3h2v8z" />
-                                </svg>
-                                Pilih Foto Kamar (Bisa lebih dari satu)
-                            </button>
-                            <div class="mt-1 text-xs text-gray-500 dark:text-gray-300">
-                                Format yang didukung adalah JPEG, JPG, PNG. Ukuran maksimal 10MB per file.
-                            </div>
-                            <div x-show="error" x-text="error" class="mt-2 text-sm text-red-500 dark:text-red-400">
-                            </div>
+                            <input
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 cursor-pointer"
+                                type="file" id="pictures" multiple accept="image/*">
+                            <input type="file" name="pictures[]" hidden />
+                            <div class="mt-1 text-sm text-gray-500 dark:text-gray-300">A profile
+                                picture is useful to confirm your are logged into your account</div>
                         </div>
                         <div x-show="error" x-text="error" class="mt-2 text-sm text-red-500 dark:text-red-400">
                         </div>
@@ -186,7 +176,7 @@
 <script id="previewImage" type="text/template">
     <div class="swiper-slide">
                 <img src=""
-                alt="" class="object-cover h-64 w-full" />
+                alt="" class="object-cover !h-64 !w-64" />
                 <button data-tempid="" data-id="" type="button"
                 class="delete-image absolute bottom-0 z-20 flex items-center justify-center w-full p-2.5 text-center text-gray-700 hover:text-red-700 transition-all duration-150 ease-in-out bg-white/30 backdrop-blur-md">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"

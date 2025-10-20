@@ -69,12 +69,14 @@ class TenantRepository extends BaseRepository implements TenantRepositoryInterfa
         return $this->transaction(callback: function() use($model, $data) {
             if (isset($data['ktp'])) {
                 $name = "ktp_{$data['full_name']}";
-                $data['ktp'] = $this->imageService->save($data['ktp'], 'ktp', $name);
+                $savedPicture = $this->imageService->save($data['ktp'], 'ktp', $name);
+                $data['ktp'] = $savedPicture['url'];
             }
 
             if (isset($data['profile_picture']) && $data['avatar_type'] == 'storage') {
                 $name = "avatar_{$data['full_name']}";
-                $data['profile_picture'] = $this->imageService->save($data['profile_picture'], 'avatar', $name);
+                $savedPicture = $this->imageService->save($data['profile_picture'], 'avatar', $name);
+                $data['profile_picture'] = $savedPicture['url'];
             }
 
             $model = $this->fillModel($model, $data);

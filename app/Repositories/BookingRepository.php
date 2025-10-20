@@ -28,6 +28,10 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
         return $this->model::all();
     }
 
+    public function get(): Collection {
+    return $this->model::with('user')->get();
+    }
+
     public function find($id): Model {
         return $this->model::find($id);
     }

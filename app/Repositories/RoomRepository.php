@@ -98,9 +98,9 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
             if (!empty($pictures)) {
                 foreach ($pictures as $row) {
                     $folder = "rooms/ID_{$model->id}";
-                    $data = $this->imageService->save($row, $folder);
+                    $dataPictures = $this->imageService->save($row, $folder);
 
-                    $picture = $this->addPictures($model->id, $data);
+                    $picture = $this->addPictures($model->id, $dataPictures);
                 }
             }
 
