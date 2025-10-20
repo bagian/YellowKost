@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('journals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_booking')->constrained('bookings')->onDelete('restrict')->onUpdate('cascade');
+            $table->enum('type', ['earnings', 'expends']);
+            $table->string('detail');
             $table->decimal('amount', 20, 2);
-            $table->date('payment_date');
-            $table->enum('status', ['confirmed', 'pending', 'failed']);
-            $table->boolean('is_dp')->default(false);
+            $table->date('date');
+            $table->string('notes')->nullable();
             $table->foreignId('payment_method')->constrained('payment_methods')->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('journals');
     }
 };
