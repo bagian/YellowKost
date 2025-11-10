@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>403 Forbidden - Akses Ditolak</title>
+    <title>500 Internal Server Error - Terjadi Kesalahan Server</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -19,10 +19,10 @@
     <div
         class="flex flex-col items-center justify-center min-h-screen text-gray-800 bg-gray-100 dark:bg-gray-900 dark:text-gray-200">
         <div class="p-8 text-center">
-            <h1 class="font-bold text-indigo-600 text-8xl md:text-[16rem] dark:text-indigo-400">403</h1>
-            <h2 class="mt-4 text-2xl font-semibold tracking-tight md:text-4xl">Akses Ditolak</h2>
+            <h1 class="font-bold text-indigo-600 text-8xl md:text-[16rem] dark:text-indigo-400">500</h1>
+            <h2 class="mt-4 text-2xl font-semibold tracking-tight md:text-4xl">Terjadi Kesalahan Server</h2>
             <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
-                Maaf, Anda tidak memiliki izin untuk mengakses halaman ini.
+                Maaf, terjadi kesalahan di pihak kami. Tim kami telah diberitahu dan sedang menanganinya.
             </p>
             <a href="{{ url('/') }}"
                 class="inline-block px-6 py-3 mt-8 text-sm font-semibold text-white transition-colors duration-200 bg-indigo-600 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">

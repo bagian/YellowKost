@@ -44,6 +44,11 @@ Route::get('/form-testimonial', function () {
 })->name('testimonial');
 
 
+// Route::get('/testerror', function() {
+//     abort(419, 'Unauthorized action.');
+// })->name('test.error');
+
+
 Route::get('/profile-setting', function(){
     return view('pages.settingAccount._settingAccount');
 })->name('profile');
@@ -78,5 +83,4 @@ Route::middleware('role:admin')->group(function() {
 Route::get('/infokamar', function() {
     return view('pages.kamar.create');
 })->name('info.kamar');
-
 require __DIR__.'/auth.php';
