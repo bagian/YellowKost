@@ -2,26 +2,18 @@
 
 namespace App\Repositories;
 
-use App\Models\Booking;
-use App\Models\User;
-use App\Repositories\Interface\BookingRepositoryInterface;
-use App\Repositories\Interface\TenantRepositoryInterface;
+use App\Models\Payment;
+use App\Repositories\Interface\PaymentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class BookingRepository extends BaseRepository implements BookingRepositoryInterface
+class PaymentRepository extends BaseRepository implements PaymentRepositoryInterface
 {
     protected $tenantRepository;
 
     protected function getModelClass() {
-        return Booking::class;
-    }
-
-    public function __construct(TenantRepositoryInterface $tenantRepository) {
-        parent::__construct();
-
-        $this->tenantRepository = $tenantRepository;
+        return Payment::class;
     }
 
     public function all(): Collection {
@@ -29,7 +21,7 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
     }
 
     public function get(): Collection {
-        return $this->model::with('user')->get();
+    return $this->model::with()->get();
     }
 
     public function find($id): Model {

@@ -68,6 +68,7 @@
                     {{-- <p class="mt-3 text-xs text-gray-400 lg:text-lg">Kos yang nyaman, bersih, dan harga terjangkau.
                     </p> --}}
                 </span>
+                @include('partials._errors')
                 <form action="{{ route('login') }}" method="post">
                     @csrf
                     <div class="mt-4 xl:mt-6">

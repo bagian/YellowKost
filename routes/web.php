@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\JournalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\RoomController;
@@ -72,6 +73,9 @@ Route::middleware('role:admin')->group(function() {
     Route::resource('/penyewa', BookingController::class)->parameters([
         "penyewa" => "booking"
     ]);
+
+    Route::get('/journal/pos', [JournalController::class, 'pos'])->name('journal.pos');
+    Route::resource('/journal', JournalController::class);
 });
 
 
