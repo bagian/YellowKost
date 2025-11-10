@@ -4,12 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Payment extends Model
+class Journal extends Model
 {
-    public function booking() {
-        return $this->belongsTo(Booking::class, 'id_booking');
-    }
-
     public function payMethod() {
         return $this->belongsTo(PaymentMethod::class, 'payment_method');
     }
