@@ -83,3 +83,16 @@ body {
 .swal-title {
     font-size: 1.8rem !important;
 }
+
+.no-calendar::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    left: 0; /* Ensures the calendar still shows up */
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    -moz-appearance: textfield;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+}
