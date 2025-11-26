@@ -1,17 +1,19 @@
-<a href="{{ route('booking.form') }}">
-    <button type="button"
-        class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 transition-all duration-300 ease-in-out dark:text-white">
-        <span class="flex flex-row items-center">
-            <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-                <path
-                    d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
-            </svg>
-            <span class="ms-2">
-                Tambahkan Data
+<div>
+    <a href="{{ route('booking.form') }}">
+        <button type="button"
+            class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 transition-all duration-300 ease-in-out dark:text-white">
+            <span class="flex flex-row items-center">
+                <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <path
+                        d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
+                </svg>
+                <span class="ms-2">
+                    Tambahkan Data
+                </span>
             </span>
-        </span>
-    </button>
-</a>
+        </button>
+    </a>
+</div>
 <div class="mt-8 mb-8 overflow-x-auto bg-gray-100 shadow-lg rounded-2xl dark:bg-gray-800">
     <div class="relative flex flex-row items-center justify-between w-full p-4 pb-4">
         <div class="max-w-xs xl:w-48 w-36">

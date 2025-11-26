@@ -2,7 +2,7 @@
 
 @section('content')
 @include('components._accordionLink')
-<div class="max-w-2xl mx-auto">
+<div class="max-w-2xl pt-20 mx-auto">
     <form action="" method="POST">
         @csrf
         <div class="space-y-6">

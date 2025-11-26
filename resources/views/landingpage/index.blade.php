@@ -205,5 +205,7 @@
         setupPasswordToggle('togglePassword', 'password', 'eyeOpen', 'eyeClosed');
     });
 </script>
+@stack('scripts')
+</script>
 
 </html>

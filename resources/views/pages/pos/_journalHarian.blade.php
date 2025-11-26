@@ -1,8 +1,8 @@
 @extends('default')
 
 @section('content')
-    @include('components._accordionLink')
-
+@include('components._accordionLink')
+<div class="justify-center pt-20 mx-auto max-w-7xl">
     <div class="w-full mx-auto">
         <div class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
             <div class="px-5 py-4 border-b border-gray-200 dark:border-gray-700 sm:px-6 sm:py-5">
@@ -68,7 +68,8 @@
                     </div>
                     {{-- Booking --}}
                     <div class="col-span-6">
-                        <label for="id_booking" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kamar Penyewa</label>
+                        <label for="id_booking"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kamar Penyewa</label>
                         <select name="id_booking" id="id_booking"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option value=""></option>
@@ -91,81 +92,85 @@
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
                 </div>
 
-                {{-- <!-- Add Button -->
-            <div class="flex items-end md:col-span-3">
-                <button @click="addItem"
-                    class="flex items-center justify-center w-full gap-2 px-4 py-2 font-semibold text-white align-middle transition-colors duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800">
-                    <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path
-                            d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
-                    </svg>
-                    <span>Tambah</span>
-                </button>
-            </div>
-            <!-- Transaction Items Table -->
-            <div class="mt-6">
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">Jenis Transaksi</th>
-                                <th scope="col" class="px-6 py-3">Catatan</th>
-                                <th scope="col" class="px-6 py-3 text-center">Tanggal</th>
-                                <th scope="col" class="px-6 py-3 text-right">Harga Satuan</th>
-                                <th scope="col" class="px-6 py-3 text-right">Subtotal</th>
-                                <th scope="col" class="px-6 py-3 text-center">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <template x-if="cart.length === 0">
-                                <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                    <td colspan="6" class="px-6 py-4 text-center text-gray-500">
-                                        Belum ada item yang ditambahkan.
-                                    </td>
-                                </tr>
-                            </template>
-                            <template x-for="(item, index) in cart" :key="index">
-                                <tr
-                                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
-                                    <th scope="row"
-                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                                        x-text="item.name"></th>
-                                    <td scope="row"
-                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <p x-text="item.name"></p>
-                                        <p class="text-xs text-gray-500 dark:text-gray-400" x-text="item.notes"
-                                            x-show="item.notes"></p>
-                                    </td>
-                                    <td class="px-6 py-4 text-center" x-text="item.quantity"></td>
-                                    <td class="px-6 py-4 text-right" x-text="formatCurrency(item.price)"></td>
-                                    <td class="px-6 py-4 text-right" x-text="formatCurrency(item.subtotal)"></td>
-                                    <td class="px-6 py-4 text-center">
-                                        <button @click="removeItem(index)"
-                                            class="font-medium text-red-600 dark:text-red-500 hover:underline">
-                                            Hapus
-                                        </button>
-                                    </td>
-                                </tr>
-                            </template>
-                        </tbody>
-                        <tfoot>
-                            <tr class="font-semibold text-gray-900 dark:text-white">
-                                <th scope="row" colspan="1"
-                                    class="px-6 py-3 text-base text-right border-t dark:border-gray-700">Total</th>
-                                <td class="px-6 py-3 text-base text-right border-t dark:border-gray-700"
-                                    x-text="formatCurrency(total)"></td>
-                                <td class="border-t dark:border-gray-700"></td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                {{--
+                <!-- Add Button -->
+                <div class="flex items-end md:col-span-3">
+                    <button @click="addItem"
+                        class="flex items-center justify-center w-full gap-2 px-4 py-2 font-semibold text-white align-middle transition-colors duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800">
+                        <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512">
+                            <path
+                                d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+                        </svg>
+                        <span>Tambah</span>
+                    </button>
                 </div>
-            </div> --}}
+                <!-- Transaction Items Table -->
+                <div class="mt-6">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">Jenis Transaksi</th>
+                                    <th scope="col" class="px-6 py-3">Catatan</th>
+                                    <th scope="col" class="px-6 py-3 text-center">Tanggal</th>
+                                    <th scope="col" class="px-6 py-3 text-right">Harga Satuan</th>
+                                    <th scope="col" class="px-6 py-3 text-right">Subtotal</th>
+                                    <th scope="col" class="px-6 py-3 text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template x-if="cart.length === 0">
+                                    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                        <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                                            Belum ada item yang ditambahkan.
+                                        </td>
+                                    </tr>
+                                </template>
+                                <template x-for="(item, index) in cart" :key="index">
+                                    <tr
+                                        class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                            x-text="item.name"></th>
+                                        <td scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            <p x-text="item.name"></p>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400" x-text="item.notes"
+                                                x-show="item.notes"></p>
+                                        </td>
+                                        <td class="px-6 py-4 text-center" x-text="item.quantity"></td>
+                                        <td class="px-6 py-4 text-right" x-text="formatCurrency(item.price)"></td>
+                                        <td class="px-6 py-4 text-right" x-text="formatCurrency(item.subtotal)"></td>
+                                        <td class="px-6 py-4 text-center">
+                                            <button @click="removeItem(index)"
+                                                class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                                                Hapus
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                            <tfoot>
+                                <tr class="font-semibold text-gray-900 dark:text-white">
+                                    <th scope="row" colspan="1"
+                                        class="px-6 py-3 text-base text-right border-t dark:border-gray-700">Total</th>
+                                    <td class="px-6 py-3 text-base text-right border-t dark:border-gray-700"
+                                        x-text="formatCurrency(total)"></td>
+                                    <td class="border-t dark:border-gray-700"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div> --}}
 
                 <!-- Submit Button -->
                 <div class="flex justify-end mt-6">
                     <button type="submit"
                         class="flex items-center justify-center gap-2 px-4 py-2 font-semibold text-white align-middle transition-colors duration-200 bg-green-600 rounded-lg hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed dark:bg-green-700 dark:hover:bg-green-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5" fill="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5"
+                            fill="currentColor">
                             <path
                                 d="M128 0C92.7 0 64 28.7 64 64v64H36c-13.3 0-24 10.7-24 24s10.7 24 24 24h28v24H36c-13.3 0-24 10.7-24 24s10.7 24 24 24h28v24H36c-13.3 0-24 10.7-24 24s10.7 24 24 24h28v48c0 35.3 28.7 64 64 64h64v32c0 17.7 14.3 32 32 32s32-14.3 32-32v-32h32c17.7 0 32-14.3 32-32s-14.3-32-32-32h-32v-32h32c17.7 0 32-14.3 32-32s-14.3-32-32-32h-32v-32h32c17.7 0 32-14.3 32-32s-14.3-32-32-32h-32V64c0-35.3-28.7-64-64-64H128zM384 64c-26.5 0-48 21.5-48 48v64h48V64zM384 224v64h48c26.5 0 48-21.5 48-48s-21.5-48-48-48h-48zm0 160v64h48c26.5 0 48-21.5 48-48s-21.5-48-48-48h-48z" />
                         </svg>
@@ -175,10 +180,11 @@
             </div>
         </div>
     </div>
+</div>
 
-    @push('scripts')
-        <script>
-            function posForm() {
+@push('scripts')
+<script>
+    function posForm() {
                 return {
                     items: [{
                             id: 1,
@@ -259,6 +265,6 @@
                     }
                 }
             }
-        </script>
-    @endpush
+</script>
+@endpush
 @endsection

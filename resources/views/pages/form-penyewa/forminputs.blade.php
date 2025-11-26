@@ -2,8 +2,8 @@
 
 @section('content')
 
-<div>
-    @include('components._accordionLink')
+@include('components._accordionLink')
+<div class="flex flex-col justify-center mx-auto max-w-7xl">
     @include('pages.form-penyewa._tablesPenyewa')
     <form action="" id="penyewa-form">
         <div class="space-y-6">

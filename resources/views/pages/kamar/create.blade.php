@@ -7,7 +7,7 @@
 <!-- ====== Form Elements Section Start -->
 @include('components._accordionLink')
 
-<div class="mx-auto">
+<div class="justify-center pt-20 mx-auto max-w-7xl">
     @include('partials._errors')
     <form action="{{ route('kamar.store') }}" method="post" enctype="multipart/form-data">
         @csrf
@@ -132,7 +132,7 @@
                         </div>
                     </div>
                     <div x-show="previews.length > 0"
-                        class="relative w-full h-80 col-span-1 overflow-hidden align-middle rounded-lg md:col-span-2">
+                        class="relative w-full col-span-1 overflow-hidden align-middle rounded-lg h-80 md:col-span-2">
                         <!-- Slider main container -->
                         <div class="w-full h-full swiper">
                             <div class="swiper-wrapper">

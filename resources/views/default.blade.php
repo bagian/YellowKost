@@ -19,6 +19,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
+
     <!-- Theme initialization script to prevent FOUC -->
     <script src="{{ asset('js/components/themeInit.js') }}"></script>
 
@@ -26,7 +27,9 @@
     <script src="{{ asset('js/components/darkMode.js') }}"></script>
 
     {{-- jQuery --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/b87f3ad2d2.js" crossorigin="anonymous"></script>
     <!-- Styles / Scripts -->
     {{-- @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot'))) --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -56,7 +59,7 @@
     @include('partials._sidebar')
 
     <!-- Main Content -->
-    <div class="p-2.5 py-8 lg:ml-64">
+    <div class="p-2.5 lg:ml-64">
         <div class="rounded-lg dark:border-gray-700 mt-14">
             @yield('content')
         </div>
