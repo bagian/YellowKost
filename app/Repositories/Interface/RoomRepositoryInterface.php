@@ -20,7 +20,7 @@ interface RoomRepositoryInterface
 
     public function createWithPictures(array $data, array $pictures): Model;
 
-    public function update(Model $model, array $data, array $pictures): Model;
+    public function update(Model $model, array $data, ?array $pictures = []): Model;
 
     public function delete(Model $model): Model;
 

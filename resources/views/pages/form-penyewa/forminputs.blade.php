@@ -5,8 +5,11 @@
 @include('components._accordionLink')
 <div class="flex flex-col justify-center mx-auto max-w-7xl">
     @include('pages.form-penyewa._tablesPenyewa')
-    <form action="" id="penyewa-form">
-        <div class="space-y-6">
+    <div class="form-detail space-y-6">
+        <form action="" id="penyewa-form" method="POST">
+            @csrf
+            {{ method_field('PUT') }}
+            <input type="hidden" name="id_user" value="">
             <div class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
                 <div class="px-5 py-4 sm:px-6 sm:py-5">
                     <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
@@ -23,11 +26,11 @@
                             <div data-modal-target="ktp-photo-modal" data-modal-toggle="ktp-photo-modal"
                                 class="relative group w-full !h-[14.2rem] overflow-hidden bg-gray-700 rounded-lg cursor-pointer">
                                 <img src="{{ asset('img_handler/error_img_handler/main_error_foto_ktp_el.jpg') }}"
-                                    class="absolute top-0 left-0 object-cover w-full h-full blur-sm"
+                                    class="image-ktp absolute top-0 left-0 object-cover w-full h-full blur-sm"
                                     alt="Foto KTP Background" />
                                 <img id="ktp-preview-image"
                                     src="{{ asset('img_handler/error_img_handler/main_error_foto_ktp_el.jpg') }}"
-                                    class="relative object-contain w-full h-full pointer-events-none" alt="Foto KTP" />
+                                    class="image-ktp relative object-contain w-full h-full pointer-events-none" alt="Foto KTP" />
                                 <div
                                     class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
                                     <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor"
@@ -61,7 +64,7 @@
                                     <!-- Modal body -->
                                     <div class="h-[45rem] w-full rounded-lg p-4 md:p-0">
                                         <img src="{{ asset('img_handler/error_img_handler/main_error_foto_ktp_el.jpg') }}"
-                                            class="object-contain w-full h-full" alt="Foto KTP" />
+                                            class="image-ktp object-contain w-full h-full" alt="Foto KTP" />
                                     </div>
                                 </div>
                             </div>
@@ -69,16 +72,16 @@
                         <!-- Elements -->
                         <div class="mb-4">
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
-                                Bukti Pembyararan Penyewa
+                                Bukti Pembyaran Penyewa
                             </label>
                             <div data-modal-target="payment-proof-modal" data-modal-toggle="payment-proof-modal"
                                 class="relative group w-full !h-[14.2rem] overflow-hidden bg-gray-700 rounded-lg cursor-pointer">
                                 <img src="{{ asset('img_handler/error_img_handler/main_proved_paid.webp') }}"
-                                    class="absolute top-0 left-0 object-cover w-full h-full blur-sm"
+                                    class="image-pembayaran absolute top-0 left-0 object-cover w-full h-full blur-sm"
                                     alt="Bukti Pembayaran Background" />
                                 <img id="payment-preview-image"
                                     src="{{ asset('img_handler/error_img_handler/main_proved_paid.webp') }}"
-                                    class="relative object-contain w-full h-full pointer-events-none"
+                                    class="image-pembayaran relative object-contain w-full h-full pointer-events-none"
                                     alt="Bukti Pembayaran" />
                                 <div
                                     class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
@@ -113,7 +116,7 @@
                                     <!-- Modal body -->
                                     <div class="h-[45rem] w-full rounded-lg p-4 md:p-0">
                                         <img src="{{ asset('img_handler/error_img_handler/main_proved_paid.jpg') }}"
-                                            class="object-contain w-full h-full" alt="Bukti Pembayaran" />
+                                            class="image-pembayaran object-contain w-full h-full" alt="Bukti Pembayaran" />
                                     </div>
                                 </div>
                             </div>
@@ -121,12 +124,29 @@
                         <!-- Elements -->
                         <div class="mb-4">
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
-                                Nomor Kamar
+                                Kamar yang tersedia
                             </label>
-                            <input type="text" placeholder="Masukkan Nomor Kamar" inputmode="numeric" pattern="[0-9]*"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
-                                onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <div class="relative z-20 bg-transparent">
+                                <select name="id_room"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 appearance-none">
+                                    <option value="">
+                                        Pilih Kamar
+                                    </option>
+                                    @foreach($room as $row)
+                                    <option value="{{ $row->id }}">
+                                        {{ $row->room_name }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                <span
+                                    class="absolute right-0 z-30 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
+                                    <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="currentColor"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                         <!-- Elements -->
                         <div class="mb-4">
@@ -172,33 +192,19 @@
                         <!-- Elements -->
                         <div class="mb-4">
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
-                                Status Kamar
+                                Tanggal Masuk
                             </label>
-                            <div class="relative z-20 bg-transparent">
-                                <select name="status"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 appearance-none">
-                                    <option value="">
-                                        Pilih Status Kamar
-                                    </option>
-                                    <option value="tersewa">
-                                        Tersewa
-                                    </option>
-                                    <option value="belum_tersewa">
-                                        Belum Tersewa
-                                    </option>
-                                    <option value="dp">
-                                        Bersatus DP
-                                    </option>
-                                    <option value="dibatalkan">
-                                        Dibatalkan
-                                    </option>
-                                </select>
+                            <div class="relative">
+                                <input type="date" placeholder="Tanggal Masuk Penyewa" name="check_in"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    onclick="this.showPicker()">
                                 <span
-                                    class="absolute right-0 z-30 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
-                                    <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    class="absolute text-gray-500 -translate-y-1/2 pointer-events-none top-1/2 right-3 dark:text-gray-400">
+                                    <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="currentColor"
-                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M6.66659 1.5415C7.0808 1.5415 7.41658 1.87729 7.41658 2.2915V2.99984H12.5833V2.2915C12.5833 1.87729 12.919 1.5415 13.3333 1.5415C13.7475 1.5415 14.0833 1.87729 14.0833 2.2915V2.99984L15.4166 2.99984C16.5212 2.99984 17.4166 3.89527 17.4166 4.99984V7.49984V15.8332C17.4166 16.9377 16.5212 17.8332 15.4166 17.8332H4.58325C3.47868 17.8332 2.58325 16.9377 2.58325 15.8332V7.49984V4.99984C2.58325 3.89527 3.47868 2.99984 4.58325 2.99984L5.91659 2.99984V2.2915C5.91659 1.87729 6.25237 1.5415 6.66659 1.5415ZM6.66659 4.49984H4.58325C4.30711 4.49984 4.08325 4.7237 4.08325 4.99984V6.74984H15.9166V4.99984C15.9166 4.7237 15.6927 4.49984 15.4166 4.49984H13.3333H6.66659ZM15.9166 8.24984H4.08325V15.8332C4.08325 16.1093 4.30711 16.3332 4.58325 16.3332H15.4166C15.6927 16.3332 15.9166 16.1093 15.9166 15.8332V8.24984Z"
+                                            fill="" />
                                     </svg>
                                 </span>
                             </div>
@@ -237,26 +243,34 @@
                         <!-- Elements -->
                         <div class="mb-4">
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
-                                Tanggal Masuk
+                                Status Pengajuan Sewa
                             </label>
-                            <div class="relative">
-                                <input type="date" placeholder="Tanggal Masuk Penyewa" name="check_in"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    onclick="this.showPicker()">
+                            <div class="relative z-20 bg-transparent">
+                                <select name="status"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 appearance-none">
+                                    <option value="">
+                                        Pilih Status
+                                    </option>
+                                    <option value="confirmed">
+                                        Diterima
+                                    </option>
+                                    <option value="cancelled">
+                                        Ditolak (Refund)
+                                    </option>
+                                </select>
                                 <span
-                                    class="absolute text-gray-500 -translate-y-1/2 pointer-events-none top-1/2 right-3 dark:text-gray-400">
-                                    <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    class="absolute right-0 z-30 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
+                                    <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M6.66659 1.5415C7.0808 1.5415 7.41658 1.87729 7.41658 2.2915V2.99984H12.5833V2.2915C12.5833 1.87729 12.919 1.5415 13.3333 1.5415C13.7475 1.5415 14.0833 1.87729 14.0833 2.2915V2.99984L15.4166 2.99984C16.5212 2.99984 17.4166 3.89527 17.4166 4.99984V7.49984V15.8332C17.4166 16.9377 16.5212 17.8332 15.4166 17.8332H4.58325C3.47868 17.8332 2.58325 16.9377 2.58325 15.8332V7.49984V4.99984C2.58325 3.89527 3.47868 2.99984 4.58325 2.99984L5.91659 2.99984V2.2915C5.91659 1.87729 6.25237 1.5415 6.66659 1.5415ZM6.66659 4.49984H4.58325C4.30711 4.49984 4.08325 4.7237 4.08325 4.99984V6.74984H15.9166V4.99984C15.9166 4.7237 15.6927 4.49984 15.4166 4.49984H13.3333H6.66659ZM15.9166 8.24984H4.08325V15.8332C4.08325 16.1093 4.30711 16.3332 4.58325 16.3332H15.4166C15.6927 16.3332 15.9166 16.1093 15.9166 15.8332V8.24984Z"
-                                            fill="" />
+                                        <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="currentColor"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </span>
                             </div>
                         </div>
                     </div>
 
-                    <button
+                    <button type="submit"
                         class="flex items-center justify-center w-full gap-2 px-4 py-2 text-xs font-semibold text-white align-middle transition-colors duration-200 bg-green-600 rounded-lg hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-800 md:text-base">
                         <span class="block">Simpan</span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="w-5 h-5 text-white"
@@ -267,69 +281,41 @@
                     </button>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 
 @push('scripts')
 <script>
     $(document).ready(function() {
-        // Cache jQuery objects
-        const $uploadBtn = $('#upload-photo-btn');
-        const $fileInput = $('#foto_ktp');
-        const $previewContainer = $('#photo-preview-container');
-        const $previewImage = $('#photo-preview-image');
-        const $removeBtn = $('#remove-photo-btn');
-        const $errorContainer = $('#photo-error-container');
+        $('.form-detail').hide();
+    });
 
-        // Trigger file input click
-        $uploadBtn.on('click', function() {
-            $fileInput.click();
-        });
+    $('.edit').on('click', function() {
+        const href = $(this).data('href');
+        const id_user = $(this).data('id_user');
+        const ktp = $(this).data('ktp');
+        const name = $(this).data('name');
+        const nik = $(this).data('nik');
+        const address = $(this).data('address');
+        const phone = $(this).data('phone');
+        const parent_phone = $(this).data('parent_phone');
+        const check_in = $(this).data('check_in');
+        
+        $('#penyewa-form').attr('action', href);
+        $('.image-ktp').attr('src', ktp);
+        $('input[name="id_user"]').val(id_user);
+        $('input[name="tenant"]').val(name);
+        $('input[name="nik"]').val(nik);
+        $('input[name="address"]').val(address);
+        $('input[name="phone"]').val(phone);
+        $('input[name="parent_phone"]').val(parent_phone);
+        $('input[name="check_in"]').val(check_in);
 
-        // Handle file selection
-        $fileInput.on('change', function(event) {
-            const file = event.target.files[0];
-            $errorContainer.hide().text('');
-
-            if (!file) {
-                return;
-            }
-
-            // Validation
-            const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-            const maxSize = 10 * 1024 * 1024; // 10MB
-
-            if (!allowedTypes.includes(file.type)) {
-                $errorContainer.text('Format file harus PNG, JPG, atau JPEG.').show();
-                $fileInput.val(''); // Clear the input
-                return;
-            }
-
-            if (file.size > maxSize) {
-                $errorContainer.text('Ukuran file tidak boleh lebih dari 10MB.').show();
-                $fileInput.val(''); // Clear the input
-                return;
-            }
-
-            // Show preview
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                $previewImage.attr('src', e.target.result);
-                $previewContainer.show();
-                $uploadBtn.hide();
-            };
-            reader.readAsDataURL(file);
-        });
-
-        // Handle remove photo
-        $removeBtn.on('click', function() {
-            $fileInput.val(''); // Clear the file input
-            $previewContainer.hide();
-            $previewImage.attr('src', '');
-            $uploadBtn.show();
-            $errorContainer.hide().text('');
-        });
+        $('.form-detail').show();
+        $('html, body').animate({
+            scrollTop: $(".form-detail").offset().top
+        }, 500);
     });
 </script>
 @endpush

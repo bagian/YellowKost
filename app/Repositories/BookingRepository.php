@@ -3,8 +3,10 @@
 namespace App\Repositories;
 
 use App\Models\Booking;
+use App\Models\Room;
 use App\Models\User;
 use App\Repositories\Interface\BookingRepositoryInterface;
+use App\Repositories\Interface\RoomRepositoryInterface;
 use App\Repositories\Interface\TenantRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -12,16 +14,17 @@ use Illuminate\Support\Facades\Auth;
 
 class BookingRepository extends BaseRepository implements BookingRepositoryInterface
 {
-    protected $tenantRepository;
+    protected $tenantRepository, $roomRepository;
 
     protected function getModelClass() {
         return Booking::class;
     }
 
-    public function __construct(TenantRepositoryInterface $tenantRepository) {
+    public function __construct(TenantRepositoryInterface $tenantRepository, RoomRepositoryInterface $roomRepository) {
         parent::__construct();
 
         $this->tenantRepository = $tenantRepository;
+        $this->roomRepository = $roomRepository;
     }
 
     public function all(): Collection {
@@ -43,7 +46,11 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
             $checkIn = $data['check_in'];
             unset($dataUser['check_in']);
 
-            $user = Auth::user();
+            if(isset($data['id_user'])) {
+                $user = User::find($data['id_user']);
+            } else {
+                $user = Auth::user();
+            }
             $user = $this->tenantRepository->update($user, $dataUser);
 
             $model = new $this->model;
@@ -60,6 +67,12 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
         return $this->transaction(function() use ($data, $model): Model {
             $model = $this->fillModel($model, $data);
             $model->save();
+
+            if($data['status'] === 'confirmed') {
+                $room = Room::find($model->id_room);
+                $data['is_available'] = false;
+                $room = $this->roomRepository->update($room, $data);
+            }
 
             return $model;
         });

@@ -28,9 +28,6 @@ Route::get('/profile-setting', function(){
     return view('pages.settingAccount._settingAccount');
 })->name('profile');
 
-Route::get('/jurnal-harian', function(){
-    return view('pages.pos._journalHarian');
-})->name('pos');
 
 Route::post('/sewa/submit', [BookingController::class, 'submit'])->name('rent.submit');
 
@@ -80,6 +77,7 @@ Route::middleware('role:admin')->group(function() {
     ]);
 
     Route::get('/journal/pos', [JournalController::class, 'pos'])->name('journal.pos');
+    Route::get('/journal/report', [JournalController::class, 'report'])->name('journal.report');
     Route::resource('/journal', JournalController::class);
 });
 

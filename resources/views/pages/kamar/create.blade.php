@@ -71,42 +71,6 @@
                             </div>
                         </div>
                         <!-- Elements -->
-                        <div class="col-span-1 mb-3 md:col-span-2">
-                            <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
-                                Status Sewa
-                            </label>
-                            <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent">
-                                <select
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 appearance-none"
-                                    :class="isOptionSelected && 'text-gray-800 dark:text-white/90'"
-                                    @change="isOptionSelected = true">
-                                    <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
-                                        Pilih Status Kamar
-                                    </option>
-                                    <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
-                                        Tersewa
-                                    </option>
-                                    <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
-                                        Belum Tersewa
-                                    </option>
-                                    <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
-                                        Berstatus DP
-                                    </option>
-                                    <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
-                                        Dibatalkan
-                                    </option>
-                                </select>
-                                <span
-                                    class="absolute right-0 z-30 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
-                                    <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke=""
-                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-                        <!-- Elements -->
                         <div class="flex flex-col gap-2 col-span-0 md:col-span-2">
                             <label for="pictures"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload Foto

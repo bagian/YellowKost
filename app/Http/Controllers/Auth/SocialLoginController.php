@@ -35,6 +35,6 @@ class SocialLoginController extends Controller
             return redirect()->route('booking.form');
         }
 
-        return redirect()->intended('/dashboard');
+        return redirect()->intended(route('home', absolute: false));
     }
 }
