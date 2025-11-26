@@ -2,7 +2,7 @@
 
 @section('content')
 @include('components._accordionLink')
-<div class="justify-center pt-20 mx-auto max-w-7xl">
+<div class="justify-center max-w-5xl pt-20 mx-auto">
     <div class="gap-2.5 rounded-2xl border-gray-300 dark:bg-gray-800 dark:border-gray-700 bg-white shadow-lg">
         <!-- Profile Information -->
         <div class="px-5">

@@ -3,9 +3,9 @@
 @section('content')
 
 @include('components._accordionLink')
-<div class="flex flex-col justify-center mx-auto max-w-7xl">
+<div class="flex flex-col justify-center max-w-5xl pt-20 mx-auto">
     @include('pages.form-penyewa._tablesPenyewa')
-    <div class="form-detail space-y-6">
+    <div class="space-y-6 form-detail">
         <form action="" id="penyewa-form" method="POST">
             @csrf
             {{ method_field('PUT') }}
@@ -26,11 +26,12 @@
                             <div data-modal-target="ktp-photo-modal" data-modal-toggle="ktp-photo-modal"
                                 class="relative group w-full !h-[14.2rem] overflow-hidden bg-gray-700 rounded-lg cursor-pointer">
                                 <img src="{{ asset('img_handler/error_img_handler/main_error_foto_ktp_el.jpg') }}"
-                                    class="image-ktp absolute top-0 left-0 object-cover w-full h-full blur-sm"
+                                    class="absolute top-0 left-0 object-cover w-full h-full image-ktp blur-sm"
                                     alt="Foto KTP Background" />
                                 <img id="ktp-preview-image"
                                     src="{{ asset('img_handler/error_img_handler/main_error_foto_ktp_el.jpg') }}"
-                                    class="image-ktp relative object-contain w-full h-full pointer-events-none" alt="Foto KTP" />
+                                    class="relative object-contain w-full h-full pointer-events-none image-ktp"
+                                    alt="Foto KTP" />
                                 <div
                                     class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
                                     <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor"
@@ -64,7 +65,7 @@
                                     <!-- Modal body -->
                                     <div class="h-[45rem] w-full rounded-lg p-4 md:p-0">
                                         <img src="{{ asset('img_handler/error_img_handler/main_error_foto_ktp_el.jpg') }}"
-                                            class="image-ktp object-contain w-full h-full" alt="Foto KTP" />
+                                            class="object-contain w-full h-full image-ktp" alt="Foto KTP" />
                                     </div>
                                 </div>
                             </div>
@@ -77,11 +78,11 @@
                             <div data-modal-target="payment-proof-modal" data-modal-toggle="payment-proof-modal"
                                 class="relative group w-full !h-[14.2rem] overflow-hidden bg-gray-700 rounded-lg cursor-pointer">
                                 <img src="{{ asset('img_handler/error_img_handler/main_proved_paid.webp') }}"
-                                    class="image-pembayaran absolute top-0 left-0 object-cover w-full h-full blur-sm"
+                                    class="absolute top-0 left-0 object-cover w-full h-full image-pembayaran blur-sm"
                                     alt="Bukti Pembayaran Background" />
                                 <img id="payment-preview-image"
                                     src="{{ asset('img_handler/error_img_handler/main_proved_paid.webp') }}"
-                                    class="image-pembayaran relative object-contain w-full h-full pointer-events-none"
+                                    class="relative object-contain w-full h-full pointer-events-none image-pembayaran"
                                     alt="Bukti Pembayaran" />
                                 <div
                                     class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
@@ -116,7 +117,8 @@
                                     <!-- Modal body -->
                                     <div class="h-[45rem] w-full rounded-lg p-4 md:p-0">
                                         <img src="{{ asset('img_handler/error_img_handler/main_proved_paid.jpg') }}"
-                                            class="image-pembayaran object-contain w-full h-full" alt="Bukti Pembayaran" />
+                                            class="object-contain w-full h-full image-pembayaran"
+                                            alt="Bukti Pembayaran" />
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +303,7 @@
         const phone = $(this).data('phone');
         const parent_phone = $(this).data('parent_phone');
         const check_in = $(this).data('check_in');
-        
+
         $('#penyewa-form').attr('action', href);
         $('.image-ktp').attr('src', ktp);
         $('input[name="id_user"]').val(id_user);

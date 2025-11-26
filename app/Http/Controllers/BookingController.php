@@ -74,12 +74,11 @@ class BookingController extends Controller
             $userData['password'] = bcrypt(substr(strtolower($request->input('full_name')), 0, 2) . substr($request->input('nik'), -4));
 
             $user = $this->tenantRepository->create($userData);
-            $dataBooking['id_user'] = $user->id;
         }
 
         $booking = $this->bookingRepository->create($dataBooking);
-        
-        return redirect()->route('home')->with('success', 'Booking submitted successfully.');
+
+        return redirect()->route('home')->with('confirmation_booking', 'Booking submitted successfully.');
     }
 
     /**

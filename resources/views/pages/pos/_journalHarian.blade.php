@@ -2,7 +2,7 @@
 
 @section('content')
 @include('components._accordionLink')
-<div class="justify-center pt-20 mx-auto max-w-7xl">
+<div class="justify-center max-w-4xl pt-20 mx-auto">
     <div class="w-full mx-auto">
         <div class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
             <div class="px-5 py-4 border-b border-gray-200 dark:border-gray-700 sm:px-6 sm:py-5">
@@ -46,17 +46,8 @@
                                 Transaksi</label>
                             <div class="relative">
                                 <input type="date" id="date" name="date" value="{{ now()->format('Y-m-d') }}"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="[&::-webkit-calendar-picker-indicator]:hidden bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     onclick="this.showPicker()">
-                                <span
-                                    class="absolute text-gray-500 -translate-y-1/2 pointer-events-none top-1/2 right-3 dark:text-gray-400">
-                                    <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M6.66659 1.5415C7.0808 1.5415 7.41658 1.87729 7.41658 2.2915V2.99984H12.5833V2.2915C12.5833 1.87729 12.919 1.5415 13.3333 1.5415C13.7475 1.5415 14.0833 1.87729 14.0833 2.2915V2.99984L15.4166 2.99984C16.5212 2.99984 17.4166 3.89527 17.4166 4.99984V7.49984V15.8332C17.4166 16.9377 16.5212 17.8332 15.4166 17.8332H4.58325C3.47868 17.8332 2.58325 16.9377 2.58325 15.8332V7.49984V4.99984C2.58325 3.89527 3.47868 2.99984 4.58325 2.99984L5.91659 2.99984V2.2915C5.91659 1.87729 6.25237 1.5415 6.66659 1.5415ZM6.66659 4.49984H4.58325C4.30711 4.49984 4.08325 4.7237 4.08325 4.99984V6.74984H15.9166V4.99984C15.9166 4.7237 15.6927 4.49984 15.4166 4.49984H13.3333H6.66659ZM15.9166 8.24984H4.08325V15.8332C4.08325 16.1093 4.30711 16.3332 4.58325 16.3332H15.4166C15.6927 16.3332 15.9166 16.1093 15.9166 15.8332V8.24984Z"
-                                            fill="currentColor" />
-                                    </svg>
-                                </span>
                             </div>
                         </div>
 
@@ -156,7 +147,7 @@
                         </div>
 
                         <!-- Notes -->
-                        <div class="pb-5 border-b border-gray-200 dark:border-gray-700">
+                        <div class="pt-6 pb-5 border-b border-gray-200 dark:border-gray-700">
                             <label for="notes"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Catatan</label>
                             <textarea id="notes" x-model="notes" rows="3"
@@ -184,6 +175,15 @@
 
     @push('scripts')
     <script>
+        const amountInput = document.getElementById('amount');
+
+        amountInput.addEventListener('input', function(e) {
+            let value = e.target.value;
+            value = value.replace(/[^0-9]/g, '');
+            value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            e.target.value = value;
+        });
+
         $(document).ready(function() {
             // Hide payment and non-payment sections initially
             $('.payment').hide();

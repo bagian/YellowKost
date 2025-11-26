@@ -64,6 +64,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/unggah-bukti-pembayaran', function() {
+    return view('pages.uploadBukti._uploadBukti');
+})->name('upload.bukti');
+
 Route::get('/penyewa/form', [BookingController::class, 'form'])->name('booking.form');
 Route::post('/penyewa/submit', [BookingController::class, 'submit'])->name('booking.submit');
 

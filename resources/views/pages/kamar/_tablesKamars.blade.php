@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center pt-20 mx-auto max-w-7xl">
+<div class="flex flex-col justify-center max-w-5xl pt-20 mx-auto">
     <div>
         <a href="{{ route('kamar.create') }}"
             class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 transition-all duration-300 ease-in-out dark:text-white inline-block">
@@ -13,7 +13,7 @@
             </span>
         </a>
     </div>
-    <div class="relative mt-8 mb-8 overflow-x-auto bg-gray-100 shadow-lg rounded-2xl dark:bg-gray-800">
+    <div class="relative mt-8 mb-8 overflow-x-auto bg-gray-100 rounded-lg shadow-lg dark:bg-gray-800">
         <div class="flex flex-row items-center justify-between w-full p-4 pb-4">
             <div class="max-w-xs xl:w-48 w-36">
                 <div class="relative">

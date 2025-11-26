@@ -14,7 +14,7 @@
         </button>
     </a>
 </div>
-<div class="mt-8 mb-8 overflow-x-auto bg-gray-100 shadow-lg rounded-2xl dark:bg-gray-800">
+<div class="mt-8 mb-8 overflow-x-auto bg-gray-100 rounded-lg shadow-lg dark:bg-gray-800">
     <div class="relative flex flex-row items-center justify-between w-full p-4 pb-4">
         <div class="max-w-xs xl:w-48 w-36">
             <div class="relative">
@@ -215,11 +215,14 @@
                 <td class="px-6 py-4">
                     <div class="flex items-center gap-2">
                         <!-- Button Aksi -->
-                        <button class="edit p-2 text-sm font-medium text-center text-white transition-all duration-300 ease-in-out bg-yellow-500 rounded-full hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-600"
-                            type="button" data-href="{{ route('penyewa.update', $row->id) }}" data-id_user="{{ $row->id_user }}"
-                            data-ktp="{{ Storage::url($row->user->ktp) }}" data-name="{{  $row->user->full_name }}" 
-                            data-nik="{{  $row->user->nik }}" data-address="{{  $row->user->address }}" data-phone="{{  $row->user->phone }}" 
-                            data-parent_phone="{{  $row->user->parent_phone }}" data-check_in="{{  $row->check_in->format('Y-m-d') }}">
+                        <button
+                            class="p-2 text-sm font-medium text-center text-white transition-all duration-300 ease-in-out bg-yellow-500 rounded-full edit hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-600"
+                            type="button" data-href="{{ route('penyewa.update', $row->id) }}"
+                            data-id_user="{{ $row->id_user }}" data-ktp="{{ Storage::url($row->user->ktp) }}"
+                            data-name="{{  $row->user->full_name }}" data-nik="{{  $row->user->nik }}"
+                            data-address="{{  $row->user->address }}" data-phone="{{  $row->user->phone }}"
+                            data-parent_phone="{{  $row->user->parent_phone }}"
+                            data-check_in="{{  $row->check_in->format('Y-m-d') }}">
                             <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 640 640">
                                 <path
@@ -227,7 +230,7 @@
                             </svg>
                         </button>
                         <button
-                            class="delete flex flex-row items-center gap-2 p-2 text-white duration-300 ease-in-out bg-red-600 rounded-full hover:bg-red-700 transiton-all">
+                            class="flex flex-row items-center gap-2 p-2 text-white duration-300 ease-in-out bg-red-600 rounded-full delete hover:bg-red-700 transiton-all">
                             <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 640 640">
                                 <path
