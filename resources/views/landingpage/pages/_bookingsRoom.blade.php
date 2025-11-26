@@ -9,12 +9,12 @@
 
         {{-- SEMUA LOGIKA DIPUSATKAN DI SINI --}}
         <form x-data="{
-            namaLengkap: '{{ Auth::user()->full_name ?? old('full_name', $bookingData['full_name'] ?? '') }}',
-            email: '{{ Auth::user()->email ?? old('email', $bookingData['email'] ?? '')}}',
-            nik: '{{ Auth::user()->nik ?? old('nik', $bookingData['nik'] ?? '')}}',
-            alamat: '{{ Auth::user()->address ?? old('address', $bookingData['address'] ?? '')}}',
-            noTelp: '{{ Auth::user()->phone ?? old('phone', $bookingData['phone'] ?? '')}}',
-            noTelpOrtu: '{{ Auth::user()->parent_phone ?? old('parent_phone', $bookingData['parent_phone'] ?? '')}}',
+            namaLengkap: '@if(Auth::user()->role->slug != 'admin') {{ Auth::user()->full_name ?? old('full_name', $bookingData['full_name'] ?? '') }} @endif',
+            email: '@if(Auth::user()->role->slug != 'admin') {{ Auth::user()->email ?? old('email', $bookingData['email'] ?? '')}} @endif',
+            nik: '@if(Auth::user()->role->slug != 'admin') {{ Auth::user()->nik ?? old('nik', $bookingData['nik'] ?? '')}} @endif',
+            alamat: '@if(Auth::user()->role->slug != 'admin') {{ Auth::user()->address ?? old('address', $bookingData['address'] ?? '')}} @endif',
+            noTelp: '@if(Auth::user()->role->slug != 'admin') {{ Auth::user()->phone ?? old('phone', $bookingData['phone'] ?? '')}} @endif',
+            noTelpOrtu: '@if(Auth::user()->role->slug != 'admin') {{ Auth::user()->parent_phone ?? old('parent_phone', $bookingData['parent_phone'] ?? '')}} @endif',
             checkIn: '{{ old('check_in', $bookingData['check_in'] ?? '') }}',
             setuju: false,
 
@@ -77,7 +77,7 @@
                     <input type="text" id="email" name="email"
                         class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
                         placeholder="xxxxxxxxxxx@gmail.com" required x-model="email" :value="email"
-                        @if(isset(Auth::user()->email)) readonly @endif/>
+                        @if(isset(Auth::user()->email)) @if(Auth::user()->role->slug != 'admin') readonly @endif @endif/>
                 </div>
                 <div>
                     <label for="nik" class="block mb-2 text-sm font-medium text-gray-900">NIK</label>

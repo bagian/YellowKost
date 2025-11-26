@@ -45,7 +45,7 @@ class RoomController extends Controller
 
         $room = $this->roomRepository->createWithPictures($data, $pictures);
 
-        return redirect()->route('kamar.index');
+        return redirect()->route('kamar.index')->with(['success' => "Data berhasil ditambahkan!"]);
     }
 
     /**
