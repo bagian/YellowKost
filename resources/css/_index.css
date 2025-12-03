@@ -75,7 +75,7 @@ body {
 .swiper-button-prev {
     color: var(--swiper-navigation-color);
     transition: 0.3s ease;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 
 .swiper-button-next::after {
@@ -93,7 +93,9 @@ body {
 }
 
 .swiper-pagination-bullet {
-    transition: background-color 0.3s ease-in-out, opacity 0.3s ease;
+    transition:
+        background-color 0.3s ease-in-out,
+        opacity 0.3s ease;
     background-color: #ffdd6a;
     opacity: 0.3;
 }

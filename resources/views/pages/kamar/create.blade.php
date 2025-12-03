@@ -21,9 +21,10 @@
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 Nomor Kamar
                             </label>
-                            <input type="text" name="room_name" placeholder="Masukkan Nomor Kamar" inputmode="numeric"
-                                pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
-                                onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
+                            <input type="text" name="room_name" placeholder="Masukkan Nomor Kamar" {{--
+                                inputmode="numeric" pattern="[0-9]*"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
+                                onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();" --}}
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <!-- Elements -->
@@ -32,10 +33,9 @@
                                 Harga Sewa Kamar
                             </label>
                             <input type="text" id="harga_sewa" placeholder="Harga Sewa" x-model="hargaSewa"
-                                @input="formatHarga"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                inputmode="numeric">
-                            <input type="number" name="price" hidden>
+                                @input="formatHarga" inputmode="numeric"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <input type="text" name="price" hidden>
                         </div>
                         <!-- Elements -->
                         <div class="col-span-1 mb-3 md:col-span-2">
@@ -47,16 +47,16 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 appearance-none"
                                     :class="isOptionSelected && 'text-gray-800 dark:text-white/90'"
                                     @change="isOptionSelected = true">
-                                    <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                    <option value="">
                                         Pilih Status Kamar
                                     </option>
-                                    <option value="day" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                    <option value="day">
                                         Harian
                                     </option>
-                                    <option value="month" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                    <option value="month">
                                         Bulanan
                                     </option>
-                                    <option value="year" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                    <option value="year">
                                         Tahunan
                                     </option>
                                 </select>
@@ -92,8 +92,6 @@
                             <div x-show="error" x-text="error" class="mt-2 text-sm text-red-500 dark:text-red-400">
                             </div>
                         </div>
-                        <div x-show="error" x-text="error" class="mt-2 text-sm text-red-500 dark:text-red-400">
-                        </div>
                     </div>
                     <div x-show="previews.length > 0"
                         class="relative w-full col-span-1 overflow-hidden align-middle rounded-lg h-80 md:col-span-2">
@@ -114,19 +112,11 @@
                                 </template>
                             </div>
                             <!-- Tombol Navigasi Swiper -->
-                            <div class="swiper-button-prev" :class="{ 'hidden': previews.length <= 1 }">
-                                <svg class="w-16 h-16 text-yellow-600 transition-all duration-300 ease-in-out drop-shadow-lg hover:text-yellow-400"
-                                    fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M15 19l-7-7 7-7" />
-                                </svg>
+                            <div class="swiper-button-prev dash-button-prev important border border-white/20 bg-white/10 backdrop-blur-md shadow-xl drop-shadow-4xl p-8 rounded-full"
+                                :class="{ 'hidden': previews.length <= 1 }">
                             </div>
-                            <div class="swiper-button-next" :class="{ 'hidden': previews.length <= 1 }">
-                                <svg class="w-16 h-16 text-yellow-600 transition-all duration-300 ease-in-out drop-shadow-lg hover:text-yellow-400"
-                                    fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
+                            <div class="swiper-button-next dash-button-next important border border-white/20 bg-white/10 backdrop-blur-md shadow-xl drop-shadow-4xl p-8 rounded-full"
+                                :class="{ 'hidden': previews.length <= 1 }">
                             </div>
                         </div>
                     </div>
@@ -180,7 +170,6 @@
 
         </div>
 </div>
-</div>
 </form>
 </div>
 @push('scripts')
@@ -197,7 +186,9 @@
     <p class="absolute z-10 font-light text-center text-white">Foto kamar akan tampil disini</p>
 </script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
+
+{{-- SCRIPT DIPINDAHKAN KE HALAMAN DEFAULT.BLADE.PHP --}}
+{{-- <script>
     function imageUploader() {
         return {
             pictures: [],
@@ -229,10 +220,19 @@
                     this.$nextTick(() => this.swiper.update());
                 });
             },
+
+            formatHarga() {
+                let value = this.hargaSewa.replace(/[^0-9]/g, '');
+                if (value) {
+                    this.hargaSewa = parseInt(value, 10).toLocaleString('id-ID');
+                }
+            },
+
+
             handleFileChange(event) {
                 this.error = null;
                 const files = Array.from(event.target.files);
-                const maxSize = 10 * 1024 * 1024; // 10MB
+                const maxSize = 5 * 1024 * 1024; // 5MB
                 const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
 
                 files.forEach(file => {
@@ -254,13 +254,6 @@
                 this.previews.splice(index, 1);
                 this.updateInputFiles();
             },
-            formatHarga() {
-                let value = this.hargaSewa.replace(/[^0-9]/g, '');
-                if (value) {
-                    this.hargaSewa = parseInt(value, 10).toLocaleString('id-ID');
-                }
-            },
-
             updateInputFiles() {
                 const fileArray = Array.from(this.pictures);
                 const dt = new DataTransfer();
@@ -277,6 +270,6 @@
         let num = parseInt(clean, 10);
         $price.val(num);
     });
-</script>
+</script> --}}
 @endpush
 @endsection

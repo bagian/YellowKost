@@ -1,9 +1,15 @@
-/* :root {
-    --swiper-navigation-color: #ff7d00;
-    --swiper-pagination-color: #fff;
+/* .dash-button-prev:hover,
+.dash-button-next:hover {
+    color: #ffdd6a !important;
+} */
+.dash-button-prev,
+.dash-button-next {
+    color: #fff !important;
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease-in-out;
 }
 
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    color: #ffdd6a;
-} */
+.dash-button-prev:hover,
+.dash-button-next:hover {
+    color: #ff7700 !important;
+}

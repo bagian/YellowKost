@@ -255,7 +255,6 @@
             </button>
         </div>
     </div>
-
 </div>
 
 @push('scripts')

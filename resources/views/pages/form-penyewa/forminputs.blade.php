@@ -50,7 +50,7 @@
                         </div>
                         <!-- KTP Photo Modal -->
                         <div id="ktp-photo-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full p-4">
                             <div class="relative max-h-full">
                                 <!-- Modal content -->
                                 <div
@@ -70,7 +70,8 @@
                                         class="p-1 bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center min-h-[300px] ">
                                         <div
                                             class="w-full text-center py-4 px-6 border-b border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-t-xl">
-                                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Dokumen KTP</h3>
+                                            <h3 class="text-md md:text-lg font-bold text-gray-800 dark:text-white">
+                                                Dokumen KTP</h3>
                                         </div>
                                         <div
                                             class="relative w-full p-6 flex justify-center bg-[url('https://www.transparenttextures.com/patterns/grid-noise.png')] bg-gray-100 dark:bg-gray-900/50">
@@ -122,7 +123,7 @@
                         </div>
                         <!-- Payment Proof Modal -->
                         <div id="payment-proof-modal" tabindex="-1" aria-hidden="true"
-                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full p-4">
                             <div class="relative max-h-full">
                                 <!-- Modal content -->
                                 <div id="payment-proof-modal"
@@ -142,14 +143,15 @@
                                         class="p-1 bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center min-h-[300px] ">
                                         <div
                                             class="w-full text-center py-4 px-6 border-b border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-t-xl">
-                                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Dokumen Bukti
+                                            <h3 class="text-md md:text-lg font-bold text-gray-800 dark:text-white">
+                                                Bukti
                                                 Pembayaran</h3>
                                         </div>
                                         <div
                                             class="relative w-full p-6 flex justify-center bg-[url('https://www.transparenttextures.com/patterns/grid-noise.png')] bg-gray-100 dark:bg-gray-900/50">
                                             <img id="pembayaran-preview-image"
                                                 src="{{ asset('img_handler/error_img_handler/main_proved_paid.jpg') }}"
-                                                class="max-w-full max-h-[70vh] h-auto object-contain rounded-xl shadow-lg border-4 border-white dark:border-gray-700 hover:scale-[1.02] transition-transform duration-300 image-bt-pembayaran"
+                                                class="max-w-full max-h-[55vh] h-auto object-contain rounded-xl shadow-lg border-4 border-white dark:border-gray-700 hover:scale-[1.02] transition-transform duration-300 image-bt-pembayaran"
                                                 alt="Bukti Pembayaran" />
                                         </div>
                                     </div>
@@ -167,44 +169,6 @@
                                         </a>
                                     </div>
                                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                {{-- <div class="relative rounded-lg">
-                                    <!-- Modal header -->
-                                    <div class="relative">
-                                        <button type="button"
-                                            class="absolute inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-gray-500 rounded-lg hover:bg-gray-600 ms-auto top-2 right-2 backdrop-blur-sm"
-                                            data-modal-hide="payment-proof-modal">
-                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 14 14">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2"
-                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                            </svg>
-                                            <span class="sr-only">Close modal</span>
-                                        </button>
-                                    </div>
-                                    <!-- Modal body -->
-                                    <div class="h-[45rem] w-full rounded-lg p-4 md:p-0">
-                                        <img src="{{ asset('img_handler/error_img_handler/main_proved_paid.jpg') }}"
-                                            class="object-contain w-full h-full image-pembayaran"
-                                            alt="Bukti Pembayaran" />
-                                    </div>
-                                </div> --}}
                             </div>
                         </div>
                         <!-- Elements -->
@@ -212,7 +176,7 @@
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 Kamar yang tersedia
                             </label>
-                            <div class="relative z-20 bg-transparent">
+                            <div class="relative">
                                 <select name="id_room"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white border-transparent focus:border-transparent focus:ring-0">
                                     <option value="">
@@ -225,7 +189,7 @@
                                     @endforeach
                                 </select>
                                 <span
-                                    class="absolute right-0 z-30 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
+                                    class="absolute right-0 z-10 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
                                     <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="currentColor"
@@ -324,7 +288,7 @@
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 Status Pembayaran
                             </label>
-                            <div class="relative z-20 bg-transparent">
+                            <div class="relative">
                                 <select name="payment_status"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white appearance-none border-transparent focus:border-transparent focus:ring-0">
                                     <option value="">
@@ -341,7 +305,7 @@
                                     </option>
                                 </select>
                                 <span
-                                    class="absolute right-0 z-30 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
+                                    class="absolute right-0 z-10 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
                                     <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="currentColor"
@@ -355,7 +319,7 @@
                             <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                 Status Pengajuan Sewa
                             </label>
-                            <div class="relative z-20 bg-transparent">
+                            <div class="relative">
                                 <select name="status"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white appearance-none border-transparent focus:border-transparent focus:ring-0">
                                     <option value="">
@@ -369,7 +333,7 @@
                                     </option>
                                 </select>
                                 <span
-                                    class="absolute right-0 z-30 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
+                                    class="absolute right-0 z-10 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
                                     <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="currentColor"

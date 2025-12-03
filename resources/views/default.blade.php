@@ -57,7 +57,7 @@
 
     {{-- sidebar --}}
     @include('partials._sidebar')
-    {{--  @include('components.sidebar-link')  --}}
+    {{-- @include('components.sidebar-link') --}}
 
     <!-- Main Content -->
     <div class="p-2.5 lg:ml-64">
@@ -212,7 +212,89 @@
         }
     </script>
     {{-- end image handler --}}
+    <script>
+        function imageUploader() {
+        return {
+            pictures: [],
+            previews: [],
+            error: null,
+            swiper: null,
+            hargaSewa: '',
 
+            init() {
+                this.swiper = new Swiper('.swiper', {
+                    loop: false, // Loop dinonaktifkan untuk preview dinamis
+                    slidesPerView: 'auto',
+                    spaceBetween: 10,
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 3
+                        },
+                        1024: {
+                            slidesPerView: 4
+                        }
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
+
+                this.$watch('previews', () => {
+                    this.$nextTick(() => this.swiper.update());
+                });
+            },
+
+            formatHarga() {
+                let value = this.hargaSewa.replace(/[^0-9]/g, '');
+                if (value) {
+                    this.hargaSewa = parseInt(value, 10).toLocaleString('id-ID');
+                }
+            },
+
+
+            handleFileChange(event) {
+                this.error = null;
+                const files = Array.from(event.target.files);
+                const maxSize = 10 * 1024 * 1024; // 10MB
+                const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+
+                files.forEach(file => {
+                    if (!allowedTypes.includes(file.type)) {
+                        this.error = 'Format file harus PNG, JPG, atau JPEG.';
+                        return;
+                    }
+                    if (file.size > maxSize) {
+                        this.error = 'Ukuran file tidak boleh lebih dari 10MB.';
+                        return;
+                    }
+                    this.pictures.push(file);
+                    this.previews.push(URL.createObjectURL(file));
+                });
+                this.updateInputFiles();
+            },
+            removePicture(index) {
+                this.pictures.splice(index, 1);
+                this.previews.splice(index, 1);
+                this.updateInputFiles();
+            },
+            updateInputFiles() {
+                const fileArray = Array.from(this.pictures);
+                const dt = new DataTransfer();
+                this.pictures.forEach(f => dt.items.add(f));
+                $('[name="pictures[]"]')[0].files = dt.files;
+            },
+        }
+    }
+
+    $('#harga_sewa').on('change', function() {
+        let $price = $('[name="price"]');
+        let val = $(this).val();
+        let clean = val.replace(/\./g, '');
+        let num = parseInt(clean, 10);
+        $price.val(num);
+    });
+    </script>
     @stack('scripts')
 </body>
 
