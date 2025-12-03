@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 
 abstract class BaseRepository
@@ -14,6 +15,12 @@ abstract class BaseRepository
 
     public function __construct() {
         $this->model = $this->getModelClass();
+    }
+
+    protected function getPagination($queryBuilder = null, int $perPage = 10, array $columns = ['*'], string $pageName = 'page', ?int $page = null): LengthAwarePaginator {
+        $builder = $queryBuilder ?? (new $this->model)->newQuery();
+
+        return $builder->paginate($perPage, $columns, $pageName, $page);
     }
 
     protected function fillModel(Model $model, array $data) {

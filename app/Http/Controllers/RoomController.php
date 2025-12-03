@@ -21,7 +21,8 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $room = $this->roomRepository->allWithPictures();
+        $room = $this->roomRepository->getWithPictures();
+        // dd($room);
 
         return view('pages.kamar.views', ['room' => $room]);
     }

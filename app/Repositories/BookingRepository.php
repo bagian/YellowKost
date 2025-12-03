@@ -32,7 +32,7 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
     }
 
     public function get(): Collection {
-        return $this->model::with('user')->get();
+        return $this->model::where('status', 'pending')->with('user')->get();
     }
 
     public function find($id): Model {
