@@ -3,7 +3,7 @@ html {
 }
 
 :root {
-    --swiper-navigation-color: #ff7d00;
+    --swiper-navigation-color: #fff;
     --swiper-pagination-color: #fff;
 }
 
@@ -74,12 +74,22 @@ body {
 .swipper-button-next,
 .swiper-button-prev {
     color: var(--swiper-navigation-color);
-    transition: color 0.3s ease;
+    transition: 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.swiper-button-next::after {
+    font-size: 1.5rem !important;
+    font-weight: bold;
+}
+.swiper-button-prev::after {
+    font-size: 1.5rem !important;
+    font-weight: bold;
 }
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-    color: #ffdd6a;
+    color: #ffc800;
 }
 
 .swiper-pagination-bullet {

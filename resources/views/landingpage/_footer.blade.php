@@ -1,7 +1,7 @@
 <!-- Footer -->
 <footer class="bg-gray-900">
-    <div class="container px-6 py-12 mx-auto lg:py-16 max-w-7xl">
-        <div class="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-4">
+    <div class="container max-w-6xl px-6 py-12 mx-auto lg:py-16">
+        <div class="grid grid-cols-1 gap-2 xl:grid-cols-4">
             <div>
                 <span
                     class="flex items-center self-center gap-2 text-2xl font-semibold whitespace-nowrap dark:text-yellow-500">
@@ -20,73 +20,122 @@
                     </span>
                     YellowKost
                 </span>
-                <p class="max-w-xs mt-4 text-sm text-gray-400">
+                <p class="mt-4 text-sm leading-6 text-gray-400">
                     Hunian modern, nyaman, dan terjangkau di pusat kota.
                 </p>
+                <p class="max-w-xs pr-5 mt-4 text-sm leading-6 text-gray-400">
+                    Perum Griya Mangli Indah No.AG 22, Wonosari, Mangli, Kec. Kaliwates, Kabupaten Jember, Jawa Timur
+                </p>
+                <p class="max-w-xs mt-4 text-sm text-yellow-400">WA +62 812-3498-743</p>
+                <p class="max-w-xs mt-4 text-sm text-yellow-400">mail@admin.com</p>
             </div>
             <div class="col-span-2 py-6 xl:py-0">
-                <div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
+                <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
                     <div>
                         <h3 class="font-semibold tracking-wider text-white uppercase">Jelajahi</h3>
                         <ul class="mt-4 space-y-2">
-                            <li><a href="#fasilitas"
+                            <li>
+                                <a href="{{ route('home') }}"
+                                    class="text-gray-400 transition-colors hover:text-yellow-400">Beranda</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('facilities') }}"
                                     class="text-gray-400 transition-colors hover:text-yellow-400">Fasilitas</a>
                             </li>
-                            <li><a href="#" class="text-gray-400 transition-colors hover:text-yellow-400">Galeri</a>
+                            <li>
+                                <a href="{{ route('gallery') }}"
+                                    class="text-gray-400 transition-colors hover:text-yellow-400">Galerry</a>
                             </li>
-                            <li><a href="#" class="text-gray-400 transition-colors hover:text-yellow-400">Tipe
-                                    Kamar</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h3 class="font-semibold tracking-wider text-white uppercase">Perusahaan</h3>
+                        <h3 class="font-semibold tracking-wider text-white uppercase">YellowKost</h3>
                         <ul class="mt-4 space-y-2">
-                            <li><a href="#" class="text-gray-400 transition-colors hover:text-yellow-400">Tentang
-                                    Kami</a></li>
-                            <li><a href="#" class="text-gray-400 transition-colors hover:text-yellow-400">Blog</a>
+                            <li>
+                                <a href="{{ route('about.us') }}"
+                                    class="text-gray-400 transition-colors hover:text-yellow-400">Tentang
+                                    Kami</a>
                             </li>
-                            <li><a href="#" class="text-gray-400 transition-colors hover:text-yellow-400">Kontak</a>
+                            <li>
+                                <a href="{{ route('contact.us') }}"
+                                    class="text-gray-400 transition-colors hover:text-yellow-400">Kontak
+                                </a>
                             </li>
                         </ul>
                     </div>
                     <div>
                         <h3 class="font-semibold tracking-wider text-white uppercase">Legal</h3>
                         <ul class="mt-4 space-y-2">
-                            <li><a href="#" class="text-gray-400 transition-colors hover:text-yellow-400">Syarat
+                            <li>
+                                <a href="{{ route('terms.conditions') }}"
+                                    class="text-gray-400 transition-colors hover:text-yellow-400">Syarat
                                     &
-                                    Ketentuan</a></li>
-                            <li><a href="#" class="text-gray-400 transition-colors hover:text-yellow-400">Kebijakan
-                                    Privasi</a></li>
+                                    Ketentuan</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('privacy.policy') }}"
+                                    class="text-gray-400 transition-colors hover:text-yellow-400">Kebijakan
+                                    Privasi</a>
+                            </li>
                         </ul>
                     </div>
+                    {{-- <div>
+                        <h3 class="font-semibold tracking-wider text-white uppercase">Social Media</h3>
+                        <ul class="mt-4 space-y-2">
+                            <li>
+                                <a href="https://www.tiktok.com/@yellow_434_kostan"
+                                    class="text-gray-400 transition-colors hover:text-yellow-400">Tiktok</a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/yellow_434_kostpartners/"
+                                    class="text-gray-400 transition-colors hover:text-yellow-400">Instagram</a>
+                            </li>
+                        </ul>
+                    </div> --}}
                 </div>
             </div>
-            <div class="w-full col-span-2 sm:col-span-1">
+            <div class="flex flex-col justify-between w-full h-auto col-span-2 align-bottom sm:col-span-1">
                 <h3 class="font-semibold tracking-wider text-white uppercase">Langganan Info Promo</h3>
-                <p class="mt-4 text-sm text-gray-400">Dapatkan penawaran dan promo terbaru langsung di email
+                <p class="text-sm text-gray-400">Dapatkan penawaran dan promo terbaru langsung di email
                     Anda.
                 </p>
                 <form id="newsletter-form" class="w-full mt-4" action="{{ route('newsletter.subscribe') }}"
                     method="POST">
                     @csrf
-                    <div class="flex flex-col w-full space-y-6 sm:space-y-0 sm:flex-col">
+                    <div class="flex flex-col w-full sm:space-y-0 sm:flex-col">
                         <input id="newsletter-email" name="email" type="email"
-                            class="w-full px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 rounded-md focus:border-yellow-400 focus:ring-yellow-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+                            class="w-full max-w-md px-4 py-2 text-gray-300 bg-gray-800 border border-gray-700 rounded-md focus:border-yellow-400 focus:ring-yellow-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                             placeholder="Alamat Email" required>
-                        <div class="pt-8">
+                        <div class="pt-4 lg:pt-5">
                             <button type="submit"
-                                class="w-full px-4 py-2 text-sm font-medium tracking-wide text-black transition-colors duration-300 transform bg-yellow-400 rounded-md sm:w-auto hover:bg-yellow-500 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-opacity-80">
+                                class="w-full max-w-md px-4 py-2 text-sm font-medium tracking-wide text-black transition-colors duration-300 transform bg-yellow-400 rounded-md sm:w-auto hover:bg-yellow-500 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-opacity-80">
                                 Langganan
                             </button>
                         </div>
                     </div>
                 </form>
                 <div id="newsletter-message" class="mt-2 text-sm"></div>
+                <div class="flex gap-6 mt-6 align-bottom md:mt-6">
+                    <span>
+                        <a href="https://www.tiktok.com/@yellow_434_kostan"
+                            class="text-gray-400 transition-colors hover:text-yellow-400">Tiktok</a>
+                    </span>
+                    <span>
+                        <a href="https://www.instagram.com/yellow_434_kostpartners/"
+                            class="text-gray-400 transition-colors hover:text-yellow-400">Instagram</a>
+                    </span>
+                </div>
             </div>
         </div>
         <hr class="my-8 border-gray-800">
         <div class="flex flex-col items-center justify-between sm:flex-row">
-            <p class="text-sm text-gray-400">© Copyright {{ date('Y') }}. All Rights Reserved.</p>
+            <p class="text-sm text-gray-400">© Copyright {{ date('Y') }} <strong
+                    class="cursor-default hover:text-yellow-500">YellowKost</strong>. All Rights
+                Reserved. Design & Build
+                By
+                <span class="underline"><a href="https://www.bagian.web.id/" class="hover:text-yellow-500">Bagian
+                        Projects</a></span>
+            </p>
             <div class="flex mt-4 -mx-2 sm:mt-0">
                 <a href="https://www.tiktok.com/@yellow_434_kostan" target="_blank"
                     class="mx-2 text-gray-400 transition-colors duration-300 hover:text-yellow-400" aria-label="Tiktok">

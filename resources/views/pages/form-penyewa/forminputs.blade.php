@@ -1,20 +1,26 @@
 @extends('default')
-
 @section('content')
-
 @include('components._accordionLink')
 <div class="flex flex-col justify-center max-w-5xl pt-20 mx-auto">
     @include('pages.form-penyewa._tablesPenyewa')
-    <div class="space-y-6 form-detail">
+    <div class="space-y-6 form-detail pt-8">
         <form action="" id="penyewa-form" method="POST">
             @csrf
             {{ method_field('PUT') }}
             <input type="hidden" name="id_user" value="">
             <div class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
-                <div class="px-5 py-4 sm:px-6 sm:py-5">
+                <div class="px-5 py-4 sm:px-6 sm:py-5 flex justify-between items-center">
                     <h3 class="text-base font-semibold text-gray-800 dark:text-white/90">
                         Informasi Data Penyewa Kost
                     </h3>
+                    <button type="button" onclick="$('.form-detail').slideUp();"
+                        class="text-gray-400 bg-white/80 hover:bg-red-50 hover:text-red-500 rounded-full p-2 focus:outline-none transition-colors shadow-sm dark:bg-gray-700/80 dark:hover:bg-gray-100 dark:text-gray-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="sr-only">Close</span>
+                    </button>
                 </div>
                 <div class="p-5 space-y-6 border-t border-gray-100 sm:p-6 dark:border-gray-500">
                     <div class="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
@@ -43,30 +49,49 @@
                             </div>
                         </div>
                         <!-- KTP Photo Modal -->
-                        <div id="ktp-photo-modal" tabindex="-1" aria-hidden="true"
+                        <div id="ktp-photo-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
                             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                             <div class="relative max-h-full">
                                 <!-- Modal content -->
-                                <div class="relative rounded-lg">
-                                    <!-- Modal header -->
-                                    <div class="relative">
+                                <div
+                                    class="relative bg-white rounded-2xl shadow-2xl overflow-hidden dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                                    <div class="absolute top-4 right-4 z-10">
                                         <button type="button"
-                                            class="absolute inline-flex items-center justify-center w-8 h-8 text-sm text-white bg-gray-500 rounded-lg hover:bg-gray-600 ms-auto top-2 right-2 backdrop-blur-sm"
+                                            class="text-gray-400 bg-white/80 hover:bg-red-50 hover:text-red-500 rounded-full p-2 focus:outline-none transition-colors shadow-sm dark:bg-gray-700/80 dark:hover:bg-gray-100 dark:text-gray-300"
                                             data-modal-hide="ktp-photo-modal">
-                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 14 14">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2"
-                                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M6 18L18 6M6 6l12 12"></path>
                                             </svg>
                                             <span class="sr-only">Close modal</span>
                                         </button>
                                     </div>
-                                    <!-- Modal body -->
-                                    <div class="h-[25rem] w-full rounded-lg p-4 md:p-0">
-                                        <img src="{{ asset('img_handler/error_img_handler/main_error_foto_ktp_el.jpg') }}"
-                                            class="object-contain w-full h-full image-pembayaran image-ktp"
-                                            alt="Bukti Pembayaran" />
+                                    <div
+                                        class="p-1 bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center min-h-[300px] ">
+                                        <div
+                                            class="w-full text-center py-4 px-6 border-b border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-t-xl">
+                                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Dokumen KTP</h3>
+                                        </div>
+                                        <div
+                                            class="relative w-full p-6 flex justify-center bg-[url('https://www.transparenttextures.com/patterns/grid-noise.png')] bg-gray-100 dark:bg-gray-900/50">
+                                            <img id="ktp-preview-image"
+                                                src="{{ asset('img_handler/error_img_handler/main_error_foto_ktp_el.jpg') }}"
+                                                alt="KTP "
+                                                class="max-w-full max-h-[30vh] h-auto object-contain rounded-xl shadow-lg border-4 border-white dark:border-gray-700 hover:scale-[1.02] transition-transform duration-300 image-ktp">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="px-6 py-4 bg-white border-t border-gray-100 dark:bg-gray-800 dark:border-gray-700 flex justify-end">
+                                        <a href="" download="KTP" id="btn-download-ktp"
+                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600 transition-colors">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                                </path>
+                                            </svg>
+                                            Unduh Bukti KTP
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +125,65 @@
                             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                             <div class="relative max-h-full">
                                 <!-- Modal content -->
-                                <div class="relative rounded-lg">
+                                <div id="payment-proof-modal"
+                                    class="relative bg-white rounded-2xl shadow-2xl overflow-hidden dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                                    <div class="absolute top-4 right-4 z-10">
+                                        <button type="button"
+                                            class="text-gray-400 bg-white/80 hover:bg-red-50 hover:text-red-500 rounded-full p-2 focus:outline-none transition-colors shadow-sm dark:bg-gray-700/80 dark:hover:bg-gray-100 dark:text-gray-300"
+                                            data-modal-hide="payment-proof-modal">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="p-1 bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center min-h-[300px] ">
+                                        <div
+                                            class="w-full text-center py-4 px-6 border-b border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-t-xl">
+                                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Dokumen Bukti
+                                                Pembayaran</h3>
+                                        </div>
+                                        <div
+                                            class="relative w-full p-6 flex justify-center bg-[url('https://www.transparenttextures.com/patterns/grid-noise.png')] bg-gray-100 dark:bg-gray-900/50">
+                                            <img id="pembayaran-preview-image"
+                                                src="{{ asset('img_handler/error_img_handler/main_proved_paid.jpg') }}"
+                                                class="max-w-full max-h-[70vh] h-auto object-contain rounded-xl shadow-lg border-4 border-white dark:border-gray-700 hover:scale-[1.02] transition-transform duration-300 image-bt-pembayaran"
+                                                alt="Bukti Pembayaran" />
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="px-6 py-4 bg-white border-t border-gray-100 dark:bg-gray-800 dark:border-gray-700 flex justify-end">
+                                        <a href="" download="bukti-pembayaran" id="bt-pembayaran"
+                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600 transition-colors">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                                </path>
+                                            </svg>
+                                            Unduh Bukti Pembayaran
+                                        </a>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                {{-- <div class="relative rounded-lg">
                                     <!-- Modal header -->
                                     <div class="relative">
                                         <button type="button"
@@ -121,7 +204,7 @@
                                             class="object-contain w-full h-full image-pembayaran"
                                             alt="Bukti Pembayaran" />
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <!-- Elements -->
@@ -323,6 +406,7 @@
         const href = $(this).data('href');
         const id_user = $(this).data('id_user');
         const ktp = $(this).data('ktp');
+        const bt_pembayaran = $(this).data('bukti-pembayaran');
         const name = $(this).data('name');
         const nik = $(this).data('nik');
         const address = $(this).data('address');
@@ -330,8 +414,12 @@
         const parent_phone = $(this).data('parent_phone');
         const check_in = $(this).data('check_in');
 
+        const ktpUrl = $(this).data('ktp');
+        const btPembayaranUrl =$(this).data('bukti-pembayaran')
+
         $('#penyewa-form').attr('action', href);
-        $('.image-ktp').attr('src', ktp);
+        $('.image-ktp').attr('src', ktpUrl);
+        $('.image-bt-pembayaran').attr('src', btPembayaranUrl);
         $('input[name="id_user"]').val(id_user);
         $('input[name="tenant"]').val(name);
         $('input[name="nik"]').val(nik);
@@ -344,6 +432,14 @@
         $('html, body').animate({
             scrollTop: $(".form-detail").offset().top
         }, 500);
+
+        $('#btn-download-ktp')
+        .attr('href', ktpUrl)
+        .attr('download', `KTP-${name}.jpg`);
+
+        $('#bt-pembayaran')
+        .attr('href', btPembayaranUrl)
+        .attr('download', `bukti-pembayaran-${name}.jpg`);
     });
 
     $('.edit-field').on('click', function() {

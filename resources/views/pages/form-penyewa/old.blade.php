@@ -1,0 +1,594 @@
+{{-- <div
+        class="p-5 border-b border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/50 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="w-full sm:w-auto relative group">
+            <div
+                class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-500 dark:text-gray-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                    </path>
+                </svg>
+            </div>
+            <input type="date"
+                class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white text-sm rounded-xl focus:ring-yellow-500 focus:border-yellow-500 block w-full sm:w-64  p-2.5 cursor-pointer shadow-sm hover:border-yellow-400 transition-colors"
+                placeholder="Filter Tanggal Masuk" onclick="this.showPicker()">
+        </div>
+    </div> --}}
+    {{-- <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead
+                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-700">
+                <tr>
+                    <th scope="col"
+                        class="px-6 py-4 font-bold cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors w-20"
+                        onclick="sortTable(0, 'number')">
+                        <div class="flex items-center justify-between">
+                            <span>No</span>
+                            <span class="flex flex-col sort-icon space-y-[2px]">
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                                </svg>
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </th>
+
+                    <th scope="col"
+                        class="px-6 py-4 font-bold cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                        onclick="sortTable(1, 'text')">
+                        <div class="flex items-center justify-between gap-2">
+                            <span>Nama Penyewa</span>
+                            <span class="flex flex-col sort-icon space-y-[2px]">
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                                </svg>
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </th>
+
+                    <th scope="col"
+                        class="px-6 py-4 font-bold cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                        onclick="sortTable(2, 'text')">
+                        <div class="flex items-center justify-between gap-2">
+                            <span>KTP/NIK</span>
+                            <span class="flex flex-col sort-icon space-y-[2px]">
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                                </svg>
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </th>
+
+                    <th scope="col"
+                        class="px-6 py-4 font-bold min-w-[250px] cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                        onclick="sortTable(3, 'text')">
+                        <div class="flex items-center justify-between gap-2">
+                            <span>Alamat</span>
+                            <span class="flex flex-col sort-icon space-y-[2px]">
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                                </svg>
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </th>
+
+                    <th scope="col"
+                        class="px-6 py-4 font-bold cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                        onclick="sortTable(4, 'text')">
+                        <div class="flex items-center justify-between gap-2">
+                            <span>No. HP</span>
+                            <span class="flex flex-col sort-icon space-y-[2px]">
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                                </svg>
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </th>
+
+                    <th scope="col"
+                        class="px-6 py-4 font-bold cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                        onclick="sortTable(5, 'text')">
+                        <div class="flex items-center justify-between gap-2">
+                            <span>No. Ortu</span>
+                            <span class="flex flex-col sort-icon space-y-[2px]">
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                                </svg>
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </th>
+
+                    <th scope="col"
+                        class="px-6 py-4 font-bold text-center cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                        onclick="sortTable(6, 'text')">
+                        <div class="flex items-center justify-center gap-2">
+                            <span>Status</span>
+                            <span class="flex flex-col sort-icon space-y-[2px]">
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                                </svg>
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </th>
+
+                    <th scope="col"
+                        class="px-6 py-4 font-bold  cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                        onclick="sortTable(7, 'date')">
+                        <div class="flex items-center justify-center gap-2">
+                            <span>Tgl Masuk</span>
+                            <span class="flex flex-col sort-icon space-y-[2px]">
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 4.86l-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                                </svg>
+                                <svg class="w-2 h-2 text-gray-400" fill="currentColor" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </span>
+                        </div>
+                    </th>
+
+                    <th scope="col" class="px-6 py-4 font-bold text-center">Dokumen</th>
+                    <th scope="col" class="px-6 py-4 font-bold text-center">Aksi</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
+                @foreach($booking as $row)
+                <tr
+                    class="bg-white dark:bg-gray-800 hover:bg-yellow-50 dark:hover:bg-gray-700/50 transition-colors duration-200">
+                    <td class="px-6 py-4 text-center font-medium text-gray-900 dark:text-white">
+                        {{ $loop->iteration }}
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="font-bold text-gray-900 dark:text-white">{{ $row->user->full_name }}</div>
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $row->user->nik }}
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 max-w-xs hitespace-normal break-words leading-relaxed"
+                            title="{{ $row->user->address }}">
+                            {{ $row->user->address }}
+                        </div>
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $row->user->phone }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $row->user->parent_phone }}
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                        <span
+                            class="inline-flex items-center px-5 py-2.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300 border border-green-200 dark:border-green-800 uppercase">
+                            {{ $row->status }}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 text-center font-medium">
+                        {{ $row->check_in->format('d/m/Y') }}
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                        <button data-modal-target="default-modal-{{ $row->id }}"
+                            data-modal-toggle="default-modal-{{ $row->id }}"
+                            class="bg-blue-900 px-5 py-2.5 rounded-full inline-flex items-center gap-1 text-xs font-medium text-blue-300 hover:bg-blue-800 border border-blue-800"
+                            type="button">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                </path>
+                            </svg>
+                            KTP
+                        </button>
+                        <div id="default-modal-{{ $row->id }}" tabindex="-1" aria-hidden="true"
+                            data-modal-backdrop="static"
+                            class="hidden overflow-y-auto overflow-x-hidden fixed top-0  right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-0rem)] max-h-full bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300">
+                            <div class="relative w-full max-w-lg max-h-full p-4 transform transition-all scale-100">
+                                <div
+                                    class="relative bg-white rounded-2xl shadow-2xl overflow-hidden dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
+                                    <div class="absolute top-4 right-4 z-10">
+                                        <button type="button"
+                                            class="text-gray-400 bg-white/80 hover:bg-red-50 hover:text-red-500 rounded-full p-2 focus:outline-none transition-colors shadow-sm dark:bg-gray-700/80 dark:hover:bg-gray-600 dark:text-gray-300"
+                                            data-modal-hide="default-modal-{{ $row->id }}">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="p-1 bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center min-h-[300px]">
+                                        <div
+                                            class="w-full text-center py-4 px-6 border-b border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-t-xl">
+                                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">
+                                                Dokumen KTP
+                                            </h3>
+                                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                                {{ $row->user->full_name }}
+                                            </p>
+                                        </div>
+                                        <div
+                                            class="relative w-full p-6 flex justify-center bg-[url('https://www.transparenttextures.com/patterns/grid-noise.png')] bg-gray-100 dark:bg-gray-900/50">
+                                            <img src="{{ Storage::url($row->user->ktp) }}"
+                                                alt="KTP {{ $row->user->full_name }}"
+                                                class="max-w-full max-h-[60vh] h-auto object-contain rounded-xl shadow-lg border-4 border-white dark:border-gray-700 hover:scale-[1.02] transition-transform duration-300">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="px-6 py-4 bg-white border-t border-gray-100 dark:bg-gray-800 dark:border-gray-700 flex justify-end">
+                                        <a href="{{ Storage::url($row->user->ktp) }}"
+                                            download="KTP-{{ $row->user->full_name }}"
+                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600 transition-colors">
+                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                                </path>
+                                            </svg>
+                                            Unduh Gambar
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 text-center">
+                        <div class="flex items-center justify-center gap-2">
+                            <button type="button"
+                                class="p-2 text-yellow-600 bg-yellow-50 rounded-lg hover:bg-yellow-100 border border-yellow-200 transition-all shadow-sm edit"
+                                data-href="{{ route('penyewa.update', $row->id) }}" data-id_user="{{ $row->id_user }}"
+                                data-ktp="{{ Storage::url($row->user->ktp) }}" data-name="{{ $row->user->full_name }}"
+                                data-nik="{{ $row->user->nik }}" data-address="{{ $row->user->address }}"
+                                data-phone="{{ $row->user->phone }}" data-parent_phone="{{ $row->user->parent_phone }}"
+                                data-check_in="{{ $row->check_in->format('Y-m-d') }}">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button type="button"
+                                class="p-2 text-red-600 bg-red-50 rounded-lg hover:bg-red-100 border border-red-200 transition-all shadow-sm delete">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div> --}}
+
+
+
+
+------------------------------
+
+
+{{-- <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+    <div>
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-text-gray-900">Manajemen <span
+                class="text-yellow-500">Penyewa Kamar</span></h1>
+        <p class="text-gray-500 dark:text-gray-400 mt-1">Pantau status penyewa, status kamar, tanggal masuk penyewa.</p>
+    </div>
+    <a href="{{ route('booking.form') }}">
+        <button type="button"
+            class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 transition-all duration-300 ease-in-out dark:text-white">
+            <span class="flex flex-row items-center">
+                <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <path
+                        d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
+                </svg>
+                <span class="ms-2">
+                    Tambahkan Data
+                </span>
+            </span>
+        </button>
+    </a>
+</div>
+<div class="mt-8 mb-8 overflow-x-auto bg-gray-100 rounded-lg shadow-lg dark:bg-gray-800">
+    <div class="relative flex flex-row items-center justify-between w-full p-4 pb-4">
+        <div class="max-w-xs xl:w-48 w-36">
+            <div class="relative">
+                <input type="date" placeholder="Tanggal Masuk Penyewa"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-center flex justify-center cursor-pointer"
+                    onclick="this.showPicker()">
+                <span
+                    class="absolute text-gray-500 -translate-y-1/2 pointer-events-none top-1/2 right-3 dark:text-gray-400">
+                    <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M6.66659 1.5415C7.0808 1.5415 7.41658 1.87729 7.41658 2.2915V2.99984H12.5833V2.2915C12.5833 1.87729 12.919 1.5415 13.3333 1.5415C13.7475 1.5415 14.0833 1.87729 14.0833 2.2915V2.99984L15.4166 2.99984C16.5212 2.99984 17.4166 3.89527 17.4166 4.99984V7.49984V15.8332C17.4166 16.9377 16.5212 17.8332 15.4166 17.8332H4.58325C3.47868 17.8332 2.58325 16.9377 2.58325 15.8332V7.49984V4.99984C2.58325 3.89527 3.47868 2.99984 4.58325 2.99984L5.91659 2.99984V2.2915C5.91659 1.87729 6.25237 1.5415 6.66659 1.5415ZM6.66659 4.49984H4.58325C4.30711 4.49984 4.08325 4.7237 4.08325 4.99984V6.74984H15.9166V4.99984C15.9166 4.7237 15.6927 4.49984 15.4166 4.49984H13.3333H6.66659ZM15.9166 8.24984H4.08325V15.8332C4.08325 16.1093 4.30711 16.3332 4.58325 16.3332H15.4166C15.6927 16.3332 15.9166 16.1093 15.9166 15.8332V8.24984Z"
+                            fill="" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+    </div>
+    <table class="relative w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">No</th>
+                <th scope="col" class="px-6 py-3">
+                    <div class="flex items-center whitespace-nowrap">
+                        Nama Penyewa
+                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                            </svg></a>
+                    </div>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <div class="flex items-center">
+                        KTP/NIK
+                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                            </svg></a>
+                    </div>
+                </th>
+                <th scope="col" class="block px-6 py-3 w-80">
+                    <div class="flex items-center">
+                        Alamat
+                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                            </svg></a>
+                    </div>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <div class="flex items-center whitespace-nowrap">
+                        No. Telp Penyewa
+                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                            </svg></a>
+                    </div>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <div class="flex items-center whitespace-nowrap">
+                        No. Telp Orang Tua
+                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                            </svg></a>
+                    </div>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <div class="flex items-center whitespace-nowrap">
+                        Status Kamar
+                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                            </svg></a>
+                    </div>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <div class="flex items-center whitespace-nowrap">
+                        Tanggal Masuk
+                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                            </svg></a>
+                    </div>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <div class="flex items-center whitespace-nowrap">
+                        Foto KTP
+                        <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                            </svg></a>
+                    </div>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    <div class="flex items-center">
+                        Aksi
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($booking as $row)
+            <tr
+                class="text-white transition-all duration-300 ease-in-out bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-300">
+                <td class="px-6 py-4">
+                    {{ $loop->iteration }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $row->user->full_name }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $row->user->nik }}
+                </td>
+                <td class="px-6 py-4 ">
+                    {{ $row->user->address }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $row->user->phone }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $row->user->parent_phone }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $row->status }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $row->check_in->format('d/m/Y') }}
+                </td>
+                <td class="px-6 py-4">
+                    <!-- Modal toggle -->
+                    <button data-modal-target="default-modal-{{ $row->id }}"
+                        data-modal-toggle="default-modal-{{ $row->id }}"
+                        class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-xs xl:text-normal px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-900 flex gap-2 items-center transition-all duration-300 ease-in-out dark:hover:focus:ring-gray-200 border border-1 border-gray-300 whitespace-nowrap"
+                        type="button">
+                        <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 640 640">
+                            <path
+                                d="M320 96C239.2 96 174.5 132.8 127.4 176.6C80.6 220.1 49.3 272 34.4 307.7C31.1 315.6 31.1 324.4 34.4 332.3C49.3 368 80.6 420 127.4 463.4C174.5 507.1 239.2 544 320 544C400.8 544 465.5 507.2 512.6 463.4C559.4 419.9 590.7 368 605.6 332.3C608.9 324.4 608.9 315.6 605.6 307.7C590.7 272 559.4 220 512.6 176.6C465.5 132.9 400.8 96 320 96zM176 320C176 240.5 240.5 176 320 176C399.5 176 464 240.5 464 320C464 399.5 399.5 464 320 464C240.5 464 176 399.5 176 320zM320 256C320 291.3 291.3 320 256 320C244.5 320 233.7 317 224.3 311.6C223.3 322.5 224.2 333.7 227.2 344.8C240.9 396 293.6 426.4 344.8 412.7C396 399 426.4 346.3 412.7 295.1C400.5 249.4 357.2 220.3 311.6 224.3C316.9 233.6 320 244.4 320 256z" />
+                        </svg>
+                        Lihat Foto KTP
+                    </button>
+                    <div id="default-modal-{{ $row->id }}" tabindex="-1" aria-hidden="true"
+                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-gray-900/50 dark:bg-black/50 backdrop-blur-sm"
+                        data-modal-backdrop="static">
+                        <div class="relative w-full max-w-2xl max-h-full p-4">
+                            <div class="relative bg-white rounded-lg shadow-xl dark:bg-gray-800">
+                                <div
+                                    class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t md:p-5 dark:border-gray-600">
+                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                        Foto KTP - {{ $row->user->full_name }}
+                                    </h3>
+                                    <button type="button"
+                                        class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white"
+                                        data-modal-hide="default-modal-{{ $row->id }}">
+                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 14 14">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                        </svg>
+                                        <span class="sr-only">Close modal</span>
+                                    </button>
+                                </div>
+                                <div class="p-4 space-y-4 md:p-5 flex justify-center">
+                                    <img src="{{ Storage::url($row->user->ktp) }}" alt="KTP {{ $row->user->full_name }}"
+                                        class="max-h-[70vh] w-auto object-contain rounded-lg border border-gray-200 dark:border-gray-600 shadow-md">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="flex items-center gap-2">
+                        <!-- Button Aksi -->
+                        <button
+                            class="p-2 text-sm font-medium text-center text-white transition-all duration-300 ease-in-out bg-yellow-500 rounded-full edit hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-600"
+                            type="button" data-href="{{ route('penyewa.update', $row->id) }}"
+                            data-id_user="{{ $row->id_user }}" data-ktp="{{ Storage::url($row->user->ktp) }}"
+                            data-name="{{  $row->user->full_name }}" data-nik="{{  $row->user->nik }}"
+                            data-address="{{  $row->user->address }}" data-phone="{{  $row->user->phone }}"
+                            data-parent_phone="{{  $row->user->parent_phone }}"
+                            data-check_in="{{  $row->check_in->format('Y-m-d') }}">
+                            <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 640 640">
+                                <path
+                                    d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z" />
+                            </svg>
+                        </button>
+                        <button
+                            class="flex flex-row items-center gap-2 p-2 text-white duration-300 ease-in-out bg-red-600 rounded-full delete hover:bg-red-700 transiton-all">
+                            <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 640 640">
+                                <path
+                                    d="M232.7 69.9L224 96L128 96C110.3 96 96 110.3 96 128C96 145.7 110.3 160 128 160L512 160C529.7 160 544 145.7 544 128C544 110.3 529.7 96 512 96L416 96L407.3 69.9C402.9 56.8 390.7 48 376.9 48L263.1 48C249.3 48 237.1 56.8 232.7 69.9zM512 208L128 208L149.1 531.1C150.7 556.4 171.7 576 197 576L443 576C468.3 576 489.3 556.4 490.9 531.1L512 208z" />
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+<div class="flex flex-col items-start justify-between md:flex-row pb-14 md:items-end">
+    <span class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
+        Menampilkan <span class="mx-1 font-semibold text-gray-900">1</span> dari <span
+            class="mx-1 font-semibold text-gray-900">10</span> dari <span
+            class="mx-1 font-semibold text-gray-900">100</span>
+        Barisan
+    </span>
+    <nav aria-label="Page navigation example">
+        <ul class="flex items-center h-8 -space-x-px text-sm">
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 ms-0 border-e-0 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="sr-only">Previous</span>
+                    <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 1 1 5l4 4" />
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="#" aria-current="page"
+                    class="z-10 flex items-center justify-center h-8 px-3 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">1</a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">3</a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+            </li>
+            <li>
+                <a href="#"
+                    class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                    <span class="sr-only">Next</span>
+                    <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 9 4-4-4-4" />
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div> --}}

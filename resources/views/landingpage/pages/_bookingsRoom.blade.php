@@ -1,13 +1,16 @@
 @extends('landingpage.index')
 @section('content')
-@push('scripts')
 <div class="relative w-full p-4">
     @include('partials._errors')
-    <div class="max-w-4xl p-8 mx-auto bg-white border border-yellow-300 rounded-xl drop-shadow-2xl">
+    <div class="max-w-4xl p-8 mx-auto my-12 bg-white border border-yellow-300 rounded-xl drop-shadow-2xl">
+        <div class="p-4 mb-6 text-yellow-700 bg-yellow-100 border-l-4 border-yellow-500 text-xs xl:text-[.9rem] leading-4 xl:leading-6"
+            role="alert">
+            Silakan isi formulir dibawah ini dengan data yang sebenar-benarnya untuk proses pemesanan kamar kos.
+            Pastikan data yang anda masukkan sudah benar.
+        </div>
         <span class="block pb-8 text-xl text-center border-b border-gray-200 text-stone-900">
             Formulir Data Diri Pemesanan Kamar Kos
         </span>
-
         {{-- SEMUA LOGIKA DIPUSATKAN DI SINI --}}
         <form id="booking-form" enctype="multipart/form-data" action="{{ route('booking.submit') }}" method="post">
 

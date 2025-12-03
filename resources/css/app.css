@@ -41,33 +41,8 @@
 
 body {
     font-family: "Instrument Sans", sans-serif;
+    background-color: #fffffc;
 }
-
-/*.swiper {
-    width: 100%;
-    height: 100%;
-}
-
-.swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-*/
-
-/* Perbaikan untuk style autofill pada input dengan class .mails */
-/* @media screen (max-width: 640px) {
-    .mails:-webkit-autofill,
-    .mails:-webkit-autofill:hover,
-    .mails:-webkit-autofill:focus,
-    .mails:-webkit-autofill:active {
-        -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
-        box-shadow: 0 0 0 1000px transparent inset !important;
-        -webkit-text-fill-color: #fff !important;
-        caret-color: #fff !important;
-        transition: background-color 5000s ease-in-out 0s;
-    }
-} */
 
 .mails:-webkit-autofill,
 .mails:-webkit-autofill:hover,
@@ -95,4 +70,43 @@ body {
     position: relative;
     z-index: 2;
     background: transparent;
+}
+
+.gm-style .place-card-large {
+    display: none;
+}
+
+.gm-style .gm-style-mtc .place-card-large {
+    display: none;
+}
+
+.testimonial-swiper .swiper-wrapper {
+    transition-timing-function: linear !important;
+}
+
+.testimonialFade-sides {
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 15%,
+        black 85%,
+        transparent
+    );
+}
+
+@media (min-width: 1024px) {
+    div[drawer-backdrop=""] {
+        display: none !important;
+    }
+
+    .bg-gray-900\/50.fixed.inset-0.z-30 {
+        display: none !important;
+    }
 }

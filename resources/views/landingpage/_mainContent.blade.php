@@ -1,7 +1,6 @@
 @extends('landingpage.index')
-
 @section('content')
-<div class="grid max-w-[75rem] grid-cols-1 gap-6 p-10 xl:p-0 xl:gap-20 md:grid-cols-1 lg:grid-cols-2" id="beranda">
+<div class="grid max-w-[75rem] grid-cols-1 gap-6 p-10 xl:p-0 xl:gap-20 md:grid-cols-1 lg:grid-cols-2">
     <div class="relative">
         <div class="flex flex-col md:gap-6 md:flex-row">
             <span class="flex items-center mb-4">
@@ -31,10 +30,7 @@
                     <path
                         d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z" />
                 </svg>
-                <p class="pl-2 text-xs font-normal text-gray-500 xl:text-base">Rating <span
-                        id="google-rating-value">Memuat...</span> dari <span id="google-review-count">Memuat...</span>
-                    review
-                </p>
+                <p class="pl-2 text-xs font-normal text-gray-500 xl:text-base">Rating 4.9</p>
             </span>
             <span class="flex items-center mb-4 whitespace-nowrap">
                 {{-- location icon --}}
@@ -69,17 +65,18 @@
                         <svg class="w-6 h-6 text-yellow-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 640 640">
                             <path
-                                d="M80 259.8L289.2 345.9C299 349.9 309.4 352 320 352C330.6 352 341 349.9 350.8 345.9L593.2 246.1C602.2 242.4 608 233.7 608 224C608 214.3 602.2 205.6 593.2 201.9L350.8 102.1C341 98.1 330.6 96 320 96C309.4 96 299 98.1 289.2 102.1L46.8 201.9C37.8 205.6 32 214.3 32 224L32 520C32 533.3 42.7 544 56 544C69.3 544 80 533.3 80 520L80 259.8zM128 331.5L128 448C128 501 214 544 320 544C426 544 512 501 512 448L512 331.4L369.1 390.3C353.5 396.7 336.9 400 320 400C303.1 400 286.5 396.7 270.9 390.3L128 331.4z" />
+                                d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM370.7 389.1L226.4 444.6C207 452.1 187.9 433 195.4 413.6L250.9 269.3C254.2 260.8 260.8 254.2 269.3 250.9L413.6 195.4C433 187.9 452.1 207 444.6 226.4L389.1 370.7C385.9 379.2 379.2 385.8 370.7 389.1zM352 320C352 302.3 337.7 288 320 288C302.3 288 288 302.3 288 320C288 337.7 302.3 352 320 352C337.7 352 352 337.7 352 320z" />
                         </svg>
-                        <p class="pl-2 text-xs font-light text-gray-900 xl:text-base">8min Kampus UIN</p>
+                        <p class="pl-2 text-xs font-light text-gray-900 xl:text-base">Lokasi Strategis</p>
                     </span>
                     <span class="flex flex-row items-center">
                         <svg class="w-6 h-6 text-yellow-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 640 640">
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+
                             <path
-                                d="M64 96C81.7 96 96 110.3 96 128L96 352L320 352L320 224C320 206.3 334.3 192 352 192L512 192C565 192 608 235 608 288L608 512C608 529.7 593.7 544 576 544C558.3 544 544 529.7 544 512L544 448L96 448L96 512C96 529.7 81.7 544 64 544C46.3 544 32 529.7 32 512L32 128C32 110.3 46.3 96 64 96zM144 256C144 220.7 172.7 192 208 192C243.3 192 272 220.7 272 256C272 291.3 243.3 320 208 320C172.7 320 144 291.3 144 256z" />
+                                d="M256 160L256 224L384 224L384 160C384 124.7 355.3 96 320 96C284.7 96 256 124.7 256 160zM192 224L192 160C192 89.3 249.3 32 320 32C390.7 32 448 89.3 448 160L448 224C483.3 224 512 252.7 512 288L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 288C128 252.7 156.7 224 192 224z" />
                         </svg>
-                        <p class="pl-2 text-xs font-light text-gray-900 xl:text-base">20+ Kamar Kost</p>
+                        <p class="pl-2 text-xs font-light text-gray-900 xl:text-base">Keamanan Terjaga</p>
                     </span>
                     <span class="flex flex-row items-center">
                         <svg class="w-6 h-6 text-yellow-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
@@ -90,42 +87,36 @@
                         <p class="pl-2 text-xs font-light text-gray-900 xl:text-base">24 Jam Akses</p>
                     </span>
                 </div>
-                <div class="flex flex-col items-center w-full gap-2 mt-8 xl:gap-2 lg:flex-row">
-                    <span class="block w-full mt-2">
+                <div class="flex flex-col items-center w-full gap-2 py-16 xl:gap-2 lg:flex-row">
+                    <span class="block w-full">
                         <a href="{{ route('booking.form') }}"
-                            class="px-6 py-2 text-sm font-medium text-center text-stone-800 bg-[#E7B008] hover:bg-[#ffc003] rounded-md focus:ring-4 focus:outline-none md:text-base transition-all duration-300 ease-in-out whitespace-nowrap w-full flex gap-2 items-center justify-center">
-                            <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                            class="px-6 py-2 text-sm font-medium text-center text-stone-800 bg-[#E7B008] hover:bg-[#ffc003] rounded-full focus:ring-4 focus:outline-none md:text-base transition-all duration-300 ease-in-out whitespace-nowrap w-full flex gap-2 items-center justify-center">
+                            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 640 640">
                                 <path
-                                    d="M300.9 149.2L184.3 278.8C179.7 283.9 179.9 291.8 184.8 296.7C215.3 327.2 264.8 327.2 295.3 296.7L327.1 264.9C331.3 260.7 336.6 258.4 342 258C348.8 257.4 355.8 259.7 361 264.9L537.6 440L608 384L608 96L496 160L472.2 144.1C456.4 133.6 437.9 128 418.9 128L348.5 128C347.4 128 346.2 128 345.1 128.1C328.2 129 312.3 136.6 300.9 149.2zM148.6 246.7L255.4 128L215.8 128C190.3 128 165.9 138.1 147.9 156.1L144 160L32 96L32 384L188.4 514.3C211.4 533.5 240.4 544 270.3 544L286 544L279 537C269.6 527.6 269.6 512.4 279 503.1C288.4 493.8 303.6 493.7 312.9 503.1L353.9 544.1L362.9 544.1C382 544.1 400.7 539.8 417.7 531.8L391 505C381.6 495.6 381.6 480.4 391 471.1C400.4 461.8 415.6 461.7 424.9 471.1L456.9 503.1L474.4 485.6C483.3 476.7 485.9 463.8 482 452.5L344.1 315.7L329.2 330.6C279.9 379.9 200.1 379.9 150.8 330.6C127.8 307.6 126.9 270.7 148.6 246.6z" />
+                                    d="M224 64C241.7 64 256 78.3 256 96L256 128L384 128L384 96C384 78.3 398.3 64 416 64C433.7 64 448 78.3 448 96L448 128L480 128C515.3 128 544 156.7 544 192L544 480C544 515.3 515.3 544 480 544L160 544C124.7 544 96 515.3 96 480L96 192C96 156.7 124.7 128 160 128L192 128L192 96C192 78.3 206.3 64 224 64zM160 304L160 336C160 344.8 167.2 352 176 352L208 352C216.8 352 224 344.8 224 336L224 304C224 295.2 216.8 288 208 288L176 288C167.2 288 160 295.2 160 304zM288 304L288 336C288 344.8 295.2 352 304 352L336 352C344.8 352 352 344.8 352 336L352 304C352 295.2 344.8 288 336 288L304 288C295.2 288 288 295.2 288 304zM432 288C423.2 288 416 295.2 416 304L416 336C416 344.8 423.2 352 432 352L464 352C472.8 352 480 344.8 480 336L480 304C480 295.2 472.8 288 464 288L432 288zM160 432L160 464C160 472.8 167.2 480 176 480L208 480C216.8 480 224 472.8 224 464L224 432C224 423.2 216.8 416 208 416L176 416C167.2 416 160 423.2 160 432zM304 416C295.2 416 288 423.2 288 432L288 464C288 472.8 295.2 480 304 480L336 480C344.8 480 352 472.8 352 464L352 432C352 423.2 344.8 416 336 416L304 416zM416 432L416 464C416 472.8 423.2 480 432 480L464 480C472.8 480 480 472.8 480 464L480 432C480 423.2 472.8 416 464 416L432 416C423.2 416 416 423.2 416 432z" />
                             </svg>
                             Pesan
                             Sekarang</a>
                     </span>
-                    <span class="hidden text-yellow-500 lg:block">atau</span>
-                    <span class="block w-full mt-2">
-                        <a href="https://wa.me/628123498743"
-                            class="flex items-center justify-center w-full gap-2 px-6 py-2 text-sm font-medium text-center text-white transition-all duration-300 ease-in-out bg-green-900 rounded-md hover:bg-green-700 focus:outline-none md:text-base whitespace-nowrap">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            Jadwalkan Kunjungan</a>
+                    <span class="hidden text-gray-900 lg:block">atau</span>
+                    <span class="block w-full">
+                        <button onclick="surveyWA()"
+                            class="flex items-center justify-center w-full px-6 py-2 text-sm font-medium text-center text-white transition-all duration-300 ease-in-out bg-green-900 rounded-full hover:bg-green-700 focus:ring-4 focus:outline-none md:text-base whitespace-nowrap">
+                            <svg class="w-5 h-5 mr-2 " fill=" currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                            </svg>
+                            Jadwalkan Kunjungan
+                        </button>
                     </span>
                 </div>
-                {{-- <div class="mt-4">
-                    <div
-                        class="p-4 text-xs text-justify text-gray-600 bg-yellow-500 border border-yellow-600 rounded-lg drop-shadow-md">
-                        <span class="block p-1.5">Mulai dari</span>
-                        <div class="flex justify-between p-1.5">
-                            <span class="text-lg font-bold text-white md:text-2xl xl:text-4xl">Rp
-                                1.500.000</span>
-                            <span class="flex items-center font-light text-gray-800 xl:items-end">/bulan</span>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
     <!-- Video Section -->
-    <div class="relative h-60 md:h-[23rem] xl:h-[36rem] 2xl:h-[40rem] w-full ">
+    <div class="relative h-[25rem] md:h-[28rem] xl:h-[36rem] 2xl:h-[40rem] w-full ">
         {{-- video --}}
         <div class="w-full h-full overflow-hidden md:h-full rounded-3xl">
             <video class="relative object-cover w-full h-full" src="{{ asset('video/yellowKost-promotion-video.mp4') }}"
@@ -133,17 +124,17 @@
         </div>
         <div class="absolute lg:-top-10 lg:-right-8 -right-6 -top-6 lg:block">
             <div
-                class="flex flex-col p-2.5 items-center justify-center bg-white border border-yellow-300 shadow-lg lg:p-4  rounded-xl">
+                class="flex flex-col p-2.5 items-center justify-center bg-white/40 border border-gray-200 shadow-lg lg:p-4 rounded-xl backdrop-blur-lg">
                 {{-- icon --}}
-                <span class="block text-lg font-bold text-yellow-400 md:text-md 2xl:text-2xl ">100%</span>
+                <span class="block text-lg font-bold text-gray-900 md:text-md 2xl:text-2xl">100%</span>
                 <span class="text-xs">Nyaman</span>
             </div>
         </div>
         <div class="absolute lg:-bottom-10 lg:-left-14 -left-6 -bottom-6 lg:block">
             <div
-                class="flex flex-col items-center justify-center p-2.5 bg-white border border-yellow-300 shadow-lg rounded-xl lg:p-4">
+                class="flex flex-col items-center justify-center p-2.5 bg-white/40 border border-gray-200 backdrop-blur-lg shadow-lg rounded-xl lg:p-4">
                 {{-- icon --}}
-                <span class="block text-lg font-bold text-yellow-400 md:text-md 2xl:text-2xl">150+</span>
+                <span class="block text-lg font-bold text-gray-900 md:text-md 2xl:text-2xl">150+</span>
                 <span class="text-xs">Penghuni puas</span>
             </div>
         </div>
@@ -151,15 +142,14 @@
 </div>
 </div>
 <!-- End Video Section -->
-<div class="py-10 pb-28 bg-gradient-to-b to-[hsl(48_96%_89%)] from-[hsl(48_100%_96%)] scroll-behavior-smooth"
-    id="fasilitas">
+<div class="py-10 pb-28 bg-gradient-to-b to-[hsl(48_96%_89%)] from-[hsl(48_100%_96%)]">
     <span class="flex flex-col items-center justify-center py-8 m-4 text-gray-800">
         <h1 class="text-4xl font-bold md:text-5xl">Fasilitas
             <span class="text-yellow-400">
                 Kami
             </span>
         </h1>
-        <p class="max-w-xl my-4 text-sm text-center text-yellow-600 ">Nikmati berbagai fasilitas
+        <p class="max-w-xl my-4 text-center text-gray-700 ">Nikmati berbagai fasilitas
             modern yang telah kami
             sediakan
             untuk
@@ -169,7 +159,7 @@
     </span>
     <div class="container grid grid-cols-1 gap-4 p-6 mx-auto md:grid-cols-3 xl:grid-cols-4 max-w-7xl">
         <div
-            class="flex flex-col p-6 transition-all duration-300 ease-in-out bg-white border border-yellow-300 shadow-lg group rounded-xl hover:scale-105 hover:shadow-xl">
+            class="flex flex-col p-6 transition-all duration-300 ease-in-out border border-yellow-300 shadow-lg bg-white/70 group rounded-xl hover:scale-105 hover:shadow-xl backdrop-blur-lg">
             {{-- icon --}}
             <span
                 class="block p-4 mb-4 transition-colors duration-300 bg-yellow-100 rounded-md w-fit group-hover:bg-yellow-200"
@@ -189,7 +179,7 @@
             </span>
         </div>
         <div
-            class="flex flex-col p-6 transition-all duration-300 ease-in-out bg-white border border-yellow-300 shadow-lg group rounded-xl hover:scale-105 hover:shadow-xl">
+            class="flex flex-col p-6 transition-all duration-300 ease-in-out border border-yellow-300 shadow-lg bg-white/70 group rounded-xl hover:scale-105 hover:shadow-xl backdrop-blur-lg">
             {{-- icon --}}
             <span
                 class="block p-4 mb-4 transition-colors duration-300 bg-yellow-100 rounded-md w-fit group-hover:bg-yellow-200"
@@ -209,15 +199,16 @@
             </span>
         </div>
         <div
-            class="flex flex-col p-6 transition-all duration-300 ease-in-out bg-white border border-yellow-300 shadow-lg group rounded-xl hover:scale-105 hover:shadow-xl">
+            class="flex flex-col p-6 transition-all duration-300 ease-in-out border border-yellow-300 shadow-lg bg-white/70 group rounded-xl hover:scale-105 hover:shadow-xl backdrop-blur-lg">
             {{-- icon --}}
             <span
                 class="block p-4 mb-4 transition-colors duration-300 bg-yellow-100 rounded-md w-fit group-hover:bg-yellow-200"
                 style="filter: drop-shadow(0 2px 4px rgba(231, 176, 8, 0.4));">
                 <svg class="w-6 h-6 text-yellow-500 transition-colors duration-300" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+
                     <path
-                        d="M320 64C324.6 64 329.2 65 333.4 66.9L521.8 146.8C543.8 156.1 560.2 177.8 560.1 204C559.6 303.2 518.8 484.7 346.5 567.2C329.8 575.2 310.4 575.2 293.7 567.2C121.3 484.7 80.6 303.2 80.1 204C80 177.8 96.4 156.1 118.4 146.8L306.7 66.9C310.9 65 315.4 64 320 64z" />
+                        d="M256 160L256 224L384 224L384 160C384 124.7 355.3 96 320 96C284.7 96 256 124.7 256 160zM192 224L192 160C192 89.3 249.3 32 320 32C390.7 32 448 89.3 448 160L448 224C483.3 224 512 252.7 512 288L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 288C128 252.7 156.7 224 192 224z" />
                 </svg>
             </span>
 
@@ -229,7 +220,7 @@
             </span>
         </div>
         <div
-            class="flex flex-col p-6 transition-all duration-300 ease-in-out bg-white border border-yellow-300 shadow-lg group rounded-xl hover:scale-105 hover:shadow-xl">
+            class="flex flex-col p-6 transition-all duration-300 ease-in-out border border-yellow-300 shadow-lg bg-white/70 group rounded-xl hover:scale-105 hover:shadow-xl backdrop-blur-lg">
             {{-- icon --}}
             <span
                 class="block p-4 mb-4 transition-colors duration-300 bg-yellow-100 rounded-md w-fit group-hover:bg-yellow-200"
@@ -248,7 +239,7 @@
             </span>
         </div>
         <div
-            class="flex flex-col p-6 transition-all duration-300 ease-in-out bg-white border border-yellow-300 shadow-lg group rounded-xl hover:scale-105 hover:shadow-xl">
+            class="flex flex-col p-6 transition-all duration-300 ease-in-out border border-yellow-300 shadow-lg bg-white/70 group rounded-xl hover:scale-105 hover:shadow-xl backdrop-blur-lg">
             {{-- icon --}}
             <span
                 class="block p-4 mb-4 transition-colors duration-300 bg-yellow-100 rounded-md w-fit group-hover:bg-yellow-200"
@@ -267,7 +258,7 @@
             </span>
         </div>
         <div
-            class="flex flex-col p-6 transition-all duration-300 ease-in-out bg-white border border-yellow-300 shadow-lg group rounded-xl hover:scale-105 hover:shadow-xl">
+            class="flex flex-col p-6 transition-all duration-300 ease-in-out border border-yellow-300 shadow-lg bg-white/70 group rounded-xl hover:scale-105 hover:shadow-xl backdrop-blur-lg">
             {{-- icon --}}
             <span
                 class="block p-4 mb-4 transition-colors duration-300 bg-yellow-100 rounded-md w-fit group-hover:bg-yellow-200"
@@ -286,7 +277,7 @@
             </span>
         </div>
         <div
-            class="flex flex-col p-6 transition-all duration-300 ease-in-out bg-white border border-yellow-300 shadow-lg group rounded-xl hover:scale-105 hover:shadow-xl">
+            class="flex flex-col p-6 transition-all duration-300 ease-in-out border border-yellow-300 shadow-lg bg-white/70 group rounded-xl hover:scale-105 hover:shadow-xl backdrop-blur-lg">
             {{-- icon --}}
             <span
                 class="block p-4 mb-4 transition-colors duration-300 bg-yellow-100 rounded-md w-fit group-hover:bg-yellow-200"
@@ -305,7 +296,7 @@
             </span>
         </div>
         <div
-            class="flex flex-col p-6 transition-all duration-300 ease-in-out bg-white border border-yellow-300 shadow-lg group rounded-xl hover:scale-105 hover:shadow-xl">
+            class="flex flex-col p-6 transition-all duration-300 ease-in-out border border-yellow-300 shadow-lg bg-white/70 group rounded-xl hover:scale-105 hover:shadow-xl backdrop-blur-lg">
             {{-- icon --}}
             <span
                 class="block p-4 mb-4 transition-colors duration-300 bg-yellow-100 rounded-md w-fit group-hover:bg-yellow-200"
@@ -325,16 +316,16 @@
         </div>
     </div>
 </div>
-<div class="scroll-behavior-smooth">
-    <div class="p-6 mx-auto md:p-0 max-w-7xl" id="gallery">
-        <div class="mx-auto md:p-0">
+<section>
+    <div class="p-6 mx-auto max-w-7xl md:p-0 lg:p-6">
+        <div class="mx-auto mt-20 md:p-0">
             <span class="flex flex-col items-center justify-center py-8 text-gray-800">
                 <h1 class="text-4xl font-bold md:text-5xl">Galeri
                     <span class="text-yellow-400">
                         Foto
                     </span>
                 </h1>
-                <p class="max-w-xl my-4 text-sm text-center text-yellow-600">Lihat langsung fasilitas dan
+                <p class="max-w-xl my-4 text-center text-gray-500">Lihat langsung fasilitas dan
                     ruangan yang tersedia di kost kami. Semua foto diambil secara real dan terbaru.
                 </p>
             </span>
@@ -342,221 +333,387 @@
             @include('landingpage._galleryData')
         </div>
     </div>
-
-</div>
-</div>
+</section>
 <!-- Testimonial Section -->
-<div class="pt-20 pb-20 mx-auto max-w-7xl">
-    <div class="p-6 mx-auto lg:px-6 xl:px-0">
-        <div class="flex flex-col items-center justify-center py-8 text-gray-800">
-            <h1 class="text-4xl font-bold md:text-5xl">Testimoni
-                <span class="text-yellow-400">Penghuni</span>
-            </h1>
-            <p class="max-w-xl my-4 text-sm text-center text-yellow-600">
-                Dengarkan apa kata mereka yang telah merasakan kenyamanan tinggal di YellowKost.
+<section>
+    <div class="pt-20 pb-20 mx-auto max-w-7xl">
+        <div class="p-6 mx-auto lg:px-6 xl:px-0">
+            <div class="flex flex-col items-center justify-center py-8 text-gray-800">
+                <h1 class="text-4xl font-bold md:text-5xl">Testimoni
+                    <span class="text-yellow-400">Penghuni</span>
+                </h1>
+                <p class="max-w-xl my-4 text-center text-gray-500">
+                    Dengarkan apa kata mereka yang telah merasakan kenyamanan tinggal di YellowKost.
+                </p>
+            </div>
+            <!-- Swiper -->
+            <div class="mt-10 mb-10 swiper testimonial-swiper testimonialFade-sides ">
+                <div class="h-full swiper-wrapper">
+                    @php
+                    $testimonials = [
+                    ['name' => 'Aulia Rahman', 'jobs' => 'Mahasiswa', 'image' => 'https://i.pravatar.cc/150?u=aulia',
+                    'comment' => 'Kostnya bersih banget dan fasilitasnya lengkap. WiFi kenceng, jadi nugas lancar.
+                    Lokasinya
+                    juga deket banget sama kampus, hemat waktu dan ongkos.', 'rating' => 5],
+                    ['name' => 'Bima Saputra', 'jobs' => 'Karyawan Swasta', 'image' =>
+                    'https://i.pravatar.cc/150?u=bima',
+                    'comment' => 'Akses 24 jam bener-bener ngebantu buat yang pulangnya malem. Lingkungannya aman dan
+                    tenang, cocok buat istirahat setelah seharian kerja. Recommended!', 'rating' => 5],
+                    ['name' => 'Citra Lestari', 'jobs' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=citra',
+                    'comment' => 'Suka banget sama dapurnya, bersih dan peralatannya lengkap. Ibu kostnya juga ramah dan
+                    fast response kalau ada masalah. Betah banget di sini!', 'rating' => 5],
+                    ['name' => 'Doni Setiawan', 'jobs' => 'Freelancer', 'image' => 'https://i.pravatar.cc/150?u=doni',
+                    'comment' => 'Tempatnya nyaman buat kerja dari kost. Suasananya tenang dan inspiratif. Parkirannya
+                    juga
+                    luas, jadi nggak khawatir soal kendaraan.', 'rating' => 4],
+                    ['name' => 'Eka Putri', 'jobs' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=eka',
+                    'comment'
+                    => 'Kamar mandinya bersih dan airnya lancar. Harganya juga worth it banget dengan semua fasilitas
+                    yang
+                    didapat. Nggak nyesel pilih YellowKost.', 'rating' => 5],
+                    ];
+                    @endphp
+                    @foreach ($testimonials as $testimonial)
+                    <div class="flex h-auto swiper-slide">
+                        <div class="flex flex-col w-full h-full p-6 bg-white border border-gray-200 rounded-2xl">
+                            <div class="flex-grow">
+                                <span class="relative block text-gray-600">
+                                    <svg class="w-10 h-10 text-gray-300" fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                                        <path
+                                            d="M96 280C96 213.7 149.7 160 216 160L224 160C241.7 160 256 174.3 256 192C256 209.7 241.7 224 224 224L216 224C185.1 224 160 249.1 160 280L160 288L224 288C259.3 288 288 316.7 288 352L288 416C288 451.3 259.3 480 224 480L160 480C124.7 480 96 451.3 96 416L96 280zM352 280C352 213.7 405.7 160 472 160L480 160C497.7 160 512 174.3 512 192C512 209.7 497.7 224 480 224L472 224C441.1 224 416 249.1 416 280L416 288L480 288C515.3 288 544 316.7 544 352L544 416C544 451.3 515.3 480 480 480L416 480C380.7 480 352 451.3 352 416L352 280z" />
+                                    </svg>
+                                    {{ $testimonial['comment'] }}
+                                </span>
+                            </div>
+                            <div class="flex flex-col items-center mt-6">
+                                {{-- <img class="object-cover rounded-full" src="{{ $testimonial['image'] }}"
+                                    alt="{{ $testimonial['name'] }}"> --}}
+                                <div class="flex flex-col items-center h-full">
+                                    <div class="flex items-center mb-4">
+                                        @for ($i = 0; $i < 5; $i++) <svg
+                                            class="w-5 h-5 {{ $i < $testimonial['rating'] ? 'text-yellow-400' : 'text-gray-300' }}"
+                                            fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.27l-6.18 3.6 1.18-6.88L2 9.27l6.91-1.01L12 2z" />
+                                            </svg>
+                                            @endfor
+                                    </div>
+                                    <span class="font-semibold text-gray-800">{{ $testimonial['name'] }}</span>
+                                    <span class="text-sm text-gray-500">{{ $testimonial['jobs'] }}</span>
+                                </div>
+                            </div>
+                            <div class="absolute bg-red "></div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="kontak" class="py-16 mx-6">
+    <div class="container mx-auto max-w-7xl">
+        <div class="mb-12 text-center">
+            <h2 class="text-4xl font-bold text-gray-900 md:text-5xl">
+                Lokasi & <span class="text-yellow-500">Kontak</span>
+            </h2>
+            <p class="mt-4 text-gray-500 ">
+                Kunjungi lokasi kami atau hubungi admin untuk informasi ketersediaan kamar.
             </p>
         </div>
-        <!-- Swiper -->
-        <div class="mt-10 mb-10 swiper testimonial-swiper">
-            <div class="swiper-wrapper">
-                @php
-                $testimonials = [
-                ['name' => 'Aulia Rahman', 'jobs' => 'Mahasiswa', 'image' => 'https://i.pravatar.cc/150?u=aulia',
-                'comment' => 'Kostnya bersih banget dan fasilitasnya lengkap. WiFi kenceng, jadi nugas lancar. Lokasinya
-                juga deket banget sama kampus, hemat waktu dan ongkos.', 'rating' => 5],
-                ['name' => 'Bima Saputra', 'jobs' => 'Karyawan Swasta', 'image' => 'https://i.pravatar.cc/150?u=bima',
-                'comment' => 'Akses 24 jam bener-bener ngebantu buat yang pulangnya malem. Lingkungannya aman dan
-                tenang, cocok buat istirahat setelah seharian kerja. Recommended!', 'rating' => 5],
-                ['name' => 'Citra Lestari', 'jobs' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=citra',
-                'comment' => 'Suka banget sama dapurnya, bersih dan peralatannya lengkap. Ibu kostnya juga ramah dan
-                fast response kalau ada masalah. Betah banget di sini!', 'rating' => 5],
-                ['name' => 'Doni Setiawan', 'jobs' => 'Freelancer', 'image' => 'https://i.pravatar.cc/150?u=doni',
-                'comment' => 'Tempatnya nyaman buat kerja dari kost. Suasananya tenang dan inspiratif. Parkirannya juga
-                luas, jadi nggak khawatir soal kendaraan.', 'rating' => 4],
-                ['name' => 'Eka Putri', 'jobs' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=eka', 'comment'
-                => 'Kamar mandinya bersih dan airnya lancar. Harganya juga worth it banget dengan semua fasilitas yang
-                didapat. Nggak nyesel pilih YellowKost.', 'rating' => 5],
-                ];
-                @endphp
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-6">
+            <div class="flex flex-col justify-start space-y-6">
+                <div class="flex items-start p-6 transition-transform duration-300 bg-gray-800 rounded-2xl">
+                    <div class="flex-shrink-0">
+                        <span
+                            class="inline-flex items-center justify-center w-12 h-12 text-yellow-500 bg-yellow-900/30 rounded-xl ">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="ml-6">
+                        <h3 class="text-lg font-bold text-white ">Alamat Lengkap</h3>
+                        <p class="mt-2 text-gray-400">
+                            Perum Griya Mangli Indah No. AG 22,<br>
+                            Wonosari, Mangli, Kec. Kaliwates,<br>
+                            Kabupaten Jember, Jawa Timur.
+                        </p>
+                        <a href="https://maps.google.com/?q=Rumah+Kost+Yellow+Partners+Jember" target="_blank"
+                            class="inline-block mt-3 text-sm font-medium text-yellow-600 hover:text-yellow-500 hover:underline">
+                            Buka di Google Maps &rarr;
+                        </a>
+                    </div>
+                </div>
 
-                @foreach ($testimonials as $testimonial)
-                <div class="flex swiper-slide">
-                    <div class="flex flex-col h-full p-6 bg-white border border-gray-200 rounded-2xl">
-
-                        <div class="flex-grow">
-                            <span class="relative block text-gray-600">
-                                <svg class="w-10 h-10 text-gray-300" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-                                    <path
-                                        d="M96 280C96 213.7 149.7 160 216 160L224 160C241.7 160 256 174.3 256 192C256 209.7 241.7 224 224 224L216 224C185.1 224 160 249.1 160 280L160 288L224 288C259.3 288 288 316.7 288 352L288 416C288 451.3 259.3 480 224 480L160 480C124.7 480 96 451.3 96 416L96 280zM352 280C352 213.7 405.7 160 472 160L480 160C497.7 160 512 174.3 512 192C512 209.7 497.7 224 480 224L472 224C441.1 224 416 249.1 416 280L416 288L480 288C515.3 288 544 316.7 544 352L544 416C544 451.3 515.3 480 480 480L416 480C380.7 480 352 451.3 352 416L352 280z" />
-                                </svg>
-                                {{ $testimonial['comment'] }}
-                            </span>
-                        </div>
-                        <div class="flex flex-col items-center mt-6">
-                            {{-- <img class="object-cover rounded-full" src="{{ $testimonial['image'] }}"
-                                alt="{{ $testimonial['name'] }}"> --}}
-                            <div class="flex flex-col items-center">
-                                <div class="flex items-center mb-4">
-                                    @for ($i = 0; $i < 5; $i++) <svg
-                                        class="w-5 h-5 {{ $i < $testimonial['rating'] ? 'text-yellow-400' : 'text-gray-300' }}"
-                                        fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.27l-6.18 3.6 1.18-6.88L2 9.27l6.91-1.01L12 2z" />
-                                        </svg>
-                                        @endfor
-                                </div>
-                                <span class="font-semibold text-gray-800">{{ $testimonial['name'] }}</span>
-                                <span class="text-sm text-gray-500">{{ $testimonial['jobs'] }}</span>
+                <div class="flex items-start p-6 transition-transform duration-300 bg-gray-800 rounded-2xl">
+                    <div class="flex-shrink-0">
+                        <span
+                            class="inline-flex items-center justify-center w-12 h-12 text-yellow-500 bg-yellow-900/30 rounded-xl ">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="ml-6">
+                        <h3 class="text-lg font-bold text-white">Hubungi Admin</h3>
+                        <p class="mt-2 text-gray-400">
+                            Ingin survey lokasi atau booking kamar?
+                            <br>
+                            Hubungi kami via WhatsApp.
+                        </p>
+                        <button onclick="surveyWA()"
+                            class="flex items-center gap-2 px-4 py-2 mt-4 text-sm font-medium text-white transition-colors bg-green-600 rounded-lg hover:bg-green-700">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                            </svg>
+                            Chat WhatsApp
+                        </button>
+                    </div>
+                </div>
+                <div
+                    class="flex items-start h-full p-6 transition-transform bg-gray-800 border border-gray-700 rounded-2xl">
+                    <div class="flex-shrink-0">
+                        <span
+                            class="inline-flex items-center justify-center w-12 h-12 text-yellow-500 rounded-xl bg-yellow-900/30">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="ml-6">
+                        <h3 class="text-lg font-bold text-white">Jam Operasional</h3>
+                        <div class="mt-2 space-y-1 text-gray-400">
+                            <div class="grid w-full grid-cols-2 gap-3">
+                                <span>Layanan Admin:</span>
+                                <span class="font-medium text-white">08.00 - 20.00</span>
+                            </div>
+                            <div class="grid w-full grid-cols-2 gap-3">
+                                <span>Akses Penghuni:</span>
+                                <span class="font-medium text-green-600">24 Jam</span>
+                            </div>
+                            <div class="grid w-full grid-cols-2 gap-3">
+                                <span>Hari Besar:</span>
+                                <span class="font-medium text-gray-400">Harap konsultasikan kepihak
+                                    pengelolah untuk janji temu</span>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="relative w-full min-h-[600px] rounded-2xl overflow-hidden">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.23112287711!2d113.6400199748866!3d-8.17989599185013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6910059ab683f%3A0xb67df6d404026d30!2sPerum%20Griya%20Mangli%20Indah%20No.AG%2022!5e0!3m2!1sid!2sid!4v1717057312345!5m2!1sid!2sid"
+                    class="w-full h-[calc(100%+500px)] -mt-[180px]" style="border:0;" allowfullscreen="none"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div
+                    class="absolute px-4 py-2 text-xs font-semibold text-gray-800 border border-gray-100 rounded-full pointer-events-none bottom-4 left-4 bg-white/10 backdrop-blur-sm drop-shadow-md [text-shadow:_0_1px_10px_rgba(0,0,0,0.6)]">
+                    <div class="flex flex-row items-center justify-center gap-2 algin">
+                        <svg class="w-5 h-5 text-red-800 [text-shadow:_0_1px_10px_rgba(0,0,0,0.6)]" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span>
+                            YellowKost Area
+                        </span>
+                    </div>
+                </div>
+                <div
+                    class="absolute p-5 transition-transform transform translate-y-0 border border-gray-200 shadow-2xl top-4 left-4 right-4 md:left-4 md:right-auto md:w-80 bg-white/20 backdrop-blur-sm rounded-xl">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 [text-shadow:_0_1px_16px_rgba(0,0,0,0.6)]">
+                                YellowKost & Partner</h3>
+                            <p class="text-xs leading-4 text-gray-800 [text-shadow:_0_1px_16px_rgba(0,0,0,0.6)] py-3">
+                                Perum
+                                Griya Mangli Indah No. AG 22,
+                                Wonosari, Mangli, Kec. Kaliwates,
+                                Kabupaten Jember, Jawa Timur. </p>
+                        </div>
+                        <div
+                            class="bg-yellow-500 p-1.5 rounded-lg text-black shadow-lg [text-shadow:_0_1px_16px_rgba(0,0,0,0.6)]">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-3 mb-4">
+                        <span
+                            class="text-sm font-bold text-yellow-600 [text-shadow:_0_1px_16px_rgba(0,0,0,0.6)]">4.9</span>
+                        <div class="flex mx-2 text-yellow-600 [text-shadow:_0_1px_16px_rgba(0,0,0,0.6)]">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                        {{-- <span class="text-xs text-gray-400">(120 Ulasan)</span> --}}
+                    </div>
+                    <a href="https://maps.app.goo.gl/En63A3Q37W7aBnRH6" target="_blank"
+                        class="block w-full py-2 text-sm font-semibold text-center text-black transition-colors bg-yellow-500 rounded-lg hover:bg-yellow-400 shadown-lg">
+                        Buka di Google Maps
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- FAQ Section -->
+<section id="faq-section" class="py-16">
+    <div class="p-6 pb-20">
+        <div class="mx-auto max-w-7xl md:p-0">
+            <div class="flex flex-col items-center justify-center py-8 text-gray-800">
+                <h1 class="text-4xl font-bold text-center md:text-5xl">Pertanyaan Sering Diajukan
+                    <span class="text-yellow-400">(FAQ)</span>
+                </h1>
+                <p class="max-w-xl my-4 text-center text-gray-500">
+                    Temukan jawaban cepat untuk pertanyaan umum tentang YellowKost.
+                </p>
+            </div>
+            @php
+            $faqs = [
+            ['id' => 'Harga Sewa',
+            'question' => 'Apakah harga sewa sudah termasuk listrik?',
+            'answer' => 'Tidak. Harga
+            sewa belum termasuk biaya listrik. Setiap kamar menggunakan meteran listrik sistem token (prabayar) dengan
+            daya 900 Watt yang diisi mandiri oleh penghuni.'],
+            ['id' => 'Fasilitas',
+            'question' => 'Apakah harga sewa sudah termasuk air dan Wi-Fi?',
+            'answer' => 'Ya,
+            biaya sewa sudah termasuk pemakaian air bersih dan akses internet (Wi-Fi) gratis.'],
+            ['id' => 'Fasilitas Kamar',
+            'question' => 'Apa saja fasilitas yang ada di dalam kamar?',
+            'answer' => 'Setiap kamar sudah full furnished, dilengkapi dengan kasur (springbed), lemari pakaian, meja
+            belajar, kursi, dan gorden.'],
+            ['id' => 'Fasilitas Dapum',
+            'question' => 'Apakah tersedia dapur umum?',
+            'answer' => 'Ya, kami menyediakan dapur bersama yang dilengkapi dengan kompor dan wastafel cuci piring.
+            Tersedia juga kulkas umum untuk menyimpan makanan/minuman.'],
+            ['id' => 'Fasilitas Parkir',
+            'question' => 'Bagaimana dengan area parkir?',
+            'answer' => 'Kami menyediakan area parkir motor yang luas dan berkanopi (teduh), serta area parkir mobil
+            yang aman di dalam lingkungan perumahan.'],
+            ['id' => 'Hewan Peliharaan',
+            'question' => 'Apakah boleh membawa hewan peliharaan (kucing/anjing)?',
+            'answer' => 'Mohon maaf, demi kenyamanan dan kebersihan bersama, penghuni dilarang membawa hewan peliharaan
+            jenis apapun ke dalam lingkungan kost.'],
+            ['id' => 'Jam Malam',
+            'question' => 'Apakah kost ini bebas jam malam?',
+            'answer' => 'Penghuni yang memegang kunci gerbang memiliki akses 24 jam. Namun, kami menghimbau agar tetap
+            menjaga ketenangan di atas pukul 22.00 WIB karena lokasi berada di dalam komplek perumahan warga.'],
+            ['id' => 'Tamu Lawan Jenis',
+            'question' => 'Apakah boleh menerima tamu lawan jenis di dalam kamar?',
+            'answer' => 'Tidak diperbolehkan. Tamu lawan jenis hanya boleh diterima di ruang tamu/teras umum. Pintu
+            kamar harus tetap terbuka jika ada tamu sesama jenis yang berkunjung.'],
+            ['id' => 'Tamu Pasutri',
+            'question' => 'Apakah pasangan suami istri (Pasutri) diperbolehkan menyewa?',
+            'answer' => 'Ya, Pasutri diperbolehkan dengan syarat wajib menunjukkan Buku Nikah Asli atau sertifikat
+            pernikahan resmi saat pendaftaran. Kami tidak menerima pasangan tanpa ikatan resmi.'],
+            ['id' => 'Sistem Pembaayaran',
+            'question' => 'Bagaimana sistem pembayarannya?',
+            'answer' => 'Pembayaran sewa dilakukan di muka (setiap tanggal masuk/check-in). Pembayaran bisa dilakukan
+            secara tunai atau transfer bank ke rekening pengelola dengan cara mengakses akun masing-masing melalui
+            sistem yang ada di YellowKost & Partner.'],
+            ['id' => 'Sistem Deposit',
+            'question' => 'Apakah ada deposit atau uang jaminan?',
+            'answer' => 'Ya, dikenakan uang deposit di awal masa sewa sebagai jaminan kerusakan atau tunggakan. Uang ini
+            akan dikembalikan penuh saat check-out jika tidak ada masalah.'],
+            ['id' => 'Anggota Baru',
+            'question' => 'Apa saja syarat untuk menjadi penghuni baru?',
+            'answer' => 'Calon penghuni wajib menyerahkan fotokopi KTP/Identitas diri yang masih berlaku dan nomor
+            telepon keluarga yang bisa dihubungi (untuk keadaan darurat).'],
+            ['id' => 'Lokasi Kos',
+            'question' => 'Apakah lokasi kost jauh dari kampus/pusat kota?',
+            'answer' => 'Lokasi kami sangat strategis di Perumahan Griya Mangli Indah. Dekat dengan Jember Roxy Square,
+            Pasar Mangli, dan akses mudah menuju kampus UIN KHAS atau Unmuh Jember.'],
+            ['id' => 'Keamanan Kos',
+            'question' => 'Apakah lingkungan kost aman?',
+            'answer' => 'Sangat aman. Karena berada di dalam komplek perumahan, lingkungan relatif tenang dan diawasi.
+            Kami juga memasang CCTV 24 jam di beberapa titik area kost.'],
+
+            ];
+            @endphp
+            <div id="faq-accordion" class="overflow-hidden border border-gray-900 rounded-xl">
+                @foreach ($faqs as $index => $faq)
+                <div class="border-b border-gray-900 last:border-b-0">
+                    <button type="button"
+                        class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-900 transition-colors duration-300 focus:outline-none faq-btn {{ $index == 0 ? 'bg-yellow-500 text-gray-900  hover:bg-yellow-600' : '' }}"
+                        onclick="toggleAccordion('faq-body-{{ $faq['id'] }}', this)">
+
+                        <span class="font-bold text-gray-900">{{ $faq['question'] }}</span>
+
+                        <svg class="w-4 h-4 shrink-0 transition-transform duration-300 {{ $index == 0 ? 'rotate-180 text-gray-900 ' : '' }}"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5 5 1 1 5" />
+                        </svg>
+                    </button>
+
+                    <div id="faq-body-{{ $faq['id'] }}"
+                        class="overflow-hidden transition-[max-height] duration-500 ease-in-out "
+                        style="max-height: {{ $index == 0 ? '1000px' : '0px' }}">
+                        <div class="p-5 text-gray-700 border-t border-gray-200">
+                            {{ $faq['answer'] }}
+                        </div>
+                    </div>
+
                 </div>
                 @endforeach
             </div>
-        </div>
-    </div>
-</div>
-<div class="pb-20">
-    <div class="p-6 mx-auto md:p-6">
-        <div class="flex flex-col items-center justify-center py-8 text-gray-800" id="kontak">
-            <h1 class="text-4xl font-bold md:text-5xl">Hubungi
-                <span class="text-yellow-400">
-                    Kami
-                </span>
-            </h1>
-            <Siap class="max-w-xl my-4 text-sm text-center text-yellow-600">Siap untuk bergabung dengan kami?
-                Hubungi
-                sekarang untuk reservasi atau konsultasi tentang kebutuhan hunian Anda. </p>
-        </div>
-        <div class="grid grid-cols-1 gap-16 pt-10 pb-10 mx-auto lg:grid-cols-2 max-w-7xl">
-            <div class="flex flex-col gap-4">
-                <h1 class="text-2xl font-bold text-stone-700">Informasi Kontak</h1>
-                <div class="flex flex-row p-6 bg-white border border-gray-300 rounded-lg drop-shadow-xl">
-                    <span
-                        class="bg-gradient-to-r from-[hsl(115,95%,35%)] to-[hsl(114,88%,42%)] rounded-md p-3 block px-4">
-                        <i class="text-lg text-white fa-solid fa-message"></i>
-                    </span>
-                    <div class="flex flex-row justify-between w-full">
-                        <div class="pl-4">
-                            <a href="https://wa.me/628123498743"
-                                class="flex flex-col justify-center text-green-900 pt-1.5 hover:text-green-700 transition-all duration-300 ease-in-out">
-                                <span class="font-semibold">WhatsApp</span>
-                                +62812-349-8743</a>
-                        </div>
-                        <div class="flex-col justify-center hidden text-xs md:flex text-stone-400">
-                            <span>WhatsApp Only.</span>
-                            <span class="text-end">No Call.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-10">
-                    <div class="flex flex-row gap-4 md:flex-row">
-                        {{-- <span class="block">
-                            <i
-                                class="p-4 px-6 text-2xl text-orange-400 bg-yellow-200 rounded-md fa-solid fa-location-dot"></i>
-                        </span> --}}
-                        <div class="flex flex-col">
-                            <span class="font-semibold">Alamat</span>
-                            <span class="text-stone-500 mt-2.5 md:text-base text-[0.875rem]">
-                                Perum Griya Mangli Indah No.AG 22, Wonosari, Mangli, Kec. Kaliwates, Kabupaten
-                                Jember,
-                                Jawa
-                                Timur</span>
-                        </div>
-                    </div>
-                    <div class="flex flex-row gap-4 mt-6 md:flex-row">
-                        {{-- <span class="block">
-                            <i
-                                class="p-4 px-6 text-xl text-orange-400 bg-yellow-200 rounded-md fa-solid fa-clock-rotate-left"></i>
-                        </span> --}}
-                        <div class="flex flex-col">
-                            <span class="font-semibold">Jam Operasioal</span>
-                            <div class="text-[0.875rem] mt-2.5 flex flex-col">
-                                <span class="text-stone-500 text-md md:text-base">
-                                    Senin - Jumat : 08:00 - 17:00 WIB
-                                </span>
-                                <span class="text-stone-500 text-md md:text-base">
-                                    Sabtu - Minggu : 08:00 - 23:00 WIB
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="overflow-hidden bg-white border border-gray-300 rounded-lg drop-shadow-2xl">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3949.23112287711!2d113.6400199748866!3d-8.17989599185013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6910059ab683f%3A0xb67df6d404026d30!2sPerum%20Griya%20Mangli%20Indah%20No.AG%2022!5e0!3m2!1sid!2sid!4v1717057312345!5m2!1sid!2sid"
-                    class="w-full h-full min-h-[365px] md:min-h-[600px] border-0" style="border:0;" allowfullscreen=""
-                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- FAQ Section -->
-<div class="p-6 pb-20">
-    <div class="max-w-4xl mx-auto md:p-0">
-        <div class="flex flex-col items-center justify-center py-8 text-gray-800">
-            <h1 class="text-4xl font-bold text-center md:text-5xl">Pertanyaan Sering Diajukan
-                <span class="text-yellow-400">(FAQ)</span>
-            </h1>
-            <p class="max-w-xl my-4 text-sm text-center text-yellow-600">
-                Temukan jawaban cepat untuk pertanyaan umum tentang YellowKost.
-            </p>
-        </div>
-        @php
-        $faqs = [
-        ['id' => 'Jam-Malam', 'question' => 'Apakah ada jam malam di YellowKost?', 'answer' => 'Kami memberikan akses 24
-        jam
-        kepada penghuni, namun kami tetap mengimbau untuk menjaga ketenangan dan tidak mengganggu penghuni lain di atas
-        jam 10 malam.'],
-        ['id' => 'Pembayaran', 'question' => 'Bagaimana sistem pembayaran sewa kost?', 'answer' => 'Pembayaran sewa
-        dilakukan
-        setiap bulan pada tanggal masuk. Kami menyediakan berbagai metode pembayaran, termasuk transfer bank dan
-        pembayaran tunai.'],
-        ['id' => 'Fasilitas', 'question' => 'Apakah fasilitas listrik dan air sudah termasuk dalam harga sewa?',
-        'answer' =>
-        'Harga sewa sudah termasuk biaya air bersih. Untuk listrik, kami menggunakan sistem token prabayar 900 watt
-        untuk setiap kamar, sehingga Anda dapat mengontrol pemakaian sendiri.'],
-        ['id' => 'Hewan-Peliharaan', 'question' => 'Apakah boleh membawa hewan peliharaan?', 'answer' => 'Untuk menjaga
-        kenyamanan
-        bersama dan kebersihan lingkungan kost, saat ini kami belum mengizinkan penghuni untuk membawa hewan
-        peliharaan.'],
-        ['id' => 'Informasi-TambahanTamu', 'question' => 'Apakah tersedia fasilitas untuk tamu yang menginap?', 'answer'
-        =>
-        'Tamu
-        diizinkan berkunjung dengan batas waktu hingga jam 10 malam. Untuk tamu yang ingin menginap, harap konfirmasi
-        terlebih dahulu kepada pengelola kost dan akan dikenakan biaya tambahan.'],
-        ];
-        @endphp
 
-        <div id="faq" data-accordion="collapse"
-            data-active-classes="bg-yellow-500 hover:bg-yellow-400 transition-all duration-300 ease-in-out text-gray-900"
-            data-inactive-classes="text-gray-900 hover:bg-yellow-100 transition-all duration-300 ease-in-out">
-            @foreach ($faqs as $index => $faq)
-            <h2 id="faq-heading-{{ $faq['id'] }}">
-                <button type="button" class="flex items-center justify-between w-full gap-3 p-5 font-medium text-left text-gray-900 border rtl:text-right border-gray-900 cursor-pointer
-                        @if($index == 0) rounded-t-xl @endif
-                        @if($index < count($faqs) - 1) border-b-0 @endif"
-                    data-accordion-target="#faq-body-{{ $faq['id'] }}"
-                    aria-expanded="{{ $index == 0 ? 'true' : 'false' }}" aria-controls="faq-body-{{ $faq['id'] }}">
-                    <span>{{ $faq['question'] }}</span>
-                    <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 5 5 1 1 5" />
-                    </svg>
-                </button>
-            </h2>
-            <div id="faq-body-{{ $faq['id'] }}" class="{{ $index == 0 ? '' : 'hidden' }}"
-                aria-labelledby="faq-heading-{{ $faq['id'] }}">
-                <div class="p-5 border border-gray-900 @if($index < count($faqs) - 1) border-b-0 @endif">
-                    <p class="mb-2 text-gray-500">{{ $faq['answer'] }}</p>
-                </div>
-            </div>
-            @endforeach
         </div>
-
     </div>
-</div>
+</section>
 @endsection
+@push('scripts')
+<script>
+    function toggleAccordion(targetId, button) {
+        const content = document.getElementById(targetId);
+        const icon = button.querySelector('svg');
+        const isExpanded = content.style.maxHeight !== '0px';
+
+        // 1. Tutup SEMUA accordion lain dulu (Opsional, biar rapih kayak accordion beneran)
+        document.querySelectorAll('[id^="faq-body-"]').forEach(el => {
+            el.style.maxHeight = '0px'; // Tutup konten
+            // Reset style tombol lain
+            const btn = el.parentElement.querySelector('button');
+            if(btn) {
+                btn.classList.remove('bg-yellow-500', 'text-white', 'hover:bg-yellow-600');
+                btn.classList.add('bg-white');
+                const icn = btn.querySelector('svg');
+                if(icn) {
+                    icn.classList.remove('rotate-180', 'text-white');
+                }
+            }
+        });
+
+        // 2. Jika yang diklik tadi tertutup, maka BUKA sekarang
+        if (!isExpanded) {
+            content.style.maxHeight = content.scrollHeight + "px"; // Set tinggi sesuai konten
+
+            // Ubah style tombol jadi aktif
+            button.classList.remove('bg-white');
+            button.classList.add('bg-yellow-500', 'text-white', 'hover:bg-yellow-600');
+
+            // Putar icon
+            icon.classList.add('rotate-180', 'text-white');
+        }
+    }
+</script>
+@endpush
