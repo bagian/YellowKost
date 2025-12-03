@@ -9,13 +9,13 @@
             <p class="text-gray-500 dark:text-gray-400 mt-1">Pantau perbaikan, kebersihan, dan aktivitas operasional
                 kost.</p>
         </div>
-        <button id="btnOpenModal"
-            class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-black bg-yellow-400 rounded-xl hover:bg-yellow-500 transition-all shadow-lg shadow-yellow-400/20 active:scale-95 transform duration-200">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
-                </path>
+        <button type="button" id="btnOpenModal"
+            class="flex items-center gap-2 text-gray-900 bg-yellow-400 hover:bg-yellow-500  font-bold rounded-xl text-sm px-6 py-3 transition-all duration-300 shadow-md hover:shadow-lg transform active:scale-95 group">
+            <svg class="w-5 h-5 transition-transform group-hover:rotate-90" fill="currentColor" viewBox="0 0 640 640">
+                <path
+                    d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
             </svg>
-            Catat Aktivitas Baru
+            <span>Catat Aktivitas Baru</span>
         </button>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -130,7 +130,6 @@
             </div>
         </div>
     </div>
-
     <div id="modalAdd"
         class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
         <div
@@ -138,7 +137,7 @@
             <div class="flex justify-between items-center mb-6 border-b border-gray-100 dark:border-gray-700 pb-4">
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white">Catat Aktivitas Baru</h3>
                 <button id="btnCloseModal"
-                    class="text-gray-400 hover:text-red-500 transition-colors bg-gray-50 dark:bg-gray-700 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg p-1">
+                    class="text-gray-400 hover:text-gray-200 transition-colors bg-gray-50 dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600/30 rounded-lg p-1">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                         </path>
@@ -151,21 +150,21 @@
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Nama Aktivitas
                             / Kendala</label>
                         <input type="text" name="title"
-                            class="w-full rounded-xl border-gray-300 dark:border-gray-600 border p-3 focus:ring-yellow-500 focus:border-yellow-500 text-sm bg-white dark:bg-gray-700 dark:text-white"
+                            class="w-full rounded-xl border-gray-300 dark:border-gray-600 border p-3 focus:ring-yellow-500 focus:border-yellow-500 text-sm bg-white dark:bg-gray-700 dark:text-white focus:ring-0"
                             placeholder="Contoh: Perbaikan AC Kamar 02" required>
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Lokasi</label>
                         <input type="text" name="location"
-                            class="w-full rounded-xl border-gray-300 dark:border-gray-600 border p-3 focus:ring-yellow-500 focus:border-yellow-500 text-sm bg-white dark:bg-gray-700 dark:text-white"
-                            placeholder="Contoh: Lantai 2, Kamar 02" required>
+                            class="w-full rounded-xl border-gray-300 dark:border-gray-600 border p-3 focus:ring-yellow-500 focus:border-yellow-500 text-sm bg-white dark:bg-gray-700 dark:text-white focus:ring-0"
+                            placeholder="Contoh: Lantai 1, Kamar 02" required>
                     </div>
 
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Biaya / Harga
                             (Rp)</label>
                         <input type="text" id="inputPrice" inputmode="numeric"
-                            class="w-full rounded-xl border-gray-300 dark:border-gray-600 border p-3 focus:ring-yellow-500 focus:border-yellow-500 text-sm bg-white dark:bg-gray-700 dark:text-white"
+                            class="w-full rounded-xl border-gray-300 dark:border-gray-600 border p-3 focus:ring-yellow-500 focus:border-yellow-500 text-sm bg-white dark:bg-gray-700 dark:text-white focus:ring-0"
                             placeholder="Contoh: 150.000" required>
                     </div>
 
@@ -175,7 +174,7 @@
                                 class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Kategori</label>
                             <div class="relative">
                                 <select name="category"
-                                    class="appearance-none w-full rounded-xl border-gray-300 dark:border-gray-600 border p-3 pr-10 bg-white dark:bg-gray-700 text-sm focus:ring-yellow-500 focus:border-yellow-500 shadow-sm dark:text-white cursor-pointer">
+                                    class="appearance-none w-full rounded-xl border-gray-300 dark:border-gray-600 border p-3 pr-10 bg-white dark:bg-gray-700 text-sm focus:ring-yellow-500 focus:border-yellow-500 shadow-sm dark:text-white cursor-pointer focus:ring-0">
                                     <option value="Perbaikan">Perbaikan</option>
                                     <option value="Kebersihan">Kebersihan</option>
                                     <option value="Aset">Aset</option>
@@ -195,7 +194,7 @@
                                 class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Prioritas</label>
                             <div class="relative">
                                 <select name="priority"
-                                    class="appearance-none w-full rounded-xl border-gray-300 dark:border-gray-600 border p-3 pr-10 bg-white dark:bg-gray-700 text-sm focus:ring-yellow-500 focus:border-yellow-500 shadow-sm dark:text-white cursor-pointer">
+                                    class="appearance-none w-full rounded-xl border-gray-300 dark:border-gray-600 border p-3 pr-10 bg-white dark:bg-gray-700 text-sm focus:ring-yellow-500 focus:border-yellow-500 shadow-sm dark:text-white cursor-pointer focus:ring-0">
                                     <option value="Low">Rendah</option>
                                     <option value="Medium" selected>Sedang</option>
                                     <option value="High">Tinggi</option>

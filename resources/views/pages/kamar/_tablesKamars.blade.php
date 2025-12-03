@@ -5,7 +5,7 @@
                     class="text-yellow-500">Kamar</span></h1>
             <p class="text-gray-500 dark:text-gray-400 mt-1">Pantau status kamar, harga sewa, dan foto kamar.</p>
         </div>
-        <a href="{{ route('kamar.create') }}"
+        {{-- <a href="{{ route('kamar.create') }}"
             class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 transition-all duration-300 ease-in-out dark:text-white inline-block">
             <span class="flex flex-row items-center">
                 <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
@@ -16,6 +16,17 @@
                     Tambahkan Data
                 </span>
             </span>
+        </a> --}}
+        <a href="{{ route('kamar.create') }}" class="group">
+            <button type="button"
+                class="flex items-center gap-2 text-gray-900 bg-yellow-400 hover:bg-yellow-500  font-bold rounded-xl text-sm px-6 py-3 transition-all duration-300 shadow-md hover:shadow-lg transform active:scale-95 ">
+                <svg class="w-5 h-5 transition-transform group-hover:rotate-90" fill="currentColor"
+                    viewBox="0 0 640 640">
+                    <path
+                        d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
+                </svg>
+                <span>Tambahkan Data</span>
+            </button>
         </a>
     </div>
     <div class="relative mt-8 mb-8 overflow-x-auto bg-gray-100 rounded-lg shadow-lg dark:bg-gray-800">
@@ -121,7 +132,8 @@
                         {{ $row->period }}
                     </td>
                     <td class="px-6 py-4">
-                        @if($row->is_available) Kosong @else {{ $row->confirmedBooking->first()->user->full_name }} @endif
+                        @if($row->is_available) Kosong @else {{ $row->confirmedBooking->first()->user->full_name }}
+                        @endif
                     </td>
                     <td class="px-6 py-4">
                         <!-- Modal toggle -->
@@ -196,7 +208,7 @@
                                         d="M100.4 417.2C104.5 402.6 112.2 389.3 123 378.5L304.2 197.3L338.1 163.4C354.7 180 389.4 214.7 442.1 267.4L476 301.3L442.1 335.2L260.9 516.4C250.2 527.1 236.8 534.9 222.2 539L94.4 574.6C86.1 576.9 77.1 574.6 71 568.4C64.9 562.2 62.6 553.3 64.9 545L100.4 417.2zM156 413.5C151.6 418.2 148.4 423.9 146.7 430.1L122.6 517L209.5 492.9C215.9 491.1 221.7 487.8 226.5 483.2L155.9 413.5zM510 267.4C493.4 250.8 458.7 216.1 406 163.4L372 129.5C398.5 103 413.4 88.1 416.9 84.6C430.4 71 448.8 63.4 468 63.4C487.2 63.4 505.6 71 519.1 84.6L554.8 120.3C568.4 133.9 576 152.3 576 171.4C576 190.5 568.4 209 554.8 222.5C551.3 226 536.4 240.9 509.9 267.4z" />
                                 </svg>
                             </a>
-                            <button type="button" name="delete" data-href="{{ route("kamar.destroy", $row->id) }}"
+                            <button type="button" name="delete" data-href="{{ route(" kamar.destroy", $row->id) }}"
                                 data-name="Kamar {{ $row->room_name }}"
                                 class="flex flex-row items-center gap-2 p-2 text-white duration-300 ease-in-out
                                 bg-red-600 rounded-full hover:bg-red-700 transiton-all">
@@ -216,36 +228,39 @@
     <div class="flex flex-col items-start justify-between md:flex-row pb-14 md:items-end">
 
         @if ($room->hasPages() || $room->total() > 0)
-            <span class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
-                Menampilkan <span class="mx-1 font-semibold text-gray-900">{{ $room->firstItem() ?? 0 }}</span> sampai <span
-                    class="mx-1 font-semibold text-gray-900">{{ $room->lastItem() ?? 0 }}</span> dari total <span
-                    class="mx-1 font-semibold text-gray-900">{{ $room->total() }}</span>
-                Barisan
-            </span>
+        <span class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
+            Menampilkan <span class="mx-1 font-semibold text-gray-900">{{ $room->firstItem() ?? 0 }}</span> sampai <span
+                class="mx-1 font-semibold text-gray-900">{{ $room->lastItem() ?? 0 }}</span> dari total <span
+                class="mx-1 font-semibold text-gray-900">{{ $room->total() }}</span>
+            Barisan
+        </span>
         @endif
 
         @if ($room->hasPages())
-            <nav aria-label="Page navigation example">
-                <ul class="flex items-center h-8 -space-x-px text-sm">
-                    <li>
-                        <a href="{{ $room->previousPageUrl() }}"
-                            class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 ms-0 border-e-0 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                            <span class="sr-only">Previous</span>
-                            <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 1 1 5l4 4" />
-                            </svg>
-                        </a>
-                    </li>
+        <nav aria-label="Page navigation example">
+            <ul class="flex items-center h-8 -space-x-px text-sm">
+                <li>
+                    <a href="{{ $room->previousPageUrl() }}"
+                        class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 ms-0 border-e-0 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                        <span class="sr-only">Previous</span>
+                        <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 1 1 5l4 4" />
+                        </svg>
+                    </a>
+                </li>
 
-                    @php($active = "text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white z-10")
-                    @php($inactive = "text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white")
+                @php($active = "text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700
+                dark:border-gray-700 dark:bg-gray-700 dark:text-white z-10")
+                @php($inactive = "text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700
+                dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white")
 
-                    @for($i = 1; $i <= $room->lastPage(); $i++)
+                @for($i = 1; $i <= $room->lastPage(); $i++)
                     <li>
                         <a href="{{ $room->url($i) }}"
-                            class="flex items-center justify-center h-8 px-3 leading-tight @if($i === $room->currentPage()) {{ $active }} @else {{ $inactive }} @endif">{{ $i }}</a>
+                            class="flex items-center justify-center h-8 px-3 leading-tight @if($i === $room->currentPage()) {{ $active }} @else {{ $inactive }} @endif">{{
+                            $i }}</a>
                     </li>
                     @endfor
 
@@ -253,15 +268,15 @@
                         <a href="{{ $room->nextPageUrl() }}"
                             class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                             <span class="sr-only">Next</span>
-                            <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 9 4-4-4-4" />
+                            <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
                         </a>
                     </li>
-                </ul>
-            </nav>
+            </ul>
+        </nav>
         @endif
     </div>
 

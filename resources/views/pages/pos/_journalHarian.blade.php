@@ -80,7 +80,8 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Total
                                 (Rp)</label>
                             <input type="text" id="amount" name="amount"
-                                class="price bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                class="price bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Contoh 100.000">
                         </div>
                     </div>
 
@@ -94,7 +95,9 @@
                                 <select name="id_booking" id="id_booking"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     @foreach($confirmedBookings as $booking)
-                                        <option value="{{ $booking->id }}" @if($booking->id === $bookingId) selected @endif>{{ $booking->room->room_name }} - {{ $booking->user->full_name }}</option>
+                                    <option value="{{ $booking->id }}" @if($booking->id === $bookingId) selected
+                                        @endif>{{ $booking->room->room_name }} - {{ $booking->user->full_name }}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>

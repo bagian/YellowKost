@@ -271,12 +271,11 @@
                                 Nomor Telepon Penyewa
                             </label>
                             <div class="relative mb-4">
-                                <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12" name="phone" disabled
-                                    placeholder="Masukkan nomor KTP" inputmode="numeric" pattern="[0-9]*"
+                                <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12" name="phone"
+                                    disabled placeholder="Masukkan nomor KTP" inputmode="numeric" pattern="[0-9]*"
                                     oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
                                     onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white border-transparent focus:border-transparent focus:ring-0">
-
                                 <button type="button"
                                     class="edit-field absolute top-0 bottom-0 right-0 px-5 text-sm font-semibold text-white rounded-r-lg bg-slate-600 hover:bg-slate-500">
                                     Edit
@@ -289,8 +288,8 @@
                                 Nomor Telepon Orang Tua
                             </label>
                             <div class="relative mb-4">
-                                <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12" name="parent_phone" disabled
-                                    placeholder="Masukkan nomor KTP" inputmode="numeric" pattern="[0-9]*"
+                                <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12" name="parent_phone"
+                                    disabled placeholder="Masukkan nomor KTP" inputmode="numeric" pattern="[0-9]*"
                                     oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
                                     onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white border-transparent focus:border-transparent focus:ring-0 ">
