@@ -2,7 +2,6 @@
 @section('content')
 @push('scripts')
 <div class="relative w-full p-4">
-    @include('components.sweet_alert')
     @include('partials._errors')
     <div class="max-w-4xl p-8 mx-auto bg-white border border-yellow-300 rounded-xl drop-shadow-2xl">
         <span class="block pb-8 text-xl text-center border-b border-gray-200 text-stone-900">
@@ -224,5 +223,6 @@
         });
     });
 </script>
+    @include('components.sweet_alert')
 @endpush
 @endsection

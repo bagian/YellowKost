@@ -157,10 +157,10 @@
                                 Nama Penyewa
                             </label>
                             <div class="relative mb-4">
-                                <input type="text" placeholder="Masukkan Nama Penyewa" name="tenant"
+                                <input type="text" placeholder="Masukkan Nama Penyewa" name="tenant" disabled
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 pr-28 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white border-transparent focus:border-transparent focus:ring-0">
                                 <button type="button"
-                                    class="absolute top-0 bottom-0 right-0 px-5 text-sm font-semibold text-white rounded-r-lg bg-slate-600 hover:bg-slate-500">
+                                    class="edit-field absolute top-0 bottom-0 right-0 px-5 text-sm font-semibold text-white rounded-r-lg bg-slate-600 hover:bg-slate-500">
                                     Edit
                                 </button>
                             </div>
@@ -171,13 +171,13 @@
                                 KTP
                             </label>
                             <div class="relative mb-4">
-                                <input type="text" placeholder="Masukkan Nomor KTP" maxlength="16" name="nik"
+                                <input type="text" placeholder="Masukkan Nomor KTP" maxlength="16" name="nik" disabled
                                     placeholder="Masukkan nomor KTP" inputmode="numeric" pattern="[0-9]*"
                                     oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
                                     onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white border-transparent focus:border-transparent focus:ring-0">
                                 <button type="button"
-                                    class="absolute top-0 bottom-0 right-0 px-5 text-sm font-semibold text-white rounded-r-lg bg-slate-600 hover:bg-slate-500">
+                                    class="edit-field absolute top-0 bottom-0 right-0 px-5 text-sm font-semibold text-white rounded-r-lg bg-slate-600 hover:bg-slate-500">
                                     Edit
                                 </button>
                             </div>
@@ -188,14 +188,14 @@
                                 Nomor Telepon Penyewa
                             </label>
                             <div class="relative mb-4">
-                                <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12" name="phone"
+                                <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12" name="phone" disabled
                                     placeholder="Masukkan nomor KTP" inputmode="numeric" pattern="[0-9]*"
                                     oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
                                     onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white border-transparent focus:border-transparent focus:ring-0">
 
                                 <button type="button"
-                                    class="absolute top-0 bottom-0 right-0 px-5 text-sm font-semibold text-white rounded-r-lg bg-slate-600 hover:bg-slate-500">
+                                    class="edit-field absolute top-0 bottom-0 right-0 px-5 text-sm font-semibold text-white rounded-r-lg bg-slate-600 hover:bg-slate-500">
                                     Edit
                                 </button>
                             </div>
@@ -206,14 +206,14 @@
                                 Nomor Telepon Orang Tua
                             </label>
                             <div class="relative mb-4">
-                                <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12" name="parent_phone"
+                                <input type="text" placeholder="Masukkan Nomor Telp" maxlength="12" name="parent_phone" disabled
                                     placeholder="Masukkan nomor KTP" inputmode="numeric" pattern="[0-9]*"
                                     oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
                                     onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white border-transparent focus:border-transparent focus:ring-0 ">
 
                                 <button type="button"
-                                    class="absolute top-0 bottom-0 right-0 px-5 text-sm font-semibold text-white rounded-r-lg bg-slate-600 hover:bg-slate-500">
+                                    class="edit-field absolute top-0 bottom-0 right-0 px-5 text-sm font-semibold text-white rounded-r-lg bg-slate-600 hover:bg-slate-500">
                                     Edit
                                 </button>
                             </div>
@@ -224,7 +224,7 @@
                                 Tanggal Masuk
                             </label>
                             <div class="relative">
-                                <input type="date" placeholder="Tanggal Masuk Penyewa" name="check_in"
+                                <input type="date" placeholder="Tanggal Masuk Penyewa" name="check_in" disabled
                                     class="bg-gray-50 no-calendar border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white appearance-none
                                 [&::-webkit-calendar-picker-indicator]:!hidden
                                 [&::-webkit-calendar-picker-indicator]:!bg-none
@@ -232,7 +232,7 @@
                                     min="{{ now()->format('Y-m-d') }}">
 
                                 <button type="button"
-                                    class="absolute top-0 bottom-0 right-0 px-5 text-sm font-semibold text-white rounded-r-lg bg-slate-600 hover:bg-slate-500">
+                                    class="edit-field absolute top-0 bottom-0 right-0 px-5 text-sm font-semibold text-white rounded-r-lg bg-slate-600 hover:bg-slate-500">
                                     Edit
                                 </button>
                             </div>
@@ -243,7 +243,7 @@
                                 Status Pembayaran
                             </label>
                             <div class="relative z-20 bg-transparent">
-                                <select name="status"
+                                <select name="payment_status"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white appearance-none border-transparent focus:border-transparent focus:ring-0">
                                     <option value="">
                                         Pilih Status Pembayaran
@@ -344,6 +344,12 @@
         $('html, body').animate({
             scrollTop: $(".form-detail").offset().top
         }, 500);
+    });
+
+    $('.edit-field').on('click', function() {
+        const inputField = $(this).siblings('input, select');
+        inputField.prop('disabled', false);
+        inputField.focus();
     });
 </script>
 @endpush
