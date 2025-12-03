@@ -36,6 +36,12 @@
             <img src="https://plus.unsplash.com/premium_photo-1687960116947-11ecc22f45c0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fHw%3D"
                 class="object-cover w-full h-full" />
         </div>
+        {{-- DEFAULT IF NOT IMAGE NOT RENDERED --}}
+        <div class="swiper-slide">
+            <img src="{{ asset('img_handler/room/default_yellowkost_gallery.png') }}"
+                class="object-cover w-full h-full" />
+        </div>
+        {{-- END DEFAULT IF NOT IMAGE NOT RENDERED --}}
     </div>
 
     <div class="relative mx-auto max-w-[14rem]">

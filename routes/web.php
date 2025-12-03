@@ -97,6 +97,9 @@ Route::get('/unggah-bukti-pembayaran', function() {
 Route::get('/penyewa/form', [BookingController::class, 'form'])->name('booking.form');
 Route::post('/penyewa/submit', [BookingController::class, 'submit'])->name('booking.submit');
 
+Route::get('/status-pengajuan', function(){
+    return view('pages.status._statusPengajuan');
+})->name('status.pengajuan');
 
 Route::middleware('role:admin')->group(function() {
     Route::resource('/kamar', RoomController::class)->parameters([
