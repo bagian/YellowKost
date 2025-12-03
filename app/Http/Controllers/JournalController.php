@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\JournalRequest;
 use App\Models\PaymentMethod;
+use App\Repositories\Interface\BookingRepositoryInterface;
 use App\Repositories\Interface\JournalRepositoryInterface;
 use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
-    protected $journalRepository;
+    protected $journalRepository, $bookingRepository;
 
-    public function __construct(JournalRepositoryInterface $journalRepository)
+    public function __construct(JournalRepositoryInterface $journalRepository, BookingRepositoryInterface $bookingRepository)
     {
         $this->journalRepository = $journalRepository;
+        $this->bookingRepository = $bookingRepository;
     }
     /**
      * Display a listing of the resource.
@@ -23,10 +25,12 @@ class JournalController extends Controller
         //
     }
 
-    public function pos()
+    public function pos(Request $request)
     {
+        $bookingId = $request->query('booking_id') ?? null;
         $paymentMethods = PaymentMethod::all();
-        return view('pages.pos._journalHarian', ['paymentMethods' => $paymentMethods]);
+        $confirmedBookings = $this->bookingRepository->confirmedBookings();
+        return view('pages.pos._journalHarian', ['paymentMethods' => $paymentMethods, 'confirmedBookings' => $confirmedBookings, 'bookingId' => $bookingId]);
     }
 
     public function report(Request $request)

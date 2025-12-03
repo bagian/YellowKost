@@ -1,7 +1,6 @@
 @extends('landingpage.index')
 @section('content')
 <div class="relative w-full p-4">
-    @include('components.sweet_alert')
     @include('partials._errors')
     <div class="max-w-4xl p-8 mx-auto my-12 bg-white border border-yellow-300 rounded-xl drop-shadow-2xl">
         <div class="p-4 mb-6 text-yellow-700 bg-yellow-100 border-l-4 border-yellow-500 text-xs xl:text-[.9rem] leading-4 xl:leading-6"
@@ -227,5 +226,6 @@
         });
     });
 </script>
+    @include('components.sweet_alert')
 @endpush
 @endsection

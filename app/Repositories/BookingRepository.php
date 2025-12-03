@@ -32,11 +32,15 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
     }
 
     public function get(): Collection {
-        return $this->model::with('user')->get();
+        return $this->model::where('status', 'pending')->with('user')->get();
     }
 
     public function find($id): Model {
         return $this->model::find($id);
+    }
+
+    public function confirmedBookings(): Collection {
+        return $this->model::where('status', 'confirmed')->get();
     }
 
     public function create(array $data): Model {
@@ -68,10 +72,17 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
             $model = $this->fillModel($model, $data);
             $model->save();
 
-            if($data['status'] === 'confirmed') {
+            if (isset($data['status'])) {
+                if($data['status'] === 'confirmed') {
+                    $updateRoom['is_available'] = false;
+                } else {
+                    $updateRoom['is_available'] = true;
+                }
+            }
+
+            if(isset($updateRoom['is_available'])) {
                 $room = Room::find($model->id_room);
-                $data['is_available'] = false;
-                $room = $this->roomRepository->update($room, $data);
+                $room = $this->roomRepository->update($room, $updateRoom);
             }
 
             return $model;

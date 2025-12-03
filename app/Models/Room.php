@@ -17,4 +17,10 @@ class Room extends Model
     public function bookings() {
         return $this->hasMany(Booking::class, 'id_room');
     }
+
+    public function confirmedBooking() {
+        return $this->hasMany(Booking::class, 'id_room')
+            ->where('status', 'confirmed');
+
+    }
 }

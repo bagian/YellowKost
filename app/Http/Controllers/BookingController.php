@@ -103,16 +103,26 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        dd($request);
-        $dataBooking = $request->except('_-token', '_method', 'id_user', 'tenant', 'nik', 'phone', 'parent_phone');
-        $dataUser = $request->except('_-token', '_method', 'id_user', 'check_in', 'id_room', 'status');
+        if ($request->input('status') == 'confirmed') {
+            $request->validate([
+                'id_room' => 'required|exists:rooms,id',
+            ]);
+        }
+
+        $dataBooking = $request->except('_token', '_method', 'tenant', 'nik', 'phone', 'parent_phone', 'payment_status');
+        $dataUser = $request->except('_token', '_method', 'id_user', 'check_in', 'id_room', 'status', 'payment_status');
+        // dd($dataBooking, $dataUser);
 
         $user = User::find($request->input('id_user'));
 
         $booking = $this->bookingRepository->update($booking, $dataBooking);
         $user = $this->tenantRepository->update($user, $dataUser);
 
-        return redirect()->back()->with('success', 'Booking updated successfully.');
+        if ($dataBooking['status'] == 'confirmed' && ($request->input('payment_status') === 'paid' || $request->input('payment_status') === 'dp')) {
+            return redirect()->route('journal.pos', ['booking_id' => $booking->id]);
+        } else {
+            return redirect()->back()->with('success', 'Booking updated successfully.');
+        }
     }
 
     /**

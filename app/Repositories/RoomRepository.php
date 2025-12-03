@@ -8,6 +8,7 @@ use App\Repositories\Interface\RoomRepositoryInterface;
 use App\Services\Interface\ImageServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class RoomRepository extends BaseRepository implements RoomRepositoryInterface
 {
@@ -35,6 +36,11 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
 
     public function allWithPictures(): Collection {
         return $this->model::with('pictures')->get();
+    }
+
+    public function getWithPictures(): LengthAwarePaginator {
+        $query = $this->model::with('pictures')->with('confirmedBooking.user');
+        return $this->getPagination($query);
     }
 
     public function getPictures($id): Collection {

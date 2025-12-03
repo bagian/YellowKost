@@ -13,6 +13,8 @@ interface BookingRepositoryInterface
 
     public function find($id): ?Model;
 
+    public function confirmedBookings(): Collection;
+
     public function create(array $data): Model;
 
     public function update(Model $model, array $data): Model;
