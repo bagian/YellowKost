@@ -45,8 +45,6 @@
                             <path
                                 d="M320 64C302.3 64 288 78.3 288 96L288 99.2C215 114 160 178.6 160 256L160 277.7C160 325.8 143.6 372.5 113.6 410.1L103.8 422.3C98.7 428.6 96 436.4 96 444.5C96 464.1 111.9 480 131.5 480L508.4 480C528 480 543.9 464.1 543.9 444.5C543.9 436.4 541.2 428.6 536.1 422.3L526.3 410.1C496.4 372.5 480 325.8 480 277.7L480 256C480 178.6 425 114 352 99.2L352 96C352 78.3 337.7 64 320 64zM258 528C265.1 555.6 290.2 576 320 576C349.8 576 374.9 555.6 382 528L258 528z" />
                         </svg>
-
-
                         <span class="flex-1 ms-1 whitespace-nowrap">Pesan Masuk</span>
                         <span
                             class="inline-flex items-center justify-center w-3 h-3 p-3 text-sm font-medium text-red-800 bg-red-100 rounded-full ms-3 dark:bg-red-900 dark:text-red-100">3</span>
@@ -55,12 +53,17 @@
                 <div class="flex items-center ms-3">
                     <div>
                         <button type="button"
-                            class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                            class="flex text-sm bg-gray-700 px-1 py-1.5 rounded-full items-center gap-4 text-white border border-gray-500 hover:bg-gray-900 transition-colors duration-300 backdrop-blur-md"
                             aria-expanded="false" data-dropdown-toggle="dropdown-user">
                             <span class="sr-only">Open user menu</span>
                             <img class="w-8 h-8 rounded-full"
-                                src="@if(Auth::user()->avatar_type == 'url') {{ Auth::user()->profile_picture }} @elseif(Auth::user()->avatar_type == 'storage') {{ Storage::url(Auth::user()->profile_picture) }} @else https://flowbite.com/docs/images/people/profile-picture-5.jpg @endif"
+                                src="@if(Auth::user()->avatar_type == 'url') {{ Auth::user()->profile_picture }} @elseif(Auth::user()->avatar_type == 'storage') {{ Storage::url(Auth::user()->profile_picture) }} @else https://flowbite.com/docs/images/people/profile-picture-2.jpg @endif"
                                 alt="user photo">
+                            <svg class="w-4 h-4 stroke-current mr-2" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
                         </button>
                     </div>
                     <div class="z-50 hidden w-48 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-md shadow-lg dark:bg-gray-700 dark:divide-gray-600"

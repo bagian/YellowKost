@@ -1,5 +1,10 @@
 <div class="flex flex-col justify-center max-w-5xl pt-20 mx-auto">
-    <div>
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-900 dark:text-text-gray-900">Manajemen <span
+                    class="text-yellow-500">Kamar</span></h1>
+            <p class="text-gray-500 dark:text-gray-400 mt-1">Pantau status kamar, harga sewa, dan foto kamar.</p>
+        </div>
         <a href="{{ route('kamar.create') }}"
             class="text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 transition-all duration-300 ease-in-out dark:text-white inline-block">
             <span class="flex flex-row items-center">

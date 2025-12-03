@@ -58,10 +58,18 @@
 <body>
     @include('landingpage._navBar')
     <!-- Main Header -->
-    <div class="pt-10">
-        <div class="relative flex items-center justify-center pt-10 lg:pt-24 pb-28">
+    <div class="pt-20">
+        <div class="relative flex flex-col items-center justify-center pt-10 lg:pt-16 pb-28">
             @yield('content')
         </div>
+        <button id="backToTopBtn" onclick="scrollToTop()"
+            class="fixed z-40 invisible p-3 text-black transition-all duration-300 transform translate-y-10 bg-yellow-400 rounded-full shadow-lg opacity-0 bottom-16 right-5 hover:bg-yellow-500 hover:scale-110 focus:outline-none group">
+            <svg class="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
+                </path>
+            </svg>
+        </button>
     </div>
     @include('landingpage._footer')
 
@@ -126,13 +134,14 @@
         effect: "slide",
         grabCursor: false,
         loop: true,
-        spaceBetween: 20,
+        spaceBetween: 8,
         centeredSlides: true,
         slidesPerView: 1,
-        speed: 1200,
+        allowTouchMove: false,
+        speed: 1000,
         loop: true,
         autoplay: {
-            delay: 3500,
+            delay: 4000,
             disableOnInteraction: false,
             pauseOnMouseEnter: false,
         },
@@ -146,11 +155,14 @@
             prevEl: ".swiper-button-prev",
         },
         breakpoints: {
-            648: {
-                slidesPerView: 2,
+            640: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 3,
             },
             1024: {
-                slidesPerView: 4,
+                slidesPerView: 3,
             },
         },
     });
@@ -159,18 +171,24 @@
     var testimonialSwiper = new Swiper(".testimonial-swiper", {
         loop: true,
         grabCursor: true,
-        spaceBetween: 10,
+        spaceBetween: 8,
+        centeredSlides: true,
+        allowTouchMove: false,
+        grabCursor: false,
+        slidesPerView: 1,
+        speed: 19200,
         pagination: {
             el: ".testimonial-pagination",
             clickable: true,
         },
         autoplay: {
-            delay: 4000,
+            delay: 0,
+            pauseOnMouseEnter: false,
             disableOnInteraction: false,
         },
         breakpoints: {
             640: {
-                slidesPerView: 1,
+                slidesPerView: 2,
             },
             768: {
                 slidesPerView: 2,
@@ -180,6 +198,7 @@
             },
         },
     });
+
 
     document.addEventListener('DOMContentLoaded', function () {
         // Fungsi untuk handle toggle password
@@ -205,7 +224,65 @@
         setupPasswordToggle('togglePassword', 'password', 'eyeOpen', 'eyeClosed');
     });
 </script>
-@stack('scripts')
+<script>
+    function surveyWA() {
+    var phoneNumber = "628123498743";
+    var message = "Halo Admin YellowKost, saya tertarik dengan kos ini dan ingin mendapatkan informasi lebih lanjut. Apakah bisa untuk dilakukan kunjungan untuk meninjau langsung kamarnya?. Terima kasih.";
+    var encodedMessage = encodeURIComponent(message);
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    var targetUrl = "";
+
+    if (isMobile) {
+        targetUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    } else {
+        targetUrl = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+    }
+    window.open(targetUrl, '_blank');
+}
 </script>
+{{-- Gallery Script --}}
+<script>
+    function openModal(element) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+
+        const clickedImg = element.querySelector('img');
+        const captionText = element.querySelector('p').innerText;
+
+        modalImg.src = clickedImg.src;
+        modalCaption.innerText = captionText;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+</script>
+<script>
+    const backToTopBtn = document.getElementById("backToTopBtn");
+    window.onscroll = function() {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+
+            backToTopBtn.classList.remove("translate-y-10", "opacity-0", "invisible");
+            backToTopBtn.classList.add("translate-y-0", "opacity-100", "visible");
+        } else {
+
+            backToTopBtn.classList.add("translate-y-10", "opacity-0", "invisible");
+            backToTopBtn.classList.remove("translate-y-0", "opacity-100", "visible");
+        }
+    };
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+</script>
+@stack('scripts')
 
 </html>

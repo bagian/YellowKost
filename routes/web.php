@@ -36,11 +36,33 @@ Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])
 // Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 // Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
+Route::get('/tentang-kami', function () {
+    return view('landingpage.pages._aboutPage');
+})->name('about.us');
+
+Route::get('/fasilitas', function () {
+    return view('landingpage.pages._facilitiesPage');
+})->name('facilities');
 
 Route::get('/form-testimonial', function () {
     return view('pages.testimonials._createTestimonial');
 })->name('testimonial');
 
+Route::get('/gallery', function () {
+    return view('landingpage.pages._galleryPage');
+})->name('gallery');
+
+Route::get('/kontak', function () {
+    return view('landingpage.pages._contactPage');
+})->name('contact.us');
+
+Route::get('/p/kebijakan-privasi', function () {
+    return view('landingpage.pages._privacyPolicyPage');
+})->name('privacy.policy');
+
+Route::get('/p/syarat-dan-ketentuan', function () {
+    return view('landingpage.pages._termsConditionsPage');
+})->name('terms.conditions');
 
 // Route::get('/testerror', function() {
 //     abort(419, 'Unauthorized action.');
@@ -57,6 +79,10 @@ Route::get('auth/{provider}/callback', [SocialLoginController::class, 'handlePro
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified', 'role:admin,user'])->name('dashboard');
+
+Route::get('/activity', function(){
+    return view('pages.activity._activityDashboard');
+})->name('activity');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -154,7 +154,8 @@
                             <label for="terms"
                                 class="text-xs font-light text-gray-500 sm:text-xs md:text-[0.75rem]">Saya
                                 menyetujui <a class="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                                    href="#">Terms and Conditions</a> yang berlaku.</label>
+                                    href="{{ route('terms.conditions') }}">Terms and Conditions</a> yang
+                                berlaku.</label>
                         </div>
                     </div>
                     @include('partials._errors')
