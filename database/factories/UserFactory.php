@@ -28,9 +28,9 @@ class UserFactory extends Factory
             'full_name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => bcrypt('password'), // default password
+            'password' => bcrypt('password'),
             'remember_token' => Str::random(10),
-            'id_role' => 2, // Assuming role ID 2 is 'User'
+            'id_role' => 3,
             'phone' => $this->faker->unique()->phoneNumber(),
             'parent_phone' => $this->faker->unique()->phoneNumber(),
             'ktp' => 'images/ktp/ktp_default.jpg',
