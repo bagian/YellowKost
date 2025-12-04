@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // Get the IDs of all regular users (role 2) for assignment
-        $allUsers = User::where('id_role', 2)->pluck('id');
+        $allUsers = User::where('id_role', 1)->pluck('id');
         // Get payment method IDs for journal entries
         $paymentMethods = DB::table('payment_methods')->pluck('id')->toArray();
 

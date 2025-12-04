@@ -10,7 +10,9 @@ use App\Http\Controllers\TenantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsletterController;
 
-// Homepage
+/* -------------------------------------------------------------------------- */
+/*                                  Homepage                                  */
+/* -------------------------------------------------------------------------- */
 Route::get('/', function () {
     return view('landingpage._maincontent');
 })->name('home');
@@ -22,9 +24,9 @@ Route::get('/profile-setting', function(){
     return view('pages.settingAccount._settingAccount');
 })->name('profile');
 
-// booking form and submit
-Route::post('/sewa/submit', [BookingController::class, 'submit'])->name('rent.submit');
+/* -------------------------- For Tenant's Booking -------------------------- */
 Route::get('/penyewa/form', [BookingController::class, 'form'])->name('booking.form');
+Route::post('/penyewa/submit', [BookingController::class, 'submit'])->name('booking.submit');
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
@@ -58,12 +60,15 @@ Route::get('/p/syarat-dan-ketentuan', function () {
 
 
 
-// Dashboard
-// Login social
+/* -------------------------------------------------------------------------- */
+/*                                  Dashboard                                 */
+/* -------------------------------------------------------------------------- */
+
+/* ------------------------------ Login social ------------------------------ */
 Route::get('auth/{provider}', action: [SocialLoginController::class, 'redirect'])->name('auth.social');
 Route::get('auth/{provider}/callback', [SocialLoginController::class, 'handleProviderCallback']);
 
-// ADMIN DAN USER
+/* ----------------------------- Admin and User ----------------------------- */
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile-setting', function () {
@@ -77,10 +82,25 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', function () {
         return view('dashboard');
-    })->middleware(['auth', 'verified', 'role:admin,user'])->name('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
 
-    // ADMIN
-    Route::middleware('role:superadmin,admin')->group(function() {
+    /* -------------------------------- User Only ------------------------------- */
+    Route::middleware('role:superadmin,user')->group(function() {
+
+        Route::get('/unggah-bukti-pembayaran', [BookingController::class, 'payment'])->name('booking.bukti');
+        Route::post('/unggah-bukti-pembayaran', [BookingController::class, 'paymentSubmit'])->name('booking.payment.submit');
+
+        Route::get('/status-pengajuan', [BookingController::class, 'status'])->name('booking.status');
+        Route::post('/status-pengajuan/detail', [BookingController::class, 'statusDetail'])->name('booking.status.detail');
+
+        Route::get('/form-testimonial', function () {
+            return view('pages.testimonials._createTestimonial');
+        })->name('testimonial');
+
+    });
+
+    /* ------------------------------- Admin Only ------------------------------- */
+    Route::middleware('role:superadmin,admin')->group(function () {
 
         Route::get('/activity', function () {
             return view('pages.activity._activityDashboard');
@@ -97,23 +117,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/journal/pos', [JournalController::class, 'pos'])->name('journal.pos');
         Route::get('/journal/report', [JournalController::class, 'report'])->name('journal.report');
         Route::resource('/journal', JournalController::class);
-
-    });
-
-    // USER
-    Route::middleware('role:superadmin,user')->group(function() {
-
-        Route::get('/unggah-bukti-pembayaran', function () {
-            return view('pages.uploadBukti._uploadBukti');
-        })->name('upload.bukti');
-
-        Route::get('/status-pengajuan', function () {
-            return view('pages.status._statusPengajuan');
-        })->name('status.pengajuan');
-
-        Route::get('/form-testimonial', function () {
-            return view('pages.testimonials._createTestimonial');
-        })->name('testimonial');
 
     });
 });

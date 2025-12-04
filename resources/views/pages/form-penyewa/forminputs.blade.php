@@ -105,11 +105,11 @@
                             <div data-modal-target="payment-proof-modal" data-modal-toggle="payment-proof-modal"
                                 class="relative group w-full !h-[14.2rem] overflow-hidden bg-gray-700 rounded-lg cursor-pointer">
                                 <img src="{{ asset('img_handler/error_img_handler/main_proved_paid.webp') }}"
-                                    class="absolute top-0 left-0 object-cover w-full h-full image-pembayaran blur-sm"
+                                    class="image-payment_proof absolute top-0 left-0 object-cover w-full h-full image-pembayaran blur-sm"
                                     alt="Bukti Pembayaran Background" />
                                 <img id="payment-preview-image"
                                     src="{{ asset('img_handler/error_img_handler/main_proved_paid.webp') }}"
-                                    class="relative object-contain w-full h-full pointer-events-none image-pembayaran"
+                                    class="image-payment_proof relative object-contain w-full h-full pointer-events-none image-pembayaran"
                                     alt="Bukti Pembayaran" />
                                 <div
                                     class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100">
@@ -151,7 +151,7 @@
                                             class="relative w-full p-6 flex justify-center bg-[url('https://www.transparenttextures.com/patterns/grid-noise.png')] bg-gray-100 dark:bg-gray-900/50">
                                             <img id="pembayaran-preview-image"
                                                 src="{{ asset('img_handler/error_img_handler/main_proved_paid.jpg') }}"
-                                                class="max-w-full max-h-[55vh] h-auto object-contain rounded-xl shadow-lg border-4 border-white dark:border-gray-700 hover:scale-[1.02] transition-transform duration-300 image-bt-pembayaran"
+                                                class="image-payment_proof max-w-full max-h-[55vh] h-auto object-contain rounded-xl shadow-lg border-4 border-white dark:border-gray-700 hover:scale-[1.02] transition-transform duration-300 image-bt-pembayaran"
                                                 alt="Bukti Pembayaran" />
                                         </div>
                                     </div>
@@ -369,7 +369,7 @@
         const href = $(this).data('href');
         const id_user = $(this).data('id_user');
         const ktp = $(this).data('ktp');
-        const bt_pembayaran = $(this).data('bukti-pembayaran');
+        const payment_proof = $(this).data('payment_proof');
         const name = $(this).data('name');
         const nik = $(this).data('nik');
         const address = $(this).data('address');
@@ -382,7 +382,7 @@
 
         $('#penyewa-form').attr('action', href);
         $('.image-ktp').attr('src', ktpUrl);
-        $('.image-bt-pembayaran').attr('src', btPembayaranUrl);
+        $('.image-payment_proof').attr('src', payment_proof);
         $('input[name="id_user"]').val(id_user);
         $('input[name="tenant"]').val(name);
         $('input[name="nik"]').val(nik);

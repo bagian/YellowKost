@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('check_in');
             $table->date('check_out')->nullable();
             $table->string('payment_proof')->nullable();
+            $table->string('notes')->nullable();
             $table->enum('status', ['pending', 'confirmed', 'cancelled', 'completed']);
             $table->timestamps();
         });

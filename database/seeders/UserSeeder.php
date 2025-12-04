@@ -16,6 +16,14 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
+                'name' => 'superadmin',
+                'email' => 'superadmin@gmail.com',
+                'password' => bcrypt('superadmin'),
+                'id_role' => '1',
+                'phone' => '1',
+                'ktp' => '1',
+            ],
+            [
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('admin'),
@@ -23,14 +31,6 @@ class UserSeeder extends Seeder
                 'phone' => '1',
                 'ktp' => '1',
             ],
-            [
-                'name' => 'superadmin',
-                'email' => 'superadmin@gmail.com',
-                'password' => bcrypt('superadmin'),
-                'id_role' => '1',
-                'phone' => '1',
-                'ktp' => '1',
-            ]
         ]);
 
         User::factory()->count(10)->create();
