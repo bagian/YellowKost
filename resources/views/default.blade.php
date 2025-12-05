@@ -220,10 +220,9 @@
             error: null,
             swiper: null,
             hargaSewa: '',
-
             init() {
                 this.swiper = new Swiper('.swiper', {
-                    loop: false, // Loop dinonaktifkan untuk preview dinamis
+                    loop: false,
                     slidesPerView: 'auto',
                     spaceBetween: 10,
                     breakpoints: {
@@ -251,8 +250,6 @@
                     this.hargaSewa = parseInt(value, 10).toLocaleString('id-ID');
                 }
             },
-
-
             handleFileChange(event) {
                 this.error = null;
                 const files = Array.from(event.target.files);
