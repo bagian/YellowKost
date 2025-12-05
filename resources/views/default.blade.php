@@ -291,6 +291,21 @@
         let num = parseInt(clean, 10);
         $price.val(num);
     });
+
+    function formatDate(isoString) {
+        if (!isoString) return '-';
+        
+        // Create a Date object from the ISO string
+        const date = new Date(isoString);
+        
+        // Get components (Date.getMonth() is 0-indexed, so we add 1)
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Add leading zero
+        const day = String(date.getDate()).padStart(2, '0');        // Add leading zero
+        
+        // Return in DD-MM-YYYY format
+        return `${day}-${month}-${year}`;
+    }
     </script>
     @stack('scripts')
 </body>

@@ -20,43 +20,26 @@ class BookingController extends Controller
         $this->tenantRepository = $tenantRepository;
     }
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $booking = $this->bookingRepository->get();
-        $room = $this->roomRepository->available();
-
-        return view('pages.form-penyewa.forminputs', compact('booking', 'room'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        // return view('pages.form-penyewa.forminputs');
-    }
-
     public function form()
     {
-        $bookingData = session('pending_booking', []);
+        $bookings = $this->bookingRepository->getUserBooking(auth()->user()->id, ['pending']);
 
-        session()->forget('pending_booking');
+        if ($bookings->isEmpty()) {
+            $bookingData = session('pending_booking', []);
+    
+            session()->forget('pending_booking');
+    
+            return view('landingpage.pages._bookingsRoom', compact('bookingData'));
+        }
 
-        return view('landingpage.pages._bookingsRoom', compact('bookingData'));
+        return redirect()->route('booking.status');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    /* -------------------------------------------------------------------------- */
+    /*                                  For User                                  */
+    /* -------------------------------------------------------------------------- */
+    public function submit(BookingRequest $request)
     {
-        dd($request);
-    }
-
-    public function submit(BookingRequest $request) {
         // dd($request);
         // dd($request->safe());
         // dd($request->safe()->toArray());
@@ -79,7 +62,73 @@ class BookingController extends Controller
 
         $booking = $this->bookingRepository->create($dataBooking);
 
-        return redirect()->route('home')->with('confirmation_booking', 'Booking submitted successfully.');
+        return redirect()->route('booking.status')->with('confirmation_booking', 'Booking submitted successfully.');
+    }
+
+    public function payment()
+    {
+        return view('pages.uploadBukti._uploadBukti');
+    }
+
+    public function paymentSubmit(Request $request)
+    {
+        $id_user = auth()->user()->id;
+        $booking = Booking::where('id_user', $id_user)->where('status', 'pending')->orderBy('created_at', 'desc')->first();
+
+        $request->validate([
+            'payment_proof' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+        $data['payment_proof'] = $request->file('payment_proof');
+
+        $data = $this->bookingRepository->update($booking, $data);
+
+        return redirect()->route('booking.status')->with('success', 'Bukti pembayaran berhasil diunggah.');
+    }
+
+    public function status() {
+        $booking = $this->bookingRepository->getUserBooking(auth()->user()->id);
+
+        return view('pages.status._statusPengajuan', ['booking' => $booking]);
+    }
+
+    public function statusDetail(Request $request) {
+        $data = $this->bookingRepository->find($request->input('id_booking'));
+
+        $data->load('room');
+        $data->loadSum('payments as total_paid', 'amount');
+
+        return response()->json($data, 200, ['Content-Type' => 'application/json']);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                                  For Admin                                 */
+    /* -------------------------------------------------------------------------- */
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $booking = $this->bookingRepository->get();
+        // dd($booking->onFirstPage());
+        $room = $this->roomRepository->available();
+
+        return view('pages.form-penyewa.forminputs', compact('booking', 'room'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        // return view('pages.form-penyewa.forminputs');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        dd($request);
     }
 
     /**

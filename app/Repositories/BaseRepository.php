@@ -17,10 +17,10 @@ abstract class BaseRepository
         $this->model = $this->getModelClass();
     }
 
-    protected function getPagination($queryBuilder = null, int $perPage = 10, array $columns = ['*'], string $pageName = 'page', ?int $page = null): LengthAwarePaginator {
+    protected function getPagination($queryBuilder = null, int $perPage = 10, array $columns = ['*'], string $pageName = 'page', string $orderBy = 'asc', ?int $page = null): LengthAwarePaginator {
         $builder = $queryBuilder ?? (new $this->model)->newQuery();
 
-        return $builder->orderBy('created_at', 'desc')->paginate($perPage, $columns, $pageName, $page);
+        return $builder->orderBy('created_at', $orderBy)->paginate($perPage, $columns, $pageName, $page);
     }
 
     protected function fillModel(Model $model, array $data) {

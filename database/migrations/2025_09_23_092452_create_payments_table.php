@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('id_booking')->constrained('bookings')->onDelete('restrict')->onUpdate('cascade');
             $table->decimal('amount', 20, 2);
             $table->date('date');
-            $table->enum('status', ['confirmed', 'pending', 'failed']);
+            $table->date('period');
             $table->boolean('is_dp')->default(false);
             $table->foreignId('payment_method')->constrained('payment_methods')->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();

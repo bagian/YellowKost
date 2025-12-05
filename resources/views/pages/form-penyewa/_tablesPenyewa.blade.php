@@ -215,7 +215,7 @@
                                 data-ktp="{{ Storage::url($row->user->ktp) }}" data-name="{{ $row->user->full_name }}"
                                 data-nik="{{ $row->user->nik }}" data-address="{{ $row->user->address }}"
                                 data-phone="{{ $row->user->phone }}" data-parent_phone="{{ $row->user->parent_phone }}"
-                                data-check_in="{{ $row->check_in->format('Y-m-d') }}">
+                                data-check_in="{{ $row->check_in->format('Y-m-d') }}" data-payment_proof="{{ Storage::url($row->payment_proof) }}">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
@@ -239,20 +239,41 @@
     </div>
     <div
         class="flex flex-col md:flex-row items-center justify-between p-5 border-t border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
+        @if($booking->hasPages() || $booking->total() > 0)
         <span class="text-sm text-gray-500 dark:text-gray-400 mb-4 md:mb-0">
-            Menampilkan <span class="font-bold text-gray-900 dark:text-white">1</span> sampai <span
-                class="font-bold text-gray-900 dark:text-white">10</span> dari <span
-                class="font-bold text-gray-900 dark:text-white">100</span> data
+            Menampilkan <span class="font-bold text-gray-900 dark:text-white">{{ $booking->firstItem() ?? 0 }}</span> sampai <span
+                class="font-bold text-gray-900 dark:text-white">{{ $booking->lastItem() ?? 0 }}</span> dari <span
+                class="font-bold text-gray-900 dark:text-white">{{ $booking->total() }}</span> data
         </span>
+        @endif
         <div class="inline-flex">
+            {{-- ----------------------------- Tombol Prev ---------------------------- --}}
+            @if ($booking->onFirstPage())
             <button
                 class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
                 Prev
             </button>
+            @else
+            <a href="{{ $booking->previousPageUrl() }}"
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
+                Prev
+            </a>
+            @endif
+            {{-- ---------------------------------------------------------------------- --}}
+            
+            {{-- ----------------------------- Tombol Next ---------------------------- --}}
+            @if ($booking->hasMorePages())
+            <a href="{{ $booking->nextPageUrl() }}"
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
+                Next
+            </a>
+            @else
             <button
                 class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
                 Next
             </button>
+            @endif
+            {{-- ---------------------------------------------------------------------- --}}
         </div>
     </div>
 </div>

@@ -27,7 +27,7 @@ class BookingFactory extends Factory
             // id_room will be set when the factory is called
             'id_user' => User::factory(), // Use factory helper for association
             'check_in' => now()->addDays(rand(7, 30)), // Future check-in for pending status
-            'check_out' => now()->addDays(rand(30, 90)), // Future check-out
+            'check_out' => null,
             'status' => 'pending', // Base state is pending
         ];
     }
@@ -74,6 +74,7 @@ class BookingFactory extends Factory
             $checkIn = $this->faker->dateTimeBetween('-1 year', 'now');
             return [
                 'status' => 'cancelled',
+                'notes' => $this->faker->sentence(),
                 'check_in' => $checkIn,
                 'check_out' => $checkIn, // Cancellation date
             ];

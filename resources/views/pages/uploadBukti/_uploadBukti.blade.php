@@ -38,7 +38,7 @@
                 <h4 class="text-lg font-bold text-gray-800 dark:text-white">Unggah Bukti Pembayaran</h4>
             </div>
             <div class="px-6 py-8">
-                <form action="#" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('booking.payment.submit') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div>
                         <label id="drop-zone" for="paymentProof"
@@ -71,7 +71,7 @@
 
                         </label>
                         <p id="error-message" class="mt-2 text-sm text-red-600 dark:text-red-500"></p>
-                        <input type="file" id="paymentProof" name="bukti_pembayaran" required class="hidden">
+                        <input type="file" id="paymentProof" name="payment_proof" required class="hidden">
                     </div>
                     <div class="mt-6">
                         <button type="submit"

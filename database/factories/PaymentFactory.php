@@ -30,7 +30,7 @@ class PaymentFactory extends Factory
             // id_booking will be set when the factory is called
             'amount' => $this->faker->numberBetween(1000000, 5000000), // Default high amount
             'date' => $date,
-            'status' => 'confirmed',
+            'period' => $date->format('Y-m-01'),
             'is_dp' => false,
             'payment_method' => $this->faker->randomElement($paymentMethods),
         ];

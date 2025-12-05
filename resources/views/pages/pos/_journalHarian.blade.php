@@ -103,7 +103,7 @@
                             </div>
 
                             {{-- Status --}}
-                            <div class="col-span-6">
+                            {{-- <div class="col-span-6">
                                 <label for="type"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status
                                     Pembayaran</label>
@@ -123,7 +123,7 @@
                                         </svg>
                                     </span>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {{-- is dp --}}
                             <div class="col-span-6">

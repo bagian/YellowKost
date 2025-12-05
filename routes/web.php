@@ -10,31 +10,25 @@ use App\Http\Controllers\TenantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsletterController;
 
-// Route::get('/', function () {
-//     return view('templates.frontend.index');
-// });
+/* -------------------------------------------------------------------------- */
+/*                                  Homepage                                  */
+/* -------------------------------------------------------------------------- */
 Route::get('/', function () {
     return view('landingpage._maincontent');
 })->name('home');
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
-Route::get('/form-testimonial', function () {
-    return view('pages.testimonials._createTestimonial');
-})->name('testimonial');
-
 
 Route::get('/profile-setting', function(){
     return view('pages.settingAccount._settingAccount');
 })->name('profile');
 
-
-Route::post('/sewa/submit', [BookingController::class, 'submit'])->name('rent.submit');
+/* -------------------------- For Tenant's Booking -------------------------- */
+Route::get('/penyewa/form', [BookingController::class, 'form'])->name('booking.form');
+Route::post('/penyewa/submit', [BookingController::class, 'submit'])->name('booking.submit');
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
-
-// Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
-// Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::get('/tentang-kami', function () {
     return view('landingpage.pages._aboutPage');
@@ -64,58 +58,67 @@ Route::get('/p/syarat-dan-ketentuan', function () {
     return view('landingpage.pages._termsConditionsPage');
 })->name('terms.conditions');
 
-// Route::get('/testerror', function() {
-//     abort(419, 'Unauthorized action.');
-// })->name('test.error');
 
 
-Route::get('/profile-setting', function(){
-    return view('pages.settingAccount._settingAccount');
-})->name('profile');
+/* -------------------------------------------------------------------------- */
+/*                                  Dashboard                                 */
+/* -------------------------------------------------------------------------- */
 
+/* ------------------------------ Login social ------------------------------ */
 Route::get('auth/{provider}', action: [SocialLoginController::class, 'redirect'])->name('auth.social');
 Route::get('auth/{provider}/callback', [SocialLoginController::class, 'handleProviderCallback']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified', 'role:admin,user'])->name('dashboard');
-
-Route::get('/activity', function(){
-    return view('pages.activity._activityDashboard');
-})->name('activity');
-
+/* ----------------------------- Admin and User ----------------------------- */
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/profile-setting', function () {
+        return view('pages.settingAccount._settingAccount');
+    })->name('profile');
+
+    Route::resource('/profile', ProfileController::class);
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+
+    /* -------------------------------- User Only ------------------------------- */
+    Route::middleware('role:superadmin,user')->group(function() {
+
+        Route::get('/unggah-bukti-pembayaran', [BookingController::class, 'payment'])->name('booking.bukti');
+        Route::post('/unggah-bukti-pembayaran', [BookingController::class, 'paymentSubmit'])->name('booking.payment.submit');
+
+        Route::get('/status-pengajuan', [BookingController::class, 'status'])->name('booking.status');
+        Route::post('/status-pengajuan/detail', [BookingController::class, 'statusDetail'])->name('booking.status.detail');
+
+        Route::get('/form-testimonial', function () {
+            return view('pages.testimonials._createTestimonial');
+        })->name('testimonial');
+
+    });
+
+    /* ------------------------------- Admin Only ------------------------------- */
+    Route::middleware('role:superadmin,admin')->group(function () {
+
+        Route::get('/activity', function () {
+            return view('pages.activity._activityDashboard');
+        })->name('activity');
+
+        Route::resource('/kamar', RoomController::class)->parameters([
+            "kamar" => "room"
+        ]);
+
+        Route::resource('/penyewa', BookingController::class)->parameters([
+            "penyewa" => "booking"
+        ]);
+
+        Route::get('/journal/pos', [JournalController::class, 'pos'])->name('journal.pos');
+        Route::get('/journal/report', [JournalController::class, 'report'])->name('journal.report');
+        Route::resource('/journal', JournalController::class);
+
+    });
 });
 
-Route::get('/unggah-bukti-pembayaran', function() {
-    return view('pages.uploadBukti._uploadBukti');
-})->name('upload.bukti');
-
-Route::get('/penyewa/form', [BookingController::class, 'form'])->name('booking.form');
-Route::post('/penyewa/submit', [BookingController::class, 'submit'])->name('booking.submit');
-
-Route::get('/status-pengajuan', function(){
-    return view('pages.status._statusPengajuan');
-})->name('status.pengajuan');
-
-Route::middleware('role:admin')->group(function() {
-    Route::resource('/kamar', RoomController::class)->parameters([
-        "kamar" => "room"
-    ]);
-    Route::resource('/penyewa', BookingController::class)->parameters([
-        "penyewa" => "booking"
-    ]);
-
-    Route::get('/journal/pos', [JournalController::class, 'pos'])->name('journal.pos');
-    Route::get('/journal/report', [JournalController::class, 'report'])->name('journal.report');
-    Route::resource('/journal', JournalController::class);
-});
-
-
-Route::get('/infokamar', function() {
-    return view('pages.kamar.create');
-})->name('info.kamar');
 require __DIR__.'/auth.php';

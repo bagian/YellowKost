@@ -8,31 +8,45 @@ use App\Models\User;
 use App\Repositories\Interface\BookingRepositoryInterface;
 use App\Repositories\Interface\RoomRepositoryInterface;
 use App\Repositories\Interface\TenantRepositoryInterface;
+use App\Services\Interface\ImageServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 
 class BookingRepository extends BaseRepository implements BookingRepositoryInterface
 {
-    protected $tenantRepository, $roomRepository;
+    protected $tenantRepository, $roomRepository, $imageService;
 
     protected function getModelClass() {
         return Booking::class;
     }
 
-    public function __construct(TenantRepositoryInterface $tenantRepository, RoomRepositoryInterface $roomRepository) {
+    public function __construct(TenantRepositoryInterface $tenantRepository, RoomRepositoryInterface $roomRepository, ImageServiceInterface $imageService) {
         parent::__construct();
 
         $this->tenantRepository = $tenantRepository;
         $this->roomRepository = $roomRepository;
+        $this->imageService = $imageService;
     }
 
     public function all(): Collection {
         return $this->model::all();
     }
 
-    public function get(): Collection {
-        return $this->model::where('status', 'pending')->with('user')->get();
+    public function get(): LengthAwarePaginator {
+        $data = $this->model::where('status', 'pending')->with('user');
+        return $this->getPagination($data);
+    }
+
+    public function getUserBooking($idUser, array $status = []): LengthAwarePaginator {
+        $query = $this->model::where('id_user', $idUser);
+
+        if (!empty($status)) {
+            $query->whereIn('status', $status);
+        }
+
+        return $this->getPagination($query, orderBy: 'desc');
     }
 
     public function find($id): Model {
@@ -69,6 +83,12 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
 
     public function update(Model $model, array $data): Model {
         return $this->transaction(function() use ($data, $model): Model {
+            if (isset($data['payment_proof'])) {
+                $name = "payment_proof_{$model->id}";
+                $savedPicture = $this->imageService->save($data['payment_proof'], 'payment_proof', $name);
+                $data['payment_proof'] = $savedPicture['url'];
+            }
+
             $model = $this->fillModel($model, $data);
             $model->save();
 
