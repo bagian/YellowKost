@@ -12,7 +12,7 @@
 @endpush
 
 @section('content')
-@include('components._accordionLink')
+@include('components._breadcrumbLink')
 <div class="flex flex-col items-center max-w-5xl pt-20 mx-auto">
     <div class="p-6 text-xs rounded-lg bg-slate-300/30 line-clamp-2">
         <div class="flex flex-row gap-2">
