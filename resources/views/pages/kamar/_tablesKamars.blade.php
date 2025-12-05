@@ -1,13 +1,13 @@
-<div class="flex flex-col justify-center max-w-5xl pt-20 mx-auto ">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div class="flex flex-col justify-center max-w-5xl p-4 pt-20 mx-auto">
+    <div class="flex flex-col justify-between gap-4 mb-8 md:flex-row md:items-center">
         <div>
             <h1 class="text-3xl font-bold text-gray-900 dark:text-text-gray-900">Manajemen <span
                     class="text-yellow-500">Kamar</span></h1>
-            <p class="text-gray-500 dark:text-gray-400 mt-1">Pantau status kamar, harga sewa, dan foto kamar.</p>
+            <p class="mt-1 text-gray-500 dark:text-gray-400">Pantau status kamar, harga sewa, dan foto kamar.</p>
         </div>
         <a href="{{ route('kamar.create') }}" class="group">
             <button type="button"
-                class="flex items-center gap-2 text-gray-900 bg-yellow-400 hover:bg-yellow-500  font-bold rounded-xl text-sm px-6 py-3 transition-all duration-300 shadow-md hover:shadow-lg transform active:scale-95 ">
+                class="flex items-center gap-2 px-6 py-3 text-sm font-bold text-gray-900 transition-all duration-300 transform bg-yellow-400 shadow-md hover:bg-yellow-500 rounded-xl hover:shadow-lg active:scale-95 ">
                 <svg class="w-5 h-5 transition-transform group-hover:rotate-90" fill="currentColor"
                     viewBox="0 0 640 640">
                     <path
@@ -18,8 +18,8 @@
         </a>
     </div>
     {{-- TABLE COMPONENT --}}
-    <div class="rounded-3xl bg-gray-100 shadow-lg dark:bg-gray-800 overflow-hidden">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-4 p-5">
+    <div class="overflow-hidden bg-gray-100 drop-shadow-lg rounded-3xl dark:bg-gray-800">
+        <div class="flex flex-col items-center justify-between gap-4 p-5 mb-4 md:flex-row">
             {{-- Filter --}}
             <div class="relative w-full md:w-1/3">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -34,7 +34,7 @@
                     placeholder="Cari Nomor Kamar/Tanggal..." onkeyup="searchTable()">
             </div>
             {{-- End Filter --}}
-            <div class="flex flex-col sm:flex-row w-full md:w-auto gap-3">
+            <div class="flex flex-col w-full gap-3 sm:flex-row md:w-auto">
                 <div class="relative w-full sm:w-auto">
                     <input type="date" id="date-filter" onchange="filterDate()"
                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl  block w-full sm:w-40 p-2.5 dark:bg-gray-800 dark:border-gray-600 dark:text-white cursor-pointer focus:outline-none focus:ring-0 focus:border-yellow-600"
@@ -103,7 +103,7 @@
                             </div>
                             @else
                             <button data-modal-target="userView-payment" data-modal-toggle="userView-payment"
-                                class="bg-blue-600/30 border border-blue-700 hover:bg-blue-800 hover:text-white transition-colors duration-300 p-2 px-4 rounded-full text-xs whitespace-nowrap text-center flex flex-row items-center justify-content-center gap-2">
+                                class="flex flex-row items-center gap-2 p-2 px-4 text-xs text-center transition-colors duration-300 border border-blue-700 rounded-full bg-blue-600/30 hover:bg-blue-800 hover:text-white whitespace-nowrap justify-content-center">
                                 <span class="text-white">
                                     <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 640 640">
@@ -122,14 +122,14 @@
                                 <div class="relative w-full max-w-2xl max-h-full p-4">
                                     <!-- Modal Content -->
                                     <div
-                                        class="relative bg-white rounded-2xl shadow-2xl dark:bg-gray-800 border border-gray-100 dark:border-gray-700 transform transition-all">
+                                        class="relative transition-all transform bg-white border border-gray-100 shadow-2xl rounded-2xl dark:bg-gray-800 dark:border-gray-700">
                                         <!-- Modal Header -->
                                         <div
                                             class="flex items-center justify-between p-4 border-b border-gray-100 dark:border-gray-700 rounded-t-2xl bg-gray-50 dark:bg-gray-800">
                                             <h3
-                                                class="text-md font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                                class="flex items-center gap-2 font-bold text-gray-900 text-md dark:text-white">
                                                 <span
-                                                    class="p-2 bg-green-100 text-green-600 rounded-lg dark:bg-green-900/30">
+                                                    class="p-2 text-green-600 bg-green-100 rounded-lg dark:bg-green-900/30">
                                                     <svg class="w-5 h-5" fill="none" stroke="currentColor"
                                                         viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -141,7 +141,7 @@
                                                 NAMA TAMPIL SINI
                                             </h3>
                                             <button type="button"
-                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:bg-gray-700 dark:hover:text-white"
+                                                class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"
                                                 data-modal-hide="userView-payment">
                                                 <svg class="w-3 h-3" aria-hidden="true"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -153,7 +153,7 @@
                                             </button>
                                         </div>
                                         <!-- Modal Body -->
-                                        <div class="space-y-5 p-5">
+                                        <div class="p-5 space-y-5">
                                             <table
                                                 class="relative w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
                                                 <thead
@@ -184,7 +184,7 @@
                                             </table>
                                             {{-- PAGINATION --}}
                                             <div
-                                                class="flex flex-col md:flex-row items-center justify-between py-5 border-t border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
+                                                class="flex flex-col items-center justify-between py-5 border-t border-gray-200 md:flex-row dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
                                                 @if ($room->hasPages() || $room->total() > 0)
                                                 <span
                                                     class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
@@ -206,14 +206,14 @@
                                                     </span>
                                                     @else
                                                     <a href="{{ $room->previousPageUrl() }}"
-                                                        class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
+                                                        class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
                                                         Prev
                                                     </a>
                                                     @endif
                                                     {{-- TOMBOL NEXT --}}
                                                     @if ($room->hasMorePages())
                                                     <a href="{{ $room->nextPageUrl() }}"
-                                                        class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
+                                                        class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
                                                         Next
                                                     </a>
                                                     @else
@@ -252,7 +252,7 @@
                                 data-modal-backdrop="static">
                                 <div class="relative w-full max-w-4xl max-h-full p-4">
                                     <!-- Modal content -->
-                                    <div class="relative bg-white rounded-3xl shadow-sm dark:bg-gray-800">
+                                    <div class="relative bg-white shadow-sm rounded-3xl dark:bg-gray-800">
                                         <!-- Modal header -->
                                         <div
                                             class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t md:p-5 dark:border-gray-600">
@@ -300,7 +300,7 @@
                             <div class="flex items-center gap-2">
                                 <!-- Modal toggle -->
                                 <a href="{{ route('kamar.show', $row->id) }}"
-                                    class="p-2 text-yellow-600 bg-yellow-50 rounded-3xl hover:bg-yellow-100 border border-yellow-200 transition-all shadow-sm edit">
+                                    class="p-2 text-yellow-600 transition-all border border-yellow-200 shadow-sm bg-yellow-50 rounded-3xl hover:bg-yellow-100 edit">
                                     <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 640 640">
                                         <path
@@ -309,7 +309,7 @@
                                 </a>
                                 <button type="button" name="delete" data-href="{{ route('kamar.destroy' , $row->id) }}"
                                     data-name="Kamar {{ $row->room_name }}"
-                                    class="p-2 text-red-600 bg-red-50 rounded-3xl hover:bg-red-100 border border-red-200 transition-all shadow-sm ">
+                                    class="p-2 text-red-600 transition-all border border-red-200 shadow-sm bg-red-50 rounded-3xl hover:bg-red-100 ">
                                     <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 640 640">
                                         <path
@@ -326,7 +326,7 @@
         </div>
         {{-- PAGINATION --}}
         <div
-            class="flex flex-col md:flex-row items-center justify-between p-5 border-t border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
+            class="flex flex-col items-center justify-between p-5 border-t border-gray-200 md:flex-row dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
             @if ($room->hasPages() || $room->total() > 0)
             <span class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
                 Menampilkan <span class="mx-1 font-semibold text-white">{{ $room->firstItem() ?? 0 }}</span> sampai
@@ -344,14 +344,14 @@
                 </span>
                 @else
                 <a href="{{ $room->previousPageUrl() }}"
-                    class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
+                    class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
                     Prev
                 </a>
                 @endif
                 {{-- TOMBOL NEXT --}}
                 @if ($room->hasMorePages())
                 <a href="{{ $room->nextPageUrl() }}"
-                    class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
+                    class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
                     Next
                 </a>
                 @else

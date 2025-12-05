@@ -1,13 +1,13 @@
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+<div class="flex flex-col justify-between gap-6 mb-8 md:flex-row md:items-center">
     <div>
         <h1 class="text-3xl font-bold text-gray-900">Manajemen <span class="text-yellow-500">Penyewa
                 Kamar</span></h1>
-        <p class="text-gray-500 dark:text-gray-400 mt-2 text-sm">Pantau status penyewa, status pembayaran, dan masa
+        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Pantau status penyewa, status pembayaran, dan masa
             aktif sewa.</p>
     </div>
     <a href="{{ route('booking.form') }}" class="group">
         <button type="button"
-            class="flex items-center gap-2 text-gray-900 bg-yellow-400 hover:bg-yellow-500  font-bold rounded-xl text-sm px-6 py-3 transition-all duration-300 shadow-md hover:shadow-lg transform active:scale-95 ">
+            class="flex items-center gap-2 px-6 py-3 text-sm font-bold text-gray-900 transition-all duration-300 transform bg-yellow-400 shadow-md hover:bg-yellow-500 rounded-xl hover:shadow-lg active:scale-95 ">
             <svg class="w-5 h-5 transition-transform group-hover:rotate-90" fill="currentColor" viewBox="0 0 640 640">
                 <path
                     d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
@@ -17,8 +17,8 @@
     </a>
 </div>
 <div
-    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-sm overflow-hidden">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-4 p-5">
+    class="overflow-hidden bg-white border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700 rounded-3xl drop-shadow-lg">
+    <div class="flex flex-col items-center justify-between gap-4 p-5 mb-4 md:flex-row">
         <div class="relative w-full md:w-1/3">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor"
@@ -31,7 +31,7 @@
                 class="block w-full p-2.5 pl-10 text-sm text-gray-900 border border-gray-300 rounded-xl bg-white dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none focus:ring-0 focus:border-yellow-600"
                 placeholder="Cari Nama, NIK..." onkeyup="searchTable()">
         </div>
-        <div class="flex flex-col sm:flex-row w-full md:w-auto gap-3">
+        <div class="flex flex-col w-full gap-3 sm:flex-row md:w-auto">
             <div class="relative w-full sm:w-auto">
                 <input type="date" id="date-filter" onchange="filterDate()"
                     class="bg-white border border-gray-300 text-gray-900 text-sm rounded-xl  block w-full sm:w-40 p-2.5 dark:bg-gray-800 dark:border-gray-600 dark:text-white cursor-pointer focus:outline-none focus:ring-0 focus:border-yellow-600"
@@ -55,29 +55,29 @@
                     </svg>
                 </button>
                 <div id="dropdownSort"
-                    class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-48 dark:bg-gray-700 dark:divide-gray-600 absolute right-0 mt-1 border border-gray-100 dark:border-gray-600">
+                    class="absolute right-0 z-10 hidden w-48 mt-1 bg-white border border-gray-100 divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 dark:border-gray-600">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="sortDropdownButton">
                         <li>
                             <a href="#" onclick="triggerSort(1, 'text', 'Nama (A-Z)', this)"
-                                class=" px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-between items-center group">
+                                class="flex items-center justify-between px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white group">
                                 Nama Penyewa <span class="text-xs text-gray-400">A-Z</span>
                             </a>
                         </li>
                         <li>
                             <a href="#" onclick="triggerSort(2, 'text', 'KTP/NIK', this)"
-                                class=" px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-between items-center">
+                                class="flex items-center justify-between px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                 KTP / NIK <span class="text-xs text-gray-400">0-9</span>
                             </a>
                         </li>
                         <li>
                             <a href="#" onclick="triggerSort(6, 'text', 'Status', this)"
-                                class=" px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-between items-center">
+                                class="flex items-center justify-between px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                 Status <span class="text-xs text-gray-400">A-Z</span>
                             </a>
                         </li>
                         <li>
                             <a href="#" onclick="triggerSort(7, 'date', 'Tanggal Masuk', this)"
-                                class=" px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-between items-center">
+                                class="flex items-center justify-between px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                 Tanggal Masuk <span class="text-xs text-gray-400">Baru</span>
                             </a>
                         </li>
@@ -86,12 +86,12 @@
             </div>
         </div>
     </div>
-    <div class="overflow-x-auto bg-white border border-gray-200  shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <div class="overflow-x-auto bg-white border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <table id="tenantTable" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead
-                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-700">
+                class="text-xs text-gray-700 uppercase border-b border-gray-100 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-700">
                 <tr>
-                    <th scope="col" class="px-6 py-4 font-bold text-center w-16">No</th>
+                    <th scope="col" class="w-16 px-6 py-4 font-bold text-center">No</th>
                     <th scope="col" class="px-6 py-4 font-bold">Nama Penyewa</th>
                     <th scope="col" class="px-6 py-4 font-bold">KTP/NIK</th>
                     <th scope="col" class="px-6 py-4 font-bold min-w-[250px]">Alamat</th>
@@ -106,9 +106,9 @@
             <tbody id="taskTableBody" class="divide-y divide-gray-100 dark:divide-gray-700">
                 @foreach($booking as $row)
                 <tr
-                    class="bg-white dark:bg-gray-800 hover:bg-yellow-50 dark:hover:bg-gray-700/50 transition-colors duration-200 border-b border-gray-100 dark:border-gray-700">
+                    class="transition-colors duration-200 bg-white border-b border-gray-100 dark:bg-gray-800 hover:bg-yellow-50 dark:hover:bg-gray-700/50 dark:border-gray-700">
 
-                    <td class="px-6 py-4 text-center font-medium text-gray-900 dark:text-white">
+                    <td class="px-6 py-4 font-medium text-center text-gray-900 dark:text-white">
                         {{ $loop->iteration }}
                     </td>
 
@@ -116,12 +116,12 @@
                         <div class="font-bold text-gray-900 dark:text-white">{{ $row->user->full_name }}</div>
                     </td>
 
-                    <td class="px-6 py-4  text-gray-600 dark:text-gray-300">
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-300">
                         {{ $row->user->nik }}
                     </td>
 
                     <td class="px-6 py-4">
-                        <div class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 max-w-xs whitespace-normal break-words leading-relaxed"
+                        <div class="max-w-xs text-sm leading-relaxed text-gray-600 break-words whitespace-normal dark:text-gray-300 line-clamp-2"
                             title="{{ $row->user->address }}">
                             {{ $row->user->address }}
                         </div>
@@ -138,7 +138,7 @@
                         </span>
                     </td>
 
-                    <td class="px-6 py-4 text-center font-medium date-col"
+                    <td class="px-6 py-4 font-medium text-center date-col"
                         data-date="{{ $row->check_in->format('Y-m-d') }}">
                         {{ $row->check_in->format('d/m/Y') }}
                     </td>
@@ -146,7 +146,7 @@
                     <td class="px-6 py-4 text-center">
                         <button data-modal-target="default-modal-{{ $row->id }}"
                             data-modal-toggle="default-modal-{{ $row->id }}"
-                            class="text-blue-100 font-medium text-xs flex items-center justify-center gap-1 mx-auto bg-blue-600 rounded-full px-3 py-3 border border-blue-500"
+                            class="flex items-center justify-center gap-1 px-3 py-3 mx-auto text-xs font-medium text-blue-100 bg-blue-600 border border-blue-500 rounded-full"
                             type="button">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -160,12 +160,12 @@
                         <div id="default-modal-{{ $row->id }}" tabindex="-1" aria-hidden="true"
                             data-modal-backdrop="static"
                             class="hidden overflow-y-auto overflow-x-hidden fixed  right-0 left-0 z-50 justify-center items-center w-full md:inset-0 top-0 h-[calc(100%-0rem)] max-h-full bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300">
-                            <div class="relative w-full max-w-lg max-h-full p-4 transform transition-all scale-100">
+                            <div class="relative w-full max-w-lg max-h-full p-4 transition-all transform scale-100">
                                 <div
-                                    class="relative bg-white rounded-2xl shadow-2xl overflow-hidden dark:bg-gray-800 border border-gray-100 dark:border-gray-700">
-                                    <div class="absolute top-4 right-4 z-10">
+                                    class="relative overflow-hidden bg-white border border-gray-100 shadow-2xl rounded-2xl dark:bg-gray-800 dark:border-gray-700">
+                                    <div class="absolute z-10 top-4 right-4">
                                         <button type="button"
-                                            class="text-gray-400 bg-white/80 hover:bg-red-50 hover:text-red-500 rounded-full p-2 focus:outline-none transition-colors shadow-sm dark:bg-gray-700/80 dark:hover:bg-gray-100 dark:text-gray-300"
+                                            class="p-2 text-gray-400 transition-colors rounded-full shadow-sm bg-white/80 hover:bg-red-50 hover:text-red-500 focus:outline-none dark:bg-gray-700/80 dark:hover:bg-gray-100 dark:text-gray-300"
                                             data-modal-hide="default-modal-{{ $row->id }}">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -177,7 +177,7 @@
                                     <div
                                         class="p-1 bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center min-h-[300px] ">
                                         <div
-                                            class="w-full text-center py-4 px-6 border-b border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-t-xl">
+                                            class="w-full px-6 py-4 text-center bg-white border-b border-gray-100 dark:border-gray-700 dark:bg-gray-800 rounded-t-xl">
                                             <h3 class="text-lg font-bold text-gray-800 dark:text-white">Dokumen KTP</h3>
                                             <p class="text-sm text-gray-500 dark:text-gray-400">{{ $row->user->full_name
                                                 }}</p>
@@ -190,10 +190,10 @@
                                         </div>
                                     </div>
                                     <div
-                                        class="px-6 py-4 bg-white border-t border-gray-100 dark:bg-gray-800 dark:border-gray-700 flex justify-end">
+                                        class="flex justify-end px-6 py-4 bg-white border-t border-gray-100 dark:bg-gray-800 dark:border-gray-700">
                                         <a href="{{ Storage::url($row->user->ktp) }}"
                                             download="KTP-{{ $row->user->full_name }}"
-                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600 transition-colors">
+                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 transition-colors bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600">
                                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -210,12 +210,13 @@
                     <td class="px-6 py-4 text-center">
                         <div class="flex justify-center gap-2">
                             <button type="button"
-                                class="p-2 text-yellow-600 bg-yellow-50 rounded-lg hover:bg-yellow-100 border border-yellow-200 transition-all shadow-sm edit"
+                                class="p-2 text-yellow-600 transition-all border border-yellow-200 rounded-lg shadow-sm bg-yellow-50 hover:bg-yellow-100 edit"
                                 data-href="{{ route('penyewa.update', $row->id) }}" data-id_user="{{ $row->id_user }}"
                                 data-ktp="{{ Storage::url($row->user->ktp) }}" data-name="{{ $row->user->full_name }}"
                                 data-nik="{{ $row->user->nik }}" data-address="{{ $row->user->address }}"
                                 data-phone="{{ $row->user->phone }}" data-parent_phone="{{ $row->user->parent_phone }}"
-                                data-check_in="{{ $row->check_in->format('Y-m-d') }}" data-payment_proof="{{ Storage::url($row->payment_proof) }}">
+                                data-check_in="{{ $row->check_in->format('Y-m-d') }}"
+                                data-payment_proof="{{ Storage::url($row->payment_proof) }}">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
@@ -223,7 +224,7 @@
                                 </svg>
                             </button>
                             <button type="button"
-                                class="p-2 text-red-600 bg-red-50 rounded-lg hover:bg-red-100 border border-red-200 transition-all shadow-sm delete">
+                                class="p-2 text-red-600 transition-all border border-red-200 rounded-lg shadow-sm bg-red-50 hover:bg-red-100 delete">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
@@ -238,38 +239,38 @@
         </table>
     </div>
     <div
-        class="flex flex-col md:flex-row items-center justify-between p-5 border-t border-gray-200 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
+        class="flex flex-col items-center justify-between p-5 border-t border-gray-200 md:flex-row dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
         @if($booking->hasPages() || $booking->total() > 0)
-        <span class="text-sm text-gray-500 dark:text-gray-400 mb-4 md:mb-0">
-            Menampilkan <span class="font-bold text-gray-900 dark:text-white">{{ $booking->firstItem() ?? 0 }}</span> sampai <span
-                class="font-bold text-gray-900 dark:text-white">{{ $booking->lastItem() ?? 0 }}</span> dari <span
-                class="font-bold text-gray-900 dark:text-white">{{ $booking->total() }}</span> data
+        <span class="mb-4 text-sm text-gray-500 dark:text-gray-400 md:mb-0">
+            Menampilkan <span class="font-bold text-gray-900 dark:text-white">{{ $booking->firstItem() ?? 0 }}</span>
+            sampai <span class="font-bold text-gray-900 dark:text-white">{{ $booking->lastItem() ?? 0 }}</span> dari
+            <span class="font-bold text-gray-900 dark:text-white">{{ $booking->total() }}</span> data
         </span>
         @endif
         <div class="inline-flex">
             {{-- ----------------------------- Tombol Prev ---------------------------- --}}
             @if ($booking->onFirstPage())
             <button
-                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                 Prev
             </button>
             @else
             <a href="{{ $booking->previousPageUrl() }}"
-                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                 Prev
             </a>
             @endif
             {{-- ---------------------------------------------------------------------- --}}
-            
+
             {{-- ----------------------------- Tombol Next ---------------------------- --}}
             @if ($booking->hasMorePages())
             <a href="{{ $booking->nextPageUrl() }}"
-                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                 Next
             </a>
             @else
             <button
-                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white shadow-sm">
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                 Next
             </button>
             @endif

@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-@include ('components._accordionLink')
+@include ('components._breadcrumbLink')
 @include ('pages.kamar._tablesKamars')
 @endsection
 

@@ -1,4 +1,6 @@
-<!-- Navbar Top -->
+{{-- ------------------------------------------------------------------- --}}
+{{-- Top Bar --}}
+{{-- ------------------------------------------------------------------- --}}
 <nav class="fixed top-0 z-[9999] w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div class="px-3 py-3 lg:px-5 lg:pl-3">
         <div class="flex items-center justify-between">
@@ -59,7 +61,7 @@
                             <img class="w-8 h-8 rounded-full"
                                 src="@if(Auth::user()->avatar_type == 'url') {{ Auth::user()->profile_picture }} @elseif(Auth::user()->avatar_type == 'storage') {{ Storage::url(Auth::user()->profile_picture) }} @else https://flowbite.com/docs/images/people/profile-picture-2.jpg @endif"
                                 alt="user photo">
-                            <svg class="w-4 h-4 stroke-current mr-2" viewBox="0 0 20 20" fill="none"
+                            <svg class="w-4 h-4 mr-2 stroke-current" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="currentColor"
                                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -100,4 +102,6 @@
         </div>
     </div>
 </nav>
-<!-- End Navbar Top -->
+{{-- ------------------------------------------------------------------- --}}
+{{-- End Top Bar--}}
+{{-- ------------------------------------------------------------------- --}}

@@ -5,7 +5,7 @@
 @endpush
 @section('content')
 <!-- ====== Form Elements Section Start -->
-@include('components._accordionLink')
+@include('components._breadcrumbLink')
 
 <div class="justify-center pt-20 mx-auto max-w-7xl">
     @include('partials._errors')
@@ -112,10 +112,10 @@
                                 </template>
                             </div>
                             <!-- Tombol Navigasi Swiper -->
-                            <div class="swiper-button-prev dash-button-prev important border border-white/20 bg-white/10 backdrop-blur-md shadow-xl drop-shadow-4xl p-8 rounded-full"
+                            <div class="p-8 border rounded-full shadow-xl swiper-button-prev dash-button-prev important border-white/20 bg-white/10 backdrop-blur-md drop-shadow-4xl"
                                 :class="{ 'hidden': previews.length <= 1 }">
                             </div>
-                            <div class="swiper-button-next dash-button-next important border border-white/20 bg-white/10 backdrop-blur-md shadow-xl drop-shadow-4xl p-8 rounded-full"
+                            <div class="p-8 border rounded-full shadow-xl swiper-button-next dash-button-next important border-white/20 bg-white/10 backdrop-blur-md drop-shadow-4xl"
                                 :class="{ 'hidden': previews.length <= 1 }">
                             </div>
                         </div>

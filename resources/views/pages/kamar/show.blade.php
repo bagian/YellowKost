@@ -5,23 +5,23 @@
 @endpush
 @section('content')
 <!-- ====== Form Elements Section Start -->
-@include('components._accordionLink')
-<div class="pt-24 max-w-5xl flex justify-center mx-auto flex-col">
-    <div class="mx-auto max-w-5xl w-full">
+@include ('components._breadcrumbLink')
+<div class="flex flex-col justify-center max-w-5xl pt-24 mx-auto">
+    <div class="w-full max-w-5xl mx-auto">
         <div class="pb-8">
             <h1 class="text-3xl font-bold text-gray-900">Edit <span class="text-yellow-500">
                     Informasi Kamar</span></h1>
-            <p class="text-gray-500 dark:text-gray-400 mt-2 text-sm">Pantau status penyewa, status pembayaran, dan masa
+            <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Pantau status penyewa, status pembayaran, dan masa
                 aktif sewa.</p>
         </div>
         @include('partials._errors')
         <form action="{{ route('kamar.update', $room->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
-            <div class="space-y-6 max-w-5xl">
+            <div class="max-w-5xl space-y-6">
                 <div
                     class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
-                    <div class="p-5 space-y-6  border-gray-100 sm:p-6 dark:border-gray-500">
+                    <div class="p-5 space-y-6 border-gray-100 sm:p-6 dark:border-gray-500">
                         <div class="grid grid-cols-1 gap-4 mb-4 md:grid-cols-2">
                             <!-- Elements -->
                             <div class="flex-1 mb-0">
@@ -51,22 +51,22 @@
                                 </label>
                                 <div x-data="{ isOptionSelected: false }" class="relative">
                                     <select name="period"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 appearance-none"
+                                        class="bg-gray-50 cursor-pointer border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 appearance-none"
                                         :class="isOptionSelected && 'text-gray-800 dark:text-white/90'"
                                         @change="isOptionSelected = true">
-                                        <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                        <option value="" class="text-gray-700 dark:text-gray-400">
                                             Pilih Status Kamar
                                         </option>
                                         <option @if ($room->period == 'day') selected @endif value="day"
-                                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                            class="text-gray-700 dark:text-gray-400">
                                             Harian
                                         </option>
                                         <option @if ($room->period == 'month') selected @endif value="month"
-                                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                            class="text-gray-700 dark:text-gray-400">
                                             Bulanan
                                         </option>
                                         <option @if ($room->period == 'year') selected @endif value="year"
-                                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                                            class="text-gray-700 dark:text-gray-400">
                                             Tahunan
                                         </option>
                                     </select>
@@ -98,11 +98,11 @@
                                 <div class="mt-1 text-xs text-gray-500 dark:text-gray-300">
                                     Format yang didukung adalah JPEG, JPG, PNG. Ukuran maksimal 5MB per file.
                                 </div>
-                                <div id="upload-error" class="mt-2 text-sm text-red-500 dark:text-red-400 hidden"></div>
+                                <div id="upload-error" class="hidden mt-2 text-sm text-red-500 dark:text-red-400"></div>
                             </div>
                         </div>
                         <div
-                            class="relative flex items-center justify-center w-full h-80 col-span-1 overflow-hidden align-middle rounded-lg  md:col-span-2">
+                            class="relative flex items-center justify-center w-full col-span-1 overflow-hidden align-middle rounded-lg h-80 md:col-span-2">
                             <!-- Slider main container -->
                             <div class="swiper edit-swiper">
                                 <!-- Additional required wrapper -->
@@ -125,10 +125,10 @@
                                     @endforeach
                                 </div>
                                 <div
-                                    class="swiper-button-prev edit-swiper-button-prev dash-button-prev border border-white/20 bg-white/10 backdrop-blur-lg drop-shadow-4xl shadow-xl p-8 rounded-full">
+                                    class="p-8 border rounded-full shadow-xl swiper-button-prev edit-swiper-button-prev dash-button-prev border-white/20 bg-white/10 backdrop-blur-lg drop-shadow-4xl">
                                 </div>
                                 <div
-                                    class="swiper-button-next edit-swiper-button-next dash-button-next border border-white/20 bg-white/10 backdrop-blur-lg drop-shadow-4xl shadow-xl p-8 rounded-full">
+                                    class="p-8 border rounded-full shadow-xl swiper-button-next edit-swiper-button-next dash-button-next border-white/20 bg-white/10 backdrop-blur-lg drop-shadow-4xl">
                                 </div>
                             </div>
                         </div>
@@ -153,7 +153,7 @@
 @push('scripts')
 <script id="previewImage" type="text/template">
     <div class="swiper-slide relative shrink-0 !w-70 !h-80 md:!w-[244px] md:!h-[auto] lg:!w-[237px] lg:!h-[auto]">
-        <img src="" alt="" class="object-cover w-full h-80 rounded-2xl shadow-sm" />
+        <img src="" alt="" class="object-cover w-full shadow-sm h-80 rounded-2xl" />
         <button data-tempid="" data-id="" type="button"
         class="delete-image absolute top-2 right-2 z-10 p-1.5 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
