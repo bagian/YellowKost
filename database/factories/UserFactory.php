@@ -36,6 +36,7 @@ class UserFactory extends Factory
             'ktp' => 'images/ktp/ktp_default.jpg',
             'nik' => $this->faker->unique()->numerify('################'),
             'address' => $this->faker->address(),
+            'occupation' => $this->faker->jobTitle(),
         ];
     }
 }
