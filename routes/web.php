@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\JournalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\GoogleController;
@@ -14,9 +15,7 @@ use App\Http\Controllers\NewsletterController;
 /* -------------------------------------------------------------------------- */
 /*                                  Homepage                                  */
 /* -------------------------------------------------------------------------- */
-Route::get('/', function () {
-    return view('landingpage._maincontent');
-})->name('home');
+Route::get('/', [HomepageController::class, 'index'])->name('home');
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 

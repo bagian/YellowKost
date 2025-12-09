@@ -27,11 +27,11 @@ class TestimonialRepository extends BaseRepository implements TestimonialReposit
     }
 
     public function all(): Collection {
-        return $this->model::with('user')->all();
+        return $this->model::all();
     }
 
     public function get(): Collection {
-        return $this->model::get();
+        return $this->model::with('user')->get();
     }
 
     public function getByUser($idUser): Collection {
