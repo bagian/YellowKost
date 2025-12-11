@@ -238,45 +238,7 @@
             </tbody>
         </table>
     </div>
-    <div
-        class="flex flex-col items-center justify-between p-5 border-t border-gray-200 md:flex-row dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
-        @if($booking->hasPages() || $booking->total() > 0)
-        <span class="mb-4 text-sm text-gray-500 dark:text-gray-400 md:mb-0">
-            Menampilkan <span class="font-bold text-gray-900 dark:text-white">{{ $booking->firstItem() ?? 0 }}</span>
-            sampai <span class="font-bold text-gray-900 dark:text-white">{{ $booking->lastItem() ?? 0 }}</span> dari
-            <span class="font-bold text-gray-900 dark:text-white">{{ $booking->total() }}</span> data
-        </span>
-        @endif
-        <div class="inline-flex">
-            {{-- ----------------------------- Tombol Prev ---------------------------- --}}
-            @if ($booking->onFirstPage())
-            <button
-                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                Prev
-            </button>
-            @else
-            <a href="{{ $booking->previousPageUrl() }}"
-                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                Prev
-            </a>
-            @endif
-            {{-- ---------------------------------------------------------------------- --}}
-
-            {{-- ----------------------------- Tombol Next ---------------------------- --}}
-            @if ($booking->hasMorePages())
-            <a href="{{ $booking->nextPageUrl() }}"
-                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                Next
-            </a>
-            @else
-            <button
-                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                Next
-            </button>
-            @endif
-            {{-- ---------------------------------------------------------------------- --}}
-        </div>
-    </div>
+    @include('partials._pagination', ['data' => $booking])
 </div>
 
 @push('scripts')

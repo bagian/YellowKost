@@ -102,7 +102,7 @@
                                 Kosong
                             </div>
                             @else
-                            <button data-modal-target="userView-payment" data-modal-toggle="userView-payment"
+                            <button data-modal-target="userView-payment" data-modal-toggle="userView-payment" data-name="{{ $row->confirmedBooking->first()->user->full_name }}"
                                 class="flex flex-row items-center gap-2 p-2 px-4 text-xs text-center transition-colors duration-300 border border-blue-700 rounded-full bg-blue-600/30 hover:bg-blue-800 hover:text-white whitespace-nowrap justify-content-center">
                                 <span class="text-white">
                                     <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
@@ -112,123 +112,10 @@
                                     </svg>
                                 </span>
                                 <span>
-                                    {{ $row->confirmedBooking->first()->user->full_name}}
+                                    {{ $row->confirmedBooking->first()->user->full_name }}
                                 </span>
                             </button>
                             @endif
-                            {{-- MODAL --}}
-                            <div id="userView-payment" tabindex="-1" aria-hidden="true" data-modal-backdrop="static"
-                                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-0rem)] max-h-full bg-gray-900/60 backdrop-blur-sm">
-                                <div class="relative w-full max-w-2xl max-h-full p-4">
-                                    <!-- Modal Content -->
-                                    <div
-                                        class="relative transition-all transform bg-white border border-gray-100 shadow-2xl rounded-2xl dark:bg-gray-800 dark:border-gray-700">
-                                        <!-- Modal Header -->
-                                        <div
-                                            class="flex items-center justify-between p-4 border-b border-gray-100 dark:border-gray-700 rounded-t-2xl bg-gray-50 dark:bg-gray-800">
-                                            <h3
-                                                class="flex items-center gap-2 font-bold text-gray-900 text-md dark:text-white">
-                                                <span
-                                                    class="p-2 text-green-600 bg-green-100 rounded-lg dark:bg-green-900/30">
-                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
-                                                        </path>
-                                                    </svg>
-                                                </span>
-                                                NAMA TAMPIL SINI
-                                            </h3>
-                                            <button type="button"
-                                                class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"
-                                                data-modal-hide="userView-payment">
-                                                <svg class="w-3 h-3" aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                    <path stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2"
-                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                                </svg>
-                                                <span class="sr-only">Close modal</span>
-                                            </button>
-                                        </div>
-                                        <!-- Modal Body -->
-                                        <div class="p-5 space-y-5">
-                                            <table
-                                                class="relative w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
-                                                <thead
-                                                    class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
-                                                    <tr>
-                                                        <th scope="col" class="px-6 py-4 font-bold">Tanggal Pembayaran
-                                                        </th>
-                                                        <th scope="col" class="px-6 py-4 font-bold">Periode Pembayaran
-                                                        </th>
-                                                        <th scope="col" class="px-6 py-4 font-bold">Total Pembayaran
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr
-                                                        class="text-white transition-all duration-300 ease-in-out bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-300">
-                                                        <td class="px-6 py-4">
-                                                            Tanggal Pembayaran
-                                                        </td>
-                                                        <td class="px-6 py-4">
-                                                            Periode Pembayaran
-                                                        </td>
-                                                        <td class="px-6 py-4">
-                                                            Total Pembayaran
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            {{-- PAGINATION --}}
-                                            <div
-                                                class="flex flex-col items-center justify-between py-5 border-t border-gray-200 md:flex-row dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
-                                                @if ($room->hasPages() || $room->total() > 0)
-                                                <span
-                                                    class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
-                                                    Menampilkan <span class="mx-1 font-semibold text-white">{{
-                                                        $room->firstItem() ?? 0 }}</span> sampai
-                                                    <span class="mx-1 font-semibold text-white">{{ $room->lastItem() ??
-                                                        0 }}</span> dari total <span
-                                                        class="mx-1 font-semibold text-white">{{ $room->total()
-                                                        }}</span>
-                                                    Barisan
-                                                </span>
-                                                @endif
-                                                <div class="inline-flex">
-                                                    {{-- TOMBOL PREVIOUS --}}
-                                                    @if ($room->onFirstPage())
-                                                    <span
-                                                        class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border border-gray-300 rounded-l-lg cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-500">
-                                                        Prev
-                                                    </span>
-                                                    @else
-                                                    <a href="{{ $room->previousPageUrl() }}"
-                                                        class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
-                                                        Prev
-                                                    </a>
-                                                    @endif
-                                                    {{-- TOMBOL NEXT --}}
-                                                    @if ($room->hasMorePages())
-                                                    <a href="{{ $room->nextPageUrl() }}"
-                                                        class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
-                                                        Next
-                                                    </a>
-                                                    @else
-                                                    <span
-                                                        class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border-t border-b border-r border-gray-300 rounded-r-lg cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-500">
-                                                        Next
-                                                    </span>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            {{-- END PAGINATION --}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </td>
                         <td class="px-6 py-4 ">
                             Tanggal Masuk
@@ -320,103 +207,117 @@
                         </td>
                     </tr>
                     @endforeach
+                    
                 </tbody>
             </table>
 
         </div>
         {{-- PAGINATION --}}
-        <div
-            class="flex flex-col items-center justify-between p-5 border-t border-gray-200 md:flex-row dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
-            @if ($room->hasPages() || $room->total() > 0)
-            <span class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
-                Menampilkan <span class="mx-1 font-semibold text-white">{{ $room->firstItem() ?? 0 }}</span> sampai
-                <span class="mx-1 font-semibold text-white">{{ $room->lastItem() ?? 0 }}</span> dari total <span
-                    class="mx-1 font-semibold text-white">{{ $room->total() }}</span>
-                Barisan
-            </span>
-            @endif
-            <div class="inline-flex">
-                {{-- TOMBOL PREVIOUS --}}
-                @if ($room->onFirstPage())
-                <span
-                    class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border border-gray-300 rounded-l-lg cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-500">
-                    Prev
-                </span>
-                @else
-                <a href="{{ $room->previousPageUrl() }}"
-                    class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
-                    Prev
-                </a>
-                @endif
-                {{-- TOMBOL NEXT --}}
-                @if ($room->hasMorePages())
-                <a href="{{ $room->nextPageUrl() }}"
-                    class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
-                    Next
-                </a>
-                @else
-                <span
-                    class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border-t border-b border-r border-gray-300 rounded-r-lg cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-500">
-                    Next
-                </span>
-                @endif
+        @include('partials._pagination', ['data' => $room])
+        {{-- PAGINATION --}}
+    </div>
+    {{-- MODAL --}}
+    <div id="userView-payment" tabindex="-1" aria-hidden="true" data-modal-backdrop="static"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-0rem)] max-h-full bg-gray-900/60 backdrop-blur-sm">
+        <div class="relative w-full max-w-2xl max-h-full p-4">
+            <!-- Modal Content -->
+            <div
+                class="relative transition-all transform bg-white border border-gray-100 shadow-2xl rounded-2xl dark:bg-gray-800 dark:border-gray-700">
+                <!-- Modal Header -->
+                <div
+                    class="flex items-center justify-between p-4 border-b border-gray-100 dark:border-gray-700 rounded-t-2xl bg-gray-50 dark:bg-gray-800">
+                    <h3
+                        class="flex items-center gap-2 font-bold text-gray-900 text-md dark:text-white">
+                        <span
+                            class="p-2 text-green-600 bg-green-100 rounded-lg dark:bg-green-900/30">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </span>
+                        NAMA TAMPIL SINI
+                    </h3>
+                    <button type="button"
+                        class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"
+                        data-modal-hide="userView-payment">
+                        <svg class="w-3 h-3" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal Body -->
+                <div class="p-5 space-y-5">
+                    <table
+                        class="relative w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
+                        <thead
+                            class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-4 font-bold">Tanggal Pembayaran
+                                </th>
+                                <th scope="col" class="px-6 py-4 font-bold">Periode Pembayaran
+                                </th>
+                                <th scope="col" class="px-6 py-4 font-bold">Total Pembayaran
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                class="text-white transition-all duration-300 ease-in-out bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-300">
+                                <td class="px-6 py-4">
+                                    Tanggal Pembayaran
+                                </td>
+                                <td class="px-6 py-4">
+                                    Periode Pembayaran
+                                </td>
+                                <td class="px-6 py-4">
+                                    Total Pembayaran
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {{-- PAGINATION --}}
+                    <div
+                        class="flex flex-col items-center justify-between py-5 border-t border-gray-200 md:flex-row dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
+                        <span
+                            class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
+                            Menampilkan <span class="mx-1 font-semibold text-white" id="pagination-firstItem"></span> sampai
+                            <span class="mx-1 font-semibold text-white" id="pagination-lastItem"></span> dari total <span
+                                class="mx-1 font-semibold text-white" id="pagination-total"></span>
+                            Barisan
+                        </span>
+                        <div class="inline-flex" id="pagination-list">
+                            {{-- TOMBOL PREVIOUS --}}
+                            <span
+                                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border border-gray-300 rounded-l-lg cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-500">
+                                Prev
+                            </span>
+                            <a href="#"
+                                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
+                                Prev
+                            </a>
+                            {{-- TOMBOL NEXT --}}
+                            <a href="#"
+                                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
+                                Next
+                            </a>
+                            <span
+                                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border-t border-b border-r border-gray-300 rounded-r-lg cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-500">
+                                Next
+                            </span>
+                        </div>
+                    </div>
+                    {{-- END PAGINATION --}}
+                </div>
             </div>
         </div>
-        {{-- END PAGINATION --}}
     </div>
-    {{-- PAGINATION --}}
-    {{-- <div class="flex flex-col items-start justify-between md:flex-row pb-14 md:items-end">
-        @if ($room->hasPages() || $room->total() > 0)
-        <span class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
-            Menampilkan <span class="mx-1 font-semibold text-gray-900">{{ $room->firstItem() ?? 0 }}</span> sampai <span
-                class="mx-1 font-semibold text-gray-900">{{ $room->lastItem() ?? 0 }}</span> dari total <span
-                class="mx-1 font-semibold text-gray-900">{{ $room->total() }}</span>
-            Barisan
-        </span>
-        @endif
-        @if ($room->hasPages())
-        <nav aria-label="Page navigation example">
-            <ul class="flex items-center h-8 -space-x-px text-sm">
-                <li>
-                    <a href="{{ $room->previousPageUrl() }}"
-                        class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 ms-0 border-e-0 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                        <span class="sr-only">Previous</span>
-                        <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 1 1 5l4 4" />
-                        </svg>
-                    </a>
-                </li>
-
-                @php($active = "text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700
-                dark:border-gray-700 dark:bg-gray-700 dark:text-white z-10")
-                @php($inactive = "text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700
-                dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white")
-
-                @for($i = 1; $i <= $room->lastPage(); $i++)
-                    <li>
-                        <a href="{{ $room->url($i) }}"
-                            class="flex items-center justify-center h-8 px-3 leading-tight @if($i === $room->currentPage()) {{ $active }} @else {{ $inactive }} @endif">{{
-                            $i }}</a>
-                    </li>
-                    @endfor
-
-                    <li>
-                        <a href="{{ $room->nextPageUrl() }}"
-                            class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                            <span class="sr-only">Next</span>
-                            <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 9 4-4-4-4" />
-                            </svg>
-                        </a>
-                    </li>
-            </ul>
-        </nav>
-        @endif
-    </div> --}}
 </div>
 
 @push('scripts')

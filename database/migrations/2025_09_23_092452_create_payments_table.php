@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_booking')->constrained('bookings')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('id_booking')->constrained('bookings')->onDelete('cascade')->onUpdate('cascade');
             $table->decimal('amount', 20, 2);
             $table->date('date');
             $table->date('period');
             $table->boolean('is_dp')->default(false);
-            $table->foreignId('payment_method')->constrained('payment_methods')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('payment_method')->constrained('payment_methods')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
