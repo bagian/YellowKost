@@ -494,7 +494,7 @@
                             <div>
                                 <label class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">Nama
                                     Lengkap</label>
-                                <input type="text" name="tenant" id="input_tenant"
+                                <input type="text" name="full_name" id="input_tenant"
                                     class="w-full p-3 text-gray-600 transition-all duration-200 bg-gray-500 border border-gray-300 rounded-xl focus:outline-none focus:border-yellow-500 focus:ring-yellow-200 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">
                             </div>
                             <div>

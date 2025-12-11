@@ -147,7 +147,7 @@
                                         {{ $row->created_at->format('d M Y') }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $row->room->room_name }}
+                                        {{ $row->room->room_name ?? "-" }}
                                     </td>
                                     <td class="px-6 py-4 text-center">
                                         @if ($row->status == 'confirmed')
@@ -432,6 +432,7 @@
                 _token: '{{ csrf_token() }}'
             }, function(response) {
                 clearDetail();
+                let room_name = '';
 
                 if (response.status === 'pending') {
 
@@ -458,9 +459,14 @@
                     visualContainer.append(visualCompleted);
 
                 }
+                if (response.id_room === null) {
+                    room_name = "-";
+                } else {
+                    room_name = response.room.room_name;
+                }
 
                 $('#id_booking').text(response.id);
-                $('#room_name').text(response.room.room_name);
+                $('#room_name').text(room_name);
                 $('#check_in').text(formatDate(response.check_in));
                 $('#total_paid').text(response.total_paid ?? '-');
                 $('#created_at').text(formatDate(response.created_at));

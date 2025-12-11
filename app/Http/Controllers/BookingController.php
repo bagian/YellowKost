@@ -109,7 +109,6 @@ class BookingController extends Controller
     public function index()
     {
         $booking = $this->bookingRepository->get();
-        // dd($booking->onFirstPage());
         $room = $this->roomRepository->available();
 
         return view('pages.form-penyewa.forminputs', compact('booking', 'room'));
@@ -158,7 +157,7 @@ class BookingController extends Controller
             ]);
         }
 
-        $dataBooking = $request->except('_token', '_method', 'tenant', 'nik', 'phone', 'parent_phone', 'payment_status');
+        $dataBooking = $request->except('_token', '_method', 'full_name', 'nik', 'phone', 'parent_phone', 'payment_status');
         $dataUser = $request->except('_token', '_method', 'id_user', 'check_in', 'id_room', 'status', 'payment_status');
         // dd($dataBooking, $dataUser);
 
