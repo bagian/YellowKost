@@ -23,4 +23,8 @@ class Room extends Model
             ->where('status', 'confirmed');
 
     }
+
+    public function maintenance() {
+        return $this->hasMany(Maintenance::class, 'id_room');
+    }
 }
