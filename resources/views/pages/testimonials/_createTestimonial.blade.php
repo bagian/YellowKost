@@ -2,7 +2,7 @@
 
 @section('content')
 @include('components._breadcrumbLink')
-<div class="max-w-2xl pt-20 mx-auto">
+<div class="max-w-2xl p-4 pt-20 mx-auto">
     <form action="" method="POST">
         @csrf
         <div class="space-y-6">
@@ -63,7 +63,7 @@
                             placeholder="Tuliskan pengalaman Anda menginap di YellowKost..." required></textarea>
                     </div>
                     <button type="submit"
-                        class="flex items-center justify-center w-full gap-2 px-4 py-2 font-semibold text-white align-middle transition-colors duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800">
+                        class="w-full px-5 py-3 text-sm font-bold text-black transition-colors bg-yellow-400 shadow-sm rounded-xl hover:bg-yellow-500">
                         Kirim Testimonial
                     </button>
                 </div>

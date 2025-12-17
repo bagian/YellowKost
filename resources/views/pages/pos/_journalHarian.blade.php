@@ -2,7 +2,7 @@
 
 @section('content')
 @include ('components._breadcrumbLink')
-<div class="justify-center max-w-4xl p-4 pt-20 mx-auto">
+<div class="justify-center max-w-5xl p-4 pt-20 mx-auto">
     <div class="mb-8">
         <h1 class="text-3xl font-bold text-gray-900">Jurnal <span class="text-yellow-500">Harian</span></h1>
         <p class="mt-1 text-gray-500 dark:text-gray-400">

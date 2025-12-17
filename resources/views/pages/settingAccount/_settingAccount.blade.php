@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('content')
-@include('components._accordionLink')
+@include('components._breadcrumbLink')
 <div class="justify-center max-w-5xl pt-20 mx-auto">
     <div class="gap-2.5 rounded-2xl border-gray-300 dark:bg-gray-800 dark:border-gray-700 bg-white shadow-lg">
         <!-- Profile Information -->

@@ -144,8 +144,10 @@
                     </td>
 
                     <td class="px-6 py-4 text-center">
-                        <button data-modal-target="default-modal-{{ $row->id }}"
-                            data-modal-toggle="default-modal-{{ $row->id }}"
+                        {{-- ------------------------------------------------------------------------- --}}
+                        {{-- MODAL DATA --}}
+                        {{-- ------------------------------------------------------------------------- --}}
+                        <button data-modal-toggle="default-modal-{{ $row->id }}"
                             class="flex items-center justify-center gap-1 px-3 py-3 mx-auto text-xs font-medium text-blue-100 bg-blue-600 border border-blue-500 rounded-full"
                             type="button">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -157,9 +159,15 @@
                             </svg>
                             KTP
                         </button>
+                        {{-- ------------------------------------------------------------------------- --}}
+                        {{-- MODAL DATA --}}
+                        {{-- ------------------------------------------------------------------------- --}}
                         <div id="default-modal-{{ $row->id }}" tabindex="-1" aria-hidden="true"
                             data-modal-backdrop="static"
                             class="hidden overflow-y-auto overflow-x-hidden fixed  right-0 left-0 z-50 justify-center items-center w-full md:inset-0 top-0 h-[calc(100%-0rem)] max-h-full bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300">
+                            {{-- ------------------------------------------------------------------------- --}}
+                            {{-- Modal Body --}}
+                            {{-- ------------------------------------------------------------------------- --}}
                             <div class="relative w-full max-w-lg max-h-full p-4 transition-all transform scale-100">
                                 <div
                                     class="relative overflow-hidden bg-white border border-gray-100 shadow-2xl rounded-2xl dark:bg-gray-800 dark:border-gray-700">
@@ -174,6 +182,9 @@
                                             <span class="sr-only">Close modal</span>
                                         </button>
                                     </div>
+                                    {{-- ------------------------------------------------------------------------- --}}
+                                    {{-- Modal Item --}}
+                                    {{-- ------------------------------------------------------------------------- --}}
                                     <div
                                         class="p-1 bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center min-h-[300px] ">
                                         <div
