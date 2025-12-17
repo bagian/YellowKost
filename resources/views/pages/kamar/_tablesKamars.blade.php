@@ -102,7 +102,8 @@
                                 Kosong
                             </div>
                             @else
-                            <button data-modal-target="userView-payment" data-modal-toggle="userView-payment" data-name="{{ $row->confirmedBooking->first()->user->full_name }}"
+                            <button data-modal-target="userView-payment" data-modal-toggle="userView-payment"
+                                data-name="{{ $row->confirmedBooking->first()->user->full_name }}"
                                 class="flex flex-row items-center gap-2 p-2 px-4 text-xs text-center transition-colors duration-300 border border-blue-700 rounded-full bg-blue-600/30 hover:bg-blue-800 hover:text-white whitespace-nowrap justify-content-center">
                                 <span class="text-white">
                                     <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +135,7 @@
                                 Lihat Foto Kamar
                             </button>
                             <!-- Main modal -->
-                            <div id="default-modal-{{ $row->id }}" tabindex="-1" aria-hidden="true"
+                            {{-- <div id="default-modal-{{ $row->id }}" tabindex="-1" aria-hidden="true"
                                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-0rem)] max-h-full backdrop-blur-sm"
                                 data-modal-backdrop="static">
                                 <div class="relative w-full max-w-4xl max-h-full p-4">
@@ -181,7 +182,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </td>
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-2">
@@ -207,7 +208,7 @@
                         </td>
                     </tr>
                     @endforeach
-                    
+
                 </tbody>
             </table>
 
@@ -226,14 +227,10 @@
                 <!-- Modal Header -->
                 <div
                     class="flex items-center justify-between p-4 border-b border-gray-100 dark:border-gray-700 rounded-t-2xl bg-gray-50 dark:bg-gray-800">
-                    <h3
-                        class="flex items-center gap-2 font-bold text-gray-900 text-md dark:text-white">
-                        <span
-                            class="p-2 text-green-600 bg-green-100 rounded-lg dark:bg-green-900/30">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2"
+                    <h3 class="flex items-center gap-2 font-bold text-gray-900 text-md dark:text-white">
+                        <span class="p-2 text-green-600 bg-green-100 rounded-lg dark:bg-green-900/30">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
                                 </path>
                             </svg>
@@ -243,10 +240,9 @@
                     <button type="button"
                         class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"
                         data-modal-hide="userView-payment">
-                        <svg class="w-3 h-3" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="2"
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                         <span class="sr-only">Close modal</span>
@@ -254,10 +250,8 @@
                 </div>
                 <!-- Modal Body -->
                 <div class="p-5 space-y-5">
-                    <table
-                        class="relative w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
-                        <thead
-                            class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                    <table class="relative w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-4 font-bold">Tanggal Pembayaran
                                 </th>
@@ -282,14 +276,16 @@
                             </tr>
                         </tbody>
                     </table>
+                    {{-- ------------------------------------- --}}
                     {{-- PAGINATION --}}
+                    {{-- ------------------------------------- --}}
                     <div
                         class="flex flex-col items-center justify-between py-5 border-t border-gray-200 md:flex-row dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
-                        <span
-                            class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
-                            Menampilkan <span class="mx-1 font-semibold text-white" id="pagination-firstItem"></span> sampai
-                            <span class="mx-1 font-semibold text-white" id="pagination-lastItem"></span> dari total <span
-                                class="mx-1 font-semibold text-white" id="pagination-total"></span>
+                        <span class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
+                            Menampilkan <span class="mx-1 font-semibold text-white" id="pagination-firstItem"></span>
+                            sampai
+                            <span class="mx-1 font-semibold text-white" id="pagination-lastItem"></span> dari total
+                            <span class="mx-1 font-semibold text-white" id="pagination-total"></span>
                             Barisan
                         </span>
                         <div class="inline-flex" id="pagination-list">
@@ -320,17 +316,94 @@
     </div>
 </div>
 
+{{-- =============================================== --}}
+{{-- BAGIAN MODAL --}}
+{{-- =============================================== --}}
+@foreach($room as $row)
+<div id="default-modal-{{ $row->id }}" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-0rem)] max-h-full backdrop-blur-sm"
+    data-modal-backdrop="static">
+    <div class="relative w-full max-w-4xl max-h-full p-4">
+        <div class="relative bg-white shadow-sm rounded-3xl dark:bg-gray-800">
+            <div
+                class="flex items-center justify-between p-4 border-b border-gray-200 rounded-t md:p-5 dark:border-gray-600">
+                <span class="text-md md:text-xl font-bold dark:text-white">Foto Kamar: {{ $row->room_name }}</span>
+                <button type="button"
+                    class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-3xl hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="default-modal-{{ $row->id }}">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <div class="space-y-4 md:p-5 p-4">
+                {{-- Swiper Container dengan Class ID Unik --}}
+                <div class="swiper mySwiper-{{ $row->id }}">
+                    <div class="swiper-wrapper">
+                        @if($row->pictures->isEmpty())
+                        <div class="flex items-center justify-center w-full h-40 text-gray-500">
+                            Tidak ada foto tersedia.
+                        </div>
+                        @else
+                        @foreach($row->pictures as $picture)
+                        <div
+                            class="rounded-xl h-80 swiper-slide relative w-full p-2 flex justify-center bg-[url('https://www.transparenttextures.com/patterns/grid-noise.png')]">
+                            <img src="{{ Storage::url($picture->url) }}" alt="{{ $picture->name }}"
+                                class="object-cover w-full h-96 rounded-xl" loading="lazy">
+                        </div>
+                        @endforeach
+                        @endif
+                    </div>
+                    <div
+                        class="swiper-button-prev important border border-white/20 bg-white/10 backdrop-blur-lg drop-shadow-4xl shadow-xl p-8 rounded-full swiper-button-prev-{{ $row->id }} md:ml-6 text-white hover:bg-white/20 transition">
+                    </div>
+                    <div
+                        class="swiper-button-next important border border-white/20 bg-white/10 backdrop-blur-lg drop-shadow-4xl shadow-xl p-8 rounded-full swiper-button-next-{{ $row->id }} md:mr-6 text-white hover:bg-white/20 transition">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+{{-- =============================================== --}}
+{{-- END BAGIAN MODAL --}}
+{{-- =============================================== --}}
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 @push('scripts')
 <script>
-    function formatRupiah(input) {
-        // Hapus karakter selain angka
-        let value = input.value.replace(/[^0-9]/g, '');
+    document.addEventListener('DOMContentLoaded', function () {
+        @foreach($room as $row)
+            new Swiper(".mySwiper-{{ $row->id }}", {
+                loop: true,
+                slidesPerView: 2,
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: ".swiper-button-next-{{ $row->id }}",
+                    prevEl: ".swiper-button-prev-{{ $row->id }}",
+                },
+                pagination: {
+                    el: ".swiper-pagination-{{ $row->id }}",
+                    clickable: true,
+                    dynamicBullets: false,
+                },
+                observer: true,
+                observeParents: true,
+            });
+        @endforeach
+    });
 
-        // Format ke rupiah
+    function formatRupiah(input) {
+        let value = input.value.replace(/[^0-9]/g, '');
         if (value) {
             value = new Intl.NumberFormat('id-ID').format(value);
         }
-
         input.value = value;
     }
 </script>

@@ -4,9 +4,7 @@
 @endpush
 
 @section('content')
-<div class="justify-center pt-20 mx-auto  max-w-7xl">
-
-
+<div class="justify-center pt-20 mx-auto max-w-7xl p-4">
     <!-- Welcome Section -->
     <div class="mb-6 text-center sm:mb-8">
         <h1 class="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-gray-900">Selamat Datang di
@@ -93,12 +91,13 @@
     <!-- Quick Actions -->
     <div class="grid grid-cols-1 gap-3 mb-6 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4 sm:mb-8">
         <div
-            class="p-4 transition-shadow bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:bg-blue-900 dark:border-blue-700 hover:shadow-md">
+            class="p-4 transition-shadow bg-white border border-gray-200 rounded-2xl shadow-sm sm:p-6 dark:bg-blue-900 dark:border-blue-700 hover:shadow-md">
             <div class="flex items-center justify-between">
                 <div>
                     <h3 class="mb-1 text-base font-semibold text-gray-900 sm:text-lg dark:text-white sm:mb-2">
-                        Lihat Pemesanan Masuk</h3>
-                    <p class="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">Lihat semua data penyewa kos</p>
+                        Lihat Daftar Pengajuan</h3>
+                    <p class="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">Lihat semua data pengajuan penyewa
+                        kos</p>
                 </div>
                 <a href="{{ route('booking.form') }}"
                     class="inline-flex items-center justify-center p-2 transition-colors bg-blue-100 rounded-lg dark:bg-blue-300 hover:bg-blue-200 dark:hover:bg-blue-400"
@@ -112,37 +111,36 @@
             </div>
         </div>
         <div
-            class="p-4 transition-shadow bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:bg-green-900 dark:border-green-700 hover:shadow-md">
+            class="p-4 transition-shadow bg-white border border-gray-200 rounded-2xl shadow-sm sm:p-6 dark:bg-green-900 dark:border-green-700 hover:shadow-md">
             <div class="flex items-center justify-between">
                 <div>
                     <h3 class="mb-1 text-base font-semibold text-gray-900 sm:text-lg dark:text-white sm:mb-2">
-                        Kelola Pembayaran</h3>
-                    <p class="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">Lihat dan kelola pembayaran
+                        Kelola Kamar Kos</h3>
+                    <p class="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">Lihat dan kelola kamar kos yang di
                         sewa</p>
                 </div>
-                <a href="#"
+                <a href="{{ route('kamar.index') }}"
                     class="p-2 transition-colors bg-green-100 rounded-lg dark:bg-green-300 hover:bg-green-200 dark:hover:bg-green-400"
                     title="Kelola Pembayaran">
-                    <svg class="w-5 h-5 text-green-600 sm:w-6 sm:h-6 dark:text-green-700" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
-                        </path>
+                    <svg class="w-5 h-5 text-green-600 sm:w-6 sm:h-6 dark:text-green-700"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 640 640">
+                        <path
+                            d="M334.3 51.4C325.3 46.9 314.7 46.9 305.7 51.4L49.7 179.4C33.9 187.3 27.5 206.5 35.4 222.3C43.3 238.1 62.5 244.5 78.3 236.6L320 115.8L561.7 236.6C577.5 244.5 596.7 238.1 604.6 222.3C612.5 206.5 606.1 187.3 590.3 179.4L334.3 51.4zM320 336C350.9 336 376 310.9 376 280C376 249.1 350.9 224 320 224C289.1 224 264 249.1 264 280C264 310.9 289.1 336 320 336zM320 384C267 384 224 427 224 480L224 512C224 529.7 238.3 544 256 544L384 544C401.7 544 416 529.7 416 512L416 480C416 427 373 384 320 384zM192 320C192 293.5 170.5 272 144 272C117.5 272 96 293.5 96 320C96 346.5 117.5 368 144 368C170.5 368 192 346.5 192 320zM544 320C544 293.5 522.5 272 496 272C469.5 272 448 293.5 448 320C448 346.5 469.5 368 496 368C522.5 368 544 346.5 544 320zM144 400C99.8 400 64 435.8 64 480L64 513.1C64 530.1 77.8 544 94.9 544L182.7 544C178.4 534.2 176 523.4 176 512L176 464C176 445.6 179.5 428 185.8 411.8C173.6 404.3 159.3 400 144 400zM457.4 544L545.2 544C562.2 544 576.1 530.2 576.1 513.1L576.1 480C576.1 435.8 540.3 400 496.1 400C480.8 400 466.5 404.3 454.3 411.8C460.6 428 464.1 445.6 464.1 464L464.1 512C464.1 523.4 461.7 534.2 457.4 544z" />
                     </svg>
                 </a>
             </div>
         </div>
 
         <div
-            class="p-4 transition-shadow bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:bg-purple-700 dark:border-purple-700 hover:shadow-md">
+            class="p-4 transition-shadow bg-white border border-gray-200 rounded-2xl shadow-sm sm:p-6 dark:bg-purple-700 dark:border-purple-700 hover:shadow-md">
             <div class="flex items-center justify-between">
                 <div>
                     <h3 class="mb-1 text-base font-semibold text-gray-900 sm:text-lg dark:text-white sm:mb-2">
-                        Laporan Bulanan</h3>
+                        Laporan Harian</h3>
                     <p class="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">Generate laporan keuangan
                         bulanan</p>
                 </div>
-                <button
+                <a href="{{ route('journal.pos') }}"
                     class="p-2 transition-colors bg-purple-100 rounded-lg dark:bg-purple-300 hover:bg-purple-200 dark:hover:bg-purple-400"
                     title="Laporan Bulanan">
                     <svg class="w-5 h-5 text-purple-600 sm:w-6 sm:h-6 dark:text-purple-700" fill="none"
@@ -151,17 +149,119 @@
                             d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
                         </path>
                     </svg>
-                </button>
+                </a>
             </div>
         </div>
     </div>
     <!-- Recent Activity -->
-    <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 sm:p-6">
-        <h3 class="mb-3 text-base font-semibold text-gray-900 sm:text-lg dark:text-white sm:mb-4">Aktivitas
-            Terbaru</h3>
+    <div class="p-4 bg-white border border-gray-200 rounded-2xl shadow-sm dark:bg-gray-800 dark:border-gray-700 sm:p-6">
+        <div class="mb-3 text-base font-normal text-gray-900 sm:text-lg dark:text-white sm:mb-4 ">
+            <span class="inline-flex items-center gap-2 bg-blue-900/40 border border-blue-700/10 p-2 px-5 rounded-full">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 640 640">
+                    <path
+                        d="M128 96L128 197.5C128 214.5 134.7 230.8 146.7 242.8L192 288L192 448L135.8 518.3C130.7 524.6 128 532.4 128 540.5C128 560.1 143.9 576 163.5 576L476.4 576C496 576 511.9 560.1 511.9 540.5C511.9 532.4 509.2 524.6 504.1 518.3L447.9 448L447.9 288L493.2 242.7C505.2 230.7 511.9 214.4 511.9 197.4L512 96C512 78.3 497.7 64 480 64L448 64C430.3 64 416 78.3 416 96L416 128L368 128L368 96C368 78.3 353.7 64 336 64L304 64C286.3 64 272 78.3 272 96L272 128L224 128L224 96C224 78.3 209.7 64 192 64L160 64C142.3 64 128 78.3 128 96z" />
+                </svg>
+                Aktivitas Terbaru
+            </span>
+        </div>
         <div class="space-y-3 sm:space-y-4">
+            {{-- ------------------------- --}}
+            {{-- -- History Testimonial -- --}}
+            {{-- ------------------------- --}}
+            <div
+                class="overflow-hidden bg-white border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700 rounded-2xl drop-shadow-lg">
+                <div class="relative p-8 w-full bg-gray-50 dark:bg-gray-700">
+                    <div
+                        class="text-gray-700 dark:text-gray-300 pl-4 p-3 font-semibold absolute inset-y-0 left-0 flex items-center top-0">
+                        History Testimonial
+                    </div>
+                </div>
+                <div class="transition-all duration-200 ease-out bg-gray-50 dark:bg-gray-700 overflow-x-auto">
+                    <table class="relative w-full text-sm text-left text-gray-500 rtl:text-right dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-900 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-4 font-bold">No.</th>
+                                <th scope="col" class="px-6 py-4 font-bold">
+                                    Nama
+                                </th>
+                                <th scope="col" class="px-6 py-4 font-bold">
+                                    Pekerjaan
+                                </th>
+                                <th scope="col" class="px-6 py-4 font-bold whitespace-nowrap">
+                                    Ratting
+                                </th>
+                                <th scope="col" class="px-6 py-4 font-bold">
+                                    Deskripsi
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                class="text-white transition-all duration-300 ease-in-out bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-300">
+                                <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                                    1
+                                </td>
+                                <td class="px-6 py-4 max-w-xs w-40">
+                                    John Doe Yulianto Asep
+                                </td>
+                                <td class="px-6 py-4">
+                                    Web Developer
+                                </td>
+                                <td class="px-6 py-4 ">
+                                    <div
+                                        class="text-yellow-500 bg-yellow-100/20 border border-yellow-100/20 inline-block px-2 py-1 rounded-full">
+                                        ★★★★☆
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 min-w-[300px]">
+                                    <p class="line-clamp-2 text-gray-600 dark:text-gray-300">
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat et facere iure
+                                        molestias porro dolorem deleniti accusantium ab voluptatem? Obcaecati non
+                                        voluptas
+                                        deleneiti numquam dicta soluta error? Voluptatum, ad veritatis!
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {{-- ------------------------------------- --}}
+                {{-- PAGINATION --}}
+                {{-- ------------------------------------- --}}
+                <div
+                    class="flex flex-col items-center justify-between py-5 border-t border-gray-200 md:flex-row dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800 p-4">
+                    <span class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">
+                        Menampilkan <span class="mx-1 font-semibold text-white" id="pagination-firstItem"></span>
+                        sampai
+                        <span class="mx-1 font-semibold text-white" id="pagination-lastItem"></span> dari total
+                        <span class="mx-1 font-semibold text-white" id="pagination-total"></span>
+                        Barisan
+                    </span>
+                    <div class="inline-flex" id="pagination-list">
+                        {{-- TOMBOL PREVIOUS --}}
+                        <span
+                            class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border border-gray-300 rounded-l-lg cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-500">
+                            Prev
+                        </span>
+                        <a href="#"
+                            class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
+                            Prev
+                        </a>
+                        {{-- TOMBOL NEXT --}}
+                        <a href="#"
+                            class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
+                            Next
+                        </a>
+                        <span
+                            class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border-t border-b border-r border-gray-300 rounded-r-lg cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-500">
+                            Next
+                        </span>
+                    </div>
+                </div>
+                {{-- END PAGINATION --}}
+            </div>
             <!--- Modal Activity -->
-            <div>
+            {{-- <div>
                 <!-- Modal toggle -->
                 <div id="openPaymentModalBtn"
                     class="flex items-center p-3 transition-all duration-200 ease-out rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-900 hover:bg-gray-100">
@@ -267,10 +367,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--- End Modal Activity -->
 
-            <div
+            {{-- <div
                 class="flex items-center p-3 transition-all duration-200 ease-out rounded-lg bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-900 hover:bg-gray-100">
                 <div class="w-2 h-2 mr-3 bg-yellow-500 rounded-full"></div>
                 <div class="flex-1 min-w-0">
@@ -280,7 +380,7 @@
                 </div>
                 <span class="ml-2 text-xs font-medium text-yellow-600 sm:text-sm dark:text-yellow-400">AC Kamar
                     103</span>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

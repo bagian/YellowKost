@@ -29,9 +29,7 @@
                                     Nomor Kamar
                                 </label>
                                 <input type="text" name="room_name" placeholder="Masukkan Nomor Kamar"
-                                    value="{{ $room->room_name }}" inputmode="numeric" pattern="[0-9]*"
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,16)"
-                                    onkeydown="if(event.key === 'e' || event.key === 'E') event.preventDefault();"
+                                    value="{{ $room->room_name }}"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <!-- Elements -->

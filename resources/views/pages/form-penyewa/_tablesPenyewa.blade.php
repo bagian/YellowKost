@@ -159,64 +159,6 @@
                             </svg>
                             KTP
                         </button>
-                        {{-- ------------------------------------------------------------------------- --}}
-                        {{-- MODAL DATA --}}
-                        {{-- ------------------------------------------------------------------------- --}}
-                        <div id="default-modal-{{ $row->id }}" tabindex="-1" aria-hidden="true"
-                            data-modal-backdrop="static"
-                            class="hidden overflow-y-auto overflow-x-hidden fixed  right-0 left-0 z-50 justify-center items-center w-full md:inset-0 top-0 h-[calc(100%-0rem)] max-h-full bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300">
-                            {{-- ------------------------------------------------------------------------- --}}
-                            {{-- Modal Body --}}
-                            {{-- ------------------------------------------------------------------------- --}}
-                            <div class="relative w-full max-w-lg max-h-full p-4 transition-all transform scale-100">
-                                <div
-                                    class="relative overflow-hidden bg-white border border-gray-100 shadow-2xl rounded-2xl dark:bg-gray-800 dark:border-gray-700">
-                                    <div class="absolute z-10 top-4 right-4">
-                                        <button type="button"
-                                            class="p-2 text-gray-400 transition-colors rounded-full shadow-sm bg-white/80 hover:bg-red-50 hover:text-red-500 focus:outline-none dark:bg-gray-700/80 dark:hover:bg-gray-100 dark:text-gray-300"
-                                            data-modal-hide="default-modal-{{ $row->id }}">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M6 18L18 6M6 6l12 12"></path>
-                                            </svg>
-                                            <span class="sr-only">Close modal</span>
-                                        </button>
-                                    </div>
-                                    {{-- ------------------------------------------------------------------------- --}}
-                                    {{-- Modal Item --}}
-                                    {{-- ------------------------------------------------------------------------- --}}
-                                    <div
-                                        class="p-1 bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center min-h-[300px] ">
-                                        <div
-                                            class="w-full px-6 py-4 text-center bg-white border-b border-gray-100 dark:border-gray-700 dark:bg-gray-800 rounded-t-xl">
-                                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">Dokumen KTP</h3>
-                                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ $row->user->full_name
-                                                }}</p>
-                                        </div>
-                                        <div
-                                            class="relative w-full p-6 flex justify-center bg-[url('https://www.transparenttextures.com/patterns/grid-noise.png')] bg-gray-100 dark:bg-gray-900/50">
-                                            <img src="{{ Storage::url($row->user->ktp) }}"
-                                                alt="KTP {{ $row->user->full_name }}"
-                                                class="max-w-full max-h-[60vh] h-auto object-contain rounded-xl shadow-lg border-4 border-white dark:border-gray-700 hover:scale-[1.02] transition-transform duration-300">
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="flex justify-end px-6 py-4 bg-white border-t border-gray-100 dark:bg-gray-800 dark:border-gray-700">
-                                        <a href="{{ Storage::url($row->user->ktp) }}"
-                                            download="KTP-{{ $row->user->full_name }}"
-                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 transition-colors bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600">
-                                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
-                                                </path>
-                                            </svg>
-                                            Unduh Gambar
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </td>
                     <td class="px-6 py-4 text-center">
                         <div class="flex justify-center gap-2">
@@ -252,8 +194,120 @@
     @include('partials._pagination', ['data' => $booking])
 </div>
 
+
+{{-- ----------------------------- --}}
+{{-- MODAL DATA --}}
+{{-- ----------------------------- --}}
+@foreach($booking as $row)
+<div id="default-modal-{{ $row->id }}" tabindex="-1" aria-hidden="true" data-modal-backdrop="static"
+    class="hidden overflow-y-auto overflow-x-hidden fixed  right-0 left-0 z-50 justify-center items-center w-full md:inset-0 top-0 h-[calc(100%-0rem)] max-h-full bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300">
+    {{-- ----------------- --}}
+    {{-- Modal Body --}}
+    {{-- ----------------- --}}
+    <div class="relative w-full max-w-lg max-h-full p-4 transition-all transform scale-100">
+        <div
+            class="relative overflow-hidden bg-white border border-gray-100 shadow-2xl rounded-2xl dark:bg-gray-800 dark:border-gray-700">
+            <div class="absolute z-10 top-4 right-4">
+                <button type="button"
+                    class="p-2 text-gray-400 transition-colors rounded-full shadow-sm bg-white/80 hover:bg-red-50 hover:text-red-500 focus:outline-none dark:bg-gray-700/80 dark:hover:bg-gray-100 dark:text-gray-300"
+                    data-modal-hide="default-modal-{{ $row->id }}">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            {{-- ----------------- --}}
+            {{-- Modal Item --}}
+            {{-- ----------------- --}}
+            <div class="p-1 bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center min-h-[300px] ">
+                <div
+                    class="w-full px-6 py-4 text-center bg-white border-b border-gray-100 dark:border-gray-700 dark:bg-gray-800 rounded-t-xl">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white">Dokumen KTP</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ $row->user->full_name
+                        }}</p>
+                </div>
+                <div
+                    class="relative w-full p-6 flex justify-center bg-[url('https://www.transparenttextures.com/patterns/grid-noise.png')] bg-gray-100 dark:bg-gray-900/50">
+                    <img src="{{ Storage::url($row->user->ktp) ?? 'img_handler/error_img_handler/no_image.png' }}"
+                        alt="KTP {{ $row->user->full_name }}"
+                        class="max-w-full max-h-[60vh] h-auto object-contain rounded-xl shadow-lg border-4 border-white dark:border-gray-700 hover:scale-[1.02] transition-transform duration-300">
+                </div>
+            </div>
+            <div
+                class="flex justify-end px-6 py-4 bg-white border-t border-gray-100 dark:bg-gray-800 dark:border-gray-700">
+                <a href="{{ Storage::url($row->user->ktp) }}" download="KTP-{{ $row->user->full_name }}"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 transition-colors bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-600">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                        </path>
+                    </svg>
+                    Unduh Gambar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+
+{{-- ----------------------------- --}}
+{{-- JAVASCRIPT --}}
+{{-- ----------------------------- --}}
+
 @push('scripts')
 <script>
+    // ============================================
+    // MODAL LOGIC (DITAMBAHKAN BARU)
+    // ============================================
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Handle Buka Modal
+        const toggleButtons = document.querySelectorAll('[data-modal-toggle]');
+        toggleButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-modal-toggle');
+                const modal = document.getElementById(targetId);
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // 2. Handle Tutup Modal (Tombol X)
+        const hideButtons = document.querySelectorAll('[data-modal-hide]');
+        hideButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-modal-hide');
+                const modal = document.getElementById(targetId);
+                if (modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // 3. Handle Tutup Modal (Klik di luar/Backdrop)
+        const modals = document.querySelectorAll('[id^="default-modal-"]');
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    });
+
+
+
+
+
+
     // State arah sort (Global)
     let sortDirection = {};
 

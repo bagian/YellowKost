@@ -217,7 +217,7 @@
                         </td>
                         <td class="px-6 py-4 text-gray-500 truncate max-w-xs">
                             <button data-id="{{ $row->id }}" name="btnDetail"
-                                class="flex gap-1 bg-blue-600 text-blue-100 p-1.5 px-2.5 rounded-full text-xs items-center justify-center hover:bg-blue-700 transition-color duration-300">
+                                class="flex gap-1 bg-blue-600 text-blue-100 p-2.5 px-2.5 rounded-full text-xs items-center justify-center hover:bg-blue-700 transition-color duration-300">
                                 <svg class="w-4 h-4" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 640 640">
                                     <path
@@ -464,7 +464,7 @@
                     room_name = response.room.room_name;
                 }
 
-                $('#id_booking').text(response.id);
+                $('#id_booking').text(response.id + ' (07-2025-K-15)');
                 $('#room_name').text(room_name);
                 $('#check_in').text(formatDate(response.check_in));
                 $('#total_paid').text(response.total_paid ?? '-');

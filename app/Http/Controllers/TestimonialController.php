@@ -20,9 +20,9 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $testimonial = $this->testimonialRepository->getByUser(auth()->id());
-
-        return view('pages.testimonials._createTestimonial', ['testimonal' => $testimonial]);
+        $testimonial = $this->testimonialRepository->getByUser(auth()->user()->id);
+        // dd($testimonial);
+        return view('pages.testimonials._createTestimonial', ['testimonial' => $testimonial]);
     }
 
     /**
