@@ -75,6 +75,14 @@
                             value="{{ old('check_in', $bookingData['check_in'] ?? '') }}">
                     </div>
                 </div>
+                <div>
+                    <label for="occupation" class="block mb-2 text-sm font-medium text-gray-900">Pekerjaan</label>
+                    <input type="text" id="occupation" name="occupation"
+                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-yellow-300 focus:border-yellow-300 block w-full p-2.5"
+                        placeholder="Mahasiswa/Pegawai" required
+                        value="@if(Auth::check() && Auth::user()->role->slug != 'admin'){{ Auth::user()->occupation ?? old('occupation', $bookingData['occupation'] ?? '') }}@endif" />
+                </div>
+
                 {{-- Bagian file input, sekarang tanpa x-data sendiri --}}
                 <div>
                     <div>

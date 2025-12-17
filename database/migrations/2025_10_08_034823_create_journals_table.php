@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('amount', 20, 2);
             $table->date('date');
             $table->string('notes')->nullable();
-            $table->foreignId('payment_method')->constrained('payment_methods')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('payment_method')->constrained('payment_methods')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

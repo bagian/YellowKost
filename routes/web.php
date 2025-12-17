@@ -2,20 +2,20 @@
 
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\JournalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TenantController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsletterController;
 
 /* -------------------------------------------------------------------------- */
 /*                                  Homepage                                  */
 /* -------------------------------------------------------------------------- */
-Route::get('/', function () {
-    return view('landingpage._maincontent');
-})->name('home');
+Route::get('/', [HomepageController::class, 'index'])->name('home');
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
@@ -37,10 +37,6 @@ Route::get('/tentang-kami', function () {
 Route::get('/fasilitas', function () {
     return view('landingpage.pages._facilitiesPage');
 })->name('facilities');
-
-Route::get('/form-testimonial', function () {
-    return view('pages.testimonials._createTestimonial');
-})->name('testimonial');
 
 Route::get('/gallery', function () {
     return view('landingpage.pages._galleryPage');
@@ -93,10 +89,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/status-pengajuan', [BookingController::class, 'status'])->name('booking.status');
         Route::post('/status-pengajuan/detail', [BookingController::class, 'statusDetail'])->name('booking.status.detail');
 
-        Route::get('/form-testimonial', function () {
-            return view('pages.testimonials._createTestimonial');
-        })->name('testimonial');
-
+        Route::resource('/testimonial', TestimonialController::class);
     });
 
     /* ------------------------------- Admin Only ------------------------------- */

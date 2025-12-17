@@ -2,8 +2,10 @@
 
 @section('content')
 @include('components._breadcrumbLink')
-<div class="max-w-2xl p-4 pt-20 mx-auto">
-    <form action="" method="POST">
+<div class="max-w-2xl pt-20 mx-auto">
+    <form
+        action="@if($testimonial->isEmpty()) {{ route('testimonial.store') }} @else {{ route('testimonial.update', $testimonial->id) }} @endif"
+        method="POST">
         @csrf
         <div class="space-y-6">
             <div class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
@@ -18,23 +20,26 @@
                 <div class="p-5 space-y-6 border-t border-gray-100 sm:p-6 dark:border-gray-700">
                     <!-- Nama Pengguna -->
                     <div>
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <label for="full_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Nama Anda
                         </label>
-                        <input type="text" id="name" name="name" placeholder="Masukkan nama Anda"
+                        <input type="text" id="full_name" name="full_name" placeholder="Masukkan nama Anda"
+                            value="{{ auth()->user()->full_name }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required>
                     </div>
                     <div>
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <label for="occupation" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Pekerjaan Anda
                         </label>
-                        <input type="text" id="jobs" name="jobs" placeholder="Contoh: Karyawan Swasta"
+                        <input type="text" id="occupation" name="occupation" placeholder="Contoh: Karyawan Swasta"
+                            value="{{ auth()->user()->occupation }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             required>
                     </div>
                     <!-- Rating Bintang -->
-                    <div x-data="{ rating: 0, hoverRating: 0 }">
+                    <div
+                        x-data="{ rating: {{ $testimonial->rating ?? 0 }}, hoverRating: {{ $testimonial->rating ?? 0 }} }">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Berikan Rating
                         </label>
@@ -55,10 +60,10 @@
                     </div>
                     <!-- Pesan Testimonial -->
                     <div>
-                        <label for="testimonial" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <label for="comment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Testimonial atau Feedback Anda
                         </label>
-                        <textarea id="testimonial" name="testimonial" rows="4"
+                        <textarea id="comment" name="comment" rows="4" value="{{ $testimonial->comment ?? '' }}"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Tuliskan pengalaman Anda menginap di YellowKost..." required></textarea>
                     </div>

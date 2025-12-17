@@ -349,30 +349,45 @@
             <!-- Swiper -->
             <div class="mt-10 mb-10 swiper testimonial-swiper testimonialFade-sides ">
                 <div class="h-full swiper-wrapper">
-                    @php
+                    {{-- @php
                     $testimonials = [
-                    ['name' => 'Aulia Rahman', 'jobs' => 'Mahasiswa', 'image' => 'https://i.pravatar.cc/150?u=aulia',
-                    'comment' => 'Kostnya bersih banget dan fasilitasnya lengkap. WiFi kenceng, jadi nugas lancar.
-                    Lokasinya
-                    juga deket banget sama kampus, hemat waktu dan ongkos.', 'rating' => 5],
-                    ['name' => 'Bima Saputra', 'jobs' => 'Karyawan Swasta', 'image' =>
-                    'https://i.pravatar.cc/150?u=bima',
-                    'comment' => 'Akses 24 jam bener-bener ngebantu buat yang pulangnya malem. Lingkungannya aman dan
-                    tenang, cocok buat istirahat setelah seharian kerja. Recommended!', 'rating' => 5],
-                    ['name' => 'Citra Lestari', 'jobs' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=citra',
-                    'comment' => 'Suka banget sama dapurnya, bersih dan peralatannya lengkap. Ibu kostnya juga ramah dan
-                    fast response kalau ada masalah. Betah banget di sini!', 'rating' => 5],
-                    ['name' => 'Doni Setiawan', 'jobs' => 'Freelancer', 'image' => 'https://i.pravatar.cc/150?u=doni',
-                    'comment' => 'Tempatnya nyaman buat kerja dari kost. Suasananya tenang dan inspiratif. Parkirannya
-                    juga
-                    luas, jadi nggak khawatir soal kendaraan.', 'rating' => 4],
-                    ['name' => 'Eka Putri', 'jobs' => 'Mahasiswi', 'image' => 'https://i.pravatar.cc/150?u=eka',
-                    'comment'
-                    => 'Kamar mandinya bersih dan airnya lancar. Harganya juga worth it banget dengan semua fasilitas
-                    yang
-                    didapat. Nggak nyesel pilih YellowKost.', 'rating' => 5],
+                        [
+                            'name' => 'Aulia Rahman',
+                            'jobs' => 'Mahasiswa',
+                            'image' => 'https://i.pravatar.cc/150?u=aulia',
+                            'comment' => 'Kostnya bersih banget dan fasilitasnya lengkap. WiFi kenceng, jadi nugas lancar. Lokasinya juga deket banget sama kampus, hemat waktu dan ongkos.',
+                            'rating' => 5
+                        ],
+                        [
+                            'name' => 'Bima Saputra',
+                            'jobs' => 'Karyawan Swasta',
+                            'image' => 'https://i.pravatar.cc/150?u=bima',
+                            'comment' => 'Akses 24 jam bener-bener ngebantu buat yang pulangnya malem. Lingkungannya aman dan tenang, cocok buat istirahat setelah seharian kerja. Recommended!',
+                            'rating' => 5
+                        ],
+                        [
+                            'name' => 'Citra Lestari',
+                            'jobs' => 'Mahasiswi',
+                            'image' => 'https://i.pravatar.cc/150?u=citra',
+                            'comment' => 'Suka banget sama dapurnya, bersih dan peralatannya lengkap. Ibu kostnya juga ramah dan fast response kalau ada masalah. Betah banget di sini!',
+                            'rating' => 5
+                        ],
+                        [
+                            'name' => 'Doni Setiawan',
+                            'jobs' => 'Freelancer',
+                            'image' => 'https://i.pravatar.cc/150?u=doni',
+                            'comment' => 'Tempatnya nyaman buat kerja dari kost. Suasananya tenang dan inspiratif. Parkirannya juga luas, jadi nggak khawatir soal kendaraan.',
+                            'rating' => 4
+                        ],
+                        [
+                            'name' => 'Eka Putri',
+                            'jobs' => 'Mahasiswi',
+                            'image' => 'https://i.pravatar.cc/150?u=eka',
+                            'comment' => 'Kamar mandinya bersih dan airnya lancar. Harganya juga worth it banget dengan semua fasilitas yang didapat. Nggak nyesel pilih YellowKost.',
+                            'rating' => 5
+                        ],
                     ];
-                    @endphp
+                    @endphp --}}
                     @foreach ($testimonials as $testimonial)
                     <div class="flex h-auto swiper-slide">
                         <div class="flex flex-col w-full h-full p-6 bg-white border border-gray-200 rounded-2xl">
@@ -383,7 +398,7 @@
                                         <path
                                             d="M96 280C96 213.7 149.7 160 216 160L224 160C241.7 160 256 174.3 256 192C256 209.7 241.7 224 224 224L216 224C185.1 224 160 249.1 160 280L160 288L224 288C259.3 288 288 316.7 288 352L288 416C288 451.3 259.3 480 224 480L160 480C124.7 480 96 451.3 96 416L96 280zM352 280C352 213.7 405.7 160 472 160L480 160C497.7 160 512 174.3 512 192C512 209.7 497.7 224 480 224L472 224C441.1 224 416 249.1 416 280L416 288L480 288C515.3 288 544 316.7 544 352L544 416C544 451.3 515.3 480 480 480L416 480C380.7 480 352 451.3 352 416L352 280z" />
                                     </svg>
-                                    {{ $testimonial['comment'] }}
+                                    {{ $testimonial->comment }}
                                 </span>
                             </div>
                             <div class="flex flex-col items-center mt-6">
@@ -392,18 +407,20 @@
                                 <div class="flex flex-col items-center h-full">
                                     <div class="flex items-center mb-4">
                                         @for ($i = 0; $i < 5; $i++) <svg
-                                            class="w-5 h-5 {{ $i < $testimonial['rating'] ? 'text-yellow-400' : 'text-gray-300' }}"
+                                            class="w-5 h-5 {{ $i < $testimonial->rating ? 'text-yellow-400' : 'text-gray-300' }}"
                                             fill="currentColor" viewBox="0 0 24 24">
                                             <path
                                                 d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.27l-6.18 3.6 1.18-6.88L2 9.27l6.91-1.01L12 2z" />
                                             </svg>
                                             @endfor
                                     </div>
-                                    <span class="font-semibold text-gray-800">{{ $testimonial['name'] }}</span>
-                                    <span class="text-sm text-gray-500">{{ $testimonial['jobs'] }}</span>
+                                    <span class="font-semibold text-gray-800">{{ $testimonial->user->full_name }}</span>
+                                    <span class="text-sm text-gray-500">{{ $testimonial->user->occupation }}</span>
                                 </div>
                             </div>
                             <div class="absolute bg-red "></div>
+                            {{-- foto misal di display sisan ng testimonial
+                            @if($testimonial->user->avatar_type == 'url') {{ $testimonial->user->profile_picture }} @elseif($testimonial->user->avatar_type == 'storage') {{ Storage::url($testimonial->user->profile_picture) }} @else https://flowbite.com/docs/images/people/profile-picture-2.jpg @endif --}}
                         </div>
                     </div>
                     @endforeach
