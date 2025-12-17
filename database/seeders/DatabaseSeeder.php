@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Booking;
+use App\Models\Maintenance;
 use App\Models\Room;
 use App\Models\RoomPicture;
 use App\Models\Testimonial;
@@ -114,5 +115,7 @@ class DatabaseSeeder extends Seeder
         // Total rooms = 5 + 3 + 4 + 3 = 15.
         
         Testimonial::factory()->count(20)->create();
+
+        Maintenance::factory()->count(20)->create();
     }
 }

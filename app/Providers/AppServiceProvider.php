@@ -3,12 +3,14 @@
 namespace App\Providers;
 
 use App\Repositories\Interface\JournalRepositoryInterface;
+use App\Repositories\Interface\ActivityRepositoryInterface;
 use App\Repositories\Interface\PaymentRepositoryInterface;
 use App\Repositories\Interface\RoomRepositoryInterface;
 use App\Repositories\Interface\TenantRepositoryInterface;
 use App\Repositories\Interface\BookingRepositoryInterface;
 use App\Repositories\Interface\TestimonialRepositoryInterface;
 use App\Repositories\JournalRepository;
+use App\Repositories\ActivityRepository;
 use App\Repositories\PaymentRepository;
 use App\Repositories\RoomRepository;
 use App\Repositories\TenantRepository;
@@ -32,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(JournalRepositoryInterface::class, JournalRepository::class);
         $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
         $this->app->bind(TestimonialRepositoryInterface::class, TestimonialRepository::class);
+        $this->app->bind(ActivityRepositoryInterface::class, ActivityRepository::class);
 
         $this->app->bind(ImageServiceInterface::class, ImageService::class);
     }
