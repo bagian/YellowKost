@@ -13,6 +13,10 @@
     <!-- Theme initialization script to prevent FOUC -->
     {{-- <script src="{{ asset('js/components/themeInit.js') }}"></script> --}}
 
+    <!-- Favicon (Icon di Tab Browser) -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}">
+
     <!-- Dark Mode Script -->
     <script src="{{ asset('js/components/darkMode.js') }}"></script>
 

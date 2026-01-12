@@ -46,6 +46,10 @@ Route::get('/kontak', function () {
     return view('landingpage.pages._contactPage');
 })->name('contact.us');
 
+Route::get('/history-pembayaran', function () {
+    return view('pages.paymentHistory._payHistory');
+})->name('payment.history');
+
 Route::get('/p/kebijakan-privasi', function () {
     return view('landingpage.pages._privacyPolicyPage');
 })->name('privacy.policy');

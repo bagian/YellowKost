@@ -358,8 +358,6 @@
         </form>
     </div>
 </div> --}}
-
-
 <div class="flex flex-col justify-center max-w-5xl p-4 pt-20 mx-auto">
     @include('pages.form-penyewa._tablesPenyewa')
     <div class="pt-8 mb-16 space-y-6 form-detail drop-shadow-lg" id="form-detail-section" style="display: none;">

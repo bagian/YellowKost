@@ -2,14 +2,13 @@
 
 @section('content')
 @include('components._breadcrumbLink')
-<div class="top max-w-5xl min-h-screen p-6 mx-auto text-gray-800 md:p-10 dark:text-gray-200">
+<div class="top max-w-5xl min-h-screen p-4 mx-auto text-gray-800  dark:text-gray-200">
     <!-- Header Page -->
     <div class="pt-20 mb-8">
         <h1 class="text-3xl font-bold text-gray-900">Status <span class="text-yellow-500">Pengajuan
                 Sewa</span></h1>
         <p class="mt-1 text-gray-500 dark:text-gray-400">Pantau proses verifikasi dan riwayat pemesanan kamar Anda.</p>
     </div>
-
 
     @if ($booking->isEmpty())
     {{-- ---------------------------------------------------------------------- --}}
