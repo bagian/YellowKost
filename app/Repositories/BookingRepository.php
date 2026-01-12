@@ -39,18 +39,27 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
         return $this->getPagination($data);
     }
 
-    public function getUserBooking($idUser, array $status = []): LengthAwarePaginator {
+    public function getUserBooking($idUser, array $status = [], array $with = []): LengthAwarePaginator {
+        $page = 10;
+        if ($idUser == null) {
+            return new LengthAwarePaginator(
+                new Collection(),
+                0,
+                $page,
+                1
+            );
+        }
         $query = $this->model::where('id_user', $idUser);
 
         if (!empty($status)) {
             $query->whereIn('status', $status);
         }
 
-        return $this->getPagination($query, orderBy: 'desc');
-    }
+        if (!empty($with)) {
+            $query->with($with);
+        }
 
-    public function find($id): Model {
-        return $this->model::find($id);
+        return $this->getPagination($query, orderBy: 'desc');
     }
 
     public function confirmedBookings(): Collection {

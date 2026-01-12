@@ -29,10 +29,6 @@ class TenantRepository extends BaseRepository implements TenantRepositoryInterfa
         return $this->model::all();
     }
 
-    public function find($id): Model {
-        return $this->model::find($id);
-    }
-
     public function create(array $data): Model {
         return $this->transaction(callback: function() use ($data) {
             $user = new User();
@@ -107,7 +103,7 @@ class TenantRepository extends BaseRepository implements TenantRepositoryInterfa
             $user = User::where('email', $userContract->getEmail())->first();
 
             if ($user) {
-                $data['social_id '] = $userContract->getId();
+                $data['social_id'] = $userContract->getId();
                 $data['provider'] = $provider;
                 $data['auth_method'] = "social";
 

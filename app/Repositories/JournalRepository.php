@@ -62,10 +62,6 @@ class JournalRepository extends BaseRepository implements JournalRepositoryInter
         return $union;
     }
 
-    public function find($id): Model {
-        return $this->model::find($id);
-    }
-
     public function create(array $data): Model {
         if ($data['type'] == "payment") {
             unset($data['type']);

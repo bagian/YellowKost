@@ -16,9 +16,10 @@ return new class extends Migration
             $table->foreignId('id_booking')->constrained('bookings')->onDelete('cascade')->onUpdate('cascade');
             $table->decimal('amount', 20, 2);
             $table->date('date');
-            $table->date('period');
+            $table->string('period');
             $table->boolean('is_dp')->default(false);
             $table->foreignId('payment_method')->constrained('payment_methods')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

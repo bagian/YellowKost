@@ -38,10 +38,6 @@ class TestimonialRepository extends BaseRepository implements TestimonialReposit
         return $this->model::where('id_user', $idUser)->with('user')->get();
     }
 
-    public function find($id): Model {
-        return $this->model::find($id);
-    }
-
     public function create(array $data): Model {
         return $this->transaction(function() use ($data): Model {
             $model = new $this->model;

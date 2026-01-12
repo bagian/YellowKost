@@ -9,6 +9,10 @@ interface PaymentRepositoryInterface
 {
     public function all(): Collection;
 
+    public function get(): Collection;
+
+    public function getNextPeriod($idBooking): ?string;
+
     public function find($id): ?Model;
 
     public function create(array $data): Model;

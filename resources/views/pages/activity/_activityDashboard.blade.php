@@ -82,24 +82,28 @@
         class="overflow-hidden bg-white border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700 rounded-2xl">
         <div
             class="flex flex-wrap items-center gap-2 p-4 border-b border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/50">
+            @php($active = 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 bg-white dark:bg-gray-800')
+            @php($inactive = 'bg-gray-900 text-white dark:bg-gray-700 dark:text-white shadow-md')
+
             <button
-                class="px-4 py-2 text-sm font-medium text-white transition-all bg-gray-900 border border-transparent rounded-lg shadow-md filter-btn dark:bg-gray-700 dark:text-white"
+                class="px-4 py-2 text-sm font-medium transition-all border border-transparent rounded-lg @if($activePage == 'all') {{ $active }} @else {{ $inactive }} @endif"
                 data-filter="all">
                 Semua
             </button>
             <button
-                class="px-4 py-2 text-sm font-medium text-gray-600 transition-all bg-white border border-transparent rounded-lg filter-btn dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:bg-gray-800"
+                class="px-4 py-2 text-sm font-medium transition-all border border-transparent rounded-lg @if($activePage == 'pending') {{ $active }} @else {{ $inactive }} @endif"
                 data-filter="pending">
                 Perlu Tindakan
             </button>
             <button
-                class="px-4 py-2 text-sm font-medium text-gray-600 transition-all bg-white border border-transparent rounded-lg filter-btn dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:bg-gray-800"
+                class="px-4 py-2 text-sm font-medium transition-all border border-transparent rounded-lg @if($activePage == 'completed') {{ $active }} @else {{ $inactive }} @endif"
                 data-filter="completed">
                 Selesai
             </button>
         </div>
 
         <div class="overflow-x-auto">
+            @if($activity->hasPages())
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead
                     class="text-xs text-gray-700 uppercase border-b border-gray-100 dark:text-gray-300 bg-gray-50/80 dark:bg-gray-700/50 dark:border-gray-700">
@@ -114,8 +118,32 @@
                     </tr>
                 </thead>
                 <tbody id="taskTableBody" class="divide-y divide-gray-100 dark:divide-gray-700">
+                    @foreach($activity as $row)
+
+                        <tr class="transition-colors bg-white dark:bg-gray-800 hover:bg-yellow-50/50 dark:hover:bg-gray-700/50 group">
+                            <td class="px-6 py-4">
+                                <div class="font-bold text-gray-900 dark:text-white">{{ $row['title'] }}</div>
+                                <div class="flex items-center gap-1 mt-1 text-xs text-gray-400 dark:text-gray-400">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    <span>{{ $row['room_name'] }}</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border {{ $row['category']['class'] }}">{{ $row['category']['label'] }}</span>
+                            </td>
+                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                                {{ $row['amount'] }}
+                            </td>
+                            <td class="px-6 py-4">{!! $row['priority_html'] !!}</td>
+                            <td class="px-6 py-4 font-medium">{{ $row['date'] }}</td>
+                            <td class="px-6 py-4">{!! $row['status_html'] !!}</td>
+                            <td class="px-6 py-4 text-center">{!! $row['action_html'] !!}</td>
+                        </tr>
+
+                    @endforeach
                 </tbody>
             </table>
+            @else
             <div id="emptyState"
                 class="flex flex-col items-center justify-center hidden py-16 text-center text-gray-400 dark:text-gray-500">
                 <div class="flex items-center justify-center w-16 h-16 mb-4 bg-gray-100 rounded-full dark:bg-gray-700">
@@ -128,7 +156,9 @@
                 </div>
                 <p class="font-medium text-gray-500 dark:text-gray-400">Tidak ada data aktivitas yang ditemukan.</p>
             </div>
+            @endif
         </div>
+        @include('partials._pagination', ['data' => $activity])
     </div>
     <div id="modalAdd"
         class="fixed inset-0 z-50 flex items-center justify-center hidden transition-opacity duration-300 opacity-0 bg-gray-900/60 backdrop-blur-sm">
@@ -144,7 +174,8 @@
                     </svg>
                 </button>
             </div>
-            <form id="formAddTask">
+            <form action="{{ route('activity.store') }}" method="post">
+                @csrf
                 <div class="space-y-5">
                     <div>
                         <label class="block mb-1 text-sm font-semibold text-gray-700 dark:text-gray-300">Nama Aktivitas
@@ -175,9 +206,9 @@
                             <div class="relative">
                                 <select name="category"
                                     class="w-full p-3 pr-10 text-sm bg-white border border-gray-300 shadow-sm appearance-none cursor-pointer rounded-xl dark:border-gray-600 dark:bg-gray-700 focus:ring-yellow-500 focus:border-yellow-500 dark:text-white focus:ring-0">
-                                    <option value="Perbaikan">Perbaikan</option>
-                                    <option value="Kebersihan">Kebersihan</option>
-                                    <option value="Aset">Aset</option>
+                                    <option value="maintenance">Perbaikan</option>
+                                    <option value="supply">Perlengkapan</option>
+                                    <option value="service">Jasa</option>
                                 </select>
                                 <div
                                     class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 pointer-events-none dark:text-gray-400">
@@ -231,121 +262,11 @@
 
 <script>
     $(document).ready(function() {
-
-        // --- 1. DATA DUMMY ---
-        let tasks = [
-            { id: 1, title: 'Servis AC Rutin', location: 'Kamar 101, 102, 103', category: 'Perbaikan', priority: 'Medium', date: '2025-12-01', status: 'pending', price: 250000 },
-            { id: 2, title: 'Perbaikan Kran Bocor', location: 'Kamar Mandi Luar Lt.1', category: 'Perbaikan', priority: 'High', date: '2025-11-28', status: 'completed', price: 75000 },
-            { id: 3, title: 'Pembelian Sapu & Pel', location: 'Gudang', category: 'Aset', priority: 'Low', date: '2025-12-02', status: 'progress', price: 45000 }
-        ];
-
-        let currentFilter = 'all';
-
-        // --- 2. HELPER FUNCTIONS ---
-
-        function formatRupiah(angka) {
-            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+        function getData() {
+            $.post("#", function(result) {
+                
+            })
         }
-
-        function formatDate(dateString) {
-            const options = { year: 'numeric', month: 'short', day: 'numeric' };
-            return new Date(dateString).toLocaleDateString('id-ID', options);
-        }
-
-        function updateStats() {
-            $('#statTotal').text(tasks.length);
-            $('#statPending').text(tasks.filter(t => t.status === 'pending').length);
-            $('#statProgress').text(tasks.filter(t => t.status === 'progress').length);
-            $('#statCompleted').text(tasks.filter(t => t.status === 'completed').length);
-        }
-
-        function renderTasks() {
-            const tbody = $('#taskTableBody');
-            tbody.empty();
-
-            let filteredTasks = tasks;
-            if (currentFilter === 'pending') {
-                filteredTasks = tasks.filter(t => t.status === 'pending' || t.status === 'progress');
-            } else if (currentFilter === 'completed') {
-                filteredTasks = tasks.filter(t => t.status === 'completed');
-            }
-
-            if (filteredTasks.length === 0) {
-                $('#emptyState').removeClass('hidden');
-            } else {
-                $('#emptyState').addClass('hidden');
-
-                filteredTasks.forEach(task => {
-                    // Logic Warna Kategori
-                    let catClass = '';
-                    if(task.category === 'Perbaikan') catClass = 'bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800';
-                    else if(task.category === 'Kebersihan') catClass = 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800';
-                    else catClass = 'bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 border-orange-200 dark:border-orange-800';
-
-                    // Logic Prioritas
-                    let priorityHtml = '';
-                    if(task.priority === 'High') priorityHtml = `<span class="flex items-center text-xs font-bold text-red-600 dark:text-red-400"><span class="w-2 h-2 mr-2 bg-red-600 rounded-full animate-pulse"></span> Tinggi</span>`;
-                    else if(task.priority === 'Medium') priorityHtml = `<span class="flex items-center text-xs font-bold text-yellow-600 dark:text-yellow-400"><span class="w-2 h-2 mr-2 bg-yellow-500 rounded-full"></span> Sedang</span>`;
-                    else priorityHtml = `<span class="flex items-center text-xs font-bold text-gray-500 dark:text-gray-400"><span class="w-2 h-2 mr-2 bg-gray-400 rounded-full"></span> Rendah</span>`;
-
-                    // Logic Status Badge
-                    let statusHtml = '';
-                    if(task.status === 'pending') statusHtml = `<div class="inline-flex items-center px-3 py-1 text-xs font-bold text-red-700 bg-red-100 border border-red-200 rounded-full dark:bg-red-900/30 dark:text-red-300 dark:border-red-800">Belum Dikerjakan</div>`;
-                    else if(task.status === 'progress') statusHtml = `<div class="inline-flex items-center px-3 py-1 text-xs font-bold text-yellow-700 bg-yellow-100 border border-yellow-200 rounded-full dark:bg-yellow-900/30 dark:text-yellow-300 dark:border-yellow-800">Sedang Proses</div>`;
-                    else statusHtml = `<div class="inline-flex items-center px-3 py-1 text-xs font-bold text-green-700 bg-green-100 border border-green-200 rounded-full dark:bg-green-900/30 dark:text-green-300 dark:border-green-800">Selesai</div>`;
-
-                    // Logic Action Buttons
-                    let actionHtml = `<div class="flex items-center justify-center gap-2">`;
-                    if(task.status !== 'completed') {
-                        actionHtml += `<button class="p-2 text-green-600 transition-all border border-green-200 rounded-lg shadow-sm btn-done bg-green-50 dark:bg-green-900/20 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-900/40 dark:border-green-800" data-id="${task.id}" title="Tandai Selesai"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></button>`;
-                    }
-                    if(task.status === 'pending') {
-                        actionHtml += `<button class="p-2 text-yellow-600 transition-all border border-yellow-200 rounded-lg shadow-sm btn-progress bg-yellow-50 dark:bg-yellow-900/20 dark:text-yellow-400 hover:bg-yellow-100 dark:hover:bg-yellow-900/40 dark:border-yellow-800" data-id="${task.id}" title="Proses"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></button>`;
-                    }
-                    actionHtml += `<button class="p-2 text-gray-400 transition-all bg-white border border-gray-200 rounded-lg shadow-sm btn-delete dark:bg-gray-700 hover:bg-red-50 hover:text-red-500 dark:hover:bg-red-900/20 dark:hover:text-red-400 dark:border-gray-600 hover:border-red-200" data-id="${task.id}" title="Hapus"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>`;
-                    actionHtml += `</div>`;
-
-                    const row = `
-                        <tr class="transition-colors bg-white dark:bg-gray-800 hover:bg-yellow-50/50 dark:hover:bg-gray-700/50 group">
-                            <td class="px-6 py-4">
-                                <div class="font-bold text-gray-900 dark:text-white">${task.title}</div>
-                                <div class="flex items-center gap-1 mt-1 text-xs text-gray-400 dark:text-gray-400">
-                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                    <span>${task.location}</span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${catClass}">${task.category}</span>
-                            </td>
-                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
-                                ${formatRupiah(task.price)}
-                            </td>
-                            <td class="px-6 py-4">${priorityHtml}</td>
-                            <td class="px-6 py-4 font-medium">${formatDate(task.date)}</td>
-                            <td class="px-6 py-4">${statusHtml}</td>
-                            <td class="px-6 py-4 text-center">${actionHtml}</td>
-                        </tr>
-                    `;
-                    tbody.append(row);
-                });
-            }
-            updateStats();
-        }
-
-        // --- 3. EVENT LISTENERS ---
-
-        // Filter Buttons
-        $('.filter-btn').click(function() {
-            // Update UI Button
-            $('.filter-btn').removeClass('bg-gray-900 text-white dark:bg-gray-700 dark:text-white shadow-md')
-                            .addClass('text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 bg-white dark:bg-gray-800');
-
-            $(this).removeClass('text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 bg-white dark:bg-gray-800')
-                   .addClass('bg-gray-900 text-white dark:bg-gray-700 dark:text-white shadow-md');
-
-            currentFilter = $(this).data('filter');
-            renderTasks();
-        });
 
         // Modal Logic
         function openModal() {
@@ -361,29 +282,6 @@
         $('#btnOpenModal').click(openModal);
         $('#btnCloseModal, #btnCancelModal').click(closeModal);
 
-        // Form Submit
-        $('#formAddTask').submit(function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const priceRaw = $('#inputPrice').val().replace(/[^0-9]/g, ''); // Ambil angka murni
-
-            const newTask = {
-                id: Date.now(),
-                title: formData.get('title'),
-                location: formData.get('location'),
-                category: formData.get('category'),
-                priority: formData.get('priority'),
-                date: new Date().toISOString().split('T')[0],
-                status: 'pending',
-                price: priceRaw ? parseInt(priceRaw) : 0
-            };
-
-            tasks.unshift(newTask);
-            renderTasks();
-            closeModal();
-        });
-
         // Format Input Rupiah
         $('#inputPrice').on('input', function() {
             let val = $(this).val().replace(/[^0-9]/g, '');
@@ -394,35 +292,6 @@
             }
         });
 
-        // Task Actions (Delegation)
-        $(document).on('click', '.btn-done', function() {
-            const id = $(this).data('id');
-            const task = tasks.find(t => t.id === id);
-            if(task) {
-                task.status = 'completed';
-                renderTasks();
-            }
-        });
-
-        $(document).on('click', '.btn-progress', function() {
-            const id = $(this).data('id');
-            const task = tasks.find(t => t.id === id);
-            if(task) {
-                task.status = 'progress';
-                renderTasks();
-            }
-        });
-
-        $(document).on('click', '.btn-delete', function() {
-            const id = $(this).data('id');
-            if(confirm('Hapus data aktivitas ini?')) {
-                tasks = tasks.filter(t => t.id !== id);
-                renderTasks();
-            }
-        });
-
-        // Init
-        renderTasks();
     });
 </script>
 @endpush

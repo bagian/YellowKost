@@ -16,6 +16,7 @@ class PaymentMethodSeeder extends Seeder
         DB::table('payment_methods')->insert([
             ["name" => "Tunai", "slug" => "cash"],
             ["name" => "Transfer Bank", "slug" => "bank"],
+            ["name" => "Online", "slug" => "online"],
         ]);
     }
 }

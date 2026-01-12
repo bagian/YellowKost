@@ -18,6 +18,8 @@ use App\Repositories\BookingRepository;
 use App\Repositories\TestimonialRepository;
 use App\Services\ImageService;
 use App\Services\Interface\ImageServiceInterface;
+use App\Services\Interface\MidtransServiceInterface;
+use App\Services\MidtransService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -37,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ActivityRepositoryInterface::class, ActivityRepository::class);
 
         $this->app->bind(ImageServiceInterface::class, ImageService::class);
+        $this->app->bind(MidtransServiceInterface::class, MidtransService::class);
     }
 
     /**
