@@ -22,7 +22,7 @@ class RoomFactory extends Factory
     public function definition(): array
     {
         // Periods based on your migration: ['day', 'month', 'year']
-        $periods = ['day', 'month', 'year'];
+        $periods = ['month', 'year'];
 
         return [
             'room_name' => $this->faker->unique()->numerify('Kamar #: ###'),

@@ -27,10 +27,11 @@ class JournalController extends Controller
 
     public function pos(Request $request)
     {
+        $activityData = $request->toArray();
         $bookingId = $request->query('booking_id') ?? null;
         $paymentMethods = PaymentMethod::all();
         $confirmedBookings = $this->bookingRepository->confirmedBookings();
-        return view('pages.pos._journalHarian', ['paymentMethods' => $paymentMethods, 'confirmedBookings' => $confirmedBookings, 'bookingId' => $bookingId]);
+        return view('pages.pos._journalHarian', ['paymentMethods' => $paymentMethods, 'confirmedBookings' => $confirmedBookings, 'bookingId' => $bookingId, ...compact('activityData')]);
     }
 
     public function report(Request $request)

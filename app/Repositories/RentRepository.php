@@ -28,10 +28,6 @@ class RentRepository extends BaseRepository implements RentRepositoryInterface
         return RoomPicture::where('id_room', $id)->get();
     }
 
-    public function find($id): Model {
-        return $this->model::find($id);
-    }
-
     public function create(array $data): Model {
         return $this->transaction(function() use ($data): Model {
             $model = new $this->model;

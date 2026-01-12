@@ -23,7 +23,7 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         // Get available payment method IDs
-        $paymentMethods = DB::table('payment_methods')->pluck('id')->toArray();
+        $paymentMethods = DB::table('payment_methods')->where('slug', '!=', 'online')->pluck('id')->toArray();
         $date = $this->faker->dateTimeBetween('-1 year', 'now');
 
         return [
@@ -32,6 +32,7 @@ class PaymentFactory extends Factory
             'date' => $date,
             'period' => $date->format('Y-m-01'),
             'is_dp' => false,
+            'status' => 'completed',
             'payment_method' => $this->faker->randomElement($paymentMethods),
         ];
     }

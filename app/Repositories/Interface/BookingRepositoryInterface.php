@@ -12,9 +12,9 @@ interface BookingRepositoryInterface
 
     public function get(): LengthAwarePaginator;
 
-    public function getUserBooking($idUser, array $status = []): LengthAwarePaginator;
+    public function getUserBooking($idUser, array $status = [], array $with = []): LengthAwarePaginator;
 
-    public function find($id): ?Model;
+    public function find($id, array $with = []): ?Model;
 
     public function confirmedBookings(): Collection;
 

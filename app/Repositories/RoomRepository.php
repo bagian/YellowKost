@@ -56,10 +56,6 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
         return $model;
     }
 
-    public function find($id): Model {
-        return $this->model::find($id);
-    }
-
     public function create(array $data): Model {
         return $this->transaction(function() use ($data): Model {
             $model = new $this->model;

@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\JournalController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\RoomController;
@@ -58,7 +60,7 @@ Route::get('/p/syarat-dan-ketentuan', function () {
     return view('landingpage.pages._termsConditionsPage');
 })->name('terms.conditions');
 
-
+Route::post('/midtrans/webhook', [PaymentsController::class, 'handleWebhook'])->name('payment.webhook');
 
 /* -------------------------------------------------------------------------- */
 /*                                  Dashboard                                 */
@@ -87,8 +89,14 @@ Route::middleware('auth')->group(function () {
     /* -------------------------------- User Only ------------------------------- */
     Route::middleware('role:superadmin,user')->group(function() {
 
-        Route::get('/unggah-bukti-pembayaran', [BookingController::class, 'payment'])->name('booking.bukti');
-        Route::post('/unggah-bukti-pembayaran', [BookingController::class, 'paymentSubmit'])->name('booking.payment.submit');
+        // Route::get('/unggah-bukti-pembayaran', [BookingController::class, 'payment'])->name('booking.bukti');
+        // Route::post('/unggah-bukti-pembayaran', [BookingController::class, 'paymentSubmit'])->name('booking.payment.submit');
+
+        Route::get('/pembayaran', [PaymentsController::class, 'index'])->name('booking.payment');
+        Route::get('/pembayaran/checkout', [PaymentsController::class, 'checkout'])->name('payment.checkout');
+        Route::get('/pembayaran/finish', [PaymentsController::class, 'finish'])->name('payment.finish');
+        Route::get('/pembayaran/unfinish', [PaymentsController::class, 'unfinish'])->name('payment.unfinish');
+        Route::get('/pembayaran/error', [PaymentsController::class, 'error'])->name('payment.error');
 
         Route::get('/status-pengajuan', [BookingController::class, 'status'])->name('booking.status');
         Route::post('/status-pengajuan/detail', [BookingController::class, 'statusDetail'])->name('booking.status.detail');
@@ -98,10 +106,6 @@ Route::middleware('auth')->group(function () {
 
     /* ------------------------------- Admin Only ------------------------------- */
     Route::middleware('role:superadmin,admin')->group(function () {
-
-        Route::get('/activity', function () {
-            return view('pages.activity._activityDashboard');
-        })->name('activity');
 
         Route::resource('/kamar', RoomController::class)->parameters([
             "kamar" => "room"
@@ -114,6 +118,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/journal/pos', [JournalController::class, 'pos'])->name('journal.pos');
         Route::get('/journal/report', [JournalController::class, 'report'])->name('journal.report');
         Route::resource('/journal', JournalController::class);
+        Route::get('/activity/data', [ActivityController::class, 'getData'])->name('activity.data');
+        Route::resource('/activity', ActivityController::class);
 
     });
 });

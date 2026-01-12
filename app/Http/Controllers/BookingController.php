@@ -22,7 +22,7 @@ class BookingController extends Controller
 
     public function form()
     {
-        $bookings = $this->bookingRepository->getUserBooking(auth()->user()->id, ['pending']);
+        $bookings = $this->bookingRepository->getUserBooking(auth()->user()->id ?? null, ['pending']);
 
         if ($bookings->isEmpty()) {
             $bookingData = session('pending_booking', []);

@@ -22,7 +22,7 @@
 </script>
 @endif
 
-@if (session('confirmation_booking'))
+{{-- @if (session('confirmation_booking'))
 <script>
     Swal.fire({
     title: "Are you sure?",
@@ -42,4 +42,4 @@
     }
     });
 </script>
-@endif
+@endif --}}

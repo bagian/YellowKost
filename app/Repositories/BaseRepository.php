@@ -14,7 +14,15 @@ abstract class BaseRepository
     abstract protected function getModelClass();
 
     public function __construct() {
-        $this->model = $this->getModelClass();
+        $class = $this->getModelClass();
+        $this->model = new $class;
+    }
+
+    public function find($id, array $with = []): Model
+    {
+        return $this->model->newQuery()
+            ->when($with, fn($q) => $q->with($with))
+            ->findOrFail($id);
     }
 
     protected function getPagination($queryBuilder = null, int $perPage = 10, array $columns = ['*'], string $pageName = 'page', string $orderBy = 'asc', ?int $page = null): LengthAwarePaginator {
