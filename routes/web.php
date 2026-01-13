@@ -52,6 +52,9 @@ Route::get('/history-pembayaran', function () {
     return view('pages.paymentHistory._payHistory');
 })->name('payment.history');
 
+// Route::get('/history-pembayaran', [PaymentController::class, 'printHistory'])->name('payment.history');
+
+
 Route::get('/p/kebijakan-privasi', function () {
     return view('landingpage.pages._privacyPolicyPage');
 })->name('privacy.policy');

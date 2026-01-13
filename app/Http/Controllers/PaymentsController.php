@@ -56,7 +56,7 @@ class PaymentsController extends Controller
         ]);
     }
 
-    public function handleWebhook(Request $request) 
+    public function handleWebhook(Request $request)
     {
         \Log::info("Data dari Midtrans: ", $request->all());
 
@@ -123,7 +123,7 @@ class PaymentsController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**

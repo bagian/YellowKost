@@ -15,7 +15,7 @@
                 <path
                     d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
             </svg>
-            <span>Catat Aktivitas Baru</span>
+            <span>Buat Manajemen Maintenance</span>
         </button>
     </div>
     <div class="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2 lg:grid-cols-4">
@@ -82,7 +82,8 @@
         class="overflow-hidden bg-white border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700 rounded-2xl">
         <div
             class="flex flex-wrap items-center gap-2 p-4 border-b border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-900/50">
-            @php($active = 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 bg-white dark:bg-gray-800')
+            @php($active = 'text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 bg-white
+            dark:bg-gray-800')
             @php($inactive = 'bg-gray-900 text-white dark:bg-gray-700 dark:text-white shadow-md')
 
             <button
@@ -120,25 +121,34 @@
                 <tbody id="taskTableBody" class="divide-y divide-gray-100 dark:divide-gray-700">
                     @foreach($activity as $row)
 
-                        <tr class="transition-colors bg-white dark:bg-gray-800 hover:bg-yellow-50/50 dark:hover:bg-gray-700/50 group">
-                            <td class="px-6 py-4">
-                                <div class="font-bold text-gray-900 dark:text-white">{{ $row['title'] }}</div>
-                                <div class="flex items-center gap-1 mt-1 text-xs text-gray-400 dark:text-gray-400">
-                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                    <span>{{ $row['room_name'] }}</span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border {{ $row['category']['class'] }}">{{ $row['category']['label'] }}</span>
-                            </td>
-                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
-                                {{ $row['amount'] }}
-                            </td>
-                            <td class="px-6 py-4">{!! $row['priority_html'] !!}</td>
-                            <td class="px-6 py-4 font-medium">{{ $row['date'] }}</td>
-                            <td class="px-6 py-4">{!! $row['status_html'] !!}</td>
-                            <td class="px-6 py-4 text-center">{!! $row['action_html'] !!}</td>
-                        </tr>
+                    <tr
+                        class="transition-colors bg-white dark:bg-gray-800 hover:bg-yellow-50/50 dark:hover:bg-gray-700/50 group">
+                        <td class="px-6 py-4">
+                            <div class="font-bold text-gray-900 dark:text-white">{{ $row['title'] }}</div>
+                            <div class="flex items-center gap-1 mt-1 text-xs text-gray-400 dark:text-gray-400">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                    </path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>{{ $row['room_name'] }}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border {{ $row['category']['class'] }}">{{
+                                $row['category']['label'] }}</span>
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                            {{ $row['amount'] }}
+                        </td>
+                        <td class="px-6 py-4">{!! $row['priority_html'] !!}</td>
+                        <td class="px-6 py-4 font-medium">{{ $row['date'] }}</td>
+                        <td class="px-6 py-4">{!! $row['status_html'] !!}</td>
+                        <td class="px-6 py-4 text-center">{!! $row['action_html'] !!}</td>
+                    </tr>
 
                     @endforeach
                 </tbody>
@@ -165,7 +175,7 @@
         <div
             class="w-full max-w-lg p-8 mx-4 transition-transform duration-300 transform scale-95 bg-white rounded-lg shadow-2xl dark:bg-gray-800">
             <div class="flex items-center justify-between pb-4 mb-6 border-b border-gray-100 dark:border-gray-700">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Catat Aktivitas Baru</h3>
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">Maintenance Baru</h3>
                 <button id="btnCloseModal"
                     class="p-1 text-gray-400 transition-colors rounded-lg hover:text-gray-200 bg-gray-50 dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600/30">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -264,7 +274,7 @@
     $(document).ready(function() {
         function getData() {
             $.post("#", function(result) {
-                
+
             })
         }
 

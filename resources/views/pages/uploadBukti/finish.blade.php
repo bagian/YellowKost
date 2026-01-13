@@ -5,7 +5,7 @@
 
 @section('content')
 @include('components._breadcrumbLink')
-<div class="flex flex-col max-w-5xl p-4 mx-auto">
+<div class="flex flex-col max-w-7xl p-4 mx-auto">
     Finish
 </div>
 

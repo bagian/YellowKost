@@ -6,8 +6,8 @@
 @section('content')
 <!-- ====== Form Elements Section Start -->
 @include ('components._breadcrumbLink')
-<div class="flex flex-col justify-center max-w-5xl pt-24 mx-auto">
-    <div class="w-full max-w-5xl mx-auto">
+<div class="flex flex-col justify-center max-w-7xl pt-24 mx-auto">
+    <div class="w-full max-w-7xl mx-auto">
         <div class="pb-8">
             <h1 class="text-3xl font-bold text-gray-900">Edit <span class="text-yellow-500">
                     Informasi Kamar</span></h1>
@@ -18,7 +18,7 @@
         <form action="{{ route('kamar.update', $room->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
-            <div class="max-w-5xl space-y-6">
+            <div class="max-w-7xl space-y-6">
                 <div
                     class="bg-white border border-gray-200 shadow-lg rounded-2xl dark:border-gray-800 dark:bg-gray-800">
                     <div class="p-5 space-y-6 border-gray-100 sm:p-6 dark:border-gray-500">

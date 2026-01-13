@@ -64,12 +64,9 @@
                 </div>
                 <div
                     class="relative z-20 inline-flex items-center justify-center w-12 h-12 mb-6 text-yellow-400 bg-yellow-900/30 rounded-xl group-hover:text-yellow-200">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                        </path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <svg class="w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path
+                            d="M477.9 75.5c4.5-11.8 1.7-25.2-7.2-34.1s-22.3-11.8-34.1-7.2l-416 160C7.9 199-.3 211.2 0 224.7s9.1 25.4 21.9 29.6l176.8 58.9 58.9 176.8c4.3 12.8 16.1 21.6 29.6 21.9s25.7-7.9 30.6-20.5l160-416z" />
                     </svg>
                 </div>
                 <h3 class="relative z-20 mb-3 text-xl font-bold text-yellow-100 group-hover:text-gray-900">Lokasi
@@ -84,11 +81,10 @@
                     class="absolute -top-6 w-48 h-[20rem] transition-all duration-500 ease-in-out bg-slate-200/20 -right-56 rotate-12 group-hover:right-[30rem] -z-0 blur-md">
                 </div>
                 <div
-                    class="relative z-20 inline-flex items-center justify-center w-12 h-12 mb-6 text-yellow-600 bg-yellow-900/30 rounded-xl group-hover:text-yellow-200">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                        </path>
+                    class="relative z-20 inline-flex items-center justify-center w-12 h-12 mb-6 text-yellow-400 bg-yellow-900/30 rounded-xl group-hover:text-yellow-200">
+                    <svg class="w-7 h-7" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path
+                            d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM165.4 321.9c20.4 28 53.4 46.1 90.6 46.1s70.2-18.1 90.6-46.1c7.8-10.7 22.8-13.1 33.5-5.3s13.1 22.8 5.3 33.5C356.3 390 309.2 416 256 416s-100.3-26-129.4-65.9c-7.8-10.7-5.4-25.7 5.3-33.5s25.7-5.4 33.5 5.3zM144 208a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm192-32a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
                     </svg>
                 </div>
                 <h3 class="relative z-20 mb-3 text-xl font-bold text-yellow-100 group-hover:text-gray-900">Suasana
@@ -104,10 +100,9 @@
                 </div>
                 <div
                     class="relative z-20 inline-flex items-center justify-center w-12 h-12 mb-6 text-yellow-400 bg-yellow-900/30 rounded-xl group-hover:text-yellow-200">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                        </path>
+                    <svg class="w-7 h-7" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                        <path
+                            d="M96 0C60.7 0 32 28.7 32 64l0 384c0 35.3 28.7 64 64 64l201.2 0c-12.5-14.7-23.2-30.8-31.8-48l-89.5 0 0-80c0-17.7 14.3-32 32-32l32 0 0-26.7c0-18.1 6.1-35.2 16.6-48.8-.4-1.4-.6-2.9-.6-4.5l0-32c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 1 86.7-28.9c3.1-1 6.2-1.8 9.3-2.5L416 64c0-35.3-28.7-64-64-64L96 0zm32 112c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zM128 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM445.3 488.5l-13.3 6.3 0-188.1 96 32 0 19.6c0 55.8-32.2 106.5-82.7 130.3zM421.9 259.5l-112 37.3c-13.1 4.4-21.9 16.6-21.9 30.4l0 31.1c0 74.4 43 142.1 110.2 173.7l18.5 8.7c4.8 2.2 10 3.4 15.2 3.4s10.5-1.2 15.2-3.4l18.5-8.7C533 500.3 576 432.6 576 358.2l0-31.1c0-13.8-8.8-26-21.9-30.4l-112-37.3c-6.6-2.2-13.7-2.2-20.2 0z" />
                     </svg>
                 </div>
                 <h3 class="relative z-20 mb-3 text-xl font-bold text-yellow-100 group-hover:text-gray-900">Aman & Nyaman

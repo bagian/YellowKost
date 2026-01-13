@@ -2,7 +2,7 @@
 
 @section('content')
 @include('components._breadcrumbLink')
-<div class="max-w-2xl pt-20 mx-auto">
+<div class="max-w-7xl pt-20 mx-auto p-4">
     <form
         action="@if($testimonial->isEmpty()) {{ route('testimonial.store') }} @else {{ route('testimonial.update', $testimonial->id) }} @endif"
         method="POST">

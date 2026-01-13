@@ -15,13 +15,13 @@
 
 @section('content')
 @include('components._breadcrumbLink')
-<div class="flex flex-col max-w-5xl p-4 mx-auto">
+<div class="flex flex-col max-w-7xl p-4 mx-auto">
     <div class="pt-20 mb-8">
         <h1 class="text-3xl font-bold text-gray-900">Unggah <span class="text-yellow-500">Bukti Pembayaran</span></h1>
         <p class="mt-1 text-gray-500 dark:text-gray-600">Unggah bukti pembayaran Anda untuk memproses transaksi
             lebih lanjut.</p>
     </div>
-    <div class="max-w-5xl min-h-screen mx-auto text-gray-800 dark:text-gray-200">
+    <div class="max-w-7xl min-h-screen mx-auto text-gray-800 dark:text-gray-200">
         <div
             class="overflow-hidden bg-white border border-gray-200 shadow-lg dark:border-gray-700 dark:bg-gray-800 rounded-xl">
             <div class="p-6 text-xs bg-gray-300/30 line-clamp-2">

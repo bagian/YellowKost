@@ -25,12 +25,12 @@ class ActivityController extends Controller
         $activePage = $request->activePage ?? 'all';
         // dd($activity);
 
-        return view('pages.activity._activityDashboard', ['activity' => $activity, 'activePage' => $activePage]);
+        return view('pages.maintenance._maintenanceDashboard', ['activity' => $activity, 'activePage' => $activePage]);
     }
 
     public function getData(Request $request)
     {
-        
+
     }
 
     /**

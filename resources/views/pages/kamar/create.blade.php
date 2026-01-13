@@ -7,7 +7,7 @@
 <!-- ====== Form Elements Section Start -->
 @include('components._breadcrumbLink')
 
-<div class="justify-center pt-20 mx-auto max-w-7xl">
+<div class="justify-center pt-20 mx-auto max-w-7xl p-4">
     @include('partials._errors')
     <form action="{{ route('kamar.store') }}" method="post" enctype="multipart/form-data">
         @csrf

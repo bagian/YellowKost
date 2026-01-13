@@ -63,7 +63,7 @@
             @yield('content')
         </div>
         <button id="backToTopBtn" onclick="scrollToTop()"
-            class="fixed z-40 invisible p-3 text-black transition-all duration-300 transform translate-y-10 bg-yellow-400 rounded-full shadow-lg opacity-0 bottom-16 right-5 hover:bg-yellow-500 hover:scale-110 focus:outline-none group">
+            class="fixed z-40 invisible p-3 text-black transition-all duration-300 transform translate-y-10 bg-yellow-400 rounded-full shadow-lg opacity-0 bottom-16 right-5 hover:bg-yellow-500 border border-yellow-900/70 hover:scale-110 focus:outline-none group">
             <svg class="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1" fill="none"
                 stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18">
@@ -242,23 +242,23 @@
 </script>
 {{-- Gallery Script --}}
 <script>
-    function openModal(element) {
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const modalCaption = document.getElementById('modalCaption');
+    function galleryOpenModal(element) {
+        const galleryImageModal = document.getElementById('galleryImageModal');
+        const galleryModalImage = document.getElementById('galleryModalImage');
+        const galleryModalCaption = document.getElementById('galleryModalCaption');
 
         const clickedImg = element.querySelector('img');
         const captionText = element.querySelector('p').innerText;
 
-        modalImg.src = clickedImg.src;
-        modalCaption.innerText = captionText;
-        modal.classList.remove('hidden');
+        galleryModalImage.src = clickedImg.src;
+        galleryModalCaption.innerText = captionText;
+        galleryImageModal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
-        const modal = document.getElementById('imageModal');
-        modal.classList.add('hidden');
+        const galleryImageModal = document.getElementById('galleryImageModal');
+        galleryImageModal.classList.add('hidden');
         document.body.style.overflow = 'auto';
     }
 </script>

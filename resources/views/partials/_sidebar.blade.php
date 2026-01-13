@@ -6,7 +6,7 @@
     aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
-            <div class="pb-2 mb-2 border-b border-gray-200 dark:border-gray-700">
+            <div class=" border-b border-gray-200 dark:border-gray-700 py-6">
                 <x-sidebar-link route="dashboard" title="Dashboard">
                     <svg class="w-full h-full" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 22 21">

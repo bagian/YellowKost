@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center max-w-5xl p-4 pt-20 mx-auto">
+<div class="flex flex-col justify-center max-w-7xl p-4 pt-20 mx-auto">
     <div class="flex flex-col justify-between gap-4 mb-8 md:flex-row md:items-center">
         <div>
             <h1 class="text-3xl font-bold text-gray-900 dark:text-text-gray-900">Manajemen <span

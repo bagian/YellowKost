@@ -1,7 +1,7 @@
 @extends('default')
 @section('content')
 @include('components._breadcrumbLink')
-<div class="pt-20 mb-8 p-4">
+<div class="pt-20 mb-8 p-4 max-w-7xl mx-auto">
     <h1 class="text-3xl font-bold text-gray-900">History <span class="text-yellow-500">Bukti Pembayaran</span></h1>
     <p class="mt-1 text-gray-500 dark:text-gray-600">Lihat history bukti pembayaran Anda.</p>
     <div class="pt-6">
@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col w-full gap-3 sm:flex-row md:w-auto">
-                    <a href="{{ route('payment.history', ['type' => 'cetak history pembayaran']) }}" target="_blank"
+                    <a href="{{ route('payment.history') }}" target="_blank" id="#btn-cetak"
                         class="group relative flex items-center justify-center px-5 py-2.5 text-sm font-bold text-lime-600 bg-lime-50 border border-lime-100 rounded-xl hover:bg-lime-900/50 hover:border-lime-900/50 dark:bg-lime-900/20 dark:text-lime-400 dark:border-lime-900/50 transition-all w-full sm:w-auto">
                         <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -90,4 +90,25 @@
     </div>
 </div>
 
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#btn-cetak').on('click', function(e) {
+        e.preventDefault();
+
+        var startDate = $('#start_date').val();
+        var endDate = $('#end_date').val();
+        var search = $('#search').val();
+
+        var url = "{{ route('payment.history') }}";
+        var finalUrl = url + '?type=cetak history pembayaran' +
+        '&start_date=' + startDate +
+        '&end_date=' + endDate +
+        '&search=' + search;
+
+        window.open(finalUrl, '_blank');
+        });
+    });
+</script>
+@endpush
 @endsection

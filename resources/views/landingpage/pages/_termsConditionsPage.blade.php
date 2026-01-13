@@ -33,11 +33,11 @@
             <div
                 class="p-8 transition-shadow duration-300 bg-gray-800 border-gray-700 shadow-lg rounded-3xl hover:shadow-xl">
                 <div class="flex items-center gap-4 pb-4 mb-6 border-b border-gray-700">
-                    <div class="flex items-center justify-center w-12 h-12 text-yellow-600 rounded-xl bg-yellow-900/30">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0c-4.938 2.25-9 8-9 8m9-8c4.938 2.25 9 8 9 8m-9-8v4m0 0h.01">
-                            </path>
+                    <div class="flex items-center justify-center w-12 h-12 text-yellow-400 rounded-xl bg-yellow-900/30">
+                        <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 640 512">
+                            <path
+                                d="M192 128c0-17.7 14.3-32 32-32s32 14.3 32 32l0 7.8c0 27.7-2.4 55.3-7.1 82.5l-84.4 25.3c-40.6 12.2-68.4 49.6-68.4 92l0 32.4-72 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l72.5 0c4.2 36 34.8 64 72 64 26 0 50-13.9 62.9-36.5l13.9-24.3c26.8-47 46.5-97.7 58.4-150.5l94.4-28.3-12.5 37.5c-3.3 9.8-1.6 20.5 4.4 28.8S405.7 320 416 320l128 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-83.6 0 18-53.9c3.8-11.3 .9-23.8-7.4-32.4s-20.7-11.8-32.2-8.4L316.4 198.1c2.4-20.7 3.6-41.4 3.6-62.3l0-7.8c0-53-43-96-96-96s-96 43-96 96l0 32c0 17.7 14.3 32 32 32s32-14.3 32-32l0-32zm-9.2 177l49-14.7c-10.4 33.8-24.5 66.4-42.1 97.2l-13.9 24.3c-1.5 2.6-4.3 4.3-7.4 4.3-4.7 0-8.5-3.8-8.5-8.5l0-71.9c0-14.1 9.3-26.6 22.8-30.7zM616 416c13.3 0 24-10.7 24-24s-10.7-24-24-24l-292.9 0c-6.5 16.3-13.7 32.3-21.6 48L616 416z" />
                         </svg>
                     </div>
                     <h3 class="text-xl font-bold text-white">1. Administrasi Penghuni</h3>
@@ -81,11 +81,11 @@
             <div
                 class="p-8 transition-shadow duration-300 bg-gray-800 border-gray-700 shadow-lg rounded-3xl hover:shadow-xl">
                 <div class="flex items-center gap-4 pb-4 mb-6 border-b border-gray-700">
-                    <div class="flex items-center justify-center w-12 h-12 text-green-600 rounded-xl bg-green-900/30">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                            </path>
+                    <div class="flex items-center justify-center w-12 h-12 text-green-400 rounded-xl bg-green-900/30">
+                        <svg class="w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512">
+                            <path
+                                d="M64 32C28.7 32 0 60.7 0 96L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-192c0-35.3-28.7-64-64-64L72 128c-13.3 0-24-10.7-24-24S58.7 80 72 80l384 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L64 32zM416 256a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
                         </svg>
                     </div>
                     <h3 class="text-xl font-bold text-white">2. Sistem Pembayaran</h3>
@@ -127,8 +127,8 @@
             <div
                 class="p-8 transition-shadow duration-300 bg-gray-800 border-gray-700 shadow-lg rounded-3xl hover:shadow-xl">
                 <div class="flex items-center gap-4 pb-4 mb-6 border-b border-gray-700">
-                    <div class="flex items-center justify-center w-12 h-12 text-blue-600 rounded-xl bg-blue-900/30">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center justify-center w-12 h-12 text-blue-400 rounded-xl bg-blue-900/30">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
@@ -172,8 +172,8 @@
             <div
                 class="p-8 transition-shadow duration-300 bg-gray-800 border-gray-700 shadow-lg rounded-3xl hover:shadow-xl">
                 <div class="flex items-center gap-4 pb-4 mb-6 border-b border-gray-700">
-                    <div class="flex items-center justify-center w-12 h-12 text-purple-600 rounded-xl bg-purple-900/30">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="flex items-center justify-center w-12 h-12 text-purple-400 rounded-xl bg-purple-900/30">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
                             </path>

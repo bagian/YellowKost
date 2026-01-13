@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- 1. Primary Meta Tags -->
+
     <title>Dashboard YellowKost - Kelola Bisnis Kost dengan Mudah & Efisien</title>
     <meta name="title" content="Dashboard YellowKost - Kelola Bisnis Kost dengan Mudah & Efisien">
     <meta name="description"
@@ -16,9 +16,6 @@
         content="manajemen kost, aplikasi kost, dashboard pemilik kost, yellowkost, sistem informasi kost, kelola penyewa, bisnis properti">
     <meta name="author" content="YellowKost Team">
     <meta name="robots" content="noindex, follow">
-    <!-- Ubah ke 'noindex' jika ini halaman khusus admin yang tidak boleh muncul di Google -->
-
-    <!-- 2. Open Graph / Facebook / WhatsApp (Wajib agar link terlihat bagus saat dishare) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="Dashboard YellowKost - Kelola Bisnis Kost dengan Mudah">
@@ -29,7 +26,7 @@
     <meta property="og:site_name" content="YellowKost">
     <meta property="og:locale" content="id_ID">
 
-    <!-- 3. Twitter Card (Agar terlihat bagus di X/Twitter) -->
+
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta property="twitter:title" content="Dashboard YellowKost - Kelola Bisnis Kost dengan Mudah">
@@ -37,7 +34,7 @@
         content="Pantau dan kelola semua aspek bisnis kost Anda: penyewa, kamar, keuangan, dan lainnya.">
     <meta property="twitter:image" content="{{ asset('images/og-yellowkost-dashboard.jpg') }}">
 
-    <!-- 4. Mobile & PWA Theme Color (Warna Address Bar Browser di HP) -->
+
     <!-- Menggunakan warna Kuning YellowKost (#facc15 / yellow-400) -->
     <meta name="theme-color" content="#facc15">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -89,6 +86,7 @@
 <body>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     {{-- ------------------------------------------------------------------- --}}
     {{-- Main Application Script--}}
