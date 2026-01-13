@@ -52,39 +52,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach($room as $row) --}}
+                        @foreach($history as $row)
                         <tr
                             class="text-white transition-all duration-300 ease-in-out bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-300">
                             <td class="px-6 py-4">
-                                {{-- {{ $loop->iteration }}. --}}
+                                {{ $loop->iteration }}.
                             </td>
                             <td class="px-6 py-4">
-                                {{-- {{ $row->room_name }} --}}
+                                {{ $row->booking->room->room_name }}
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-2">
                                     <span class="font-bold">Rp</span>
-                                    {{-- {{ number_format($row->price, 0, ',', '.') }} --}}
+                                    {{ number_format($row->amount, 0, ',', '.') }}
                                 </div>
                             </td>
                             <td class="px-6 py-4 ">
-                                ...
+                                {{ $row->date->format('d-m-Y') }}
                             </td>
                             <td class="px-6 py-4 ">
-                                ...
+                                {{ $row->period }}
                             </td>
                             <td class="px-6 py-4 ">
-                                ...
+                                {{ $row->payMethod->name }}
                             </td>
                         </tr>
-                        {{-- @endforeach --}}
+                        @endforeach
 
                     </tbody>
                 </table>
 
             </div>
             {{-- PAGINATION --}}
-            {{-- @include('partials._pagination', ['data' => $room]) --}}
+            @include('partials._pagination', ['data' => $history])
             {{-- PAGINATION --}}
         </div>
     </div>

@@ -9,6 +9,10 @@ class Payment extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'date' => 'date'
+    ];
+
     public function booking() {
         return $this->belongsTo(Booking::class, 'id_booking');
     }

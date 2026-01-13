@@ -110,6 +110,13 @@ class PaymentsController extends Controller
         return view('pages.uploadBukti.error');
     }
 
+    public function history()
+    {
+        $id_booking = $this->bookingRepository->getUserBooking(auth()->user()->id, ['confirmed'])->first();
+        $history = $this->paymentRepository->setFilters(['id_booking' => $id_booking])->get(['payMethod', 'booking.room']);
+        return view('pages.paymentHistory._payHistory', ['history' => $history]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
