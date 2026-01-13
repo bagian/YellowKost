@@ -6,6 +6,9 @@ use App\Repositories\Interface\BookingRepositoryInterface;
 use App\Repositories\Interface\PaymentRepositoryInterface;
 use App\Services\MidtransService;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use LengthException;
+use Ramsey\Collection\Collection;
 
 class PaymentsController extends Controller
 {
@@ -97,23 +100,27 @@ class PaymentsController extends Controller
 
     public function finish()
     {
-        return view('pages.uploadBukti.finish');
-    }
+        // return view('pages.uploadBukti.finish');
+        return view('pages.payment._paymentFinish');
+        }
 
-    public function unfinish()
-    {
-        return view('pages.uploadBukti.unfinish');
-    }
+        public function unfinish()
+        {
+            // return view('pages.uploadBukti.unfinish');
+            return view('pages.payment._paymentUnfinish');
+        }
 
-    public function error()
-    {
-        return view('pages.uploadBukti.error');
+        public function error()
+        {
+        return view('pages.payment._paymentError');
+        // return view('pages.uploadBukti.error');
     }
 
     public function history()
     {
         $id_booking = $this->bookingRepository->getUserBooking(auth()->user()->id, ['confirmed'])->first();
-        $history = $this->paymentRepository->get(with: ['payMethod', 'booking.room'], where: ['id_booking' => $id_booking]);
+        // $history = $this->paymentRepository->get(with: ['payMethod', 'booking.room'], filters: ['id_booking' => $id_booking]);
+        $history = new LengthAwarePaginator([], 0, 10);
         return view('pages.paymentHistory._payHistory', ['history' => $history]);
     }
 

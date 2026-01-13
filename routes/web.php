@@ -67,7 +67,13 @@ Route::get('auth/{provider}', action: [SocialLoginController::class, 'redirect']
 Route::get('auth/{provider}/callback', [SocialLoginController::class, 'handleProviderCallback']);
 
 /* ----------------------------- Admin and User ----------------------------- */
+
+Route::get('/pembayaran/finish', [PaymentsController::class, 'finish'])->name('payment.finish');
+Route::get('/pembayaran/unfinish', [PaymentsController::class, 'unfinish'])->name('payment.unfinish');
+Route::get('/pembayaran/error', [PaymentsController::class, 'error'])->name('payment.error');
+
 Route::middleware('auth')->group(function () {
+
 
     Route::get('/profile-setting', function () {
         return view('pages.settingAccount._settingAccount');
@@ -90,9 +96,8 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/pembayaran', [PaymentsController::class, 'index'])->name('booking.payment');
         Route::get('/pembayaran/checkout', [PaymentsController::class, 'checkout'])->name('payment.checkout');
-        Route::get('/pembayaran/finish', [PaymentsController::class, 'finish'])->name('payment.finish');
-        Route::get('/pembayaran/unfinish', [PaymentsController::class, 'unfinish'])->name('payment.unfinish');
-        Route::get('/pembayaran/error', [PaymentsController::class, 'error'])->name('payment.error');
+
+
         Route::get('/pembayaran/history', [PaymentsController::class, 'history'])->name('payment.history');
 
         Route::get('/status-pengajuan', [BookingController::class, 'status'])->name('booking.status');
@@ -100,6 +105,7 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('/testimonial', TestimonialController::class);
     });
+
 
     /* ------------------------------- Admin Only ------------------------------- */
     Route::middleware('role:superadmin,admin')->group(function () {
