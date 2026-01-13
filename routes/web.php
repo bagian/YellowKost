@@ -48,10 +48,6 @@ Route::get('/kontak', function () {
     return view('landingpage.pages._contactPage');
 })->name('contact.us');
 
-Route::get('/history-pembayaran', function () {
-    return view('pages.paymentHistory._payHistory');
-})->name('payment.history');
-
 Route::get('/p/kebijakan-privasi', function () {
     return view('landingpage.pages._privacyPolicyPage');
 })->name('privacy.policy');
@@ -97,6 +93,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/pembayaran/finish', [PaymentsController::class, 'finish'])->name('payment.finish');
         Route::get('/pembayaran/unfinish', [PaymentsController::class, 'unfinish'])->name('payment.unfinish');
         Route::get('/pembayaran/error', [PaymentsController::class, 'error'])->name('payment.error');
+        Route::get('/pembayaran/history', [PaymentsController::class, 'history'])->name('payment.history');
 
         Route::get('/status-pengajuan', [BookingController::class, 'status'])->name('booking.status');
         Route::post('/status-pengajuan/detail', [BookingController::class, 'statusDetail'])->name('booking.status.detail');
