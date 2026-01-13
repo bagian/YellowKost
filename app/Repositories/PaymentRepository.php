@@ -7,6 +7,7 @@ use App\Repositories\Interface\BookingRepositoryInterface;
 use App\Repositories\Interface\PaymentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 
 class PaymentRepository extends BaseRepository implements PaymentRepositoryInterface
@@ -27,8 +28,25 @@ class PaymentRepository extends BaseRepository implements PaymentRepositoryInter
         return $this->model::all();
     }
 
-    public function get(): Collection {
-        return $this->model::with()->get();
+    public function get(array $with = [], array $filters = []): LengthAwarePaginator {
+        $query = $this->model->newQuery()
+            ->when($with, fn($q) => $q->with($with))
+            ->when($filters, function ($q) use ($filters) {
+                foreach ($filters as $filter) {
+                    // Support both ['column' => value] and ['column', 'operator', 'value'] and ['column', 'value']
+                    if (is_array($filter) && count($filter) === 3) {
+                        [$column, $operator, $value] = $filter;
+                        $q->where($column, $operator, $value);
+                    } elseif (is_array($filter) && count($filter) === 2) {
+                        [$column, $value] = $filter;
+                        $q->where($column, $value);
+                    } elseif (is_string($column = key($filter))) {
+                        $q->where($column, current($filter));
+                    }
+                }
+            });
+
+        return $this->getPagination($query);
     }
 
     public function getNextPeriod($idBooking): ?string {

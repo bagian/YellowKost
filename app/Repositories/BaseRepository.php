@@ -26,7 +26,7 @@ abstract class BaseRepository
     }
 
     protected function getPagination($queryBuilder = null, int $perPage = 10, array $columns = ['*'], string $pageName = 'page', string $orderBy = 'asc', ?int $page = null): LengthAwarePaginator {
-        $builder = $queryBuilder ?? (new $this->model)->newQuery();
+        $builder = $queryBuilder ?? $this->model->newQuery();
 
         return $builder->orderBy('created_at', $orderBy)->paginate($perPage, $columns, $pageName, $page);
     }

@@ -4,12 +4,13 @@ namespace App\Repositories\Interface;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 interface PaymentRepositoryInterface
 {
     public function all(): Collection;
 
-    public function get(): Collection;
+    public function get(array $with = [], array $where = []): LengthAwarePaginator;
 
     public function getNextPeriod($idBooking): ?string;
 

@@ -113,7 +113,7 @@ class PaymentsController extends Controller
     public function history()
     {
         $id_booking = $this->bookingRepository->getUserBooking(auth()->user()->id, ['confirmed'])->first();
-        $history = $this->paymentRepository->setFilters(['id_booking' => $id_booking])->get(['payMethod', 'booking.room']);
+        $history = $this->paymentRepository->get(with: ['payMethod', 'booking.room'], where: ['id_booking' => $id_booking]);
         return view('pages.paymentHistory._payHistory', ['history' => $history]);
     }
 
