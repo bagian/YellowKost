@@ -1,4 +1,26 @@
 @extends('default')
+
+@push('styles')
+<style>
+    /* Animasi Simpel agar munculnya halus */
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in-down {
+        animation: fadeInDown 0.3s ease-out forwards;
+    }
+</style>
+@endpush
+
 @section('content')
 @include ('components._breadcrumbLink')
 <div class="flex flex-col justify-center max-w-7xl p-4 pt-20 mx-auto">
@@ -42,7 +64,7 @@
                                     d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
                                 </path>
                             </svg>
-                            <span>Ubah Data</span>
+                            <span>Manajemen Kamar</span>
                         </button>
                         {{-- ----------------------------------------------------------------------- --}}
                         {{-- -- Button Close Form-- --}}
@@ -103,145 +125,10 @@
                             </div>
                         </div>
                     </div>
-                    {{--
-                    <hr class="mb-8 border-gray-100 dark:border-gray-700"> --}}
-
                     {{-- ----------------------------------------------------------------------- --}}
-                    {{-- -- FORM INPUT (Disabled by Default)-- --}}
+                    {{-- -- FORM INPUT PENYEWA KAMAR (Disabled by Default)-- --}}
                     {{-- ----------------------------------------------------------------------- --}}
-                    <fieldset id="form-fieldset" disabled class="border-t border-gray-700">
-                        <div class="grid grid-cols-1 gap-6 pt-5 md:grid-cols-2">
-                            <div class="md:col-span-2">
-                                <label class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">Pilih
-                                    Kamar</label>
-                                <div class="relative">
-                                    <select name="id_room" id="input_id_room"
-                                        class="w-full p-3 text-gray-600 transition-all duration-200 bg-gray-500 border border-gray-300 cursor-pointer rounded-xl focus:outline-none focus:border-yellow-500 focus:ring-yellow-200 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">
-                                        <option value="">-- Pilih Kamar --</option>
-                                        @foreach($room as $r)
-                                        <option value="{{ $r->id }}">{{ $r->room_name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <span
-                                        class="absolute right-0 z-10 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
-                                        <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="currentColor"
-                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                    </span>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">Nama
-                                    Lengkap</label>
-                                <input type="text" name="full_name" id="input_tenant"
-                                    class="w-full p-3 text-gray-600 transition-all duration-200 bg-gray-500 border border-gray-300 rounded-xl focus:outline-none focus:border-yellow-500 focus:ring-yellow-200 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">
-                            </div>
-                            <div>
-                                <label class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">Nomor KTP
-                                    / NIK</label>
-                                <input type="text" name="nik" id="input_nik"
-                                    class="w-full p-3 text-gray-600 transition-all duration-200 bg-gray-500 border border-gray-300 rounded-xl focus:outline-none focus:border-yellow-500 focus:ring-yellow-200 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">
-                            </div>
-                            <div>
-                                <label class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">No. HP
-                                    Penyewa</label>
-                                <input type="text" name="phone" id="input_phone"
-                                    class="w-full p-3 text-gray-600 transition-all duration-200 bg-gray-500 border border-gray-300 rounded-xl focus:outline-none focus:border-yellow-500 focus:ring-yellow-200 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">
-                            </div>
-                            <div>
-                                <label class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">No. HP
-                                    Orang Tua</label>
-                                <input type="text" name="parent_phone" id="input_parent_phone"
-                                    class="w-full p-3 text-gray-600 transition-all duration-200 bg-gray-500 border border-gray-300 rounded-xl focus:outline-none focus:border-yellow-500 focus:ring-yellow-200 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">
-                            </div>
-                            <div>
-                                <label class="block mb-2 text-sm font-semibold text-gray-900 dark:text-white">Tanggal
-                                    Masuk</label>
-                                <input type="date" name="check_in" id="input_check_in" onclick="this.showPicker()"
-                                    class="w-full p-3 text-gray-600 transition-all duration-200 bg-gray-500 border border-gray-300 cursor-pointer rounded-xl focus:outline-none focus:border-yellow-500 focus:ring-yellow-200 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">
-                            </div>
-                            <div>
-                                <div class="grid grid-cols-2 gap-3">
-                                    <div>
-                                        <label class="block mb-2 text-sm font-medium text-gray-700 dark:text-white">
-                                            Status Pengajuan Sewa
-                                        </label>
-                                        <div class="relative">
-                                            <select name="status" id="input_status"
-                                                class="w-full p-3 text-gray-600 transition-all duration-200 bg-gray-500 border border-gray-300 cursor-pointer rounded-xl focus:outline-none focus:border-yellow-500 focus:ring-yellow-200 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">
-                                                <option value="" disabled selected hidden>
-                                                    <span class="text-xs">
-                                                        -- Pengajuan --
-                                                    </span>
-                                                </option>
-                                                <option value="confirmed">
-                                                    Diterima
-                                                </option>
-                                                <option value="cancelled">
-                                                    Ditolak (Refund)
-                                                </option>
-                                            </select>
-                                            <span
-                                                class="absolute right-0 z-10 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
-                                                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396"
-                                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label class="block mb-2 text-sm font-medium text-gray-700 dark:text-white">
-                                            Status Pembayaran
-                                        </label>
-                                        <div class="relative">
-                                            <select name="payment_status" id="input_payment_status"
-                                                class="w-full p-3 text-gray-600 transition-all duration-200 bg-gray-500 border border-gray-300 cursor-pointer rounded-xl focus:outline-none focus:border-yellow-500 focus:ring-yellow-200 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300">
-                                                <option value="" disabled selected hidden>
-                                                    -- Pembayaran --
-                                                </option>
-                                                <option value="paid">
-                                                    Lunas
-                                                </option>
-                                                <option value="dp">
-                                                    DP
-                                                </option>
-                                                <option value="not_paid">
-                                                    Belum Lunas
-                                                </option>
-                                            </select>
-                                            <span
-                                                class="absolute right-0 z-10 block pr-3 -translate-y-1/2 cursor-pointer top-1/2 dark:text-gray-400">
-                                                <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20"
-                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396"
-                                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                    {{-- ----------------------------------------------------------------------- --}}
-                    {{-- -- Tombol Simpan (Hidden Awal)-- --}}
-                    {{-- ----------------------------------------------------------------------- --}}
-                    <div id="btn-save-container" class="hidden pt-6 mt-8 border-t border-gray-100 dark:border-gray-700">
-                        <button type="submit"
-                            class="flex items-center justify-center w-full gap-2 px-6 py-4 font-bold text-black transition-all transform bg-yellow-400 shadow-lg hover:bg-yellow-500 rounded-xl active:scale-95">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Simpan Perubahan
-                        </button>
-                    </div>
+                    @include('pages.form-penyewa.partials._fieldsetForm')
                 </div>
             </div>
         </form>
@@ -301,6 +188,28 @@
     </div>
 </div>
 @push('scripts')
+
+<script>
+    // Button Spinner Loading
+    $(document).ready(function() {
+    // Definisi Elemen
+    const $form = $('#penyewa-form');
+    const $btnSubmit = $('#btn-submit-penyewa');
+    const $textNormal = $('#btn-text-normal');
+    const $textLoading = $('#btn-text-loading');
+    if ($form.length > 0) {
+        $form.on('submit', function(e) {
+            if (!this.checkValidity()) {
+                return;
+            }
+            $btnSubmit.prop('disabled', true);
+            $textNormal.addClass('hidden');
+            $textLoading.removeClass('hidden').addClass('flex');
+        });
+    }
+});
+</script>
+
 <script>
     $(document).ready(function() {
         $('.form-detail').hide();
@@ -499,7 +408,7 @@
         // Kembalikan Tombol Toggle ke default
         btnToggle.innerHTML = `
             <svg class="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-            <span class="text-yellow-700">Ubah Data</span>
+            <span class="text-yellow-700">Manajemen Kamar</span>
         `;
         btnToggle.classList.remove('border-red-200', 'bg-red-50');
     }
@@ -516,6 +425,31 @@
             // selectElement.value = "";
         }
     }
+</script>
+
+<script>
+    {{--  function toggleRejectionReason(selectElement) {
+        const rejectionContainer = document.getElementById('rejection-container');
+        const rejectionInput = document.getElementById('input_rejection_note');
+
+        if (selectElement.value === 'cancelled') {
+            rejectionContainer.classList.remove('hidden');
+            rejectionInput.setAttribute('required', 'required');
+            setTimeout(() => rejectionInput.focus(), 100);
+        } else {
+            rejectionContainer.classList.add('hidden');
+            rejectionInput.removeAttribute('required');
+            rejectionInput.value = '';
+        }
+    }  --}}
+
+    // Tambahan: Pastikan saat mode Edit dibuka, cek status awal (jika data lama statusnya rejected)
+    // Panggil fungsi ini di dalam fungsi toggleEditMode() Anda yang sudah ada
+    {{--  function checkInitialStatus() {
+        const statusSelect = document.getElementById('input_status');
+        toggleRejectionReason(statusSelect);
+    }  --}}
+
 </script>
 @endpush
 @endsection

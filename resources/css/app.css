@@ -267,78 +267,178 @@ input[type="number"] {
 /* ========================================= */
 /* CSS KHUSUS PRINT Bukti Pembayaran Finish */
 /* ========================================= */
+
+.print-date-time {
+    display: none;
+}
+.invoice-header {
+    display: none;
+}
+/* Sembunyikan gambar background di tampilan web biasa */
+.print-bg-image,
+.invoice-footer {
+    display: none;
+}
 @media print {
-    body,
-    html {
-        background-color: white !important;
-        margin: 0 !important;
-        padding: 0 !important;
+    .invoice-header {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        padding: 40px !important;
+        margin-top: -4rem !important;
+    }
+    .invoice-header .header-logo img {
+        height: 50px !important;
+        object-fit: cover !important;
+    }
+    .header-info-wrapper {
+        margin-bottom: 20px;
+        margin-top: 10px;
     }
 
-    nav,
-    footer,
-    header,
-    aside,
-    .no-print,
-    .bg-pattern,
-    .bg-green-600 {
-        display: none !important;
+    .info-table {
+        border-collapse: collapse;
+        width: auto;
     }
 
-    /* Tampilkan Struk */
-    #receipt-card,
-    #receipt-card * {
-        visibility: visible !important;
+    .info-table td {
+        padding: 1px 0;
+        vertical-align: top;
+        font-size: 12px;
+        color: #1f2937; /* text-gray-800 */
+    }
+    .info-table .label {
+        white-space: nowrap;
+        padding-right: 10px;
+        color: #6b7280; /* text-gray-500 */
     }
 
-    /* --- PENGATURAN UKURAN & POSISI (INI KUNCINYA) --- */
-    #receipt-card {
-        /* 1. Atur Lebar Maksimal (Biar tidak lebar satu kertas) */
-        width: 100% !important;
-        max-width: 450px !important;
-        /* <-- Ganti angka ini jika mau lebih kecil/besar */
-
-        /* 2. Posisikan di Tengah Kertas Secara Horizontal */
-        position: absolute !important;
-        left: 50% !important;
-        top: 50px !important;
-        /* Jarak dari atas kertas */
-        transform: translateX(-50%) !important;
-        /* Teknik centering absolute */
-
-        /* 3. Rapikan Padding & Border */
-        margin: 0 !important;
-        padding: 0 !important;
-        border: 1px solid #ccc !important;
-        /* Beri garis tepi tipis agar terlihat batasnya */
-        border-radius: 12px !important;
-        box-shadow: none !important;
-        background-color: white !important;
+    .info-table .separator {
+        width: 20px;
+        text-align: center;
+        padding-right: 5px;
     }
 
-    #receipt-card h2 {
-        font-size: 20px !important;
-        margin-bottom: 5px !important;
+    .info-table .value {
+        text-align: left;
     }
-
-    #receipt-card p {
+    .invoice-header .header-contact {
+        display: flex !important;
+        flex-direction: column !important;
+        color: #1f2937 !important;
+        font-weight: 500 !important;
+        align-items: end !important;
         font-size: 12px !important;
     }
 
-    #receipt-card .text-3xl {
-        font-size: 24px !important;
+    .print-date-time {
+        display: grid !important;
+        grid-template-columns: repeat(2, auto) !important;
+        justify-content: space-between !important;
+        padding: 30px !important;
+        font-size: 12px !important;
     }
 
-    #receipt-card p,
-    #receipt-card h2,
-    #receipt-card span,
-    #receipt-card div {
-        color: black !important;
-        -webkit-text-fill-color: black !important;
+    /* RESET HALAMAN */
+    @page {
+        margin: 0;
+        padding: 0;
+        size: auto;
     }
 
-    .pt-16 {
-        padding-top: 30px !important;
+    body,
+    html {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .print-bg-image {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 15;
+    }
+
+    nav,
+    header,
+    footer,
+    .no-print-buttons,
+    aside {
+        display: none !important;
+    }
+
+    /* POSISI CARD (STRUK) */
+    .print-section {
+        position: relative !important;
+        padding-top: 50px !important; /* Reset padding bawaan */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important; /* Tengah vertikal */
+        z-index: 10;
+        transform: scale(0.9) !important;
+    }
+
+    #receipt-card {
+        width: 100% !important;
+        max-width: 400px !important;
+        background-color: #ffffff !important; /* Card tetap putih agar tulisan terbaca */
+        border: 1px solid #e5e7eb !important; /* Border tipis pengganti shadow */
+        box-shadow: none !important;
+    }
+
+    /* Paksa Warna Header Hijau */
+    .bg-green-600 {
+        background-color: #16a34a !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    /* Warna Teks */
+    .text-gray-900 {
+        color: #111827 !important;
+    }
+    .text-gray-500 {
+        color: #6b7280 !important;
+    }
+    .text-white {
+        color: #ffffff !important;
+    }
+
+    /* FOOTER */
+    .invoice-footer {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr; /* Kiri Kanan */
+        gap: 20px;
+        align-items: end;
+
+        position: fixed; /* Tempel di bawah kertas */
+        bottom: 40px;
+        left: 40px;
+        right: 40px;
+
+        font-size: 12px;
+        color: #1f2937;
+        z-index: 10;
+    }
+
+    /* Layout Footer Kiri */
+    .footer-note p {
+        margin: 0;
+        color: #4b5563;
+        line-height: 1.4;
+    }
+
+    /* Layout Footer Kanan */
+    .footer-sign {
+        display: flex;
+        justify-content: flex-end;
+        text-align: right;
+        font-weight: 600;
     }
 }
 

@@ -53,9 +53,7 @@
         </tbody>
     </table>
 </div>
-{{-- ------------------------------------- --}}
 {{-- PAGINATION --}}
-{{-- ------------------------------------- --}}
 <div
     class="flex flex-col items-center justify-between py-5 border-t border-gray-200 md:flex-row dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800 p-4">
     <span class="block mb-4 text-sm text-gray-700 dark:text-gray-400 md:mb-0">

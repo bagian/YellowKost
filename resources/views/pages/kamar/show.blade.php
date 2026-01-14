@@ -6,7 +6,7 @@
 @section('content')
 <!-- ====== Form Elements Section Start -->
 @include ('components._breadcrumbLink')
-<div class="flex flex-col justify-center max-w-7xl pt-24 mx-auto">
+<div class="flex flex-col justify-center max-w-7xl pt-24 mx-auto p-4">
     <div class="w-full max-w-7xl mx-auto">
         <div class="pb-8">
             <h1 class="text-3xl font-bold text-gray-900">Edit <span class="text-yellow-500">

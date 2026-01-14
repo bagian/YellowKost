@@ -1,4 +1,4 @@
-<nav class="fixed z-10 flex w-full p-6 pb-3 border-b border-gray-300 backdrop-blur-md bg-white/50"
+<nav class="fixed z-40 flex w-full p-6 pb-3 border-b border-gray-300 backdrop-blur-md bg-white/80"
     aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
         <li class="inline-flex items-center">
@@ -25,25 +25,22 @@
         @endphp
         <li>
             <div class="flex items-center">
-                <!-- Icon Panah -->
                 <svg class="w-3 h-3 mx-1 text-gray-500 rtl:rotate-180" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="m1 9 4-4-4-4" />
                 </svg>
-
                 @if(!$isLast)
                 <a href="{{ url($url) }}" class="text-sm font-medium text-gray-900 ms-1 md:ms-2 hover:text-gray-800">
                     {{ $name }}
                 </a>
                 @else
-                <span class="text-sm font-medium text-gray-900 ms-1 md:ms-2">
+                <span class="text-sm font-medium text-gray-400 ms-1 md:ms-2">
                     {{ $name }}
                 </span>
                 @endif
             </div>
         </li>
         @endforeach
-
     </ol>
 </nav>

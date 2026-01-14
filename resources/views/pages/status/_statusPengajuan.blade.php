@@ -54,7 +54,6 @@
         {{-- ------------------------------------------------------------------ --}}
         <div class="p-6 md:p-8">
             <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-
                 <!-- Kolom Kiri: Detail Data -->
                 <div class="description-container space-y-6 md:col-span-2">
                     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -87,21 +86,23 @@
                 {{-- Kolom Kanan: Status Visual --}}
                 {{-- ------------------------------------------------------------------------ --}}
                 <div
-                    class="items-center justify-center hidden p-6 border border-gray-100 md:flex bg-gray-50 dark:bg-gray-700/30 rounded-2xl dark:border-gray-700">
-                    <div class="visual-container text-center">
-                        <div class="pb-6">
+                    class="hidden md:flex flex-col items-center justify-start p-6 border border-gray-100 bg-gray-50 dark:bg-gray-700/30 rounded-2xl dark:border-gray-700 h-fit sticky top-6">
+
+                    <div class="visual-container text-center w-full">
+                        <div class="pb-6 whitespace-nowrap">
                             <span
-                                class="p-3 px-4 font-bold border border-gray-100 rounded-full dark:bg-gray-700/80 dark:border-gray-700">Status
-                                Pengajuan Anda</span>
+                                class="p-3 px-4 font-bold border border-gray-100 rounded-full dark:bg-gray-700/80 dark:border-gray-700 text-sm">
+                                Status Pengajuan Anda
+                            </span>
                         </div>
 
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
     @endif
-
     {{-- ---------------------------------------------------------------------- --}}
     {{-- SECTION 2: RIWAYAT PENGAJUAN --}}
     {{-- ---------------------------------------------------------------------- --}}
@@ -194,7 +195,7 @@
                 </div>
                 <div class="ml-3">
                     <p class="text-sm text-green-700 dark:text-green-300">
-                        Selamat! Pengajuan diterima. Silakan hubungi admin atau cek menu tagihan.
+                        Selamat! Pengajuan diterima. Silakan hubungi admin atau cek menu Pembayaran.
                     </p>
                 </div>
             </div>

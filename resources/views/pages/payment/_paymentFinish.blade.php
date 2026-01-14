@@ -1,7 +1,39 @@
 @extends('default')
 @section('content')
-<section class="flex flex-col items-center justify-center pt-20">
-    <div class="w-full max-w-md bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden relative ">
+
+<div class="invoice-header">
+    <div class="header-logo">
+        <img src="{{ asset('img_handler/logo/yellowkost_logo.png') }}" alt="YellowKost Logo">
+        <div class="header-info-wrapper">
+            <table class="info-table">
+                <tbody>
+                    <tr>
+                        <td class="label">Perihal</td>
+                        <td class="separator">:</td>
+                        <td class="value font-bold">Bukti Pembayaran</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Tanggal</td>
+                        <td class="separator">:</td>
+                        <td class="value">
+                            {{ now()->setTimezone('Asia/Jakarta')->translatedFormat('d M Y, H:i') }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="header-contact">
+        <span>Telp: +62 812-3456-7890</span>
+        <span>info@yellowkost.com</span>
+        <span>yellowkost.com</span>
+    </div>
+</div>
+<img src="{{ asset('img_handler/print/print_bg_finished_simple.png') }}" class="print-bg-image" alt="Print Background">
+<section class="flex flex-col items-center justify-center pt-20 print-section">
+    <div class="w-full max-w-md bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden relative"
+        id="receipt-card">
+
         <div class="bg-green-600 h-32 w-full absolute top-0 left-0 z-0">
             <svg class="absolute inset-0 h-full w-full opacity-10" xmlns="http://www.w3.org/2000/svg">
                 <pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -24,7 +56,6 @@
 
             <div
                 class="mt-8 bg-gray-50 dark:bg-gray-700/50 rounded-xl border border-gray-200 dark:border-gray-600 p-5 text-left">
-
                 <div
                     class="flex flex-col items-center justify-center border-b border-dashed border-gray-300 dark:border-gray-500 pb-5 mb-5">
                     <span class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total
@@ -33,32 +64,28 @@
                         Rp {{ number_format($transaction->amount ?? 0, 0, ',', '.') }}
                     </span>
                 </div>
-
                 <div class="space-y-3 text-sm">
                     <div class="flex justify-between">
                         <span class="text-gray-500 dark:text-gray-400">Order ID</span>
                         <span class="font-medium text-gray-900 dark:text-white font-mono">{{ $transaction->order_id ??
-                            '-'
-                            }}</span>
+                            '-' }}</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-gray-500 dark:text-gray-400">Tanggal</span>
-                        {{-- <span class="font-medium text-gray-900 dark:text-white">
-                            {{ \Carbon\Carbon::parse($transaction->created_at)->translatedFormat('d M Y, H:i') }}
-                        </span> --}}
+                        <span class="font-medium text-gray-900 dark:text-white">
+                            {{ \Carbon\Carbon::now()->setTimezone('Asia/Jakarta')->translatedFormat('d M Y, H:i') }}
+                        </span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-gray-500 dark:text-gray-400">Metode</span>
-                        <span class="font-medium text-gray-900 dark:text-white uppercase">
-                            {{ $transaction->payment_type ?? 'Bank Transfer' }}
-                        </span>
+                        <span class="font-medium text-gray-900 dark:text-white uppercase">{{ $transaction->payment_type
+                            ?? 'Bank Transfer' }}</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-gray-500 dark:text-gray-400">Status</span>
                         <span
-                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
-                            Lunas / Settled
-                        </span>
+                            class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Lunas
+                            / Settled</span>
                     </div>
                 </div>
             </div>
@@ -67,14 +94,13 @@
                 Simpan bukti pembayaran ini sebagai transaksi yang sah
             </p>
 
-            <div class="mt-8 flex flex-col gap-3">
+            <div class="mt-8 flex flex-col gap-3 no-print-buttons">
                 <a href="{{ route('dashboard') }}"
-                    class="w-full inline-flex justify-center items-center px-4 py-3 border border-transparent rounded-xl shadow-sm text-sm font-semibold text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-0  focus:ring-green-500 transition-all">
+                    class="w-full inline-flex justify-center items-center px-4 py-3 border border-transparent rounded-xl shadow-sm text-sm font-semibold text-white bg-green-600 hover:bg-green-700 transition-all">
                     Kembali ke Dashboard
                 </a>
-
-                <button onclick="window.print()"
-                    class="w-full inline-flex justify-center items-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm text-sm font-semibold text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none transition-all no-print">
+                <button onclick="printReceipt()"
+                    class="w-full inline-flex justify-center items-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm text-sm font-semibold text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-700 transition-all">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z">
@@ -83,8 +109,37 @@
                     Cetak Bukti
                 </button>
             </div>
-
         </div>
     </div>
 </section>
+
+<div class="invoice-footer">
+    <div class="footer-note">
+        <p>
+            Invoice ini sah dan sudah diproses untuk booking kamar kost.<br>
+            Silakan hubungi pihak <strong>Pengelola</strong> jika terjadi kendala.
+        </p>
+    </div>
+    <div class="footer-sign">
+        <span>Terima kasih telah mempercayai kami.</span>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+    function printReceipt() {
+        const originalTitle = document.title;
+        const orderId = "{{ $transaction->order_id ?? 'INV-XXXX' }}";
+        document.title = `Bukti Pembayaran - ${orderId}`;
+        window.print();
+        setTimeout(() => {
+            document.title = originalTitle;
+        }, 1000);
+    }
+
+    window.onafterprint = function() {
+        document.title = "{{ $pageTitle ?? 'Dashboard' }}";
+    };
+</script>
+@endpush
 @endsection

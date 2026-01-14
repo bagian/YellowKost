@@ -16,11 +16,12 @@
                         </path>
                     </svg>
                 </button>
-                <a href="{{ route('dashboard') }}" class="flex items-center pl-4 space-x-3 rtl:space-x-reverse">
+                <a href="{{ route('dashboard') }}"
+                    class="flex items-center pl-4 space-x-3 rtl:space-x-reverse hidden md:block">
                     <div
-                        class="flex items-center self-center gap-2 text-2xl font-semibold whitespace-nowrap dark:text-yellow-500">
-                        <span class="bg-[#f3c610] p-2 rounded-xl">
-                            <svg class="w-6 h-6 text-yellow-100 md:w-8 md:h-8" xmlns="http://www.w3.org/2000/svg"
+                        class="flex items-center self-center gap-2 text-2xl font-semibold whitespace-nowrap dark:text-yellow-400">
+                        <span class="bg-[#f3c610] p-2 rounded-lg">
+                            <svg class="w-6 h-6 text-yellow-50 md:w-7 md:h-7" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 140 140.00201412747876">
                                 <g transform="translate(-15.712888556813203, -15.710884238396837) scale(1.7142579019237627)"
                                     class="css-1mun45u" fill="currentColor">

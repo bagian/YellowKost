@@ -103,6 +103,10 @@
     {{-- ------------------------------------- --}}
     {{-- -- End Recent Activity --}}
     {{-- ------------------------------------- --}}
+
+    <section>
+        @include('partials.dashboardUser._dashUser')
+    </section>
 </div>
 @push('scripts')
 <script>
