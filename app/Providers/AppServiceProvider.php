@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\BaseRepository;
+use App\Repositories\Interface\BaseRepositoryInterface;
 use App\Repositories\Interface\JournalRepositoryInterface;
 use App\Repositories\Interface\ActivityRepositoryInterface;
 use App\Repositories\Interface\PaymentRepositoryInterface;
@@ -30,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+        $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
         $this->app->bind(RoomRepositoryInterface::class, RoomRepository::class);
         $this->app->bind(TenantRepositoryInterface::class, TenantRepository::class);
         $this->app->bind(BookingRepositoryInterface::class, BookingRepository::class);

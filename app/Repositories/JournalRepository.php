@@ -25,14 +25,6 @@ class JournalRepository extends BaseRepository implements JournalRepositoryInter
         $this->paymentRepository = $paymentRepository;
     }
 
-    public function all(): Collection {
-        return $this->model::all();
-    }
-
-    public function get(): Collection {
-        return $this->model::get();
-    }
-
     public function report($period): Collection {
         $payments = DB::table('payments')
             ->join('bookings', 'payments.id_booking', '=', 'booking.id')
@@ -68,16 +60,6 @@ class JournalRepository extends BaseRepository implements JournalRepositoryInter
             return $this->paymentRepository->create($data);
         }
 
-        return $this->transaction(function() use ($data): Model {
-            $dataUser = $data;
-
-            $model = new $this->model;
-
-            $model = $this->fillModel($model, $data);
-
-            $model->save();
-
-            return $model;
-        });
+        return parent::create($data);
     }
 }

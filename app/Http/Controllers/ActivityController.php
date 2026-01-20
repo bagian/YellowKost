@@ -18,7 +18,7 @@ class ActivityController extends Controller
      */
     public function index(Request $request)
     {
-        $activity = $this->activityRepository->get();
+        $activity = $this->activityRepository->get(with: ['user', 'room']);
         $activity->getCollection()->transform(function ($activity) {
             return (new ActivityResource($activity))->resolve();
         });

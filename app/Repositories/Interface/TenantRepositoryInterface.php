@@ -7,18 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Laravel\Socialite\Contracts\User as SocialUserContract;
 
-interface TenantRepositoryInterface
+interface TenantRepositoryInterface extends BaseRepositoryInterface
 {
-    public function all(): Collection;
-
-    public function find($id): ?Model;
-
-    public function create(array $data): Model;
-
-    public function update(Model $model, array $data): Model;
-
-    public function delete(Model $model): Model;
-
     public function socialHandler(SocialUserContract $data, string $provider): Model;
 
     public function linkSocial(Model $model, array $data): Model;

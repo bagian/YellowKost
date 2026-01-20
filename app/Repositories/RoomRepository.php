@@ -24,10 +24,6 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
         return Room::class;
     }
 
-    public function all(): Collection {
-        return $this->model::all();
-    }
-
     public function available(): Collection {
         $room = Room::where('is_available', true)->get();
 
@@ -54,16 +50,6 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
         $model->save();
 
         return $model;
-    }
-
-    public function create(array $data): Model {
-        return $this->transaction(function() use ($data): Model {
-            $model = new $this->model;
-            $model = $this->fillModel($model, $data);
-            $model->save();
-
-            return $model;
-        });
     }
 
     public function createWithPictures(array $data, array $pictures = []): Model {

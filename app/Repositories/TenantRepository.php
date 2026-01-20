@@ -25,10 +25,6 @@ class TenantRepository extends BaseRepository implements TenantRepositoryInterfa
         return User::class;
     }
 
-    public function all(): Collection {
-        return $this->model::all();
-    }
-
     public function create(array $data): Model {
         return $this->transaction(callback: function() use ($data) {
             $user = new User();

@@ -15,7 +15,7 @@ class HomepageController extends Controller
 
     public function index()
     {
-        $testimonials = $this->testimonialRepository->get();
+        $testimonials = $this->testimonialRepository->get(with: ['user']);
         return view('landingpage._maincontent', ['testimonials' => $testimonials]);
     }
 }

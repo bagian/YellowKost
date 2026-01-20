@@ -108,7 +108,12 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $booking = $this->bookingRepository->get();
+        $booking = $this->bookingRepository->get(
+            with: ['user'], 
+            filters: [
+                ['status' => 'pending']
+            ]
+        );
         $room = $this->roomRepository->available();
 
         return view('pages.form-penyewa.forminputs', compact('booking', 'room'));

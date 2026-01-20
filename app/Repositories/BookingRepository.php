@@ -30,15 +30,6 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
         $this->imageService = $imageService;
     }
 
-    public function all(): Collection {
-        return $this->model::all();
-    }
-
-    public function get(): LengthAwarePaginator {
-        $data = $this->model::where('status', 'pending')->with('user');
-        return $this->getPagination($data);
-    }
-
     public function getUserBooking($idUser, array $status = [], array $with = []): LengthAwarePaginator {
         $page = 10;
         if ($idUser == null) {
@@ -132,11 +123,5 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
 
             return $model;
         });
-    }
-
-    public function delete(Model $model): Model {
-        $model->delete();
-
-        return $model;
     }
 }

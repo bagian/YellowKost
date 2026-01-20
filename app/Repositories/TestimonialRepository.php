@@ -26,37 +26,7 @@ class TestimonialRepository extends BaseRepository implements TestimonialReposit
         $this->tenantRepository = $tenantRepository;
     }
 
-    public function all(): Collection {
-        return $this->model::all();
-    }
-
-    public function get(): Collection {
-        return $this->model::with('user')->get();
-    }
-
     public function getByUser($idUser): Collection {
         return $this->model::where('id_user', $idUser)->with('user')->get();
-    }
-
-    public function create(array $data): Model {
-        return $this->transaction(function() use ($data): Model {
-            $model = new $this->model;
-
-            $model = $this->fillModel($model, $data);
-
-            $model->save();
-
-            return $model;
-        });
-    }
-
-    public function update(Model $model, array $data): Model {
-        return $this->transaction(function() use ($model, $data): Model {
-            $model = $this->fillModel($model, $data);
-
-            $model->save();
-
-            return $model;
-        });
     }
 }

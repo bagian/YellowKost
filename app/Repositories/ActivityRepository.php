@@ -20,37 +20,4 @@ class ActivityRepository extends BaseRepository implements ActivityRepositoryInt
     public function __construct() {
         parent::__construct();
     }
-
-    public function all(): Collection {
-        return $this->model::all();
-    }
-
-    public function get(): LengthAwarePaginator {
-        $query = $this->model::with('user', 'room');
-        return $this->getPagination($query);
-    }
-
-    public function create(array $data): Model {
-        return $this->transaction(function() use ($data): Model {
-            $dataUser = $data;
-
-            $model = new $this->model;
-
-            $model = $this->fillModel($model, $data);
-
-            $model->save();
-
-            return $model;
-        });
-    }
-
-    public function update(Model $model, array $data): Model {
-        return $this->transaction(function() use ($model, $data): Model {
-            $model = $this->fillModel($model, $data);
-
-            $model->save();
-
-            return $model;
-        });
-    }
 }
