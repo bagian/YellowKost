@@ -49,7 +49,8 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
                 1
             );
         }
-        $query = $this->model::where('id_user', $idUser);
+        $query = $this->model->newQuery();
+        $query = $query->where('id_user', $idUser);
 
         if (!empty($status)) {
             $query->whereIn('status', $status);
@@ -60,6 +61,21 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
         }
 
         return $this->getPagination($query, orderBy: 'desc');
+    }
+
+    public function getActiveBooking($idUser, array $status = ['confirmed'], array $with = []): ?Model {
+        $query = $this->model->newQuery();
+        $query = $query->where('id_user', $idUser);
+
+        if (!empty($status)) {
+            $query->whereIn('status', $status);
+        }
+
+        if (!empty($with)) {
+            $query->with($with);
+        }
+
+        return $query->orderBy('created_at', 'desc')->first();
     }
 
     public function confirmedBookings(): Collection {

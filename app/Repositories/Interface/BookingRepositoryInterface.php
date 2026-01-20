@@ -14,6 +14,8 @@ interface BookingRepositoryInterface
 
     public function getUserBooking($idUser, array $status = [], array $with = []): LengthAwarePaginator;
 
+    public function getActiveBooking($isUser, array $status = ['confirmed'], array $with = []): ?Model;
+
     public function find($id, array $with = []): ?Model;
 
     public function confirmedBookings(): Collection;

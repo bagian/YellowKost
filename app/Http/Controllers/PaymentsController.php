@@ -7,6 +7,7 @@ use App\Repositories\Interface\PaymentRepositoryInterface;
 use App\Services\MidtransService;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 use LengthException;
 use Ramsey\Collection\Collection;
 
@@ -116,11 +117,14 @@ class PaymentsController extends Controller
         // return view('pages.uploadBukti.error');
     }
 
-    public function history()
+    public function history(Request $request)
     {
-        $id_booking = $this->bookingRepository->getUserBooking(auth()->user()->id, ['confirmed'])->first();
-        // $history = $this->paymentRepository->get(with: ['payMethod', 'booking.room'], filters: ['id_booking' => $id_booking]);
-        $history = new LengthAwarePaginator([], 0, 10);
+        $id_booking = $this->bookingRepository->getActiveBooking(Auth::user()->id);
+        $history = $this->paymentRepository->get(
+            with: ['payMethod', 'booking.room'], 
+            filters: [
+                ['id_booking' => $id_booking->id]
+            ]);
         return view('pages.paymentHistory._payHistory', ['history' => $history]);
     }
 

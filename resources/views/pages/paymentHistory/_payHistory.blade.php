@@ -56,7 +56,7 @@
                         <tr
                             class="text-white transition-all duration-300 ease-in-out bg-white border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-800 hover:text-gray-300">
                             <td class="px-6 py-4">
-                                {{ $loop->iteration }}.
+                                {{ $loop->iteration + $history->firstItem() - 1 }}.
                             </td>
                             <td class="px-6 py-4">
                                 {{ $row->booking->room->room_name }}

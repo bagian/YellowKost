@@ -10,7 +10,7 @@ interface PaymentRepositoryInterface
 {
     public function all(): Collection;
 
-    public function get(array $with = [], array $where = []): LengthAwarePaginator;
+    public function get(array $with = [], array $filters = []): LengthAwarePaginator;
 
     public function getNextPeriod($idBooking): ?string;
 
