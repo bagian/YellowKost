@@ -37,10 +37,9 @@
                                 <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-white">
                                     Harga Sewa Kamar
                                 </label>
-                                <input type="text" id="harga_sewa" placeholder="Harga Sewa" value="{{ $room->price }}"
+                                <input type="text" id="harga_sewa" name="price" placeholder="Harga Sewa" value="{{ $room->price_formatted }}"
                                     placeholder="Harga Sewa" inputmode="numeric"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                <input type="number" name="price" hidden value="{{ $room->price ?? ''}}">
                             </div>
                             <!-- Elements -->
                             <div class="col-span-1 mb-4 md:col-span-2">

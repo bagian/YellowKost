@@ -31,7 +31,7 @@ class PaymentRepository extends BaseRepository implements PaymentRepositoryInter
             $booking = $this->bookingRepository->find($idBooking, ['room']);
             $roomPeriod = $booking->room->period;
             if ($roomPeriod == 'month') {
-                return $booking->check_in->format('Y-m');
+                return $booking->check_in->format('F Y');
             } else if ($roomPeriod == 'year') {
                 return $booking->check_in->format('Y');
             }
@@ -42,7 +42,7 @@ class PaymentRepository extends BaseRepository implements PaymentRepositoryInter
 
         // If it's a monthly room (contains a dash)
         if (str_contains($lastPayment->period, '-')) {
-            return $date->addMonth()->format('Y-m');
+            return $date->addMonth()->format('F Y');
         }
 
         // If it's a yearly room

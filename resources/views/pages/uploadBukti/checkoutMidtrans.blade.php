@@ -38,9 +38,9 @@
                     Detail Sewa
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    @if(!empty($imageUrl))
-                    <img src="{{ $imageUrl }}" alt="Room Image"
-                        class="w-full sm:w-3h-36 sm:h-36 object-cover rounded-xl bg-gray-200">
+                    @if(!empty($booking->room->pictures->first()->url))
+                    <img src="{{ Storage::url($booking->room->pictures->first()->url) }}" alt="Room Image"
+                        class="w-3h-36 h-36 object-cover rounded-xl bg-gray-200">
                     @else
                     <div
                         class="w-full sm:w-36 sm:h-36 h-36 rounded-xl bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400">
@@ -55,10 +55,10 @@
                         {{-- INFORMASI KAMAR --}}
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col gap-1">
-                                <span class="text-xl font-bold text-gray-900 dark:text-white">Kamar VIP - A12</span>
+                                <span class="text-xl font-bold text-gray-900 dark:text-white">{{ $booking->room->room_name }}</span>
                                 <span class="text-md font-bold text-gray-900 dark:text-blue-500">
                                     <span>Rp</span>
-                                    <span>-</span>
+                                    <span>{{ number_format($booking->room->price, 0, ',', '.') }}</span>
                                 </span>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Free wifi • Full furnished • Dapur
                                     bersama
@@ -76,11 +76,21 @@
                                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
                                     </path>
                                 </svg>
+                                @if($booking->room->period === 'day')
+                                1 Hari
+                                @elseif($booking->room->period === 'month')
                                 1 Bulan
+                                @elseif($booking->room->period === 'year')
+                                1 Tahun
+                                @endif
                             </span>
                             <span
                                 class="inline-flex items-center px-3 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                                15 Jan 2026 - 15 Feb 2026
+                                @if($booking->room->period === 'month')
+                                    {{ now()->startOfMonth()->format('d F Y') }} - {{ now()->endOfMonth()->format('d F Y') }}
+                                @elseif($booking->room->period === 'year')
+                                    {{ now()->startOfYear()->format('d F Y') }} - {{ now()->endOfYear()->format('d F Y') }}
+                                @endif
                             </span>
                         </div>
                         {{-- ------------ --}}
@@ -104,15 +114,15 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-medium text-gray-500 uppercase">Nama Lengkap</label>
-                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">Budi Santoso</p>
+                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">{{ $booking->user->full_name }}</p>
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-gray-500 uppercase">Email</label>
-                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">budi@example.com</p>
+                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">{{ $booking->user->email }}</p>
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-gray-500 uppercase">Nomor HP</label>
-                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">0812-3456-7890</p>
+                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">{{ $booking->user->phone }}</p>
                     </div>
                 </div>
             </div>
@@ -124,11 +134,11 @@
                 <div class="space-y-3 mb-6">
                     <div class="flex justify-between text-sm text-gray-600 dark:text-gray-300">
                         <span>Periode Sewa</span>
-                        <span class="font-medium">-</span>
+                        <span class="font-medium">{{ $period }}</span>
                     </div>
                     <div class="flex justify-between text-sm text-gray-600 dark:text-gray-300">
                         <span>Tanggal Pembayaran</span>
-                        <span class="font-medium">-</span>
+                        <span class="font-medium">{{ now()->format('d F Y') }}</span>
                     </div>
                     <div class="flex justify-between text-sm text-gray-600 dark:text-gray-300">
                         <span>Biaya Sewa</span>
@@ -137,7 +147,7 @@
                                 Rp
                             </span>
                             <span class="font-medium">
-                                -
+                                {{ number_format($booking->room->price, 0, ',', '.') }}
                             </span>
                         </div>
                     </div>
@@ -149,7 +159,7 @@
                                 Rp
                             </span>
                             <span class="font-medium">
-                                -
+                                {{ number_format($booking->room->price, 0, ',', '.') }}
                             </span>
                         </div>
                     </div>

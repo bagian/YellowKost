@@ -10,7 +10,7 @@ interface BaseRepositoryInterface
 {
     public function all(): Collection;
 
-    public function get(array $with = [], array $filters = []): LengthAwarePaginator;
+    public function get(array $with = [], array $filters = [], string $orderBy = 'asc'): LengthAwarePaginator;
 
     public function find($id, array $with = []): ?Model;
 

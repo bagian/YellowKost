@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('period');
             $table->boolean('is_dp')->default(false);
             $table->foreignId('payment_method')->constrained('payment_methods')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('status')->default('pending');
+            $table->enum('status', ['pending', 'paid', 'failed'])->default('pending');
             $table->timestamps();
         });
     }

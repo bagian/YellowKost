@@ -26,12 +26,14 @@ class PaymentsController extends Controller
      */
     public function index()
     {
-        return view("pages.uploadBukti.checkoutMidtrans");
+        $booking = $this->bookingRepository->getActiveBooking(auth()->user()->id, with: ['user', 'room.pictures']);
+        $period = $this->paymentRepository->getNextPeriod($booking->id);
+        return view("pages.uploadBukti.checkoutMidtrans", ['booking' => $booking, 'period' => $period]);
     }
 
     public function checkout(Request $request)
     {
-        $booking = $this->bookingRepository->getUserBooking(auth()->user()->id, ['confirmed'], ['room', 'user'])->first();
+        $booking = $this->bookingRepository->getActiveBooking(auth()->user()->id, with: ['room', 'user']);
         $period = $this->paymentRepository->getNextPeriod($booking->id);
 
         $is_dp = false;
@@ -124,7 +126,9 @@ class PaymentsController extends Controller
             with: ['payMethod', 'booking.room'], 
             filters: [
                 ['id_booking' => $id_booking->id]
-            ]);
+            ],
+            orderBy: 'desc'
+        );
         return view('pages.paymentHistory._payHistory', ['history' => $history]);
     }
 

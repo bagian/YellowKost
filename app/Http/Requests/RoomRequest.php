@@ -23,7 +23,7 @@ class RoomRequest extends FormRequest
     {
         $rules = [
             'room_name' => ['required', 'string'],
-            'price' => ['required', 'integer'],
+            'price' => ['required', 'string'],
             'period' => ['required', 'in:day,month,year'],
             'pictures' => ['nullable'],
             'pictures.*' => ['image', 'max:10000'],

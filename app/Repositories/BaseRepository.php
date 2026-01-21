@@ -24,7 +24,7 @@ abstract class BaseRepository
         return $this->model::all();
     }
 
-    public function get(array $with = [], array $filters = []): LengthAwarePaginator
+    public function get(array $with = [], array $filters = [], string $orderBy = 'asc'): LengthAwarePaginator
     {
         /* -------------------------------------------------------------------------- */
         /*                            Example filters data                            */
@@ -53,7 +53,7 @@ abstract class BaseRepository
                 }
             });
 
-        return $this->getPagination($query);
+        return $this->getPagination($query, orderBy: $orderBy);
     }
 
     public function find($id, array $with = []): Model
@@ -119,5 +119,12 @@ abstract class BaseRepository
 
             throw $e;
         }
+    }
+
+    protected function priceToNumber(string $price): float {
+        $price = str_replace("Rp ", "", $price);
+        $price = str_replace(".", "", $price);
+        $price = str_replace(",", ".", $price);
+        return (float) $price;
     }
 }
