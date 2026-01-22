@@ -24,7 +24,12 @@ class PaymentRepository extends BaseRepository implements PaymentRepositoryInter
         return Payment::class;
     }
 
-    public function getNextPeriod($idBooking): ?string {
+    public function getNextPeriod($idBooking, bool $isDueDate = false): ?string {
+        $bookings = $this->bookingRepository->find($idBooking);
+        if ($bookings->status != "confirmed") {
+            return "-";
+        }
+    
         $lastPayment = $this->model::where('id_booking', $idBooking)->select('period')->orderBy('period', 'desc')->first();
 
         if (!$lastPayment) {
@@ -41,11 +46,17 @@ class PaymentRepository extends BaseRepository implements PaymentRepositoryInter
         $date = \Carbon\Carbon::parse($lastPayment->period);
 
         // If it's a monthly room (contains a dash)
-        if (str_contains($lastPayment->period, '-')) {
+        if (str_contains($lastPayment->period, '-') && !$isDueDate) {
             return $date->addMonth()->format('F Y');
+        } else if (str_contains($lastPayment->period, '-') && $isDueDate) {
+            return $date->addMonth()->endOfMonth()->format('d F Y');
         }
 
         // If it's a yearly room
-        return $date->addYear()->format('Y');
+        if (!$isDueDate) {
+            return $date->addYear()->format('Y');
+        } else {
+            return $date->addYear()->endOfYear()->format('d F Y');
+        }
     }
 }

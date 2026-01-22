@@ -47,9 +47,9 @@ class MidtransService
                 'phone' => $data['phone']
             ],
             'callbacks' => [
-                'finish' => route('payment.finish'),
-                'unfinish' => route('payment.unfinish'),
-                'error' => route('payment.error'),
+                'finish' => route('dashboard', ['paymentStatus' => 'payment_success']),
+                'unfinish' => route('dashboard', ['paymentStatus' => 'payment_pending']),
+                'error' => route('dashboard', ['paymentStatus' => 'payment_failed']),
             ],
         ];
 

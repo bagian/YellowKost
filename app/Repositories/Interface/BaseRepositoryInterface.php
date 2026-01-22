@@ -8,9 +8,11 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface BaseRepositoryInterface
 {
+    public function setPaginationOptions(string $orderBy = 'asc', int $perPage = 10, array $columns = ['*'], string $pageName = 'page', ?int $page = null): static;
+
     public function all(): Collection;
 
-    public function get(array $with = [], array $filters = [], string $orderBy = 'asc'): LengthAwarePaginator;
+    public function get(array $with = [], array $filters = []): LengthAwarePaginator;
 
     public function find($id, array $with = []): ?Model;
 

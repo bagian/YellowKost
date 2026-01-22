@@ -36,7 +36,7 @@ class RoomRepository extends BaseRepository implements RoomRepositoryInterface
 
     public function getWithPictures(): LengthAwarePaginator {
         $query = $this->model::with('pictures')->with('confirmedBooking.user');
-        return $this->getPagination($query, orderBy: 'desc');
+        return $this->getPagination($query);
     }
 
     public function getPictures($id): Collection {

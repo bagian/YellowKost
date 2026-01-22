@@ -22,7 +22,7 @@ class BookingController extends Controller
 
     public function form()
     {
-        $bookings = $this->bookingRepository->getUserBooking(auth()->user()->id ?? null, ['pending']);
+        $bookings = $this->bookingRepository->setPaginationOptions(orderBy: 'desc')->getUserBooking(auth()->user()->id ?? null, ['pending']);
 
         if ($bookings->isEmpty()) {
             $bookingData = session('pending_booking', []);
@@ -86,7 +86,7 @@ class BookingController extends Controller
     }
 
     public function status() {
-        $booking = $this->bookingRepository->getUserBooking(auth()->user()->id);
+        $booking = $this->bookingRepository->setPaginationOptions(orderBy: 'desc')->getUserBooking(auth()->user()->id);
 
         return view('pages.status._statusPengajuan', ['booking' => $booking]);
     }
@@ -111,7 +111,9 @@ class BookingController extends Controller
         $booking = $this->bookingRepository->get(
             with: ['user'], 
             filters: [
-                ['status' => 'pending']
+                'where' => [
+                    ['status' => 'pending']
+                ]
             ]
         );
         $room = $this->roomRepository->available();

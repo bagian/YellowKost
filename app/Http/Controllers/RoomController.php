@@ -21,7 +21,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $room = $this->roomRepository->getWithPictures();
+        $room = $this->roomRepository->setPaginationOptions(orderBy: 'desc')->getWithPictures();
         // dd($room);
 
         return view('pages.kamar.views', ['room' => $room]);

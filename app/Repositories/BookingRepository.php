@@ -51,7 +51,7 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
             $query->with($with);
         }
 
-        return $this->getPagination($query, orderBy: 'desc');
+        return $this->getPagination($query);
     }
 
     public function getActiveBooking($idUser, array $status = ['confirmed'], array $with = []): ?Model {

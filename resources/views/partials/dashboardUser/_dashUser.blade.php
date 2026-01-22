@@ -12,7 +12,19 @@
     </div>
 </div>
 
+@php
+    use Carbon\Carbon;
 
+    $dueDateDate = Carbon::createFromFormat('d F Y', $dueDate);
+@endphp
+@if(now()->greaterThan($dueDateDate))
+{{-- ---------------------------------------------------------------------- --}}
+{{--                          Melewati Jatuh Tempo                          --}}
+{{-- ---------------------------------------------------------------------- --}}
+@elseif(now()->diffInDays($dueDateDate) <= 7)
+{{-- ---------------------------------------------------------------------- --}}
+{{--                          1 Minggu Jatuh Tempo                          --}}
+{{-- ---------------------------------------------------------------------- --}}s
 <div
     class="w-full bg-gradient-to-r from-red-900 to-red-600 rounded-2xl shadow-lg p-6 text-white mb-8 relative overflow-hidden">
     <div class="relative flex flex-col sm:flex-row justify-between items-center gap-6 z-10">
@@ -22,12 +34,9 @@
                 Belum Lunas
             </span>
             <h2 class="text-3xl font-bold mt-6">Rp {{ number_format($nominalTagihan ?? 1500000, 0, ',', '.') }}</h2>
-            <span class="text-red-100 text-sm inline-block ">Anda memiliki Tagihan
-                bulan {{
-                \Carbon\Carbon::now()->translatedFormat('F Y') }}
-                jatuh tempo pada tgl
+            <span class="text-red-100 text-sm inline-block ">Anda memiliki Tagihan yang mendekati jatuh tempo pada tanggal 
                 <span class="font-semibold">
-                    10.
+                    {{ $dueDate }}
                 </span>
             </span>
         </div>
@@ -41,7 +50,12 @@
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
     </svg>
 </div>
+@endif
 
+{{-- ---------------------------------------------------------------------- --}}
+{{--                           Pembayaran Berhasil                          --}}
+{{-- ---------------------------------------------------------------------- --}}
+@if($paymentStatus === 'payment_success')
 <div
     class="w-full bg-gradient-to-r from-green-900 to-green-600 rounded-2xl shadow-lg p-6 text-green-50 mb-8 relative overflow-hidden">
     <div class="relative z-10">
@@ -59,6 +73,12 @@
         </div>
     </div>
 </div>
+@endif
+
+{{-- ---------------------------------------------------------------------- --}}
+{{--                            Pembayaran Gagal                            --}}
+{{-- ---------------------------------------------------------------------- --}}
+@if($paymentStatus === 'payment_failed')
 <div
     class="w-full bg-gradient-to-r from-rose-900 to-rose-600 rounded-2xl shadow-lg p-6 text-rose-50 mb-8 relative overflow-hidden">
     <div class="relative z-10">
@@ -77,6 +97,12 @@
         </div>
     </div>
 </div>
+@endif
+
+{{-- ---------------------------------------------------------------------- --}}
+{{--                           Pembayaran Pending                           --}}
+{{-- ---------------------------------------------------------------------- --}}
+@if($paymentStatus === 'payment_pending')
 <div
     class="w-full bg-gradient-to-r from-orange-900 to-orange-600 rounded-2xl shadow-lg p-6 text-orange-50 mb-8 relative overflow-hidden">
     <div class="relative z-10">
@@ -95,6 +121,9 @@
         </div>
     </div>
 </div>
+@endif
+
+@if($payments->isEmpty())
 <div
     class="w-full bg-gradient-to-r from-blue-900 to-blue-600 rounded-2xl shadow-lg p-6 text-blue-50 mb-8 relative overflow-hidden">
     <div class="relative z-10">
@@ -113,15 +142,15 @@
         </div>
     </div>
 </div>
-
+@endif
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
     <div class="lg:col-span-2 space-y-6">
         <div class="p-6 border border-gray-200 rounded-2xl shadow-lg  bg-white dark:bg-gray-100 dark:border-gray-300">
-            @include('partials.dashboardUser._dashKamarUser')
+            @include('partials.dashboardUser._dashKamarUser', ['bookings' => $bookings, 'dueDate' => $dueDate])
         </div>
         <div>
-            @include('partials.dashboardUser._dashRiwayatTable')
+            @include('partials.dashboardUser._dashRiwayatTable', ['payments' => $payments])
         </div>
     </div>
     <div class="space-y-6">

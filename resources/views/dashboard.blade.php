@@ -6,7 +6,10 @@
 @section('content')
 @include ('components._breadcrumbLink')
 <div class="justify-center pt-20 mx-auto max-w-7xl p-4">
-    <!-- Welcome Section -->
+    @if(auth()->user()->role->slug === 'admin' || auth()->user()->role->slug === 'superadmin')
+    {{-- ------------------------------------- --}}
+    {{-- -- Admin Dashboard Section --}}
+    {{-- ------------------------------------- --}}
     <section class="mb-6 flex flex-col sm:flex-row justify-between items-center sm:mb-8">
         <div class="text-center sm:text-start">
             <h1 class="mb-2 text-2xl font-bold text-gray-900 sm:text-3xl dark:text-gray-900">
@@ -103,10 +106,16 @@
     {{-- ------------------------------------- --}}
     {{-- -- End Recent Activity --}}
     {{-- ------------------------------------- --}}
+    @endif
 
+    @if(auth()->user()->role->slug === 'user' || auth()->user()->role->slug === 'superadmin')
+    {{-- ------------------------------------- --}}
+    {{-- -- User Dashboard Section --}}
+    {{-- ------------------------------------- --}}
     <section>
-        @include('partials.dashboardUser._dashUser')
+        @include('partials.dashboardUser._dashUser', ['payments' => $payments, 'bookings' => $bookings, 'dueDate' => $dueDate, 'paymentStatus' => $paymentStatus])
     </section>
+    @endif
 </div>
 @push('scripts')
 <script>

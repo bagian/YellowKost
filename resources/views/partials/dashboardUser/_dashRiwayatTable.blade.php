@@ -26,6 +26,7 @@
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-500 dark:text-gray-100 w-full">
                 <tr>
+                    <th scope="col" class="px-4 py-3 rounded-l-lg">Kamar</th>
                     <th scope="col" class="px-4 py-3 rounded-l-lg">Tanggal</th>
                     <th scope="col" class="px-4 py-3">Nominal</th>
                     <th scope="col" class="px-4 py-3">Metode Pembayaran</th>
@@ -33,49 +34,53 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($payments as $payment)
                 <tr
                     class="bg-white dark:bg-gray-300 border-b border-gray-500 hover:bg-gray-200 text-gray-900 transition duration-300 ease-in-out">
-                    <td class="px-4 py-3 font-medium whitespace-nowrap">14 Jan
-                        2024</td>
-                    <td class="px-4 py-3 whitespace-nowrap">Rp 1.500.000</td>
-                    <td class="px-4 py-3 whitespace-nowrap">Bank Transfer</td>
+                    <td class="px-4 py-3 font-medium whitespace-nowrap">{{ $payment->booking->room->room_name }}</td>
+                    <td class="px-4 py-3 font-medium whitespace-nowrap">{{ $payment->date->format('d M Y') }}</td>
+                    <td class="px-4 py-3 whitespace-nowrap">{{ $payment->amount_formatted }}</td>
+                    <td class="px-4 py-3 whitespace-nowrap">{{ $payment->payMethod->name }}</td>
                     <td class="px-4 py-3 text-center whitespace-nowrap">
                         <span
                             class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Lunas</span>
                     </td>
                 </tr>
+                @endforeach
             </tbody>
 
         </table>
     </div>
     {{-- PAGINATION --}}
     <div class="flex flex-col items-center justify-between py-5 border-t border-gray-200 md:flex-row p-4">
+        @if($payments->total() > 0)
         <span class="flex mb-4 text-sm text-gray-700 md:mb-0 items-start justify-center">
-            Menampilkan <span class="mx-1 font-semibold text-gray-900" id="pagination-firstItem">2</span>
+            Menampilkan <span class="mx-1 font-semibold text-gray-900" id="pagination-firstItem">{{ $payments->firstItem() ?? 0 }}</span>
             sampai
-            <span class="mx-1 font-semibold text-gray-900" id="pagination-lastItem">1</span> dari total
-            <span class="mx-1 font-semibold text-gray-900" id="pagination-total">1</span>
+            <span class="mx-1 font-semibold text-gray-900" id="pagination-lastItem">{{ $payments->lastItem() ?? 0 }}</span> dari total
+            <span class="mx-1 font-semibold text-gray-900" id="pagination-total">{{ $payments->total() ?? 0 }}</span>
             Barisan
         </span>
+        @endif
         <div class="inline-flex" id="pagination-list">
             {{-- TOMBOL PREVIOUS --}}
-            <span
+            {{-- <span
                 class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border border-gray-300 rounded-l-lg cursor-not-allowed dark:bg-gray-500 dark:border-gray-600 dark:text-gray-100">
                 Prev
             </span>
             <a href="#"
                 class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-500 dark:border-gray-600 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
                 Prev
-            </a>
+            </a> --}}
             {{-- TOMBOL NEXT --}}
-            <a href="#"
+            {{-- <a href="#"
                 class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-r border-gray-300 rounded-r-lg shadow-sm hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-500 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white">
                 Next
             </a>
             <span
                 class="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 border-t border-b border-r border-gray-300 rounded-r-lg cursor-not-allowed dark:bg-gray-500 dark:border-gray-600 dark:text-gray-100">
                 Next
-            </span>
+            </span> --}}
         </div>
     </div>
     {{-- END PAGINATION --}}

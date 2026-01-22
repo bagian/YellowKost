@@ -11,12 +11,29 @@ use Illuminate\Support\Facades\DB;
 abstract class BaseRepository
 {
     protected $model;
+    protected string $orderBy;
+    protected int $perPage;
+    protected array $columns;
+    protected string $pageName;
+    protected ?int $page;
 
     abstract protected function getModelClass();
 
     public function __construct() {
         $class = $this->getModelClass();
         $this->model = new $class;
+
+        $this->setPaginationOptions();
+    }
+
+    public function setPaginationOptions(string $orderBy = 'asc', int $perPage = 10, array $columns = ['*'], string $pageName = 'page', ?int $page = null): static {
+        $this->perPage = $perPage;
+        $this->columns = $columns;
+        $this->pageName = $pageName;
+        $this->orderBy = $orderBy;
+        $this->page = $page;
+
+        return $this;
     }
 
     public function all(): Collection
@@ -24,36 +41,59 @@ abstract class BaseRepository
         return $this->model::all();
     }
 
-    public function get(array $with = [], array $filters = [], string $orderBy = 'asc'): LengthAwarePaginator
+    public function get(array $with = [], array $filters = []): LengthAwarePaginator
     {
         /* -------------------------------------------------------------------------- */
         /*                            Example filters data                            */
         /* -------------------------------------------------------------------------- */
         // Support both ['column' => value] and ['column', 'operator', 'value'] and ['column', 'value']
         // $filters = [
-        //      ['column' => value], 
-        //      ['column', 'operator', 'value'],
-        //      ['column', 'value']
+        //      'where' => [
+        //          ['column' => value],
+        //          ['column', 'operator', 'value'],
+        //          ['column', 'value']
+        //      ],
+        //      'whereHas' => [
+        //          ['relation' => function ($q) {
+        //              $q->where(...);
+        //          }],
+        //          ['relation' => function ($q) {
+        //              $q->where(...);
+        //          }]
+        //      ]
         // ];
         // Need to be wrapped inside an array
 
         $query = $this->model->newQuery()
             ->when($with, fn($q) => $q->with($with))
             ->when($filters, function ($q) use ($filters) {
-                foreach ($filters as $filter) {
-                    if (is_array($filter) && count($filter) === 3) {
-                        [$column, $operator, $value] = $filter;
-                        $q->where($column, $operator, $value);
-                    } elseif (is_array($filter) && count($filter) === 2) {
-                        [$column, $value] = $filter;
-                        $q->where($column, $value);
-                    } elseif (is_string($column = key($filter))) {
-                        $q->where($column, current($filter));
+                foreach ($filters as $key => $condition) {
+                    switch ($key) {
+                        case "where":
+                            foreach ($condition as $filter) {
+                                if (is_array($filter) && count($filter) === 3) {
+                                    [$column, $operator, $value] = $filter;
+                                    $q->where($column, $operator, $value);
+                                } elseif (is_array($filter) && count($filter) === 2) {
+                                    [$column, $value] = $filter;
+                                    $q->where($column, $value);
+                                } elseif (is_string($column = key($filter))) {
+                                    $q->where($column, current($filter));
+                                }
+                            }
+                            break;
+                        case "whereHas":
+                            foreach ($condition as $filter) {
+                                if (is_array($filter) && ($relation = key($filter)) && is_callable($filter[$relation])) {
+                                    $q->whereHas($relation, $filter[$relation]);
+                                }
+                            }
+                            break;
                     }
                 }
             });
 
-        return $this->getPagination($query, orderBy: $orderBy);
+        return $this->getPagination($query);
     }
 
     public function find($id, array $with = []): Model
@@ -92,10 +132,10 @@ abstract class BaseRepository
         return $model;
     }
 
-    protected function getPagination($queryBuilder = null, int $perPage = 10, array $columns = ['*'], string $pageName = 'page', string $orderBy = 'asc', ?int $page = null): LengthAwarePaginator {
+    protected function getPagination($queryBuilder = null): LengthAwarePaginator {
         $builder = $queryBuilder ?? $this->model->newQuery();
 
-        return $builder->orderBy('created_at', $orderBy)->paginate($perPage, $columns, $pageName, $page);
+        return $builder->orderBy('created_at', $this->orderBy)->paginate($this->perPage, $this->columns, $this->pageName, $this->page);
     }
 
     protected function fillModel(Model $model, array $data) {
