@@ -24,12 +24,16 @@ class PaymentRepository extends BaseRepository implements PaymentRepositoryInter
         return Payment::class;
     }
 
-    public function getNextPeriod($idBooking, bool $isDueDate = false): ?string {
+
+    public function getNextPeriod ($idBooking, bool $isDueDate = false): ?string {
+        if (!$idBooking) {
+            return "-";
+        }
         $bookings = $this->bookingRepository->find($idBooking);
         if ($bookings->status != "confirmed") {
             return "-";
         }
-    
+
         $lastPayment = $this->model::where('id_booking', $idBooking)->select('period')->orderBy('period', 'desc')->first();
 
         if (!$lastPayment) {
