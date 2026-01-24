@@ -19,13 +19,13 @@ class DashboardController extends Controller
     {
         $paymentStatus = $request->query('paymentStatus');
         $bookings = $this->bookingRepository->setPaginationOptions(orderBy: 'desc')->getUserBooking(auth()->user()->id, with: ['user', 'room.pictures'])->first();
-        $dueDate = $this->paymentRepository->getNextPeriod($bookings->id ?? null, true);
+        $dueDate = $this->paymentRepository->getNextPeriod($bookings?->id, true);
         $payments = $this->paymentRepository
             ->setPaginationOptions(orderBy: 'desc', perPage: 5)
             ->get(
                 filters: [
                     'where' => [
-                        ['id_booking' => $bookings->id ?? null]
+                        ['id_booking' => $bookings?->id]
                     ],
                     'whereHas' => [
                         'booking' => function ($q) {

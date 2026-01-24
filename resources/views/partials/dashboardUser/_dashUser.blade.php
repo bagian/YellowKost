@@ -1,3 +1,17 @@
+@php
+use Carbon\Carbon;
+
+try {
+if ($dueDate) {
+$dueDateDate = Carbon::parse($dueDate);
+} else {
+$dueDateDate = null;
+}
+} catch (\Exception $e) {
+$dueDateDate = null;
+}
+@endphp
+
 <div class="mt-20 mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
     <div>
         <h1 class="text-2xl font-bold text-gray-800">
@@ -7,23 +21,55 @@
     </div>
     <div class="px-4 py-2 bg-white dark:bg-gray-100 rounded-xl shadow-sm border border-gray-200 dark:border-gray-300">
         <span class="text-sm font-medium text-gray-600">
-            {{ \Carbon\Carbon::now()->locale('id')->translatedFormat('l, d F Y') }}
+            {{ Carbon::now()->locale('id')->translatedFormat('l, d F Y') }}
         </span>
     </div>
 </div>
-
-@php
-use Carbon\Carbon;
-
-$dueDateDate = Carbon::createFromFormat('d F Y', $dueDate);
-@endphp
-@if(now()->greaterThan($dueDateDate))
+@if(!$payments->isEmpty() && now()->greaterThan($dueDateDate))
 {{-- ---------------------------------------------------------------------- --}}
 {{-- Melewati Jatuh Tempo --}}
 {{-- ---------------------------------------------------------------------- --}}
-@elseif(now()->diffInDays($dueDateDate) <= 7) {{--
-    ---------------------------------------------------------------------- --}} {{-- 1 Minggu Jatuh Tempo --}} {{--
-    ---------------------------------------------------------------------- --}}s <div
+<div
+    class="w-full bg-gradient-to-r from-red-900 to-red-600 rounded-2xl shadow-lg p-6 text-white mb-8 relative overflow-hidden">
+    <div class="relative flex flex-col justify-between gap-2 z-10">
+        <div class="flex flex-col sm:flex-row w-full items-center border-b border-red-50/30 pb-4">
+            <div class="flex flex-col w-full items ">
+                <span
+                    class="bg-red-100 bg-opacity-30 text-xs font-semibold px-6 py-2 rounded-full uppercase tracking-wider w-fit">
+                    Jatuh Tempo
+                </span>
+                <h2 class="text-3xl font-bold mt-8">Rp {{ number_format($nominalTagihan ?? 1500000, 0, ',', '.') }}
+                </h2>
+                <span class="text-red-100 text-sm inline-block pt-3 sm:pt-0">Anda memiliki tenggat waktu pembayaran
+                    pada
+                    tanggal
+                    <span class="font-semibold">
+                        {{ $dueDate }}
+                    </span>
+                </span>
+            </div>
+            <span class="inline-block mt-10 mb-3 sm:mt-0">
+                <a href="{{ route('booking.payment') }}"
+                    class="px-6 py-3 bg-white/20 backdrop-blur-md text-white font-bold rounded-xl shadow-md hover:bg-gray-100/30 transition transform hover:scale-105 w-fit whitespace-nowrap">
+                    Bayar Sekarang
+                </a>
+            </span>
+        </div>
+        <span class="text-xs text-red-100">Segera
+            lakukan
+            pembayaran untuk menghindari Denda!
+        </span>
+    </div>
+    <svg class="absolute right-0 bottom-0 h-48 w-48 text-white opacity-10 transform translate-x-8 translate-y-8"
+        fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+    </svg>
+</div>
+{{-- ---------------------------------------------------------------------- --}}
+@elseif(!$payments->isEmpty() &&now()->diffInDays($dueDateDate) <= 7) {{--
+    ---------------------------------------------------------------------- --}}
+    {{------------------------------------------------------------------------ --}} {{-- 1 Minggu Jatuh Tempo --}}
+    {{------------------------------------------------------------------------ --}} <div
     class="w-full bg-gradient-to-r from-red-900 to-red-600 rounded-2xl shadow-lg p-6 text-white mb-8 relative overflow-hidden">
     <div class="relative flex flex-col sm:flex-row justify-between items-center gap-6 z-10">
         <div>
@@ -145,36 +191,8 @@ $dueDateDate = Carbon::createFromFormat('d F Y', $dueDate);
     </div>
     @endif
     {{-- ---------------------------------------------------------------------- --}}
-    {{-- Jatuh Tempo--}}
+    {{-- CONTAINER --}}
     {{-- ---------------------------------------------------------------------- --}}
-    <div
-        class="w-full bg-gradient-to-r from-red-900 to-red-600 rounded-2xl shadow-lg p-6 text-white mb-8 relative overflow-hidden">
-        <div class="relative flex flex-col sm:flex-row justify-between items-center gap-6 z-10">
-            <div>
-                <span
-                    class="bg-red-100 bg-opacity-30 text-xs font-semibold px-6 py-2 rounded-full uppercase tracking-wider">
-                    Belum Lunas
-                </span>
-                <h2 class="text-3xl font-bold mt-6">Rp {{ number_format($nominalTagihan ?? 1500000, 0, ',', '.') }}</h2>
-                <span class="text-red-100 text-sm inline-block ">Anda memiliki Tagihan yang mendekati jatuh tempo pada
-                    tanggal
-                    <span class="font-semibold">
-                        {{ $dueDate }}
-                    </span>
-                </span>
-            </div>
-            <a href="{{ route('booking.payment') }}"
-                class="px-6 py-3 bg-white/20 backdrop-blur-md text-white font-bold rounded-xl shadow-md hover:bg-gray-100/30 transition transform hover:scale-105">
-                Bayar Sekarang
-            </a>
-        </div>
-        <svg class="absolute right-0 bottom-0 h-48 w-48 text-white opacity-10 transform translate-x-8 translate-y-8"
-            fill="currentColor" viewBox="0 0 24 24">
-            <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-        </svg>
-    </div>
-
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="lg:col-span-2 space-y-6">
             <div
