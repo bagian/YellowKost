@@ -8,21 +8,21 @@
         Kamar Saya
     </h3>
     {{-- Status --}}
-    @if($bookings->status === 'confirmed')
+    @if($bookings?->status === 'confirmed')
     <span
         class="px-3 py-1 text-xs font-semibold text-green-700 bg-green-100 rounded-full dark:bg-green-900 dark:text-green-300">
         Diterima
     </span>
     @endif
 
-    @if($bookings->status === 'cancelled')
+    @if($bookings?->status === 'cancelled')
     <span
         class="px-3 py-1 text-xs font-semibold text-red-700 bg-red-100 rounded-full dark:bg-red-900 dark:text-red-300">
         Ditolak
     </span>
     @endif
 
-    @if($bookings->status === 'pending')
+    @if($bookings?->status === 'pending')
     <span
         class="px-3 py-1 text-xs font-semibold text-yellow-700 bg-yellow-100 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
         Pending
@@ -31,8 +31,9 @@
     {{-- End Status --}}
 </div>
 <div class="flex flex-col sm:flex-row gap-6">
-    @if(!empty($bookings->room->pictures->first()->url))
-    <img src="{{ Storage::url($bookings->room->pictures->first()->url) }}" alt="Room Image" class="sm:w-3h-36 sm:h-36  object-cover rounded-xl bg-gray-200">
+    @if(!empty($bookings?->room->pictures->first()->url))
+    <img src="{{ Storage::url($bookings->room->pictures->first()->url) }}" alt="Room Image"
+        class="sm:w-3h-36 sm:h-36  object-cover rounded-xl bg-gray-200">
     @else
     <div class="w-full sm:w-36 sm:h-36 h-36 rounded-xl bg-gray-300 flex items-center justify-center text-gray-900">
         <svg class="w-8 h-8 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -45,30 +46,33 @@
     <div class="flex-1 grid grid-cols-2 sm:grid-cols-3 gap-3">
         <div>
             <p class="text-xs text-gray-500 uppercase">Nomor Kamar</p>
-            <p class="font-semibold text-gray-900">{{ $bookings->room->room_name }}</p>
+            <p class="font-semibold text-gray-900">{{ $bookings->room->room_name ?? '-'}}</p>
         </div>
         <div>
             <p class="text-xs text-gray-500 uppercase">Harga Sewa</p>
             <span class="flex items-center gap-1">
-                <p class="font-semibold text-gray-900">{{ $bookings->room->price_formatted }}</p>
+                <p class="font-semibold text-gray-900">{{ $bookings->room->price_formatted ?? '-'}}</p>
             </span>
 
         </div>
         <div>
             <p class="text-xs text-gray-500 uppercase">Periode Sewa</p>
-            <p class="font-semibold text-gray-900">{{ $bookings->room->period ? ($bookings->room->period === 'month' ? 'Bulanan' : ($bookings->room->period === 'year' ? 'Tahunan' : 'Harian')) : '-' }}</p>
+            <p class="font-semibold text-gray-900">{{ $bookings?->room->period ? ($bookings->room->period === 'month' ?
+                'Bulanan' : ($bookings->room->period === 'year' ? 'Tahunan' : 'Harian')) : '-' }}</p>
         </div>
         <div>
             <p class="text-xs text-gray-500 uppercase">Tanggal Masuk</p>
-            <p class="font-semibold text-gray-900">{{ $bookings->check_in->format('d F Y') }}</p>
+            <p class="font-semibold text-gray-900">{{ $bookings?->check_in->format('d F Y') ?? '-'}}</p>
         </div>
         <div>
             <p class="text-xs text-gray-500 uppercase">Tanggal Keluar</p>
-            <p class="font-semibold text-gray-900">{{ $bookings->check_out ? $bookings->check_out->format('d F Y') : '-' }}</p>
+            <p class="font-semibold text-gray-900">{{ $bookings?->check_out ? $bookings->check_out->format('d F Y') :
+                '-'
+                }}</p>
         </div>
         <div>
             <p class="text-xs text-gray-500 uppercase">Jatuh Tempo</p>
-            <p class="font-semibold text-rose-900">{{ $dueDate }}</p>
+            <p class="font-semibold text-rose-900">{{ $dueDate ?? '-'}}</p>
         </div>
     </div>
 </div>

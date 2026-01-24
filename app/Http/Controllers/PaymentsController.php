@@ -27,7 +27,7 @@ class PaymentsController extends Controller
     public function index()
     {
         $booking = $this->bookingRepository->getActiveBooking(auth()->user()->id, with: ['user', 'room.pictures']);
-        $period = $this->paymentRepository->getNextPeriod($booking->id);
+        $period = $this->paymentRepository->getNextPeriod($booking->id ?? '-');
         return view("pages.uploadBukti.checkoutMidtrans", ['booking' => $booking, 'period' => $period]);
     }
 
@@ -125,10 +125,10 @@ class PaymentsController extends Controller
         $history = $this->paymentRepository
             ->setPaginationOptions(orderBy: 'desc')
             ->get(
-                with: ['payMethod', 'booking.room'], 
+                with: ['payMethod', 'booking.room'],
                 filters: [
                     'where' => [
-                        ['id_booking' => $id_booking->id]
+                        ['id_booking' => $id_booking->id ?? '-']
                     ],
                     'whereHas' => [
                         'booking' => function ($q) {

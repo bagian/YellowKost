@@ -30,10 +30,20 @@
                     <th scope="col" class="px-4 py-3 rounded-l-lg">Tanggal</th>
                     <th scope="col" class="px-4 py-3">Nominal</th>
                     <th scope="col" class="px-4 py-3">Metode Pembayaran</th>
-                    <th scope="col" class="px-4 py-3 rounded-r-lg text-center">Status</th>
+                    <th scope="col" class="px-4 py-3 rounded-r-lg">Status</th>
                 </tr>
             </thead>
             <tbody>
+                @if($payments->isEmpty())
+                <tr
+                    class="bg-white dark:bg-gray-300 border-b border-gray-500 hover:bg-gray-200 text-gray-900 transition duration-300 ease-in-out">
+                    <td class="px-4 py-2 whitespace-nowrap">....</td>
+                    <td class="px-4 py-2 whitespace-nowrap">....</td>
+                    <td class="px-4 py-2 whitespace-nowrap">....</td>
+                    <td class="px-4 py-2 whitespace-nowrap">....</td>
+                    <td class="px-4 py-2 whitespace-nowrap">....</td>
+                </tr>
+                @else
                 @foreach($payments as $payment)
                 <tr
                     class="bg-white dark:bg-gray-300 border-b border-gray-500 hover:bg-gray-200 text-gray-900 transition duration-300 ease-in-out">
@@ -41,23 +51,25 @@
                     <td class="px-4 py-3 font-medium whitespace-nowrap">{{ $payment->date->format('d M Y') }}</td>
                     <td class="px-4 py-3 whitespace-nowrap">{{ $payment->amount_formatted }}</td>
                     <td class="px-4 py-3 whitespace-nowrap">{{ $payment->payMethod->name }}</td>
-                    <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <td class="px-4 py-3 whitespace-nowrap">
                         <span
                             class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Lunas</span>
                     </td>
                 </tr>
                 @endforeach
+                @endif
             </tbody>
-
         </table>
     </div>
     {{-- PAGINATION --}}
     <div class="flex flex-col items-center justify-between py-5 border-t border-gray-200 md:flex-row p-4">
         @if($payments->total() > 0)
         <span class="flex mb-4 text-sm text-gray-700 md:mb-0 items-start justify-center">
-            Menampilkan <span class="mx-1 font-semibold text-gray-900" id="pagination-firstItem">{{ $payments->firstItem() ?? 0 }}</span>
+            Menampilkan <span class="mx-1 font-semibold text-gray-900" id="pagination-firstItem">{{
+                $payments->firstItem() ?? 0 }}</span>
             sampai
-            <span class="mx-1 font-semibold text-gray-900" id="pagination-lastItem">{{ $payments->lastItem() ?? 0 }}</span> dari total
+            <span class="mx-1 font-semibold text-gray-900" id="pagination-lastItem">{{ $payments->lastItem() ?? 0
+                }}</span> dari total
             <span class="mx-1 font-semibold text-gray-900" id="pagination-total">{{ $payments->total() ?? 0 }}</span>
             Barisan
         </span>
