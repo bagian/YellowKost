@@ -12,7 +12,7 @@ $dueDateDate = null;
 }
 @endphp
 
-<div class="mt-20 mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div class="md:mt-20 mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
     <div>
         <h1 class="text-2xl font-bold text-gray-800">
             Halo, <span class="text-yellow-600">{{ Auth::user()->name }}!</span>
@@ -66,9 +66,7 @@ $dueDateDate = null;
     </svg>
 </div>
 {{-- ---------------------------------------------------------------------- --}}
-@elseif(!$payments->isEmpty() &&now()->diffInDays($dueDateDate) <= 7) {{--
-    ---------------------------------------------------------------------- --}}
-    {{------------------------------------------------------------------------ --}} {{-- 1 Minggu Jatuh Tempo --}}
+@elseif(!$payments->isEmpty() &&now()->diffInDays($dueDateDate) <= 7) {{-- 1 Minggu Jatuh Tempo --}}
     {{------------------------------------------------------------------------ --}} <div
     class="w-full bg-gradient-to-r from-red-900 to-red-600 rounded-2xl shadow-lg p-6 text-white mb-8 relative overflow-hidden">
     <div class="relative flex flex-col sm:flex-row justify-between items-center gap-6 z-10">
@@ -78,7 +76,8 @@ $dueDateDate = null;
                 Belum Lunas
             </span>
             <h2 class="text-3xl font-bold mt-6">Rp {{ number_format($nominalTagihan ?? 1500000, 0, ',', '.') }}</h2>
-            <span class="text-red-100 text-sm inline-block ">Anda memiliki Tagihan yang mendekati jatuh tempo pada
+            <span class="text-red-100 text-sm inline-block mt-3 sm:mt-0">Anda memiliki Tagihan yang mendekati jatuh
+                tempo pada
                 tanggal
                 <span class="font-semibold">
                     {{ $dueDate }}
@@ -96,24 +95,27 @@ $dueDateDate = null;
     </svg>
     </div>
     @endif
-
-    {{-- ---------------------------------------------------------------------- --}}
+    {{-- -------------------------------------------------------------------- --}}
     {{-- Pembayaran Berhasil --}}
-    {{-- ---------------------------------------------------------------------- --}}
-    @if($paymentStatus === 'payment_success')
+    {{-- -------------------------------------------------------------------- --}}
+    @if($paymentStatus==='payment_success' )
     <div
         class="w-full bg-gradient-to-r from-green-900 to-green-600 rounded-2xl shadow-lg p-6 text-green-50 mb-8 relative overflow-hidden">
         <div class="relative z-10">
-            <div class="flex items-center gap-3">
-                <div class="p-2 bg-white bg-opacity-40 rounded-full">
+            <div class="flex sm:items-center gap-3">
+                <div class="p-2 bg-white bg-opacity-40 rounded-full h-fit">
                     <svg class="w-6 h-6 text-green-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
                 </div>
                 <div class="flex flex-col">
-                    <h2 class="text-xl font-bold">Terima kasih, pembayaran Anda lunas!</h2>
-                    <p class="text-green-50 text-sm">Tagihan selanjutnya akan muncul pada 01 {{
-                        \Carbon\Carbon::now()->addMonth()->translatedFormat('M Y') }}</p>
+                    <h2 class="md:text-xl text-lg leading-5 font-bold">Selamat, pembayaran Anda lunas!</h2>
+                    <p class="text-green-50 sm:text-sm sm:mt-0 text-sm mt-3">Tagihan selanjutnya akan muncul pada
+                        <strong>
+                            01-{{
+                            \Carbon\Carbon::now()->addMonth()->translatedFormat('M-Y') }}
+                    </p>
+                    </strong>
                 </div>
             </div>
         </div>
@@ -127,8 +129,8 @@ $dueDateDate = null;
     <div
         class="w-full bg-gradient-to-r from-rose-900 to-rose-600 rounded-2xl shadow-lg p-6 text-rose-50 mb-8 relative overflow-hidden">
         <div class="relative z-10">
-            <div class="flex items-center gap-3">
-                <div class="p-2 bg-white bg-opacity-40 rounded-full">
+            <div class="flex sm:items-center gap-3">
+                <div class="p-2 bg-white bg-opacity-40 rounded-full h-fit">
                     <svg class="w-6 h-6 text-rose-50" fill="currentColor" stroke="" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 384 512">
                         <path
@@ -136,8 +138,8 @@ $dueDateDate = null;
                     </svg>
                 </div>
                 <div class="flex flex-col">
-                    <h2 class="text-xl font-bold">Oops, pembayaran Anda gagal!</h2>
-                    <p class="text-rose-50 text-sm">Silakan cek riwayat pembayaran Anda</p>
+                    <h2 class="md:text-xl text-lg font-bold leading-5">Oops, pembayaran Anda gagal!</h2>
+                    <p class="text-rose-50 sm:text-sm sm:mt-0 text-sm mt-3">Silakan cek riwayat pembayaran Anda</p>
                 </div>
             </div>
         </div>
@@ -151,8 +153,8 @@ $dueDateDate = null;
     <div
         class="w-full bg-gradient-to-r from-orange-900 to-orange-600 rounded-2xl shadow-lg p-6 text-orange-50 mb-8 relative overflow-hidden">
         <div class="relative z-10">
-            <div class="flex items-center gap-3">
-                <div class="p-2 bg-white bg-opacity-40 rounded-full">
+            <div class="flex sm:items-center gap-3">
+                <div class="p-2 bg-white bg-opacity-40 rounded-full h-fit">
                     <svg class="w-6 h-6 text-orange-50" fill="currentColor" stroke="" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 128 512">
                         <path
@@ -160,8 +162,8 @@ $dueDateDate = null;
                     </svg>
                 </div>
                 <div class="flex flex-col">
-                    <h2 class="text-xl font-bold">Mohon ditunggu!</h2>
-                    <p class="text-orange-50 text-sm">Pembayaran Anda sedang diproses</p>
+                    <h2 class="md:text-xl text-lg font-bold">Mohon ditunggu!</h2>
+                    <p class="text-orange-50 text-sm sm:text-sm mt-3">Pembayaran Anda sedang diproses</p>
                 </div>
             </div>
         </div>
@@ -174,8 +176,8 @@ $dueDateDate = null;
     <div
         class="w-full bg-gradient-to-r from-blue-900 to-blue-600 rounded-2xl shadow-lg p-6 text-blue-50 mb-8 relative overflow-hidden">
         <div class="relative z-10">
-            <div class="flex items-center gap-3">
-                <div class="p-2 bg-white bg-opacity-40 rounded-full">
+            <div class="flex sm:items-center gap-3">
+                <div class="p-2 bg-white bg-opacity-40 rounded-full h-fit">
                     <svg class="w-6 h-6 text-blue-50" fill="currentColor" stroke="" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 320 512">
                         <path
@@ -183,8 +185,10 @@ $dueDateDate = null;
                     </svg>
                 </div>
                 <div class="flex flex-col">
-                    <h2 class="text-xl font-bold">Anda belum memiliki transaksi!</h2>
-                    <p class="text-blue-50 text-sm">Silakan lakukan perpanjangan sewa atau pemesanan baru</p>
+                    <h2 class="md:text-xl text-lg leading-5 font-bold">Anda belum memiliki transaksi!</h2>
+                    <p class="text-blue-50 sm:text-sm sm:mt-0 text-sm mt-3">Silakan lakukan perpanjangan sewa atau
+                        pemesanan
+                        baru</p>
                 </div>
             </div>
         </div>
