@@ -15,13 +15,17 @@
 @php
     use Carbon\Carbon;
 
-    $dueDateDate = Carbon::createFromFormat('d F Y', $dueDate);
+    if ($dueDate) {
+        $dueDateDate = Carbon::createFromFormat('d F Y', $dueDate);
+    } else {
+        $dueDateDate = null;
+    }
 @endphp
-@if(now()->greaterThan($dueDateDate))
+@if(!$paymentes->isEmpty() && now()->greaterThan($dueDateDate))
 {{-- ---------------------------------------------------------------------- --}}
 {{--                          Melewati Jatuh Tempo                          --}}
 {{-- ---------------------------------------------------------------------- --}}
-@elseif(now()->diffInDays($dueDateDate) <= 7)
+@elseif(!$paymentes->isEmpty() &&now()->diffInDays($dueDateDate) <= 7)
 {{-- ---------------------------------------------------------------------- --}}
 {{--                          1 Minggu Jatuh Tempo                          --}}
 {{-- ---------------------------------------------------------------------- --}}s
