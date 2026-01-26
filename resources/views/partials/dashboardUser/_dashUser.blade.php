@@ -2,13 +2,13 @@
 use Carbon\Carbon;
 
 try {
-if ($dueDate) {
-$dueDateDate = Carbon::parse($dueDate);
-} else {
-$dueDateDate = null;
-}
+    if ($dueDate) {
+        $dueDateDate = Carbon::parse($dueDate);
+    } else {
+        $dueDateDate = null;
+    }
 } catch (\Exception $e) {
-$dueDateDate = null;
+    $dueDateDate = null;
 }
 @endphp
 
