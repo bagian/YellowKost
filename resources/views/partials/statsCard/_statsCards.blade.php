@@ -10,7 +10,7 @@
                     penyewa
                     kos</p>
             </div>
-            <a href="{{ route('booking.form') }}"
+            <a href="{{ route('penyewa.index') }}"
                 class="inline-flex items-center justify-center p-2 transition-colors bg-blue-100 rounded-lg dark:bg-blue-300 hover:bg-blue-200 dark:hover:bg-blue-400"
                 title="Lihat semua data penyewa kos">
                 <svg class="w-5 h-5 text-blue-600 sm:w-6 sm:h-6 dark:text-blue-700" fill="currentColor"
