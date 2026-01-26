@@ -23,6 +23,7 @@
         </h1>
         <p class="mt-1 text-gray-500 dark:text-gray-600">Pratinjau pembayaran sewa Anda</p>
     </div>
+    @if($booking)
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
         <div class="lg:col-span-8 space-y-4">
             <div
@@ -57,8 +58,7 @@
                             <div class="flex flex-col gap-1">
                                 <span class="text-xl font-bold text-gray-900 dark:text-white">{{ $booking->room->room_name }}</span>
                                 <span class="text-md font-bold text-gray-900 dark:text-blue-500">
-                                    <span>Rp</span>
-                                    <span>{{ number_format($booking->room->price, 0, ',', '.') }}</span>
+                                    <span>{{ $booking->room->price_formatted }}</span>
                                 </span>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Free wifi • Full furnished • Dapur
                                     bersama
@@ -144,10 +144,7 @@
                         <span>Biaya Sewa</span>
                         <div class="flex gap-2">
                             <span class="font-medium">
-                                Rp
-                            </span>
-                            <span class="font-medium">
-                                {{ number_format($booking->room->price, 0, ',', '.') }}
+                                {{ $booking->room->price_formatted }}
                             </span>
                         </div>
                     </div>
@@ -156,10 +153,7 @@
                         <span class="text-base font-bold text-gray-900 dark:text-white">Total Tagihan</span>
                         <div class="text-xl font-extrabold text-blue-600 dark:text-blue-400">
                             <span class="font-medium">
-                                Rp
-                            </span>
-                            <span class="font-medium">
-                                {{ number_format($booking->room->price, 0, ',', '.') }}
+                                {{ $booking->room->price_formatted }}
                             </span>
                         </div>
                     </div>
@@ -189,6 +183,11 @@
             </div>
         </div>
     </div>
+    @else
+        <div class="p-4">
+            <p class="text-center text-gray-500">Tidak ada transaksi atau pengajuan sewa anda masih belum di terima.</p>
+        </div>
+    @endif
 </div>
 @endsection
 

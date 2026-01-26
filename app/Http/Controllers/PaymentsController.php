@@ -27,7 +27,7 @@ class PaymentsController extends Controller
     public function index()
     {
         $booking = $this->bookingRepository->getActiveBooking(auth()->user()->id, with: ['user', 'room.pictures']);
-        $period = $this->paymentRepository->getNextPeriod($booking->id ?? '-');
+        $period = $this->paymentRepository->getNextPeriod($booking?->id);
         return view("pages.uploadBukti.checkoutMidtrans", ['booking' => $booking, 'period' => $period]);
     }
 

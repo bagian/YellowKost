@@ -113,7 +113,7 @@ $dueDateDate = null;
                     <p class="text-green-50 sm:text-sm sm:mt-0 text-sm mt-3">Tagihan selanjutnya akan muncul pada
                         <strong>
                             01-{{
-                            \Carbon\Carbon::now()->addMonth()->translatedFormat('M-Y') }}
+                            Carbon::now()->addMonth()->translatedFormat('M-Y') }}
                     </p>
                     </strong>
                 </div>
