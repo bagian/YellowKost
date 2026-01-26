@@ -56,7 +56,8 @@
                         {{-- INFORMASI KAMAR --}}
                         <div class="flex justify-between items-start">
                             <div class="flex flex-col gap-1">
-                                <span class="text-xl font-bold text-gray-900 dark:text-white">{{ $booking->room->room_name }}</span>
+                                <span class="text-xl font-bold text-gray-900 dark:text-white">{{
+                                    $booking->room->room_name }}</span>
                                 <span class="text-md font-bold text-gray-900 dark:text-blue-500">
                                     <span>{{ $booking->room->price_formatted }}</span>
                                 </span>
@@ -87,9 +88,10 @@
                             <span
                                 class="inline-flex items-center px-3 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
                                 @if($booking->room->period === 'month')
-                                    {{ now()->startOfMonth()->format('d F Y') }} - {{ now()->endOfMonth()->format('d F Y') }}
+                                {{ now()->startOfMonth()->format('d F Y') }} - {{ now()->endOfMonth()->format('d F Y')
+                                }}
                                 @elseif($booking->room->period === 'year')
-                                    {{ now()->startOfYear()->format('d F Y') }} - {{ now()->endOfYear()->format('d F Y') }}
+                                {{ now()->startOfYear()->format('d F Y') }} - {{ now()->endOfYear()->format('d F Y') }}
                                 @endif
                             </span>
                         </div>
@@ -114,15 +116,18 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-medium text-gray-500 uppercase">Nama Lengkap</label>
-                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">{{ $booking->user->full_name }}</p>
+                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">{{
+                            $booking->user->full_name }}</p>
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-gray-500 uppercase">Email</label>
-                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">{{ $booking->user->email }}</p>
+                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">{{ $booking->user->email
+                            }}</p>
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-gray-500 uppercase">Nomor HP</label>
-                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">{{ $booking->user->phone }}</p>
+                        <p class="text-base font-semibold text-gray-900 dark:text-white mt-1">{{ $booking->user->phone
+                            }}</p>
                     </div>
                 </div>
             </div>
@@ -184,9 +189,117 @@
         </div>
     </div>
     @else
-        <div class="p-4">
-            <p class="text-center text-gray-500">Tidak ada transaksi atau pengajuan sewa anda masih belum di terima.</p>
+    {{-- EMPTY STATE: PEMBAYARAN --}}
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+        {{-- Sisi Kiri --}}
+        <div class="lg:col-span-7 space-y-6">
+            <div
+                class="p-8 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm transition-colors">
+                <div
+                    class="w-16 h-16 bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400 rounded-2xl flex items-center justify-center mb-6">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+
+                <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-3">
+                    Tidak Ada Tagihan Aktif
+                </h2>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                    Halaman ini digunakan untuk menyelesaikan pembayaran sewa. Saat ini sistem tidak menemukan riwayat
+                    pengajuan kamar yang siap untuk dibayar atau sedang diproses. Silakan klik tombol "Form Pendaftaran"
+                    dibawah untuk melakuan pendaftaran baru.
+                </p>
+                <br>
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+                    jika terjadi kendala pada saat melakuan pendaftaran, silakan tekan "Hubungi Admin" atau pihak kost
+                    untu
+                    lebih lanjut.
+                </p>
+
+                <div class=" mt-8 pt-7  border-t border-slate-100 dark:border-slate-700 w">
+                    <a href="#"
+                        class="inline-flex items-center px-6 py-3.5 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold rounded-xl transition-all shadow-md shadow-yellow-500/20 active:scale-95 text-sm">
+                        Form Pendaftaran
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            {{-- Help Center --}}
+            <div
+                class="mt-5 p-5 flex items-center justify-between bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-sm transition-colors">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg text-yellow-600 dark:text-yellow-400">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                            </path>
+                        </svg>
+                    </div>
+                    <span class="text-sm font-medium text-slate-600 dark:text-slate-300">Butuh bantuan?</span>
+                </div>
+                <a href="#"
+                    class="text-sm font-bold text-yellow-600 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300 transition-colors">Hubungi
+                    Admin</a>
+            </div>
         </div>
+        {{-- Sisi Kanan --}}
+        <div class="lg:col-span-5">
+            <div
+                class="p-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-inner h-full">
+                <h3 class="text-md font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-2">
+                    <span class="w-1.5 h-6 bg-yellow-600 rounded-full"></span>
+                    Cara Melakukan Pemesanan
+                </h3>
+                <div class="space-y-10 relative">
+                    {{-- Garis Putus-putus Vertical --}}
+                    <div
+                        class="absolute left-4 top-2 bottom-2 w-0.5 border-l-2 border-dashed border-slate-300 dark:border-yellow-600/40">
+                    </div>
+                    {{-- Step 1 --}}
+                    <div class="relative pl-12">
+                        <div
+                            class="absolute left-0 w-8 h-8 bg-yellow-600 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg shadow-yellow-500/40">
+                            1</div>
+                        <h4 class="font-bold text-slate-900 dark:text-slate-100">Isi Form Pendaftaran</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">Masukkan biodata
+                            sesuai dengan data yang diminta.</p>
+                    </div>
+                    {{-- Step 2 --}}
+                    <div class="relative pl-12">
+                        <div
+                            class="absolute left-0 w-8 h-8 bg-white dark:bg-slate-800 border-2 border-yellow-600 text-yellow-600 dark:yellow-blue-400 rounded-full flex items-center justify-center font-bold text-sm">
+                            2</div>
+                        <h4 class="font-bold text-slate-900 dark:text-slate-100">Klik "Ajukan Sekarang"</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">Isi periode sewa
+                            yang diinginkan.</p>
+                    </div>
+                    {{-- Step 3 --}}
+                    <div class="relative pl-12">
+                        <div
+                            class="absolute left-0 w-8 h-8 bg-white dark:bg-slate-800 border-2 border-yellow-600 text-yellow-600 dark:yellow-blue-400 rounded-full flex items-center justify-center font-bold text-sm">
+                            3</div>
+                        <h4 class="font-bold text-slate-900 dark:text-slate-100">Verifikasi Admin</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">Admin akan
+                            memverifikasi ketersediaan kamar Anda.</p>
+                    </div>
+                    {{-- Step 4 --}}
+                    <div class="relative pl-12">
+                        <div
+                            class="absolute left-0 w-8 h-8 bg-white dark:bg-slate-800 border-2 border-yellow-600 text-yellow-600 dark:text-yellow-400 rounded-full flex items-center justify-center font-bold text-sm">
+                            4</div>
+                        <h4 class="font-bold text-slate-900 dark:text-slate-100">Selesaikan Pembayaran</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">Setelah disetujui,
+                            tombol bayar akan muncul di sini.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     @endif
 </div>
 @endsection
