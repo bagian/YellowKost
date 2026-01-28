@@ -35,15 +35,15 @@
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <div class="p-4 bg-green-50 rounded-xl dark:bg-green-900/20 border border-green-100 dark:border-green-800">
             <span class="text-xs font-semibold text-green-600 dark:text-green-400 uppercase">Pemasukan</span>
-            <h4 class="text-md font-bold text-green-700 dark:text-green-300">Rp 120.500.000</h4>
+            <h4 class="text-md font-bold text-green-700 dark:text-green-300">Rp {{ number_format($payments->sum('earnings'), 2, ',', '.') }}</h4>
         </div>
         <div class="p-4 bg-red-50 rounded-xl dark:bg-red-900/20 border border-red-100 dark:border-red-800">
             <span class="text-xs font-semibold text-red-600 dark:text-red-400 uppercase">Pengeluaran</span>
-            <h4 class="text-md font-bold text-red-700 dark:text-red-300">Rp 45.200.000</h4>
+            <h4 class="text-md font-bold text-red-700 dark:text-red-300">Rp {{ number_format($payments->sum('expends'), 2, ',', '.') }}</h4>
         </div>
         <div class="p-4 bg-blue-50 rounded-xl dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
             <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase">Laba Bersih</span>
-            <h4 class="text-md font-bold text-blue-700 dark:text-blue-300">Rp 75.300.000</h4>
+            <h4 class="text-md font-bold text-blue-700 dark:text-blue-300">Rp {{ number_format($payments->sum('profit'), 2, ',', '.') }}</h4>
         </div>
     </div>
 
@@ -71,10 +71,20 @@
 
                 series: [{
                     name: 'Pemasukan',
-                    data: [12000000, 15000000, 14000000, 18000000, 16000000, 19000000, 21000000, 20000000, 23000000, 22000000, 24000000, 25000000]
+                    data: [
+                        @foreach($payments as $payment)
+                            {{ $payment->earnings }}
+                            @if(!$loop->last), @endif
+                        @endforeach
+                    ]
                 }, {
                     name: 'Pengeluaran',
-                    data: [5000000, 4500000, 6000000, 5500000, 4000000, 7000000, 6500000, 5000000, 6000000, 5500000, 7500000, 6000000]
+                    data: [
+                        @foreach($payments as $payment)
+                            {{ $payment->expends }}
+                            @if(!$loop->last), @endif
+                        @endforeach
+                    ]
                 }],
                 // Pengaturan Legend
                 legend: {

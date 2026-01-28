@@ -12,4 +12,9 @@ class Journal extends Model
     public function payMethod() {
         return $this->belongsTo(PaymentMethod::class, 'payment_method');
     }
+
+    public function getAmountFormattedAttribute(): string
+    {
+        return 'Rp ' . number_format($this->amount, 2, ',', '.');
+    }
 }

@@ -9,4 +9,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
 interface PaymentRepositoryInterface extends BaseRepositoryInterface
 {
     public function getNextPeriod($idBooking, bool $isDueDate = false): ?string;
+
+    public function getReport($year = null): object;
 }

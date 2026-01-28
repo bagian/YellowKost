@@ -1,3 +1,4 @@
+<div class="pagination-container">
     <div
         class="flex flex-col items-center justify-between p-5 border-t border-gray-200 md:flex-row dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800">
         @if($data->hasPages() || $data->total() > 0)
@@ -37,6 +38,7 @@
             {{-- ---------------------------------------------------------------------- --}}
         </div>
     </div>
+</div>
 
     {{-- <div class="flex flex-col items-start justify-between md:flex-row pb-14 md:items-end">
         @if ($data->hasPages() || $data->total() > 0)

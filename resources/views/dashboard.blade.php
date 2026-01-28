@@ -47,7 +47,7 @@
     {{-- -- Stats Data Information --}}
     {{-- ------------------------- --}}
     <section>
-        @include('partials.dataInformation._statsInformation')
+        @include('partials.dataInformation._statsInformation', ['roomAll' => $roomAll, 'roomAvailable' => $roomAvailable])
     </section>
     {{-- ------------------------- --}}
     {{-- -- End Stats Data Information --}}
@@ -57,7 +57,7 @@
     {{-- -- Stats Cards -- --}}
     {{-- ------------------------- --}}
     <section>
-        @include('partials.statsCard._statsCards')
+        @include('partials.statsCard._statsCards', ['roomAll' => $roomAll, 'roomAvailable' => $roomAvailable])
     </section>
     {{-- ------------------------- --}}
     {{-- -- End Stats Cards --}}
@@ -67,8 +67,8 @@
     {{-- -- Revenue Chart --}}
     {{-- ------------------------------------- --}}
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
-        @include('partials.chartInformation._statsChart')
-        @include('partials.chartInformation._statsDonut')
+        @include('partials.chartInformation._statsChart', ['payments' => $payments])
+        @include('partials.chartInformation._statsDonut', ['roomAll' => $roomAll, 'roomAvailable' => $roomAvailable])
     </section>
 
     {{-- ------------------------------------- --}}
@@ -113,7 +113,7 @@
     {{-- -- User Dashboard Section --}}
     {{-- ------------------------------------- --}}
     <section>
-        @include('partials.dashboardUser._dashUser', ['payments' => $payments, 'bookings' => $bookings, 'dueDate' => $dueDate, 'paymentStatus' => $paymentStatus])
+        @include('partials.dashboardUser._dashUser', ['paymentHistory' => $paymentHistory, 'bookings' => $bookings, 'dueDate' => $dueDate, 'paymentStatus' => $paymentStatus])
     </section>
     @endif
 </div>

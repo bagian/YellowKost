@@ -104,8 +104,10 @@
         </div>
 
         <div class="overflow-x-auto">
-            @if($activity->hasPages())
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <div class="ajax-paginated" id="maintenance-area">
+                @if($activity->hasPages())
+                <div class="ajax-table">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead
                     class="text-xs text-gray-700 uppercase border-b border-gray-100 dark:text-gray-300 bg-gray-50/80 dark:bg-gray-700/50 dark:border-gray-700">
                     <tr>
@@ -151,9 +153,10 @@
                     </tr>
 
                     @endforeach
-                </tbody>
-            </table>
-            @else
+                    </tbody>
+                    </table>
+                </div>
+                @else
             <div id="emptyState"
                 class="flex flex-col items-center justify-center hidden py-16 text-center text-gray-400 dark:text-gray-500">
                 <div class="flex items-center justify-center w-16 h-16 mb-4 bg-gray-100 rounded-full dark:bg-gray-700">
@@ -166,7 +169,8 @@
                 </div>
                 <p class="font-medium text-gray-500 dark:text-gray-400">Tidak ada data aktivitas yang ditemukan.</p>
             </div>
-            @endif
+                @endif
+            </div>
         </div>
         @include('partials._pagination', ['data' => $activity])
     </div>

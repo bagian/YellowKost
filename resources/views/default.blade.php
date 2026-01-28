@@ -89,9 +89,13 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     {{-- ------------------------------------------------------------------- --}}
-    {{-- Main Application Script--}}
+    {{-- Main Application Script (Vite) --}}
     {{-- ------------------------------------------------------------------- --}}
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- The legacy public/js/app.js script tag is intentionally removed/commented
+        to avoid loading duplicate/older bundles. Vite's @vite([...]) above
+        produces the correct bundle in public/build and is already included.
+    --}}
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 
     {{-- ------------------------------------------------------------------- --}}
     {{-- Modal Handler --}}

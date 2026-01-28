@@ -11,7 +11,7 @@
             <div class="ml-3 sm:ml-4">
                 <p class="text-xs font-medium text-gray-600 sm:text-sm dark:text-gray-900">Total Penyewa
                 </p>
-                <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:tex-gray-900">1,234</p>
+                <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:tex-gray-900">{{ $roomAll - $roomAvailable }}</p>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
             <div class="ml-3 sm:ml-4">
                 <p class="text-xs font-medium text-gray-600 sm:text-sm dark:text-gray-900">Kamar Tersedia
                 </p>
-                <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-gray-900">45</p>
+                <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-gray-900">{{ $roomAvailable }}</p>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
             <div class="ml-3 sm:ml-4">
                 <p class="text-xs font-medium text-gray-600 sm:text-sm dark:text-gray-900">Pendapatan Bulan
                     Ini</p>
-                <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-gray-900">Rp 45.2M</p>
+                <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-gray-900">{{ $payments->where('month', now()->month)->first()->earning_formatted ?? 0 }}</p>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
             <div class="ml-3 sm:ml-4">
                 <p class="text-xs font-medium text-gray-600 sm:text-sm dark:text-gray-900">Tingkat Hunian
                 </p>
-                <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-gray-900">92%</p>
+                <p class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-gray-900">{{ floor(($roomAll - $roomAvailable) / $roomAll * 100) }}%</p>
             </div>
         </div>
     </div>
