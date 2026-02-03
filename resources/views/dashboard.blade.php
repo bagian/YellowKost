@@ -47,7 +47,7 @@
     {{-- -- Stats Data Information --}}
     {{-- ------------------------- --}}
     <section>
-        @include('partials.dataInformation._statsInformation', ['roomAll' => $roomAll, 'roomAvailable' => $roomAvailable])
+        @include('partials.dataInformation._statsInformation', ['roomAll' => $admin['roomAll'], 'roomAvailable' => $admin['roomAvailable'], 'payments' => $admin['payments']])
     </section>
     {{-- ------------------------- --}}
     {{-- -- End Stats Data Information --}}
@@ -57,7 +57,7 @@
     {{-- -- Stats Cards -- --}}
     {{-- ------------------------- --}}
     <section>
-        @include('partials.statsCard._statsCards', ['roomAll' => $roomAll, 'roomAvailable' => $roomAvailable])
+        @include('partials.statsCard._statsCards', ['roomAll' => $admin['roomAll'], 'roomAvailable' => $admin['roomAvailable']])
     </section>
     {{-- ------------------------- --}}
     {{-- -- End Stats Cards --}}
@@ -67,8 +67,8 @@
     {{-- -- Revenue Chart --}}
     {{-- ------------------------------------- --}}
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
-        @include('partials.chartInformation._statsChart', ['payments' => $payments])
-        @include('partials.chartInformation._statsDonut', ['roomAll' => $roomAll, 'roomAvailable' => $roomAvailable])
+        @include('partials.chartInformation._statsChart', ['payments' => $admin['payments']])
+        @include('partials.chartInformation._statsDonut', ['roomAll' => $admin['roomAll'], 'roomAvailable' => $admin['roomAvailable']])
     </section>
 
     {{-- ------------------------------------- --}}
@@ -93,14 +93,14 @@
             {{-- ------------------------- --}}
             <div
                 class="overflow-hidden bg-white border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700 rounded-2xl drop-shadow-lg">
-                @include('partials.newActivityDashboard._activityTables')
+                @include('partials.newActivityDashboard._activityTables', ['testimonials' => $admin['testimonials']])
             </div>
             {{-- ------------------------- --}}
             {{-- -- End History Testimonial Data --}}
             {{-- ------------------------- --}}
         </div>
         <div class="mt-4">
-            @include('partials.tagihanReminder._tagihanPenghuni')
+            @include('partials.tagihanReminder._tagihanPenghuni', ['dueBookings' => $admin['dueBookings']])
         </div>
     </section>
     {{-- ------------------------------------- --}}
@@ -113,7 +113,7 @@
     {{-- -- User Dashboard Section --}}
     {{-- ------------------------------------- --}}
     <section>
-        @include('partials.dashboardUser._dashUser', ['paymentHistory' => $paymentHistory, 'bookings' => $bookings, 'dueDate' => $dueDate, 'paymentStatus' => $paymentStatus])
+        @include('partials.dashboardUser._dashUser', $user)
     </section>
     @endif
 </div>

@@ -70,7 +70,7 @@ class BookingRepository extends BaseRepository implements BookingRepositoryInter
     }
 
     public function confirmedBookings(): Collection {
-        return $this->model::where('status', 'confirmed')->get();
+        return $this->model::where('status', 'confirmed')->with('user', 'room')->get();
     }
 
     public function create(array $data): Model {

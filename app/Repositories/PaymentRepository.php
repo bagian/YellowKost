@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class PaymentRepository extends BaseRepository implements PaymentRepositoryInterface
 {
@@ -20,6 +21,83 @@ class PaymentRepository extends BaseRepository implements PaymentRepositoryInter
         parent::__construct();
 
         $this->bookingRepository = $bookingRepository;
+    }
+
+    /**
+     * Return bookings grouped by payment due status.
+     *
+     * Groups:
+     *  - past_due: bookings where due date already passed
+     *  - due_soon: bookings where due date is within the next 7 days (inclusive)
+     *  - up_to_date: bookings where due date is further in the future or not set
+     *
+     * Each item will include the original Booking model under 'booking' and these extra keys:
+     *  - due_date (Carbon|null)
+     *  - due_date_str (string|null) formatted value from getNextPeriod
+     *  - days_until_due (int|null) positive if in future, negative if past
+     *
+     * @return array{
+     *     past_due: \Illuminate\Support\Collection,
+     *     due_soon: \Illuminate\Support\Collection,
+     *     up_to_date: \Illuminate\Support\Collection
+     * }
+     */
+    public function getBookingsByDueStatus(): array {
+        $pastDue = collect();
+        $dueSoon = collect();
+        $dueToday = collect();
+        $upToDate = collect();
+
+        // Only consider confirmed bookings
+        $bookings = $this->bookingRepository->confirmedBookings();
+
+        foreach ($bookings as $booking) {
+            $dueDateStr = $this->getNextPeriod($booking->id, true);
+
+            $dueDate = null;
+            $daysUntil = null;
+
+            if ($dueDateStr && $dueDateStr !== '-' ) {
+                try {
+                    $dueDate = Carbon::parse($dueDateStr);
+                    $daysUntil = now()->diffInDays($dueDate, false); // negative when past
+                } catch (\Exception $e) {
+                    $dueDate = null;
+                    $daysUntil = null;
+                }
+            }
+
+            $item = collect([
+                'booking' => $booking,
+                'due_date' => $dueDate,
+                'due_date_str' => $dueDateStr,
+                'days_until_due' => $daysUntil,
+            ]);
+
+            if ($dueDate instanceof Carbon && now()->greaterThan($dueDate)) {
+                $pastDue->push($item);
+                continue;
+            }
+
+            if ($dueDate instanceof Carbon && $daysUntil !== null && $daysUntil <= 7) {
+                $dueSoon->push($item);
+                continue;
+            }
+
+            if ($dueDate instanceof Carbon && now()->isSameDay($dueDate)) {
+                $dueToday->push($item);
+                continue;
+            }
+
+            $upToDate->push($item);
+        }
+
+        return [
+            'past_due' => $pastDue,
+            'due_soon' => $dueSoon,
+            'due_today' => $dueToday,
+            'up_to_date' => $upToDate,
+        ];
     }
 
     protected function getModelClass() {

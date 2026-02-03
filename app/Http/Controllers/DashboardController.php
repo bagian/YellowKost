@@ -22,9 +22,9 @@ class DashboardController extends Controller
 
     function index(Request $request)
     {
-        $paymentStatus = $request->query('paymentStatus');
-        $bookings = $this->bookingRepository->setPaginationOptions(orderBy: 'desc')->getUserBooking(auth()->user()->id, with: ['user', 'room.pictures'])->first();
-        $dueDate = $this->paymentRepository->getNextPeriod($bookings?->id, true);
+        /* -------------------------------------------------------------------------- */
+        /*                                    ADMIN                                   */
+        /* -------------------------------------------------------------------------- */
         $tenantCount = $this->bookingRepository->get(filters: [
             'where' => [
                 ['status', 'confirmed']
@@ -32,10 +32,10 @@ class DashboardController extends Controller
         ])->count();
         $roomAvailable = $this->roomRepository->available()->count();
         $roomAll = $this->roomRepository->all()->count();
-        $payments = $this->paymentRepository->getReport()->stats;
         $testimonials = $this->testimonialRepository->setPaginationOptions(orderBy: 'desc', perPage: 5)->get();
-        // dd($payments);
-
+        $dueBookings = $this->paymentRepository->getBookingsByDueStatus();
+        // dd($dueBookings);
+        $adminPayments = $this->paymentRepository->getReport()->stats;
         /* -------------------------------------------------------------------------- */
         /*                                   CONTOH                                   */
         /* -------------------------------------------------------------------------- */
@@ -49,7 +49,13 @@ class DashboardController extends Controller
         //     echo $item->amount_formatted;
         // }
 
-        $paymentHistory = $this->paymentRepository
+        /* -------------------------------------------------------------------------- */
+        /*                                    USER                                    */
+        /* -------------------------------------------------------------------------- */
+        $paymentStatus = $request->query('paymentStatus');
+        $bookings = $this->bookingRepository->setPaginationOptions(orderBy: 'desc')->getUserBooking(auth()->user()->id, with: ['user', 'room.pictures'])->first();
+        $dueDate = $this->paymentRepository->getNextPeriod($bookings?->id, true);
+        $userPayments = $this->paymentRepository
             ->setPaginationOptions(orderBy: 'desc', perPage: 5)
             ->get(
                 filters: [
@@ -65,16 +71,23 @@ class DashboardController extends Controller
                 with: ['payMethod']
             );
 
+
+
         $data = [
-            'payments' => $payments ?? null,
-            'paymentStatus' => $paymentStatus ?? null,
-            'bookings' => $bookings ?? null,
-            'paymentHistory' => $paymentHistory ?? null,
-            'dueDate' => $dueDate ?? null,
-            'tenantCount' => $tenantCount ?? null,
-            'roomAvailable' => $roomAvailable ?? null,
-            'roomAll' => $roomAll ?? null,
-            'testimonials' => $testimonials ?? null,
+            'user' => [
+                'payments' => $userPayments ?? null,
+                'paymentStatus' => $paymentStatus ?? null,
+                'bookings' => $bookings ?? null,
+                'dueDate' => $dueDate ?? null,
+            ],
+            'admin' => [
+                'dueBookings' => $dueBookings ?? null,
+                'payments' => $adminPayments ?? null,
+                'tenantCount' => $tenantCount ?? null,
+                'roomAvailable' => $roomAvailable ?? null,
+                'roomAll' => $roomAll ?? null,
+                'testimonials' => $testimonials ?? null,
+            ]
         ];
 
         return view('dashboard', $data);

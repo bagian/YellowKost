@@ -11,6 +11,7 @@
             </a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            @foreach($dueBookings['past_due'] as $row)
             <div class="p-3 bg-red-50 border border-red-100 rounded-xl dark:bg-red-900/20 dark:border-red-800">
                 <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center gap-2">
@@ -22,19 +23,19 @@
                                 class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-red-600 border-2 border-white rounded-full dark:border-gray-800"></span>
                         </div>
                         <div class="text-sm font-semibold text-gray-900 dark:text-white">
-                            Rudi Tabuti
-                            <span class="block text-xs font-normal text-gray-500">Kamar A-02</span>
+                            {{ $row->get('booking')->user->full_name }}
+                            <span class="block text-xs font-normal text-gray-500">Kamar {{ $row->get('booking')->room->room_name }}</span>
                         </div>
                     </div>
                     <span
                         class="bg-red-100 text-red-800 text-xs font-bold px-2.5 py-0.5 rounded border border-red-200 dark:bg-red-900 dark:text-red-300">
-                        Telat 3 Hari
+                        Telat {{ floor($row->get('days_until_due') * -1) }} Hari
                     </span>
                 </div>
 
                 <div class="flex items-center justify-between mt-3">
                     <div class="text-xs text-gray-500 dark:text-gray-400">
-                        Tagihan: <span class="text-sm font-bold text-gray-900 dark:text-white">Rp 850.000</span>
+                        Tagihan: <span class="text-sm font-bold text-gray-900 dark:text-white">{{ $row->get('booking')->room->price_formatted }}</span>
                     </div>
                     <a href="https://wa.me/628123456789?text=Halo%20Mas%20Rudi,%20mengingatkan%20tagihan%20kost%20bulan%20ini%20sudah%20jatuh%20tempo.%20Mohon%20segera%20dibayar%20ya."
                         target="_blank"
@@ -47,7 +48,9 @@
                     </a>
                 </div>
             </div>
+            @endforeach
 
+            @foreach($dueBookings['due_today'] as $row)
             <div
                 class="p-3 bg-yellow-50 border border-yellow-100 rounded-xl dark:bg-yellow-900/20 dark:border-yellow-800">
                 <div class="flex items-center justify-between mb-2">
@@ -59,8 +62,8 @@
                                 class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-yellow-500 border-2 border-white rounded-full dark:border-gray-800"></span>
                         </div>
                         <div class="text-sm font-semibold text-gray-900 dark:text-white">
-                            Sinta Nuriyah
-                            <span class="block text-xs font-normal text-gray-500">Kamar B-10</span>
+                            {{ $row->get('booking')->user->full_name }}
+                            <span class="block text-xs font-normal text-gray-500">Kamar {{ $row->get('booking')->room->room_name }}</span>
                         </div>
                     </div>
                     <span
@@ -71,7 +74,7 @@
 
                 <div class="flex items-center justify-between mt-3">
                     <div class="text-xs text-gray-500 dark:text-gray-400">
-                        Tagihan: <span class="text-sm font-bold text-gray-900 dark:text-white">Rp 1.200.000</span>
+                        Tagihan: <span class="text-sm font-bold text-gray-900 dark:text-white">{{ $row->get('booking')->room->price_formatted }}</span>
                     </div>
                     <button
                         class="px-3 py-1.5 text-xs font-medium text-yellow-700 bg-yellow-100 rounded-lg hover:bg-yellow-200 transition-colors">
@@ -79,29 +82,32 @@
                     </button>
                 </div>
             </div>
+            @endforeach
 
+            @foreach($dueBookings['due_soon'] as $row)
             <div class="p-3 bg-gray-50 border border-gray-100 rounded-xl dark:bg-gray-700/30 dark:border-gray-700">
                 <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center gap-2">
                         <img class="w-8 h-8 rounded-full grayscale opacity-70"
                             src="https://ui-avatars.com/api/?name=Joko+Wi&background=random" alt="User">
                         <div class="text-sm font-semibold text-gray-600 dark:text-gray-300">
-                            Joko Widodo
-                            <span class="block text-xs font-normal text-gray-400">Kamar C-01</span>
+                            {{ $row->get('booking')->user->full_name }}
+                            <span class="block text-xs font-normal text-gray-400">Kamar {{ $row->get('booking')->room->room_name }}</span>
                         </div>
                     </div>
                     <span
                         class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
-                        H-3
+                        H-{{ $row->get('booking')->days_until_due }}
                     </span>
                 </div>
                 <div class="flex items-center justify-between mt-3">
                     <div class="text-xs text-gray-400">
-                        Jatuh Tempo: 16 Jan 2026
+                        Jatuh Tempo: {{ $row->get('booking')->due_date }}
                     </div>
                 </div>
                 </>
 
             </div>
+            @endforeach
         </div>
     </div>
