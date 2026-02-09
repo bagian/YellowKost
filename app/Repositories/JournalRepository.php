@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Repositories\Interface\JournalRepositoryInterface;
 use App\Repositories\Interface\PaymentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -25,19 +26,19 @@ class JournalRepository extends BaseRepository implements JournalRepositoryInter
         $this->paymentRepository = $paymentRepository;
     }
 
-    public function report($period): Collection {
+    public function report($period): SupportCollection {
         $payments = DB::table('payments')
-            ->join('bookings', 'payments.id_booking', '=', 'booking.id')
+            ->join('bookings', 'payments.id_booking', '=', 'bookings.id')
             ->join('users', 'bookings.id_user', '=', 'users.id')
             ->join('rooms', 'bookings.id_room', '=', 'rooms.id')
             ->select(
                 DB::raw("'earnings' as type"),
-                DB::raw("concat('Room ', rooms.room_number, ' - ', users.full_name) as detail"),
+                DB::raw("concat('Room ', rooms.room_name, ' - ', users.full_name) as detail"),
                 'amount',
-                'payment_date as date'
+                'date'
             )
-            ->whereMonth('payment_date', $period['month'])
-            ->whereYear('payment_date', $period['year']);
+            ->whereMonth('date', $period['month'])
+            ->whereYear('date', $period['year']);
 
         $journal = DB::table('journals')
             ->select(

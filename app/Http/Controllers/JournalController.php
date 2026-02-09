@@ -41,10 +41,14 @@ class JournalController extends Controller
                 'month' => $request->input('month'),
                 'year' => $request->input('year'),
             ];
-            $journalReport = $this->journalRepository->report($period);
         } else {
-            $journalReport = collect(); // Empty collection if no period is provided
+            $period = [
+                'month' => date_format(now(), 'm'),
+                'year' => date_format(now(), 'Y'),
+            ];
         }
+
+        $journalReport = $this->journalRepository->report($period);
 
         return view('pages.reports._journalReport', ['journalReport' => $journalReport]);
     }
