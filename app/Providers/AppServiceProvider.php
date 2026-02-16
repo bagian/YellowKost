@@ -22,6 +22,8 @@ use App\Services\ImageService;
 use App\Services\Interface\ImageServiceInterface;
 use App\Services\Interface\MidtransServiceInterface;
 use App\Services\MidtransService;
+use App\Services\ReportExportService;
+use App\Services\Interface\ReportExportServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -43,6 +45,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(ImageServiceInterface::class, ImageService::class);
         $this->app->bind(MidtransServiceInterface::class, MidtransService::class);
+    $this->app->bind(ReportExportServiceInterface::class, ReportExportService::class);
     }
 
     /**

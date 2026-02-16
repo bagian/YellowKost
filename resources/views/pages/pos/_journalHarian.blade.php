@@ -88,7 +88,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Metode
                                 Pembayaran</label>
                             <div class="relative">
-                                <select id="payment_method" name="payment_method_id"
+                                <select id="payment_method" name="payment_method"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white appearance-none cursor-pointer">
                                     @foreach($paymentMethods as $method)
                                     <option value="{{ $method->id }}">{{ $method->name }}</option>
@@ -229,14 +229,20 @@
             if (selectedType === 'payment') {
                 $paymentFields.slideDown(300); // Efek animasi slide
                 $expendFields.slideUp(300);
+                $paymentFields.find('select, input').prop('disabled', false);
+                $expendFields.find('select, input').prop('disabled', true);
             } else if (selectedType === 'expends') {
                 // Jika Pengeluaran: Sembunyikan Pilih Kamar, Tampilkan Kategori Pengeluaran
                 $paymentFields.slideUp(300);
                 $expendFields.slideDown(300);
+                $paymentFields.find('select, input').prop('disabled', true);
+                $expendFields.find('select, input').prop('disabled', false);
             } else {
                 // Jika Pendapatan Lainnya: Sembunyikan Keduanya
                 $paymentFields.slideUp(300);
                 $expendFields.slideUp(300);
+                $paymentFields.find('select, input').prop('disabled', true);
+                $expendFields.find('select, input').prop('disabled', true);
             }
         }
 

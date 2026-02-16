@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Booking;
+use App\Models\Journal;
 use App\Models\User;
 use App\Repositories\Interface\JournalRepositoryInterface;
 use App\Repositories\Interface\PaymentRepositoryInterface;
@@ -17,7 +18,7 @@ class JournalRepository extends BaseRepository implements JournalRepositoryInter
     protected $paymentRepository;
 
     protected function getModelClass() {
-        return Booking::class;
+        return Journal::class;
     }
 
     public function __construct(PaymentRepositoryInterface $paymentRepository) {
@@ -58,6 +59,9 @@ class JournalRepository extends BaseRepository implements JournalRepositoryInter
     public function create(array $data): Model {
         if ($data['type'] == "payment") {
             unset($data['type']);
+            unset($data['detail']);
+            unset($data['notes']);
+            $data['status'] = 'paid';
             return $this->paymentRepository->create($data);
         }
 

@@ -199,4 +199,18 @@ class PaymentRepository extends BaseRepository implements PaymentRepositoryInter
             'table' => $tableModels
         ];
     }
+
+    public function create(array $data): Model
+    {
+        return $this->transaction(function () use ($data): Model {
+            if (empty($data['period'])) {
+                $data['period'] = $this->getNextPeriod($data['id_booking']);
+            }
+            $model = new $this->model;
+            $model = $this->fillModel($model, $data);
+            $model->save();
+
+            return $model;
+        });
+    }
 }

@@ -36,6 +36,12 @@
                         d="M192 576L512 576C529.7 576 544 561.7 544 544C544 526.3 529.7 512 512 512L512 445.3C530.6 438.7 544 420.9 544 400L544 112C544 85.5 522.5 64 496 64L192 64C139 64 96 107 96 160L96 480C96 533 139 576 192 576z" />
                 </svg>
             </x-sidebar-link>
+            <x-sidebar-link route="journal.report" title="Laporan">
+                <svg class="w-full h-full" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <path
+                        d="M192 576L512 576C529.7 576 544 561.7 544 544C544 526.3 529.7 512 512 512L512 445.3C530.6 438.7 544 420.9 544 400L544 112C544 85.5 522.5 64 496 64L192 64C139 64 96 107 96 160L96 480C96 533 139 576 192 576z" />
+                </svg>
+            </x-sidebar-link>
             @endif
             @if(Auth::user()->role->slug === 'user' || Auth::user()->role->slug === 'superadmin')
             <x-sidebar-link route="booking.payment" title="Pembayaran">

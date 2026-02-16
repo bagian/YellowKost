@@ -6,16 +6,18 @@ use App\Http\Requests\JournalRequest;
 use App\Models\PaymentMethod;
 use App\Repositories\Interface\BookingRepositoryInterface;
 use App\Repositories\Interface\JournalRepositoryInterface;
+use App\Services\Interface\ReportExportServiceInterface;
 use Illuminate\Http\Request;
 
 class JournalController extends Controller
 {
-    protected $journalRepository, $bookingRepository;
+    protected $journalRepository, $bookingRepository, $reportExportService;
 
-    public function __construct(JournalRepositoryInterface $journalRepository, BookingRepositoryInterface $bookingRepository)
+    public function __construct(JournalRepositoryInterface $journalRepository, BookingRepositoryInterface $bookingRepository, ReportExportServiceInterface $reportExportService)
     {
         $this->journalRepository = $journalRepository;
         $this->bookingRepository = $bookingRepository;
+        $this->reportExportService = $reportExportService;
     }
     /**
      * Display a listing of the resource.
@@ -50,7 +52,14 @@ class JournalController extends Controller
 
         $journalReport = $this->journalRepository->report($period);
 
-        return view('pages.reports._journalReport', ['journalReport' => $journalReport]);
+        $type = $request->query('type');
+        if ($type && in_array(strtolower($type), ['pdf', 'excel', 'csv'])) {
+            // delegate to service
+            $exportType = strtolower($type) === 'excel' ? 'excel' : (strtolower($type) === 'csv' ? 'csv' : 'pdf');
+            return $this->reportExportService->exportJournal($journalReport, $period, $exportType);
+        }
+
+        return view('pages.pos._monthlyReport', ['journalReport' => $journalReport, 'period' => $period]);
     }
 
     /**
@@ -64,9 +73,10 @@ class JournalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(JournalRequest $request)
+    public function store(Request $request)
     {
-        $jornal = $this->journalRepository->create($request->safe()->toArray());
+        $data = $request->except('_token', 'category_id');
+        $jornal = $this->journalRepository->create($data);
 
         return redirect()->back()->with('success', 'Journal entry created successfully.');
     }
