@@ -58,11 +58,13 @@ class DatabaseSeeder extends Seeder
             // DP
             $dp = Payment::factory()->downPayment()->create([
                 'id_booking' => $booking->id,
+                'payment_method' => '1',
             ]);
 
             // Full Payment (assuming the total payment includes the rest of the rent)
             $fullPayment = Payment::factory()->fullPayment()->create([
                 'id_booking' => $booking->id,
+                'payment_method' => '1',
                 'date' => (clone $dp->date)->modify('+1 week'),
             ]);
         }
@@ -82,6 +84,7 @@ class DatabaseSeeder extends Seeder
             $payment = Payment::factory()->fullPayment()->create([
                 'id_booking' => $booking->id,
                 'date' => $booking->check_in,
+                'payment_method' => '1',
                 'is_dp' => false,
             ]);
         }

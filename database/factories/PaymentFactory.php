@@ -32,7 +32,7 @@ class PaymentFactory extends Factory
             'date' => $date,
             'period' => $date->format('Y-m-01'),
             'is_dp' => false,
-            'status' => 'completed',
+            'status' => 'paid',
             'payment_method' => $this->faker->randomElement($paymentMethods),
         ];
     }

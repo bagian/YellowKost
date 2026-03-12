@@ -105,15 +105,15 @@ class PaymentsController extends Controller
     {
         // return view('pages.uploadBukti.finish');
         return view('pages.payment._paymentFinish');
-        }
+    }
 
-        public function unfinish()
-        {
-            // return view('pages.uploadBukti.unfinish');
-            return view('pages.payment._paymentUnfinish');
-        }
+    public function unfinish()
+    {
+        // return view('pages.uploadBukti.unfinish');
+        return view('pages.payment._paymentUnfinish');
+    }
 
-        public function error()
+    public function error()
         {
         return view('pages.payment._paymentError');
         // return view('pages.uploadBukti.error');
